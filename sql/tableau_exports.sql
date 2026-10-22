@@ -46,9 +46,12 @@ SELECT tf.season, t.name AS team, t.short_name,
        COUNT(*)                         AS matches,
        SUM(tf.goals_for)                AS goals_for,
        SUM(tf.goals_against)            AS goals_against,
+       -- xG totals only cover matches where FPL tracked xG (all but 2022-23 GW1-15),
+       -- so goals are compared over the same matches.
+       SUM(tf.xg_for IS NOT NULL)       AS xg_matches,
        ROUND(SUM(tf.xg_for), 1)         AS xg_for,
        ROUND(SUM(tf.xg_against), 1)     AS xg_against,
-       ROUND(SUM(tf.goals_for) - SUM(tf.xg_for), 1) AS finishing_vs_xg
+       ROUND(SUM(CASE WHEN tf.xg_for IS NOT NULL THEN tf.goals_for END) - SUM(tf.xg_for), 1) AS finishing_vs_xg
 FROM team_form tf
 JOIN teams t ON t.season = tf.season AND t.team_id = tf.team_id
 GROUP BY tf.season, tf.team_id;

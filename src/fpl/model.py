@@ -15,6 +15,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 from fpl.config import DB_PATH, REPORTS_DIR, TEST_SEASON, TRAIN_SEASONS, VALID_SEASON
+from fpl.picks import xi_points
 
 FEATURES = [
     "position_code", "price", "price_change_season", "selected_by_prev",
@@ -72,19 +73,52 @@ def evaluate(df: pd.DataFrame, pred: pd.Series) -> dict[str, float]:
         "MAE (regular starters)": mean_absolute_error(df.loc[regulars, TARGET], pred[regulars]),
         "RMSE (regular starters)": mean_squared_error(df.loc[regulars, TARGET], pred[regulars]) ** 0.5,
     }
-    tmp = df[["gw", TARGET, "minutes_actual"]].assign(pred=pred.values)
-    rank_corr, captain, captain_benched, top15 = [], [], [], []
-    for _, g in tmp.groupby("gw"):
-        if g["pred"].nunique() > 1:  # skip a gameweek where a baseline is constant
-            rank_corr.append(spearmanr(g["pred"], g[TARGET]).statistic)
-        best = g.nlargest(15, "pred")
-        captain.append(best[TARGET].iloc[0])
-        captain_benched.append(best["minutes_actual"].iloc[0] == 0)
-        top15.append(best[TARGET].mean())
-    out["Rank correlation per GW"] = float(np.mean(rank_corr))
-    out["Captain pick: avg points"] = float(np.mean(captain))
-    out["Captain pick: % didn't play"] = 100 * float(np.mean(captain_benched))
-    out["Top-15 picks: avg points"] = float(np.mean(top15))
+    weekly = per_gameweek(df, pred)
+    rank_corr = weekly["rank_corr"].dropna()
+    out["Rank correlation per GW"] = float(rank_corr.mean())
+    out["Best XI: avg points per GW"] = float(weekly["xi_points"].mean())
+    out["Captain pick: avg points"] = float(weekly["captain_points"].mean())
+    out["Captain pick: % didn't play"] = 100 * float(weekly["captain_benched"].mean())
+    return out
+
+
+def per_gameweek(df: pd.DataFrame, pred: pd.Series) -> pd.DataFrame:
+    """One row per gameweek: how a prediction method's picks actually scored."""
+    tmp = df[["gw", "position", TARGET, "minutes_actual", "minutes_l5"]].assign(pred=pred.values)
+    rows = []
+    for gw, g in tmp.groupby("gw"):
+        captain = g.loc[g["pred"].idxmax()]
+        regulars = g[g["minutes_l5"].fillna(0) >= 60]
+        rows.append({
+            "gw": gw,
+            # a constant baseline (e.g. GW1 season averages) has no ranking to score
+            "rank_corr": spearmanr(g["pred"], g[TARGET]).statistic if g["pred"].nunique() > 1 else np.nan,
+            "xi_points": xi_points(g, "pred", TARGET),
+            "captain_points": captain[TARGET],
+            "captain_benched": captain["minutes_actual"] == 0,
+            "mae_regulars": (regulars["pred"] - regulars[TARGET]).abs().mean(),
+        })
+    return pd.DataFrame(rows).set_index("gw")
+
+
+def paired_bootstrap(model_weekly: pd.DataFrame, base_weekly: pd.DataFrame,
+                     n: int = 4000, seed: int = 0) -> dict[str, tuple]:
+    """95% interval for the model's average edge over a baseline, resampling gameweeks.
+
+    Gameweeks are resampled (not individual players) because players in the same
+    gameweek share fixtures and luck, so they aren't independent.
+    """
+    rng = np.random.default_rng(seed)
+    diffs = {
+        "MAE (regular starters)": base_weekly["mae_regulars"] - model_weekly["mae_regulars"],
+        "Best XI: avg points per GW": model_weekly["xi_points"] - base_weekly["xi_points"],
+        "Captain pick: avg points": model_weekly["captain_points"] - base_weekly["captain_points"],
+    }
+    out = {}
+    for metric, d in diffs.items():
+        d = d.dropna().to_numpy(dtype=float)  # GW1 has no 'regular starters' yet
+        boot = rng.choice(d, size=(n, len(d)), replace=True).mean(axis=1)
+        out[metric] = (d.mean(), *np.percentile(boot, [2.5, 97.5]))
     return out
 
 
@@ -113,10 +147,22 @@ def main() -> dict:
     oracle = test[TARGET].astype(float)
     results = {name: evaluate(test, pred) for name, pred in candidates.items()}
     results["Perfect hindsight (ceiling)"] = {
-        k: v for k, v in evaluate(test, oracle).items() if "pick" in k
+        k: v for k, v in evaluate(test, oracle).items() if "pick" in k or "XI" in k
     }
     table = pd.DataFrame(results).T
     print("\n[model] test season results\n" + table.round(3).to_string())
+
+    # Is the model's edge real or luck? Paired bootstrap over gameweeks.
+    model_weekly = per_gameweek(test, test["pred_model"])
+    sig_rows = []
+    for name in ["Season average", "Form (last 5 GW avg)"]:
+        base_weekly = per_gameweek(test, candidates[name])
+        for metric, (diff, lo, hi) in paired_bootstrap(model_weekly, base_weekly).items():
+            sig_rows.append({"baseline": name, "metric": metric, "model_edge": diff,
+                             "ci_low": lo, "ci_high": hi, "significant": lo > 0 or hi < 0})
+    significance = pd.DataFrame(sig_rows)
+    print("\n[model] model edge over baselines (95% bootstrap CI)\n"
+          + significance.round(2).to_string(index=False))
 
     # 3. what drives the model (permutation importance on regular starters)
     regs = test[test["minutes_l5"].fillna(0) >= 60]
@@ -135,6 +181,7 @@ def main() -> dict:
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     table.to_csv(REPORTS_DIR / "model_results.csv")
+    significance.to_csv(REPORTS_DIR / "model_significance.csv", index=False)
     importance.to_csv(REPORTS_DIR / "feature_importance.csv")
     by_pos.to_csv(REPORTS_DIR / "bias_by_position.csv")
     test[["season", "gw", "player_id", "web_name", "position", "price",

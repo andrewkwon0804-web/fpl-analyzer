@@ -4,9 +4,11 @@ Cleaning rules (each is logged so you can see what changed):
   * exact duplicate player-fixture rows are dropped (seen in the 2025-26 export)
   * prices are converted from FPL's tenths (e.g. 55) to £m (5.5)
   * player team is taken from the match row, so mid-season transfers are handled
+  * xG columns are set to NULL for gameweeks where FPL didn't track xG yet (2022-23 GW1-15)
 """
 import sqlite3
 
+import numpy as np
 import pandas as pd
 
 from fpl.config import DB_PATH, RAW_DIR, SEASONS, SQL_DIR
@@ -67,6 +69,17 @@ def clean_player_match(season: str, teams: pd.DataFrame) -> pd.DataFrame:
         print(f"  dropped {dupes} exact duplicate rows")
     if g.duplicated(["element", "fixture"]).any():
         raise ValueError(f"{season}: conflicting rows for the same player and fixture")
+
+    # FPL only started publishing xG partway through 2022-23 (from GW16). Earlier
+    # gameweeks store 0 for every player, which means "not tracked", not "no chances".
+    # Store NULL instead so SQL averages and sums skip those weeks.
+    xg_cols = ["expected_goals", "expected_assists", "expected_goal_involvements",
+               "expected_goals_conceded"]
+    untracked = g.groupby("GW")["expected_goals"].transform("sum") == 0
+    if untracked.any():
+        g.loc[untracked, xg_cols] = np.nan
+        gws = sorted(g.loc[untracked, "GW"].unique())
+        print(f"  xG not tracked in GW {gws[0]}-{gws[-1]}: stored as NULL")
 
     team_lookup = dict(zip(teams["name"], teams["team_id"]))
     team_id = g["team"].map(team_lookup)
