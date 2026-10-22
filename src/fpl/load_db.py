@@ -128,6 +128,7 @@ def main() -> None:
         for name, df in tables.items():
             df.to_sql(name, con, if_exists="append", index=False)
             print(f"  {name:<13} {len(df):>6} rows")
+    con.executescript((SQL_DIR / "features.sql").read_text())
     con.commit()
     con.close()
     print(f"[load] database written to {DB_PATH}")
