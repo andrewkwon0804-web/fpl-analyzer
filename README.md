@@ -2,7 +2,7 @@
 
 **Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw.**
 
-Python · SQL (SQLite, window functions, CTEs) · scikit-learn · Tableau Public · pytest
+Python · SQL (SQLite, window functions, CTEs) · scikit-learn · pytest
 
 > Built by Andrew Kwon, B.S. Information Sciences @ UIUC. This replaces my earlier
 > [FPL Analyzer](https://github.com/andrewkwon084/fpl-analyzer) (a React app with a hand-tuned
@@ -89,10 +89,6 @@ Questions answered in `sql/analysis/` (results in `reports/sql_results/`):
 | `06_defcon_rule_change` | Did the 2025-26 rule change shift points between positions? |
 
 A detail I like from query 02: the data stores ownership as a raw count of managers, not a percentage. Every FPL squad has exactly 15 players, so `SUM(selected_by) / 15` for a gameweek recovers the total number of managers, and ownership % follows.
-
-## Interactive dashboard
-
-Tableau Public: *link coming soon*. The extracts and a build guide are in [`tableau/`](tableau/README.md).
 
 ## Run it yourself
 
