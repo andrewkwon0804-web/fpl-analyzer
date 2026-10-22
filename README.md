@@ -97,7 +97,7 @@ Tableau Public: *link coming soon*. The extracts and a build guide are in [`tabl
 ## Run it yourself
 
 ```bash
-git clone https://github.com/andrewkwon084/fpl-points-lab.git
+git clone https://github.com/andrewkwon0804-web/fpl-points-lab.git
 cd fpl-points-lab
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt   # pinned versions, so you get the same numbers
