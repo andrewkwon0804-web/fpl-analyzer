@@ -35,16 +35,16 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2022-23,Havertz,FWD,7,8.9,-1.9,0.6,34
 2022-23,Nketiah,FWD,4,7.2,-3.2,,35
 2023-24,Foden,MID,19,10.2,8.8,1.8,1
-2023-24,Son,MID,17,11.5,5.5,-0.3,2
+2023-24,Son,MID,17,11.5,5.5,-0.2,2
 2023-24,Mateta,FWD,16,10.8,5.2,0.2,3
 2023-24,Diogo J.,MID,10,5.2,4.8,-2.0,4
 2023-24,Olise,MID,10,5.3,4.7,,5
-2023-24,Palmer,MID,22,17.4,4.6,-1.8,6
+2023-24,Palmer,MID,22,17.4,4.7,-1.8,6
 2023-24,Adebayo,FWD,10,5.5,4.5,,7
 2023-24,Hee Chan,MID,12,7.5,4.5,,8
 2023-24,Bowen,MID,16,12.0,4.0,4.4,9
-2023-24,Trossard,MID,12,8.3,3.7,1.3,10
-2023-24,Bailey,MID,10,6.3,3.7,,11
+2023-24,Bailey,MID,10,6.3,3.7,,10
+2023-24,Trossard,MID,12,8.3,3.7,1.3,11
 2023-24,Højlund,FWD,10,7.0,3.0,-1.1,12
 2023-24,Kudus,MID,8,5.1,2.9,-2.0,13
 2023-24,Cunha,FWD,12,9.5,2.5,6.3,14
@@ -77,7 +77,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2023-24,Iwobi,MID,5,5.2,-0.2,,41
 2023-24,Martinelli,MID,6,6.4,-0.4,0.9,42
 2023-24,Morris,FWD,11,11.5,-0.5,,43
-2023-24,Amdouni,FWD,5,5.5,-0.5,,44
+2023-24,Amdouni,FWD,5,5.6,-0.5,,44
 2023-24,Solanke,FWD,19,19.6,-0.6,-1.9,45
 2023-24,Mbeumo,MID,9,9.7,-0.7,7.5,46
 2023-24,Longstaff,MID,6,6.8,-0.8,,47
@@ -107,7 +107,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2023-24,Luis Díaz,MID,8,12.1,-4.1,1.1,71
 2023-24,N.Jackson,FWD,14,18.1,-4.1,-1.7,72
 2023-24,Darwin,FWD,11,16.2,-5.2,-0.8,73
-2023-24,Johnson,MID,5,10.4,-5.4,0.3,74
+2023-24,Johnson,MID,5,10.4,-5.4,0.2,74
 2023-24,Calvert-Lewin,FWD,7,12.9,-5.9,-3.5,75
 2024-25,Mbeumo,MID,20,12.5,7.5,-1.0,1
 2024-25,Wood,FWD,20,13.4,6.6,,2
@@ -116,12 +116,12 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2024-25,M.Salah,MID,29,24.7,4.3,-1.2,5
 2024-25,Strand Larsen,FWD,14,10.1,3.9,-1.3,6
 2024-25,Maddison,MID,9,5.5,3.5,,7
-2024-25,Gakpo,FWD,10,7.1,2.9,-1.3,8
+2024-25,Gakpo,FWD,10,7.1,2.9,-1.4,8
 2024-25,Ndiaye,FWD,9,6.2,2.8,-0.7,9
 2024-25,Isak,FWD,23,20.3,2.7,,10
 2024-25,Delap,FWD,12,9.4,2.6,,11
-2024-25,Schade,MID,11,8.4,2.6,-4.1,12
-2024-25,Barnes,MID,9,6.5,2.5,0.2,13
+2024-25,Barnes,MID,9,6.5,2.6,0.2,12
+2024-25,Schade,MID,11,8.5,2.6,-4.1,13
 2024-25,Souček,MID,9,6.6,2.4,-0.7,14
 2024-25,J.Murphy,MID,8,5.9,2.1,,15
 2024-25,Muniz,FWD,8,5.9,2.1,,16
@@ -132,7 +132,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2024-25,Rogers,MID,8,6.5,1.5,3.2,21
 2024-25,Semenyo,MID,11,9.5,1.5,5.9,22
 2024-25,Trossard,MID,8,6.7,1.3,0.4,23
-2024-25,Merino,MID,7,5.8,1.3,,24
+2024-25,Merino,MID,7,5.8,1.2,,24
 2024-25,Luis Díaz,MID,13,11.9,1.1,,25
 2024-25,João Pedro,FWD,10,9.0,1.0,0.1,26
 2024-25,Watkins,FWD,16,15.1,0.9,0.6,27
@@ -140,13 +140,13 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2024-25,Mitoma,MID,10,9.2,0.8,,29
 2024-25,Gibbs-White,MID,7,6.3,0.7,4.2,30
 2024-25,Welbeck,FWD,10,9.6,0.4,0.6,31
-2024-25,Johnson,MID,11,10.8,0.3,,32
+2024-25,Johnson,MID,11,10.8,0.2,,32
 2024-25,Mateta,FWD,14,13.8,0.2,-2.4,33
 2024-25,Beto,FWD,8,7.9,0.1,0.1,34
 2024-25,Haaland,FWD,22,21.9,0.1,1.5,35
 2024-25,Raúl,FWD,12,12.0,0.0,-2.6,36
 2024-25,Enzo,MID,6,6.2,-0.2,-1.3,37
-2024-25,Son,MID,7,7.3,-0.3,,38
+2024-25,Son,MID,7,7.3,-0.2,,38
 2024-25,Havertz,FWD,9,9.5,-0.5,,39
 2024-25,Wissa,FWD,18,18.6,-0.6,,40
 2024-25,Darwin,FWD,5,5.8,-0.8,,41
@@ -158,7 +158,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2024-25,Garnacho,MID,6,7.4,-1.4,,47
 2024-25,O.Dango,MID,7,8.4,-1.4,-0.9,48
 2024-25,N.Jackson,FWD,10,11.7,-1.7,,49
-2024-25,Palmer,MID,15,16.8,-1.8,-0.6,50
+2024-25,Palmer,MID,15,16.8,-1.8,-0.5,50
 2024-25,Solanke,FWD,9,10.9,-1.9,,51
 2024-25,B.Fernandes,MID,8,9.9,-1.9,-1.8,52
 2024-25,Kudus,MID,5,7.0,-2.0,,53
@@ -185,7 +185,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2025-26,Cunha,MID,10,6.9,3.1,,8
 2025-26,Flemming,FWD,11,7.9,3.1,,9
 2025-26,Anthony,MID,8,5.1,2.9,,10
-2025-26,Okafor,MID,8,5.3,2.8,,11
+2025-26,Okafor,MID,8,5.3,2.7,,11
 2025-26,Richarlison,FWD,11,8.6,2.4,,12
 2025-26,Eze,MID,7,5.2,1.8,,13
 2025-26,Šeško,FWD,11,9.2,1.8,,14
@@ -208,7 +208,7 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2025-26,E.Le Fée,MID,5,5.2,-0.2,,31
 2025-26,Summerville,MID,5,5.4,-0.4,,32
 2025-26,Igor Jesus,FWD,6,6.5,-0.5,,33
-2025-26,Palmer,MID,10,10.6,-0.6,,34
+2025-26,Palmer,MID,10,10.6,-0.5,,34
 2025-26,Saka,MID,7,7.6,-0.6,,35
 2025-26,Wilson,FWD,7,7.6,-0.6,,36
 2025-26,Ndiaye,MID,6,6.7,-0.7,,37
@@ -218,10 +218,10 @@ season,web_name,position,goals,xg,goals_minus_xg,next_season_goals_minus_xg,over
 2025-26,O'Reilly,DEF,5,6.1,-1.1,,41
 2025-26,M.Salah,MID,7,8.2,-1.2,,42
 2025-26,Gomez,MID,5,6.2,-1.2,,43
-2025-26,Nmecha,FWD,6,7.3,-1.3,,44
+2025-26,Nmecha,FWD,6,7.3,-1.2,,44
 2025-26,Enzo,MID,10,11.3,-1.3,,45
 2025-26,Strand Larsen,FWD,4,5.3,-1.3,,46
-2025-26,Gakpo,MID,7,8.3,-1.3,,47
+2025-26,Gakpo,MID,7,8.4,-1.4,,47
 2025-26,Calvert-Lewin,FWD,14,15.6,-1.6,,48
 2025-26,B.Fernandes,MID,9,10.8,-1.8,,49
 2025-26,Wirtz,MID,5,6.8,-1.8,,50

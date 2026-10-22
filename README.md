@@ -18,13 +18,13 @@ Trained on 2022-23 and 2023-24, tuned on 2024-25, and scored **once** on the ful
 
 | Method (2025-26 test season) | MAE, regular starters | Captain pick avg pts | Top-15 picks avg pts |
 |---|---|---|---|
-| **Gradient boosting model** | **2.31** | **6.5** | **4.5** |
+| **Gradient boosting model** | **2.31** | **6.4** | **4.5** |
 | Season average to date | 2.52 | 6.2 | 4.2 |
 | Form (last 5 GW average) | 2.71 | 4.1 | 3.8 |
 | Perfect hindsight (ceiling) | — | 17.2 | 11.9 |
 
 * The model cuts prediction error by **8%** against the best simple rule and **15%** against "pick by form".
-* The model's captain outscores the form rule's captain by **2.4 points per gameweek** before the captaincy doubling, across all 38 gameweeks.
+* The model's captain outscores the form rule's captain by **2.3 points per gameweek** before the captaincy doubling, across all 38 gameweeks.
 * Only 1 of 38 model captain picks failed to play, against 5 of 38 for the form rule.
 
 ## Four findings
@@ -39,7 +39,7 @@ Trained on 2022-23 and 2023-24, tuned on 2024-25, and scored **once** on the ful
 
 ![Defensive rule change](reports/figures/defcon_rule_change.png)
 
-**4. The dataset's `xP` column leaks the answer.** The open dataset includes an expected-points column that looks like a free, strong feature. I tested it: a real pre-match forecast should correlate equally with *this* week's and *next* week's points. Every genuine feature does; `xP` correlates **4x more** with the week it supposedly predicts, so it contains information from the match itself. Adding it to the model inflated captain-pick results from 6.5 to 8.7 points, which would have been a fake result. It is excluded from training and shown only as a reference.
+**4. The dataset's `xP` column leaks the answer.** The open dataset includes an expected-points column that looks like a free, strong feature. I tested it: a real pre-match forecast should correlate equally with *this* week's and *next* week's points. Every genuine feature does; `xP` correlates **4x more** with the week it supposedly predicts, so it contains information from the match itself. When I tried adding it to the model, its error and captain picks looked much better, but that improvement would have been fake. It is excluded from training and shown only as a reference.
 
 ![Leakage check](reports/figures/leakage_check.png)
 
@@ -100,7 +100,7 @@ Tableau Public: *link coming soon*. The extracts and a build guide are in [`tabl
 git clone https://github.com/andrewkwon084/fpl-points-lab.git
 cd fpl-points-lab
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt   # pinned versions, so you get the same numbers
 python run_pipeline.py   # ~2 minutes: download, build DB, train, charts, Tableau extracts
 pytest                   # data-quality and leakage tests
 ```
