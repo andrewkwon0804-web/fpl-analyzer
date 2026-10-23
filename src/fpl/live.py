@@ -23,7 +23,7 @@ def train_on_finished_seasons(df: pd.DataFrame):
     return make_model(**params).fit(fit[FEATURES], fit[TARGET])
 
 
-def score_live_season(df: pd.DataFrame, model) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def score_live_season(df: pd.DataFrame, model) -> tuple:
     live = df[df.season == LIVE_SEASON].reset_index(drop=True)
     live["pred_model"] = model.predict(live[FEATURES])
     candidates = {"Gradient boosting model": live["pred_model"], **baselines(live)}
@@ -46,7 +46,7 @@ def score_live_season(df: pd.DataFrame, model) -> tuple[pd.DataFrame, pd.DataFra
             rows.append({"baseline": name, "metric": metric, "model_edge": diff,
                          "ci_low": lo, "ci_high": hi, "significant": lo > 0 or hi < 0})
     weekly = pd.concat(weekly).reset_index()[["gw", "method", "xi_points"]]
-    return results, pd.DataFrame(rows), weekly
+    return results, pd.DataFrame(rows), weekly, live
 
 
 def predict_next_gameweek(model) -> pd.DataFrame:
@@ -74,7 +74,7 @@ def predict_next_gameweek(model) -> pd.DataFrame:
 def main() -> dict:
     df = load_features()
     model = train_on_finished_seasons(df)
-    results, sig, weekly = score_live_season(df, model)
+    results, sig, weekly, played = score_live_season(df, model)
     n_gw = weekly["gw"].nunique()
     print(f"[live] {LIVE_SEASON}, {n_gw} played gameweeks, model trained on {FINISHED_SEASONS[0]}..{FINISHED_SEASONS[-1]}")
     print(results[["MAE (regular starters)", "Best XI: avg points per GW", "Captain pick: avg points"]].round(2).to_string())
@@ -92,6 +92,17 @@ def main() -> dict:
     sig.to_csv(out / "season_so_far_significance.csv", index=False)
     weekly.to_csv(out / "season_so_far_weekly.csv", index=False)
     preds.to_csv(out / "next_gameweek_predictions.csv", index=False)
+
+    # Every played gameweek of the live season, predicted vs actual (for the app's player lookup).
+    with sqlite3.connect(DB_PATH) as con:
+        teams = pd.read_sql("""SELECT p.player_id, t.name AS team, t.short_name AS team_short
+                               FROM players p JOIN teams t ON t.season = p.season AND t.team_id = p.team_id
+                               WHERE p.season = ?""", con, params=(LIVE_SEASON,))
+    played = played.merge(teams, on="player_id", how="left")
+    played[["season", "gw", "player_id", "web_name", "team", "team_short", "position", "price",
+            "pred_model", TARGET, "minutes_actual"]].rename(
+        columns={"pred_model": "predicted_points", TARGET: "actual_points", "minutes_actual": "minutes"}
+    ).to_csv(out / "season_so_far_predictions.csv", index=False)
     return {"results": results, "significance": sig, "weekly": weekly, "predictions": preds}
 
 
