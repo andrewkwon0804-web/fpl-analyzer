@@ -79,7 +79,16 @@ h1 {{ font-weight: 700; font-size: 2.9rem; letter-spacing: -0.01em; margin-botto
 .chip .pts small {{ display: block; font-size: .68rem; color: {MUTED_INK}; }}
 .chip .cap {{ position: absolute; top: 4px; right: 4px; width: 18px; height: 18px; border-radius: 50%;
   background: {INK}; color: #fff; font: 700 .7rem/18px 'Barlow Semi Condensed', sans-serif; }}
-@media (max-width: 760px) {{ .line {{ gap: 4px; }} .chip .pts small {{ font-size: .6rem; }} }}
+@media (max-width: 760px) {{
+  .line {{ gap: 4px; }}
+  .chip .name {{ font-size: .74rem; padding: 4px 3px 0; }}
+  .chip .team {{ font-size: .66rem; padding-bottom: 2px; }}
+  .chip .pts {{ flex-direction: column; }}
+  .chip .pts div + div {{ border-left: 0; border-top: 1px solid {RULE}; }}
+  .chip .pts .num {{ font-size: .95rem; }}
+  .chip .pts small {{ display: none; }}
+  .chip .cap {{ width: 15px; height: 15px; font-size: .6rem; line-height: 15px; top: 2px; right: 2px; }}
+}}
 
 .scoreboard {{ border-top: 2px solid {INK}; }}
 .scoreboard .row {{ display: flex; align-items: baseline; justify-content: space-between;
@@ -203,8 +212,8 @@ with tab_team:
             lines.append('<div class="line">' + "".join(chip(r, col) for _, r in players.iterrows()) + "</div>")
         st.markdown('<div class="pitch">' + "".join(lines) + "</div>", unsafe_allow_html=True)
         st.markdown(
-            '<p class="note">Predicted points are what the method expected before the deadline. '
-            'Scored is what actually happened (doubled for the captain, marked C). '
+            '<p class="note">Each card shows predicted points first: what the method expected before the deadline. '
+            'Then what the player actually scored (doubled for the captain, marked C). '
             'Budget is ignored, so this tests who ranks players best.</p>', unsafe_allow_html=True)
 
     with right:
@@ -244,7 +253,7 @@ with tab_season:
     color = alt.Color("Method:N", scale=alt.Scale(domain=order, range=[METHOD_COLORS[m] for m in order]),
                       legend=None)
     hover = alt.selection_point(fields=["gw"], nearest=True, on="pointerover", empty=False)
-    base = alt.Chart(cum).encode(x=alt.X("gw:Q", title="Gameweek", scale=alt.Scale(domain=[1, max(GWS)])),
+    base = alt.Chart(cum).encode(x=alt.X("gw:Q", title="Gameweek", scale=alt.Scale(domain=[1, max(GWS)], nice=False)),
                                  y=alt.Y("Total points:Q", title="Total points"), color=color)
     lines = base.mark_line(strokeWidth=2.5)
     points = base.mark_point(size=60, filled=True).encode(opacity=alt.condition(hover, alt.value(1), alt.value(0)))
@@ -283,7 +292,7 @@ with tab_season:
         y=alt.Y("position:N", sort=["GK", "DEF", "MID", "FWD"], title=None,
                 axis=alt.Axis(labelPadding=8, minExtent=44, ticks=False)),
         x=alt.X("bias:Q", title="Average predicted minus actual points (regular starters)",
-                axis=alt.Axis(format="+.1f", tickCount=6)),
+                axis=alt.Axis(format=".1f", tickCount=6)),
         color=alt.condition("datum.position == 'DEF'", alt.value(MODEL), alt.value(SEASON)),
         tooltip=[alt.Tooltip("position:N", title="Position"), alt.Tooltip("bias:Q", format="+.2f", title="Bias"),
                  alt.Tooltip("rows:Q", title="Player-gameweeks")])
