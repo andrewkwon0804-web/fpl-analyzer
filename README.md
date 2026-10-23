@@ -15,16 +15,25 @@ Trained on 2022-23 and 2023-24, tuned on 2024-25, and scored **once** on the ful
 
 ![Model vs baselines](reports/figures/model_vs_baselines.png)
 
-| Method (2025-26 test season) | MAE, regular starters | Captain pick avg pts | Top-15 picks avg pts |
-|---|---|---|---|
-| **Gradient boosting model** | **2.31** | **6.4** | **4.5** |
-| Season average to date | 2.52 | 6.2 | 4.2 |
-| Form (last 5 GW average) | 2.71 | 4.1 | 3.8 |
-| Perfect hindsight (ceiling) | — | 17.2 | 11.9 |
+Each week, every method picks its best XI (a valid FPL formation, captain's points doubled), and is scored on what those players actually did.
 
-* The model cuts prediction error by **8%** against the best simple rule and **15%** against "pick by form".
-* The model's captain outscores the form rule's captain by **2.3 points per gameweek** before the captaincy doubling, across all 38 gameweeks.
-* Only 1 of 38 model captain picks failed to play, against 5 of 38 for the form rule.
+| Method (2025-26 test season) | MAE, regular starters | Best XI pts per GW | Captain pts per GW |
+|---|---|---|---|
+| **Gradient boosting model** | **2.31** | **59.8** | **6.6** |
+| Season average to date | 2.52 | 53.0 | 6.2 |
+| Form (last 5 GW average) | 2.71 | 45.6 | 4.1 |
+| Perfect hindsight (ceiling) | — | 154.8 | 17.2 |
+
+**Is the edge real?** Each gap below is the model's average edge, with a 95% range from a paired bootstrap that resamples the 38 gameweeks (`reports/model_significance.csv`).
+
+| Model compared with | Prediction error (MAE) | Best XI points per GW | Captain points per GW |
+|---|---|---|---|
+| Season average | **0.20 lower** (0.15 to 0.25) | **+6.9** (+2.7 to +11.1) | +0.3 (−0.9 to +1.5), not significant |
+| Form (last 5 GW) | **0.40 lower** (0.36 to 0.44) | **+14.2** (+9.7 to +19.0) | **+2.4** (+1.1 to +3.9) |
+
+* The model's best XI outscored the season-average rule by about **260 points over the season**, and the gap is clearly not luck.
+* The captain pick on its own is **not** reliably better than season average. One pick a week is too noisy to separate the two over 38 gameweeks, so it is reported here but not claimed as a win.
+* Prediction error is 8% lower than the best simple rule and 15% lower than picking by form.
 
 ## Four findings
 
@@ -32,7 +41,7 @@ Trained on 2022-23 and 2023-24, tuned on 2024-25, and scored **once** on the ful
 
 ![Form regression](reports/figures/form_regression.png)
 
-**2. Overperforming xG doesn't last.** Players who beat their expected goals by 3+ in a season (average +5.6 goals) were back to +0.0 the following season; 28 of 30 regressed. (`sql/analysis/05_xg_over_under_performers.sql`)
+**2. Overperforming xG doesn't last.** The 13 players who beat their expected goals by 3+ in 2023-24 or 2024-25 (average +5.1 goals) were back to +0.3 the following season; 12 of 13 fell back. (`sql/analysis/05_xg_over_under_performers.sql`)
 
 **3. The 2025-26 rule change moved points to defenders.** The new defensive contribution rule lifted defenders from 29% to 35% of all points scored. The model was trained before the rule existed, and it under-predicts starting defenders by 0.5 points per gameweek in 2025-26, the largest bias of any position. Retraining with the new season fixes this going forward.
 
@@ -46,7 +55,7 @@ Trained on 2022-23 and 2023-24, tuned on 2024-25, and scored **once** on the ful
 
 ![Feature importance](reports/figures/feature_importance.png)
 
-Expected minutes (recent minutes and starts) matter most: a player who doesn't play scores nothing. Fixture difficulty and whether the gameweek is a double come next, then underlying attacking output (xG, xA) and season-long scoring.
+Expected minutes matter most: a player who doesn't play scores nothing. Fixture difficulty and whether the gameweek is a double come next, then season-long scoring and underlying attacking output (xA).
 
 ## How it works
 
@@ -64,7 +73,7 @@ open FPL archive (CSV)                 SQLite: fpl.db
                   business questions      input audit     time-split training    CSVs for Tableau
 ```
 
-**Data.** Every player in every match for four seasons (2022-23 to 2025-26): about 113,000 player-match rows from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. 2022-23 is the first season with per-match xG.
+**Data.** Every player in every match for four seasons (2022-23 to 2025-26): about 113,000 player-match rows from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. FPL only started publishing per-match xG in gameweek 16 of 2022-23; the archive stores the earlier weeks as 0, so the pipeline treats them as missing (a test checks this).
 
 **Cleaning.** Dropped exact duplicate rows in the 2025-26 export, converted prices from tenths to £m, mapped team names to ids per season, excluded the one-season "assistant manager" chip, and summed double gameweeks into one row per player per gameweek.
 
@@ -72,7 +81,9 @@ open FPL archive (CSV)                 SQLite: fpl.db
 
 **Model.** `HistGradientBoostingRegressor` (scikit-learn), position as a categorical feature, early stopping. Small hyperparameter grid chosen on the 2024-25 validation season, then refit on 2022-25 and evaluated once on 2025-26.
 
-**Evaluation.** MAE is reported for regular starters (60+ minutes recently) because most rows are bench players with 0 points, which makes every method look good. The decision metrics simulate how an FPL manager would use a forecast: pick a captain and a top 15 each gameweek, then score those picks by what actually happened.
+**Evaluation.** MAE is reported for regular starters (60+ minutes recently) because most rows are bench players with 0 points, which makes every method look good. The decision metrics simulate how an FPL manager would use a forecast: pick a best XI and a captain each gameweek (`src/fpl/picks.py`), then score those picks by what actually happened. Ties between equal predictions are broken by player id, so results don't depend on sort order.
+
+**Reproducibility.** Library versions are pinned in `requirements.txt`. Retraining on a different kind of processor (Apple Silicon vs Intel) changes a few tree splits through floating-point rounding: on Intel the best-XI edge over season average comes out at +5.5 instead of +6.9. Both runs reach the same conclusions. The numbers here come from Apple Silicon.
 
 ## SQL analysis
 
@@ -93,12 +104,13 @@ Note on query 02: the data stores ownership as a raw count of managers, not a pe
 
 ```
 run_pipeline.py          one command to rebuild everything
-src/fpl/                 ingest, load_db, run_sql, leakage, model, report, export_tableau
+src/fpl/                 ingest, load_db, run_sql, leakage, model, picks, report, export_tableau
 sql/schema.sql           relational schema with keys and constraints
 sql/features.sql         feature engineering with window functions
 sql/analysis/            standalone analysis queries
 sql/tableau_exports.sql  flat views for Tableau
-tests/                   pytest checks for duplicates, double gameweeks, and leakage
+tests/                   pytest checks for duplicates, double gameweeks, missing xG, and leakage
+app/                     Streamlit web app (reads the CSVs above)
 reports/                 metrics, SQL results, figures
 tableau/                 dashboard extracts + build guide
 ```
