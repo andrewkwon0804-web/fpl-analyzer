@@ -1,0 +1,7 @@
+baseline,metric,model_edge,ci_low,ci_high,significant,verdict,edge_label,range_label
+Season avg,Prediction error,0.198,0.151,0.252,True,Real,0.20 lower,0.15 to 0.25
+Season avg,Best XI points,6.868,2.737,11.132,True,Real,+6.9 pts,+2.7 to +11.1
+Season avg,Captain points,0.342,-0.868,1.526,False,Could be luck,+0.3 pts,-0.9 to +1.5
+Form,Prediction error,0.398,0.357,0.443,True,Real,0.40 lower,0.36 to 0.44
+Form,Best XI points,14.211,9.711,19.027,True,Real,+14.2 pts,+9.7 to +19.0
+Form,Captain points,2.447,1.105,3.895,True,Real,+2.4 pts,+1.1 to +3.9

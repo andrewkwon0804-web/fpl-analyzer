@@ -2,7 +2,7 @@
 
 **Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw.**
 
-Python · SQL (SQLite, window functions, CTEs) · scikit-learn · pytest
+Python · SQL (SQLite, window functions, CTEs) · scikit-learn · Tableau · Streamlit · pytest
 
 > Andrew Kwon, B.S. Information Sciences @ UIUC. Follow-up to my earlier
 > [FPL Analyzer](https://github.com/andrewkwon084/fpl-analyzer) (a React app with a hand-tuned value score).
@@ -34,6 +34,11 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 * The model's best XI outscored the season-average rule by about **260 points over the season**, and the gap is clearly not luck.
 * The captain pick on its own is **not** reliably better than season average. One pick a week is too noisy to separate the two over 38 gameweeks, so it is reported here but not claimed as a win.
 * Prediction error is 8% lower than the best simple rule and 15% lower than picking by form.
+
+## Explore it
+
+* **Web app** (Streamlit): pick any gameweek to see the XI each method would have picked and what it scored, follow the season-long points race, and look up any player. Link coming soon. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
+* **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## Four findings
 
@@ -112,7 +117,7 @@ sql/tableau_exports.sql  flat views for Tableau
 tests/                   pytest checks for duplicates, double gameweeks, missing xG, and leakage
 app/                     Streamlit web app (reads the CSVs above)
 reports/                 metrics, SQL results, figures
-tableau/                 dashboard extracts + build guide
+tableau/                 Tableau workbook, its generator script and CSV extracts
 ```
 
 ## Limitations and next steps
