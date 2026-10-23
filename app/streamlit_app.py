@@ -136,6 +136,23 @@ def weekly_xi_points(preds: pd.DataFrame) -> pd.DataFrame:
 
 
 preds, sig, bias, form_df, defcon_df, xg_df = load()
+
+
+@st.cache_data
+def load_live():
+    """Live-season files from src/fpl/live.py; the app still works if they don't exist."""
+    folder = ROOT / "reports" / "live"
+    try:
+        nxt = pd.read_csv(folder / "next_gameweek_predictions.csv")
+        weekly = pd.read_csv(folder / "season_so_far_weekly.csv")
+        live_sig = pd.read_csv(folder / "season_so_far_significance.csv")
+    except FileNotFoundError:
+        return None
+    nxt["news"] = nxt["news"].fillna("")
+    return nxt, weekly, live_sig
+
+
+live_data = load_live()
 weekly = weekly_xi_points(preds)
 GWS = sorted(preds["gw"].unique())
 
@@ -188,8 +205,9 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-tab_team, tab_season, tab_player, tab_findings, tab_method = st.tabs(
-    ["Team of the week", "Season test", "Player lookup", "What the data says", "How it works"])
+next_label = f"GW{int(live_data[0]['gw'].iloc[0])} picks" if live_data and len(live_data[0]) else "This week"
+tab_live, tab_team, tab_season, tab_player, tab_findings, tab_method = st.tabs(
+    [next_label, "Team of the week", "Season test", "Player lookup", "What the data says", "How it works"])
 
 
 # ---------------------------------------------------------------- team of the week
@@ -200,6 +218,93 @@ def chip(r: pd.Series, score_col: str) -> str:
             f'<div class="team">{html.escape(r.team_short)}</div>'
             f'<div class="pts"><div><span class="num">{r[score_col]:.1f}</span><small>predicted</small></div>'
             f'<div><span class="num">{scored}</span><small>scored</small></div></div></div>')
+
+
+def live_chip(r: pd.Series) -> str:
+    cap = '<div class="cap">C</div>' if r.is_captain else ""
+    flag = " ⚠" if pd.notna(r.chance_of_playing) and r.chance_of_playing < 100 else ""
+    return (f'<div class="chip">{cap}<div class="name" title="{html.escape(r.web_name)}">'
+            f'{html.escape(r.web_name)}{flag}</div><div class="team">{html.escape(r.team_short)}</div>'
+            f'<div class="pts"><div><span class="num">{r.predicted_points:.1f}</span><small>predicted</small></div>'
+            f'<div><span class="num">{r.price:.1f}</span><small>£m</small></div></div></div>')
+
+
+with tab_live:
+    if not live_data or live_data[0].empty:
+        st.info("No upcoming gameweek right now. Run the pipeline during the season to get live picks.")
+    else:
+        nxt, live_weekly, live_sig = live_data
+        gw_next = int(nxt["gw"].iloc[0])
+        season_live = nxt["season"].iloc[0]
+        played = int(live_weekly["gw"].max())
+        st.markdown(f"<h3>Gameweek {gw_next} predictions, {season_live}</h3>", unsafe_allow_html=True)
+        st.markdown(
+            f'<p class="note" style="margin-top:0">Made before the deadline from every match up to gameweek '
+            f'{played}, with the model retrained on all four finished seasons. Players FPL has flagged are '
+            f'scaled by their chance of playing (marked ⚠).</p>', unsafe_allow_html=True)
+
+        nxt = nxt.reset_index(drop=True)
+        team = best_xi(nxt, "predicted_points")
+        left, right = st.columns([1.75, 1], gap="large")
+        with left:
+            lines = []
+            for pos in FORMATION_ROWS:
+                players = team[team.position == pos].sort_values("predicted_points", ascending=False)
+                lines.append('<div class="line">' + "".join(live_chip(r) for _, r in players.iterrows()) + "</div>")
+            st.markdown('<div class="pitch">' + "".join(lines) + "</div>", unsafe_allow_html=True)
+            st.markdown(f'<p class="note">The highest-predicted valid XI (budget ignored). Its cost would be '
+                        f'£{team.price.sum():.1f}m.</p>', unsafe_allow_html=True)
+        with right:
+            cap = team.loc[team.is_captain].iloc[0]
+            st.markdown("<h3>Captain</h3>", unsafe_allow_html=True)
+            st.markdown(f'<div class="scoreboard"><div class="row active"><span class="label">'
+                        f'{html.escape(cap.web_name)} ({html.escape(cap.team_short)})</span>'
+                        f'<span class="num">{cap.predicted_points:.1f}</span></div></div>',
+                        unsafe_allow_html=True)
+            flagged = (nxt[(nxt.chance_of_playing.fillna(100) < 75) & (nxt.predicted_raw >= 2)]
+                       .sort_values("predicted_raw", ascending=False).head(6))
+            if len(flagged):
+                st.markdown("<h3 style='margin-top:1.2rem'>Downgraded for injury news</h3>", unsafe_allow_html=True)
+                rows = "".join(
+                    f'<div class="row"><span class="label">{html.escape(r.web_name)} '
+                    f'({int(r.chance_of_playing)}%)<br><small>{html.escape(r.news)}</small></span>'
+                    f'<span class="num">{r.predicted_raw:.1f}</span></div>' for _, r in flagged.iterrows())
+                st.markdown(f'<div class="scoreboard">{rows}</div><p class="note">Predicted points before '
+                            f'the availability adjustment.</p>', unsafe_allow_html=True)
+
+            st.markdown(f"<h3 style='margin-top:1.2rem'>{season_live} so far</h3>", unsafe_allow_html=True)
+            totals = live_weekly.groupby("method")["xi_points"].sum()
+            xi_edge = live_sig[live_sig.metric == "Best XI: avg points per GW"].iloc[0]
+            mae_edge = live_sig[live_sig.metric == "MAE (regular starters)"].iloc[0]
+            rows = "".join(
+                f'<div class="row{" active" if m == "Model" else ""}"><span class="label">'
+                f'<span class="swatch" style="background:{METHOD_COLORS.get(m, SEASON)}"></span>{m} XI, '
+                f'GW1-{played}</span><span class="num">{int(totals[m])}</span></div>'
+                for m in ["Model", "Season average"] if m in totals)
+            verdict = ("clear" if xi_edge.significant else
+                       f"not clear yet: the 95% range is {xi_edge.ci_low:+.0f} to {xi_edge.ci_high:+.0f} "
+                       f"points a week after only {played} gameweeks")
+            st.markdown(f'<div class="scoreboard">{rows}</div><p class="note">A second unseen test. '
+                        f'Prediction error is {mae_edge.model_edge:.2f} lower than the simple rule, a clear '
+                        f'edge. The best-XI edge is {verdict}. This early in a season, "last 5 gameweeks" '
+                        f'and "season average" are the same rule.</p>', unsafe_allow_html=True)
+
+        st.markdown("<h3>Top picks</h3>", unsafe_allow_html=True)
+        f1, f2 = st.columns([1.2, 1])
+        with f1:
+            pos_pick = st.radio("Position", ["All", "GK", "DEF", "MID", "FWD"], horizontal=True, key="live_pos")
+        with f2:
+            max_price = st.slider("Max price (£m)", 4.0, float(nxt.price.max()), float(nxt.price.max()), 0.5)
+        view = nxt[(nxt.price <= max_price) & ((nxt.position == pos_pick) | (pos_pick == "All"))].head(15)
+        view = view.assign(chance=view.chance_of_playing.map(lambda c: "" if pd.isna(c) else f"{int(c)}%"))
+        st.dataframe(
+            view[["web_name", "team", "position", "price", "predicted_points", "chance", "news"]]
+            .rename(columns={"web_name": "Player", "team": "Team", "position": "Pos", "price": "Price £m",
+                             "predicted_points": "Predicted", "chance": "Chance of playing",
+                             "news": "FPL news"}),
+            hide_index=True, width="stretch",
+            column_config={"Predicted": st.column_config.NumberColumn(format="%.2f"),
+                           "Price £m": st.column_config.NumberColumn(format="%.1f")})
 
 
 with tab_team:
@@ -372,7 +477,10 @@ with tab_findings:
     with right:
         st.markdown("<h3>The new rule paid defenders</h3>", unsafe_allow_html=True)
         d = defcon_df[defcon_df.position == "DEF"].copy()
-        d["is_new"] = d["season"] == "2025-26"
+        d["is_new"] = d["season"] >= "2025-26"  # seasons with the defensive contribution rule
+        if live_data and len(live_data[0]):  # mark the season still in progress
+            live_season = live_data[0]["season"].iloc[0]
+            d["season"] = d["season"].where(d["season"] != live_season, live_season + " so far")
         d["label"] = d["share_of_points_pct"].map("{:.1f}%".format)
         bars = alt.Chart(d).mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4, width=46).encode(
             x=alt.X("season:N", title=None, axis=alt.Axis(labelAngle=0)),
@@ -385,8 +493,9 @@ with tab_findings:
         text = bars.mark_text(dy=-8, fontSize=13, fontWeight=600, color=INK).encode(
             text="label:N", color=alt.value(INK))
         show_chart(chart_style(alt.layer(bars, text), 300))
-        st.markdown('<p class="note">2025-26 (blue) added points for tackles, blocks and recoveries. '
-                    'Defenders went from about 29% to 35% of all points scored.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="note">From 2025-26 (blue), defenders also score for tackles, blocks and '
+                    'recoveries. Their share of all points jumped from about 29% to 35%, and has stayed '
+                    'there this season.</p>', unsafe_allow_html=True)
 
     st.markdown("<h3>Scoring above xG doesn't last</h3>", unsafe_allow_html=True)
     x = xg_df.dropna(subset=["next_season_goals_minus_xg"])

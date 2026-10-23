@@ -7,12 +7,16 @@ Desktop or Tableau Public and use File > Save to Tableau Public to publish it.
 Run:  python tableau/build_workbook.py
 """
 import re
+import sys
 import uuid
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from fpl.config import LIVE_SEASON  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "FPL Points Lab.twbx"
@@ -331,7 +335,8 @@ def build():
 
     src = {k: Source(k, f, c) for k, (f, c) in DATA_FILES.items()}
     weekly, edges, bias, players, teams, diffs_src = (src[k] for k in DATA_FILES)
-    seasons = sorted(players.df["season"].unique())
+    # Finished seasons only: after a few gameweeks of the live season nobody has 900 minutes yet.
+    seasons = sorted(s for s in players.df["season"].unique() if s != LIVE_SEASON)
 
     weekly.palettes["none:method:nk"] = {"Model": MODEL, "Season average": BASE, "Recent form": FORM}
     bias.calcs["is_def"] = ("Is defender", "string", "dimension", "nominal",

@@ -6,7 +6,7 @@ after the first run.
 import argparse
 import urllib.request
 
-from fpl.config import RAW_DIR, RAW_FILES, SEASONS, SOURCE_BASE
+from fpl.config import LIVE_SEASON, RAW_DIR, RAW_FILES, SEASONS, SOURCE_BASE
 
 
 def download(season: str, key: str, force: bool = False) -> None:
@@ -25,7 +25,8 @@ def main(force: bool = False) -> None:
     for season in SEASONS:
         print(f"[ingest] {season}")
         for key in RAW_FILES:
-            download(season, key, force=force)
+            # the live season changes every week, so never trust the cached copy
+            download(season, key, force=force or season == LIVE_SEASON)
 
 
 if __name__ == "__main__":

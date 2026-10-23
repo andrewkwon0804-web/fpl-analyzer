@@ -84,7 +84,8 @@ WITH prior_season AS (
            CASE s.season WHEN '2022-23' THEN '2023-24'
                          WHEN '2023-24' THEN '2024-25'
                          WHEN '2024-25' THEN '2025-26'
-                         WHEN '2025-26' THEN '2026-27' END AS next_season,
+                         WHEN '2025-26' THEN '2026-27'
+                         WHEN '2026-27' THEN '2027-28' END AS next_season,
            1.0 * SUM(s.points) / NULLIF(SUM(CASE WHEN s.minutes > 0 THEN 1 ELSE 0 END), 0) AS prev_ppg,
            SUM(s.minutes) AS prev_minutes
     FROM player_gw s

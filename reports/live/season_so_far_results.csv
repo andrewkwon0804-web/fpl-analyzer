@@ -1,0 +1,3 @@
+,MAE (all players),MAE (regular starters),RMSE (regular starters),Rank correlation per GW,Best XI: avg points per GW,Captain pick: avg points,Captain pick: % didn't play
+Gradient boosting model,1.2162220019422854,2.3434090080896817,3.1861150739164925,0.644058033624165,67.0,6.5,0.0
+Season average,1.3865857582528696,2.9093304843304844,3.916032181741239,0.6081063773094929,48.333333333333336,2.6666666666666665,0.0

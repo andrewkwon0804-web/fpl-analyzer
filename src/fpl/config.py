@@ -14,7 +14,12 @@ TABLEAU_DIR = ROOT / "tableau"
 SOURCE_BASE = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data"
 
 # 2022-23 is the first season FPL published expected goals (xG/xA) per match.
-SEASONS = ["2022-23", "2023-24", "2024-25", "2025-26"]
+SEASONS = ["2022-23", "2023-24", "2024-25", "2025-26", "2026-27"]
+
+# The season in progress. Its files are re-downloaded on every run, its finished
+# gameweeks are a second out-of-sample test, and its next gameweek gets live picks.
+LIVE_SEASON = "2026-27"
+FINISHED_SEASONS = [s for s in SEASONS if s != LIVE_SEASON]
 
 # Time-based split: never train on the future.
 TRAIN_SEASONS = ["2022-23", "2023-24"]

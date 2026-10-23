@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from fpl.config import FIGURES_DIR, REPORTS_DIR
+from fpl.config import FIGURES_DIR, LIVE_SEASON, REPORTS_DIR
 
 # Validated categorical palette (light mode), assigned in fixed order.
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
@@ -85,8 +85,10 @@ def form_regression():
 
 def defcon_rule_change():
     df = pd.read_csv(REPORTS_DIR / "sql_results" / "06_defcon_rule_change.csv")
-    d = df[df.position == "DEF"]
-    colors = [MUTED] * (len(d) - 1) + [BLUE]
+    d = df[df.position == "DEF"].copy()
+    # the defensive contribution rule applies from 2025-26 on; the live season is partial
+    colors = [BLUE if s >= "2025-26" else MUTED for s in d["season"]]
+    d["season"] = [f"{s}\n(so far)" if s == LIVE_SEASON else s for s in d["season"]]
     fig, ax = plt.subplots(figsize=(7, 4))
     bars = ax.bar(d["season"], d["share_of_points_pct"], color=colors, width=0.6)
     for b, v in zip(bars, d["share_of_points_pct"]):
@@ -94,7 +96,7 @@ def defcon_rule_change():
     ax.set_ylim(0, 40)
     ax.grid(axis="x", visible=False)
     ax.set_title("Defenders' share of all FPL points")
-    ax.set_xlabel("2025-26 added points for defensive contributions")
+    ax.set_xlabel("Blue: seasons with points for defensive contributions (added in 2025-26)")
     _save(fig, "defcon_rule_change.png")
 
 

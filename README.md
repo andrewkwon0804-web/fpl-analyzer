@@ -42,6 +42,16 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 * **[Web app](https://fpl-points-lab.streamlit.app/)** (Streamlit): pick any gameweek to see the XI each method would have picked and what it scored, follow the season-long points race, and look up any player. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
+## This season (2026-27)
+
+The pipeline also follows the season in progress. Each run re-downloads it, retrains the model on all four finished seasons, scores it on the gameweeks played so far, and predicts the next gameweek.
+
+**A second unseen test, gameweeks 1-6.** Prediction error for regular starters is 2.34 against 2.91 for the simple rule, 0.55 lower (95% range 0.29 to 0.87): a clear edge in a season the model has never seen. The best-XI gap (+18.7 points per gameweek, range -8.7 to +50.4) can't be called yet after six weeks. This early, "last 5 gameweeks" and "season average" are the same rule, so they're reported once.
+
+**Live picks.** The [web app](https://fpl-points-lab.streamlit.app/) opens on the next gameweek: the predicted best XI, the captain, and the top picks by position and price. Live features are computed in [`sql/upcoming.sql`](sql/upcoming.sql). A test replays the season (hides the last played gameweek and rebuilds them) and checks they match the training features exactly, so live picks use the same inputs the model learned from. Players FPL has flagged are scaled by their chance of playing, which the model can't see on its own.
+
+To refresh during the season: `python run_pipeline.py`, then commit `reports/live/`.
+
 ## Four findings
 
 **1. Form is mostly noise.** Starters who averaged 9+ points over their last five gameweeks scored 5.3 the next week, almost exactly their season average (5.7), not their form. Picking by recent form is the worst of the strategies tested.
@@ -50,7 +60,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 **2. Overperforming xG doesn't last.** The 13 players who beat their expected goals by 3+ in 2023-24 or 2024-25 (average +5.1 goals) were back to +0.3 the following season; 12 of 13 fell back. (`sql/analysis/05_xg_over_under_performers.sql`)
 
-**3. The 2025-26 rule change moved points to defenders.** The new defensive contribution rule lifted defenders from 29% to 35% of all points scored. The model was trained before the rule existed, and it under-predicts starting defenders by 0.5 points per gameweek in 2025-26, the largest bias of any position. Retraining with the new season fixes this going forward.
+**3. The 2025-26 rule change moved points to defenders.** The new defensive contribution rule lifted defenders from 29% to 35% of all points scored, and they're at 35.5% so far in 2026-27. The model was trained before the rule existed, and it under-predicts starting defenders by 0.5 points per gameweek in 2025-26, the largest bias of any position. Retraining with the new season fixes this going forward.
 
 ![Defensive rule change](reports/figures/defcon_rule_change.png)
 
@@ -80,7 +90,7 @@ open FPL archive (CSV)                 SQLite: fpl.db
                   business questions      input audit     time-split training    CSVs for Tableau
 ```
 
-**Data.** Every player in every match for four seasons (2022-23 to 2025-26): about 113,000 player-match rows from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. FPL only started publishing per-match xG in gameweek 16 of 2022-23; the archive stores the earlier weeks as 0, so the pipeline treats them as missing (a test checks this).
+**Data.** Every player in every match from 2022-23 to the current 2026-27 season: about 117,000 player-match rows from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. FPL only started publishing per-match xG in gameweek 16 of 2022-23; the archive stores the earlier weeks as 0, so the pipeline treats them as missing (a test checks this).
 
 **Cleaning.** Dropped exact duplicate rows in the 2025-26 export, converted prices from tenths to £m, mapped team names to ids per season, excluded the one-season "assistant manager" chip, and summed double gameweeks into one row per player per gameweek.
 
@@ -111,9 +121,10 @@ Note on query 02: the data stores ownership as a raw count of managers, not a pe
 
 ```
 run_pipeline.py          one command to rebuild everything
-src/fpl/                 ingest, load_db, run_sql, leakage, model, picks, report, export_tableau
+src/fpl/                 ingest, load_db, run_sql, leakage, model, live, picks, report, export_tableau
 sql/schema.sql           relational schema with keys and constraints
 sql/features.sql         feature engineering with window functions
+sql/upcoming.sql         the same features for the next, unplayed gameweek
 sql/analysis/            standalone analysis queries
 sql/tableau_exports.sql  flat views for Tableau
 tests/                   pytest checks for duplicates, double gameweeks, missing xG, and leakage
@@ -124,7 +135,7 @@ tableau/                 Tableau workbook, its generator script and CSV extracts
 
 ## Limitations and next steps
 
-* **No injury news.** The model only sees past matches, not press-conference updates. Joining the live FPL API's `chance_of_playing` flag would be a useful next feature.
+* **Injury news is applied after the model, not learned.** Live picks scale predictions by FPL's chance-of-playing flag, but the archive only keeps an end-of-season snapshot of that flag, so the model can't be trained or tested on it.
 * **Rule change bias.** Defenders are under-predicted in 2025-26; adding defensive-contribution features once a second season of that data exists should close the gap.
 * **`starts` is incomplete in 2022-23**, because FPL began tracking it mid-season. Minutes-based features carry most of the signal anyway.
 * **Squad optimization.** Turning predictions into a full 15-player squad under the £100m budget and three-per-club rule is a linear programming problem (e.g. with PuLP).
