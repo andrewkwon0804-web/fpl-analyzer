@@ -140,6 +140,14 @@ weekly = weekly_xi_points(preds)
 GWS = sorted(preds["gw"].unique())
 
 
+def show_chart(chart, stretch: bool = True) -> None:
+    """Draw an Altair chart full-width on both older and newer Streamlit versions."""
+    try:
+        st.altair_chart(chart, width="stretch" if stretch else "content", theme=None)
+    except TypeError:  # Streamlit < 1.50 style API
+        st.altair_chart(chart, use_container_width=stretch, theme=None)
+
+
 def chart_style(chart: alt.Chart, height: int = 320) -> alt.Chart:
     return (chart.properties(height=height, background=PAPER)
             .configure_view(stroke=None)
@@ -268,7 +276,7 @@ with tab_season:
     labels = alt.Chart(last).mark_text(align="left", dx=8, fontSize=13, fontWeight=600).encode(
         x="gw:Q", y="Total points:Q", text="tag:N", color=color)
     season_chart = chart_style(alt.layer(lines, points, rule, labels), 360).properties(padding={"right": 150})
-    st.altair_chart(season_chart, use_container_width=True, theme=None)
+    show_chart(season_chart)
 
     st.markdown("<h3>Is the edge real or luck?</h3>", unsafe_allow_html=True)
     rows = ""
@@ -296,7 +304,7 @@ with tab_season:
         color=alt.condition("datum.position == 'DEF'", alt.value(MODEL), alt.value(SEASON)),
         tooltip=[alt.Tooltip("position:N", title="Position"), alt.Tooltip("bias:Q", format="+.2f", title="Bias"),
                  alt.Tooltip("rows:Q", title="Player-gameweeks")])
-    st.altair_chart(chart_style(bars, 170), use_container_width=True, theme=None)
+    show_chart(chart_style(bars, 170))
     st.markdown('<p class="note">Defenders are under-predicted by about half a point a week. 2025-26 added '
                 'points for defensive contributions, a rule the model never saw in training.</p>',
                 unsafe_allow_html=True)
@@ -323,7 +331,7 @@ with tab_player:
     line = alt.Chart(p).mark_line(color=MODEL, strokeWidth=2.5, point=alt.OverlayMarkDef(size=40, filled=True)).encode(
         x="gw:O", y="predicted_points:Q",
         tooltip=[alt.Tooltip("gw:O", title="Gameweek"), alt.Tooltip("predicted_points:Q", title="Predicted", format=".1f")])
-    st.altair_chart(chart_style(alt.layer(bars, line), 330), use_container_width=True, theme=None)
+    show_chart(chart_style(alt.layer(bars, line), 330))
     st.markdown(f'<p class="note"><span class="swatch" style="background:#cfd4cb"></span>Points scored '
                 f'&nbsp; <span class="swatch" style="background:{MODEL}"></span>Model prediction made before '
                 f'the deadline. Big spikes (hat-tricks, double gameweeks) are what no model can see coming.</p>',
@@ -356,7 +364,7 @@ with tab_findings:
             alt.Chart(ends[ends.series == dom[0]]).mark_text(align="left", dx=9, dy=8, fontSize=12, fontWeight=600).encode(**tag_enc),
             alt.Chart(ends[ends.series == dom[1]]).mark_text(align="left", dx=9, dy=-8, fontSize=12, fontWeight=600).encode(**tag_enc))
         form_chart = chart_style(alt.layer(diag, ch, tags), 300).properties(padding={"right": 105})
-        st.altair_chart(form_chart, use_container_width=True, theme=None)
+        show_chart(form_chart)
         st.markdown('<p class="note">Regular starters averaging 9+ points over five weeks scored about 5 the '
                     'next week, close to their season average. The dashed line is what would happen if form '
                     'carried on.</p>', unsafe_allow_html=True)
@@ -376,7 +384,7 @@ with tab_findings:
                      alt.Tooltip("points_per_90:Q", title="Points per 90", format=".2f")])
         text = bars.mark_text(dy=-8, fontSize=13, fontWeight=600, color=INK).encode(
             text="label:N", color=alt.value(INK))
-        st.altair_chart(chart_style(alt.layer(bars, text), 300), use_container_width=True, theme=None)
+        show_chart(chart_style(alt.layer(bars, text), 300))
         st.markdown('<p class="note">2025-26 (blue) added points for tackles, blocks and recoveries. '
                     'Defenders went from about 29% to 35% of all points scored.</p>', unsafe_allow_html=True)
 

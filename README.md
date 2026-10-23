@@ -2,6 +2,8 @@
 
 **Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw.**
 
+**[Try the web app](https://fpl-points-lab.streamlit.app/)**
+
 Python · SQL (SQLite, window functions, CTEs) · scikit-learn · Tableau · Streamlit · pytest
 
 > Andrew Kwon, B.S. Information Sciences @ UIUC. Follow-up to my earlier
@@ -37,7 +39,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 ## Explore it
 
-* **Web app** (Streamlit): pick any gameweek to see the XI each method would have picked and what it scored, follow the season-long points race, and look up any player. Link coming soon. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Web app](https://fpl-points-lab.streamlit.app/)** (Streamlit): pick any gameweek to see the XI each method would have picked and what it scored, follow the season-long points race, and look up any player. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## Four findings
