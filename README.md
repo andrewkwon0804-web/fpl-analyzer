@@ -39,7 +39,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 ## Explore it
 
-* **[Web app](https://fpl-points-lab.streamlit.app/)** (Streamlit): pick any gameweek to see the XI each method would have picked and what it scored, follow the season-long points race, and look up any player. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Web app](https://fpl-points-lab.streamlit.app/)** (Streamlit): predictions for the next gameweek of the current season: the model's best XI and captain, players downgraded for injury news, top picks by position and price, each player's predictions vs points this season, and the model's track record so far. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
