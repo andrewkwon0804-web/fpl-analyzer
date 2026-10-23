@@ -42,13 +42,14 @@ def _hbar(ax, labels, values, colors, fmt):
 
 def model_vs_baselines():
     res = pd.read_csv(REPORTS_DIR / "model_results.csv", index_col=0)
-    fair = res.drop(index="Perfect hindsight (ceiling)")
+    # The leaky xP column stays in the CSV for reference but not in the headline chart.
+    fair = res.loc[["Gradient boosting model", "Season average", "Form (last 5 GW avg)"]]
     colors = [BLUE if "model" in i else MUTED for i in fair.index]
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 3.8))
-    _hbar(axes[0], fair.index, fair["Captain pick: avg points"], colors, "{:.1f}")
-    axes[0].set_title("Captain pick: average points per gameweek")
-    axes[0].set_xlabel("Higher is better  (2025-26 test season, 38 GWs)")
+    fig, axes = plt.subplots(1, 2, figsize=(12, 3.2))
+    _hbar(axes[0], fair.index, fair["Best XI: avg points per GW"], colors, "{:.1f}")
+    axes[0].set_title("Points scored by the best XI it picks each week")
+    axes[0].set_xlabel("Higher is better  (captain doubled, 2025-26 test season, 38 GWs)")
     _hbar(axes[1], fair.index, fair["MAE (regular starters)"], colors, "{:.2f}")
     axes[1].set_title("Prediction error for regular starters (MAE)")
     axes[1].set_xlabel("Lower is better")
