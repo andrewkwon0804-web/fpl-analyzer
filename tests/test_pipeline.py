@@ -68,6 +68,16 @@ def test_team_form_excludes_current_match(con):
     assert np.allclose(tf["xg_for_l6"], expected, equal_nan=True)
 
 
+def test_untracked_xg_is_null_not_zero(con):
+    """FPL added xG in 2022-23 GW16; earlier weeks must be NULL, not 0."""
+    cover = q(con, """SELECT season, gw, COUNT(expected_goals) AS with_xg, COUNT(*) AS n,
+                             SUM(expected_goals) AS xg
+                      FROM player_match GROUP BY season, gw""")
+    untracked = cover[cover["with_xg"] == 0]
+    assert set(untracked["season"]) <= {"2022-23"}
+    assert (cover.loc[cover["with_xg"] > 0, "xg"] > 0).all(), "a tracked week has zero total xG"
+
+
 def test_splits_do_not_overlap():
     assert VALID_SEASON not in TRAIN_SEASONS
     assert TEST_SEASON not in TRAIN_SEASONS + [VALID_SEASON]

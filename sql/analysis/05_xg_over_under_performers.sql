@@ -8,6 +8,9 @@ WITH season_xg AS (
            SUM(pm.minutes)        AS minutes
     FROM player_match pm
     JOIN players p ON p.season = pm.season AND p.player_id = pm.player_id
+    -- 2022-23 is excluded: xG was only tracked from GW16 that season, so a
+    -- full season of goals would be compared with half a season of xG.
+    WHERE pm.season <> '2022-23'
     GROUP BY pm.season, p.player_code
     HAVING SUM(pm.expected_goals) >= 5
 ),
