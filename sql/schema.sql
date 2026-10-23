@@ -27,6 +27,9 @@ CREATE TABLE players (
     full_name    TEXT    NOT NULL,
     position     TEXT    NOT NULL CHECK (position IN ('GK', 'DEF', 'MID', 'FWD', 'AM')),
     team_id      INTEGER NOT NULL,
+    now_cost     REAL,       -- current price (£m) when the file was downloaded
+    chance_of_playing INTEGER,  -- FPL availability flag for the next round (NULL = no concern)
+    news         TEXT,
     PRIMARY KEY (season, player_id),
     FOREIGN KEY (season, team_id) REFERENCES teams (season, team_id)
 );

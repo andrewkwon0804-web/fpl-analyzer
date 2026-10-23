@@ -82,3 +82,43 @@ def test_splits_do_not_overlap():
     assert VALID_SEASON not in TRAIN_SEASONS
     assert TEST_SEASON not in TRAIN_SEASONS + [VALID_SEASON]
     assert max(TRAIN_SEASONS) < VALID_SEASON < TEST_SEASON
+
+
+LIVE_FEATURES = ["n_fixtures", "home_fixtures", "fixture_difficulty", "opp_attack_xg_l6",
+                 "opp_defence_xga_l6", "team_attack_xg_l6", "points_l3", "points_l5", "minutes_l3",
+                 "minutes_l5", "starts_l5", "xg_l5", "xa_l5", "xgc_l5", "bonus_l5", "bps_l5", "ict_l5",
+                 "points_std", "minutes_std", "xgi_total_std", "gws_so_far", "prev_ppg", "prev_minutes"]
+
+
+def test_upcoming_features_match_training_features(tmp_path):
+    """Replay the live season: hide its last played gameweek, rebuild the 'upcoming'
+    features, and check they equal the features training used for that gameweek.
+    This proves live picks use exactly the inputs the model learned from."""
+    import shutil
+
+    from fpl.config import LIVE_SEASON, SQL_DIR
+
+    copy = tmp_path / "replay.db"
+    shutil.copy(DB_PATH, copy)
+    with sqlite3.connect(DB_PATH) as con:
+        last_gw = con.execute("SELECT MAX(gw) FROM player_match WHERE season = ?",
+                              (LIVE_SEASON,)).fetchone()[0]
+        truth = pd.read_sql("SELECT * FROM player_features WHERE season = ? AND gw = ?",
+                            con, params=(LIVE_SEASON, last_gw))
+    with sqlite3.connect(copy) as con:
+        con.execute("DELETE FROM player_match WHERE season = ? AND gw = ?", (LIVE_SEASON, last_gw))
+        con.execute("UPDATE fixtures SET finished = 0 WHERE season = ? AND gw >= ?", (LIVE_SEASON, last_gw))
+        con.executescript((SQL_DIR / "features.sql").read_text())
+        con.executescript((SQL_DIR / "upcoming.sql").read_text())
+        replay = pd.read_sql("SELECT * FROM player_upcoming", con)
+
+    assert (replay["gw"] == last_gw).all()
+    both = truth.merge(replay, on="player_id", suffixes=("_train", "_live"))
+    assert len(both) > 0.9 * len(truth), "most players should be matched"
+    # A player who changed club since that gameweek has a different fixture now; skip those.
+    same_fixture = np.isclose(both["fixture_difficulty_train"], both["fixture_difficulty_live"]) & \
+        (both["home_fixtures_train"] == both["home_fixtures_live"])
+    assert same_fixture.mean() > 0.98
+    both = both[same_fixture]
+    for col in LIVE_FEATURES:
+        assert np.allclose(both[f"{col}_train"], both[f"{col}_live"], equal_nan=True), col

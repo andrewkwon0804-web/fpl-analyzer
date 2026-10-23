@@ -40,6 +40,11 @@ def clean_players(season: str) -> pd.DataFrame:
         "full_name": (p["first_name"] + " " + p["second_name"]).str.strip(),
         "position": p["element_type"].map(POSITIONS),
         "team_id": p["team"],
+        # Availability as published by FPL. Only meaningful for the live season:
+        # for finished seasons these are end-of-season snapshots and are not used.
+        "now_cost": p["now_cost"] / 10.0,
+        "chance_of_playing": p["chance_of_playing_next_round"],
+        "news": p["news"].fillna(""),
     })
 
 
@@ -142,6 +147,7 @@ def main() -> None:
             df.to_sql(name, con, if_exists="append", index=False)
             print(f"  {name:<13} {len(df):>6} rows")
     con.executescript((SQL_DIR / "features.sql").read_text())
+    con.executescript((SQL_DIR / "upcoming.sql").read_text())
     con.commit()
     con.close()
     print(f"[load] database written to {DB_PATH}")
