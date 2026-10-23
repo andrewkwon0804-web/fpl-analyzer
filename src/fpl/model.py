@@ -15,7 +15,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 from fpl.config import DB_PATH, REPORTS_DIR, TEST_SEASON, TRAIN_SEASONS, VALID_SEASON
-from fpl.picks import xi_points
+from fpl.picks import best_xi
 
 FEATURES = [
     "position_code", "price", "price_change_season", "selected_by_prev",
@@ -84,16 +84,17 @@ def evaluate(df: pd.DataFrame, pred: pd.Series) -> dict[str, float]:
 
 def per_gameweek(df: pd.DataFrame, pred: pd.Series) -> pd.DataFrame:
     """One row per gameweek: how a prediction method's picks actually scored."""
-    tmp = df[["gw", "position", TARGET, "minutes_actual", "minutes_l5"]].assign(pred=pred.values)
+    tmp = df[["gw", "player_id", "position", TARGET, "minutes_actual", "minutes_l5"]].assign(pred=pred.values)
     rows = []
     for gw, g in tmp.groupby("gw"):
-        captain = g.loc[g["pred"].idxmax()]
+        team = best_xi(g, "pred")
+        captain = team.loc[team["is_captain"]].iloc[0]
         regulars = g[g["minutes_l5"].fillna(0) >= 60]
         rows.append({
             "gw": gw,
             # a constant baseline (e.g. GW1 season averages) has no ranking to score
             "rank_corr": spearmanr(g["pred"], g[TARGET]).statistic if g["pred"].nunique() > 1 else np.nan,
-            "xi_points": xi_points(g, "pred", TARGET),
+            "xi_points": float(team[TARGET].sum() + captain[TARGET]),
             "captain_points": captain[TARGET],
             "captain_benched": captain["minutes_actual"] == 0,
             "mae_regulars": (regulars["pred"] - regulars[TARGET]).abs().mean(),

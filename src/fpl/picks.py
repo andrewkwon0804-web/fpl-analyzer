@@ -18,7 +18,11 @@ def best_xi(gameweek: pd.DataFrame, score_col: str) -> pd.DataFrame:
     not how well it manages money. Greedy works here because, without a budget,
     the best team is the minimum per position plus the best of the rest.
     """
-    ranked = gameweek.sort_values(score_col, ascending=False)
+    # Many players share the same prediction (e.g. 0.0 or identical season averages).
+    # Break ties by player_id with a stable sort, so the same inputs always give the
+    # same team on every computer.
+    keys = [score_col] + (["player_id"] if "player_id" in gameweek.columns else [])
+    ranked = gameweek.sort_values(keys, ascending=[False] + [True] * (len(keys) - 1), kind="mergesort")
     picks = []
     for pos, n in MIN_PER_POSITION.items():
         picks += list(ranked.index[ranked["position"] == pos][:n])
@@ -30,7 +34,8 @@ def best_xi(gameweek: pd.DataFrame, score_col: str) -> pd.DataFrame:
             picks.append(idx)
             counts[pos] += 1
     team = gameweek.loc[picks].copy()
-    team["is_captain"] = team.index == team[score_col].idxmax()
+    captain = next(idx for idx in ranked.index if idx in set(picks))  # top-ranked pick
+    team["is_captain"] = team.index == captain
     return team
 
 
