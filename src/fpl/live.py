@@ -71,6 +71,29 @@ def predict_next_gameweek(model) -> pd.DataFrame:
     return up[cols].sort_values("predicted_points", ascending=False)
 
 
+def write_meta(out) -> dict:
+    """When the data was refreshed, and when the 'next' gameweek kicks off.
+
+    The open archive can lag the real season by a week or more. If the next gameweek's
+    first kickoff is already in the past, the picks are stale; the app warns about it.
+    """
+    with sqlite3.connect(DB_PATH) as con:
+        last_played = con.execute("SELECT MAX(gw) FROM player_match WHERE season = ?",
+                                  (LIVE_SEASON,)).fetchone()[0]
+        nxt = con.execute("""SELECT gw, MIN(kickoff_time) FROM fixtures
+                             WHERE season = ? AND finished = 0 AND gw > ?""",
+                          (LIVE_SEASON, last_played or 0)).fetchone()
+    meta = {"season": LIVE_SEASON, "last_played_gw": last_played, "next_gw": nxt[0],
+            "next_gw_first_kickoff": nxt[1],
+            "refreshed_at": pd.Timestamp.now(tz="UTC").isoformat(timespec="seconds")}
+    (out / "meta.json").write_text(json.dumps(meta, indent=2))
+    kickoff = pd.Timestamp(meta["next_gw_first_kickoff"]) if meta["next_gw_first_kickoff"] else None
+    if kickoff is not None and kickoff < pd.Timestamp.now(tz="UTC"):
+        print(f"[live] WARNING: GW{meta['next_gw']} kicked off {kickoff:%d %b}; the archive hasn't "
+              f"published its results yet, so these picks are out of date")
+    return meta
+
+
 def main() -> dict:
     df = load_features()
     model = train_on_finished_seasons(df)
@@ -92,6 +115,7 @@ def main() -> dict:
     sig.to_csv(out / "season_so_far_significance.csv", index=False)
     weekly.to_csv(out / "season_so_far_weekly.csv", index=False)
     preds.to_csv(out / "next_gameweek_predictions.csv", index=False)
+    write_meta(out)
 
     # Every played gameweek of the live season, predicted vs actual (for the app's player lookup).
     with sqlite3.connect(DB_PATH) as con:
