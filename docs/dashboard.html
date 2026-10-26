@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard · FPL Points Lab</title>
+<meta name="description" content="Best XI, every player's predicted points, player history and the model's track record.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='6' fill='none' stroke='%235ef0b0' stroke-width='2.5'/><line x1='16' y1='6' x2='16' y2='26' stroke='%235ef0b0' stroke-width='2.5'/><circle cx='16' cy='16' r='4' fill='none' stroke='%235ef0b0' stroke-width='2.5'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="bar">
+    <a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
+    <nav class="nav-links" aria-label="Pages">
+      <a href="./">Home</a><a href="dashboard.html" aria-current="page">Dashboard</a>
+      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer">Code</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn gh" href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>
+      <a class="btn" href="./">Home</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap dash">
+  <div class="dash-head reveal">
+    <h1 id="title">Gameweek</h1>
+    <span class="meta" id="meta"></span>
+  </div>
+  <div id="notice"></div>
+
+  <div class="tabs reveal" style="--d:.08s" role="tablist">
+    <span class="ind" aria-hidden="true"></span>
+    <button role="tab" data-tab="xi" aria-selected="true">Best XI</button>
+    <button role="tab" data-tab="players" aria-selected="false">All players</button>
+    <button role="tab" data-tab="lookup" aria-selected="false">Player lookup</button>
+    <button role="tab" data-tab="record" aria-selected="false">Track record</button>
+  </div>
+
+  <section class="panel on" id="tab-xi" role="tabpanel">
+    <div class="grid-2">
+      <div><div class="pitch" id="pitch" aria-label="The model's best XI"></div>
+        <p class="hint" id="xi-note" style="margin-top:12px"></p></div>
+      <div class="box">
+        <h3>Injury list</h3>
+        <p class="hint">Players FPL has flagged, with what the model predicted before cutting them down.</p>
+        <div id="injuries"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-players" role="tabpanel">
+    <div class="controls">
+      <input class="search" id="q" type="search" placeholder="Search players or teams" aria-label="Search players or teams">
+      <div class="chips" id="pos">
+        <button class="chip" aria-pressed="true" data-pos="">All</button><button class="chip" aria-pressed="false" data-pos="GK">GK</button>
+        <button class="chip" aria-pressed="false" data-pos="DEF">DEF</button><button class="chip" aria-pressed="false" data-pos="MID">MID</button>
+        <button class="chip" aria-pressed="false" data-pos="FWD">FWD</button>
+      </div>
+      <label class="range">Up to <span class="num">£<span id="price-val"></span>m</span><input type="range" id="price" min="4" step="0.5"></label>
+    </div>
+    <div class="table-wrap"><table class="players">
+      <thead><tr><th data-k="name">Player</th><th data-k="team">Team</th><th data-k="pos">Pos</th>
+        <th class="r" data-k="price">Price</th><th class="r sorted" data-k="pred">Predicted ↓</th>
+        <th class="r" data-k="chance">Chance</th><th data-k="news">FPL news</th></tr></thead>
+      <tbody id="rows"></tbody></table></div>
+    <p class="hint" id="count" style="margin-top:10px"></p>
+  </section>
+
+  <section class="panel" id="tab-lookup" role="tabpanel">
+    <div class="controls">
+      <input class="search" id="who" list="names" placeholder="Type a player's name" aria-label="Player">
+      <datalist id="names"></datalist>
+    </div>
+    <h3 class="big-name" id="who-name" style="font:500 34px/1.1 var(--display);letter-spacing:-.03em;margin:8px 0 18px"></h3>
+    <div class="stat-row" id="who-stats"></div>
+    <div class="chart-card"><svg id="who-chart" role="img" aria-label="Points scored and predicted by gameweek"></svg>
+      <div class="legend"><span><i style="background:#2a3338"></i>Scored</span><span><i style="background:var(--mint)"></i>Predicted before the deadline</span>
+        <span id="who-next"></span></div></div>
+    <p class="hint" id="who-news" style="margin-top:12px"></p>
+  </section>
+
+  <section class="panel" id="tab-record" role="tabpanel">
+    <div class="box">
+      <h3>Model vs the simple rule</h3>
+      <p class="hint">Running total of points scored by each side's best XI this season. The simple rule picks the players with the best average so far.</p>
+      <div class="chart-card" style="border:0;padding:6px 0 0"><svg id="record-chart" role="img" aria-label="Running points total"></svg></div>
+    </div>
+    <div class="box" style="margin-top:14px">
+      <h3>Is the gap real yet?</h3>
+      <table class="edges"><thead><tr><th>Model vs simple rule</th><th>Per week</th><th>Likely range</th><th>Sure?</th></tr></thead>
+        <tbody id="edges"></tbody></table>
+      <p class="hint" id="edges-note" style="margin-top:12px"></p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Made by Andrew Kwon</span>
+    <a href="./">Back to the home page</a>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/dashboard.js"></script>
+</body>
+</html>

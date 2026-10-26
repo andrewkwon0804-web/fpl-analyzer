@@ -1,4 +1,7 @@
 baseline,metric,model_edge,ci_low,ci_high,significant
-Season average,MAE (regular starters),0.5480215035190242,0.2893865925991774,0.8681326759812322,True
-Season average,Best XI: avg points per GW,18.666666666666668,-8.666666666666666,50.34583333333338,False
-Season average,Captain pick: avg points,3.8333333333333335,-2.3333333333333335,12.0,False
+Season average,MAE (regular starters),0.5410737270201276,0.3256969263231642,0.8034960423972046,True
+Season average,Best XI: avg points per GW,16.285714285714285,-7.714285714285714,43.285714285714285,False
+Season average,Captain pick: avg points,4.285714285714286,-1.2857142857142858,11.0,False
+Form (last 5 GW avg),MAE (regular starters),0.5315499174963181,0.3161731167993547,0.7960460880938955,True
+Form (last 5 GW avg),Best XI: avg points per GW,16.714285714285715,-7.289285714285713,43.285714285714285,False
+Form (last 5 GW avg),Captain pick: avg points,4.428571428571429,-1.2857142857142858,11.142857142857142,False

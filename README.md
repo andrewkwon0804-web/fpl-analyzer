@@ -2,7 +2,7 @@
 
 **Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw.**
 
-**[Try the web app](https://fpl-points-lab.streamlit.app/)**
+**[Visit the website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**
 
 Python · SQL (SQLite, window functions, CTEs) · scikit-learn · Tableau · Streamlit · pytest
 
@@ -39,16 +39,16 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 ## Explore it
 
-* **[Web app](https://fpl-points-lab.streamlit.app/)** (Streamlit): predictions for the next gameweek of the current season: the model's best XI and captain, players downgraded for injury news, top picks by position and price, each player's predictions vs points this season, and the model's track record so far. Source: [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, and the track record so far. Plain HTML, CSS and JavaScript in [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
 
 The pipeline also follows the season in progress. Each run re-downloads it, retrains the model on all four finished seasons, scores it on the gameweeks played so far, and predicts the next gameweek.
 
-**A second unseen test, gameweeks 1-6.** Prediction error for regular starters is 2.34 against 2.91 for the simple rule, 0.55 lower (95% range 0.29 to 0.87): a clear edge in a season the model has never seen. The best-XI gap (+18.7 points per gameweek, range -8.7 to +50.4) can't be called yet after six weeks. This early, "last 5 gameweeks" and "season average" are the same rule, so they're reported once.
+**A second unseen test, gameweeks 1-7.** Prediction error for regular starters is 2.34 against 2.90 for the season-average rule, 0.54 lower (95% range 0.33 to 0.80): a clear edge in a season the model has never seen. The best-XI gap (+16.3 points per gameweek, range -7.7 to +43.3) can't be called yet after seven weeks.
 
-**Live picks.** The [web app](https://fpl-points-lab.streamlit.app/) opens on the next gameweek: the predicted best XI, the captain, and the top picks by position and price. Live features are computed in [`sql/upcoming.sql`](sql/upcoming.sql). A test replays the season (hides the last played gameweek and rebuilds them) and checks they match the training features exactly, so live picks use the same inputs the model learned from. Players FPL has flagged are scaled by their chance of playing, which the model can't see on its own.
+**Live picks.** The [website](https://andrewkwon0804-web.github.io/fpl-analyzer/) opens on the next gameweek: the predicted best XI, the captain, and the top picks by position and price. Live features are computed in [`sql/upcoming.sql`](sql/upcoming.sql). A test replays the season (hides the last played gameweek and rebuilds them) and checks they match the training features exactly, so live picks use the same inputs the model learned from. Players FPL has flagged are scaled by their chance of playing, which the model can't see on its own.
 
 To refresh during the season: `python run_pipeline.py`, then commit `reports/live/`.
 
@@ -90,7 +90,7 @@ open FPL archive (CSV)                 SQLite: fpl.db
                   business questions      input audit     time-split training    CSVs for Tableau
 ```
 
-**Data.** Every player in every match from 2022-23 to the current 2026-27 season: about 117,000 player-match rows from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. FPL only started publishing per-match xG in gameweek 16 of 2022-23; the archive stores the earlier weeks as 0, so the pipeline treats them as missing (a test checks this).
+**Data.** Every player in every match from 2022-23 to the current 2026-27 season: about 117,000 player-match rows Finished seasons come from the community-maintained [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) archive of the official FPL API. The archive lags the live season, so 2026-27 comes straight from the official API ([`src/fpl/fetch_official.py`](src/fpl/fetch_official.py)); for the gameweeks both cover, every row matches. FPL only started publishing per-match xG in gameweek 16 of 2022-23; the archive stores the earlier weeks as 0, so the pipeline treats them as missing (a test checks this).
 
 **Cleaning.** Dropped exact duplicate rows in the 2025-26 export, converted prices from tenths to £m, mapped team names to ids per season, excluded the one-season "assistant manager" chip, and summed double gameweeks into one row per player per gameweek.
 
@@ -141,4 +141,4 @@ tableau/                 Tableau workbook, its generator script and CSV extracts
 * **Squad optimization.** Turning predictions into a full 15-player squad under the £100m budget and three-per-club rule is a linear programming problem (e.g. with PuLP).
 
 ---
-Data: [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) (MIT). Not affiliated with the Premier League or FPL.
+Data: [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) (MIT) and the official FPL API. Not affiliated with the Premier League or FPL.

@@ -74,8 +74,8 @@ def predict_next_gameweek(model) -> pd.DataFrame:
 def write_meta(out) -> dict:
     """When the data was refreshed, and when the 'next' gameweek kicks off.
 
-    The open archive can lag the real season by a week or more. If the next gameweek's
-    first kickoff is already in the past, the picks are stale; the app warns about it.
+    If the next gameweek's first kickoff is already in the past, its results aren't in the
+    data yet (it's still being played, or the source lags), and the site says so.
     """
     with sqlite3.connect(DB_PATH) as con:
         last_played = con.execute("SELECT MAX(gw) FROM player_match WHERE season = ?",
@@ -91,8 +91,8 @@ def write_meta(out) -> dict:
     (out / "meta.json").write_text(json.dumps(meta, indent=2))
     kickoff = pd.Timestamp(meta["next_gw_first_kickoff"]) if meta["next_gw_first_kickoff"] else None
     if kickoff is not None and kickoff < pd.Timestamp.now(tz="UTC"):
-        print(f"[live] WARNING: GW{meta['next_gw']} kicked off {kickoff:%d %b}; the archive hasn't "
-              f"published its results yet, so these picks are out of date")
+        print(f"[live] WARNING: GW{meta['next_gw']} kicked off {kickoff:%d %b} and isn't finished in the data "
+              f"yet, so these picks don't use its results")
     return meta
 
 

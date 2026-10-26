@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 warnings.filterwarnings("ignore", category=UserWarning)
 
-from fpl import export_tableau, ingest, leakage, live, load_db, model, report, run_sql  # noqa: E402
+from fpl import export_site, export_tableau, ingest, leakage, live, load_db, model, report, run_sql  # noqa: E402
 
 if __name__ == "__main__":
     ingest.main()          # 1. download raw CSVs (cached)
@@ -17,3 +17,4 @@ if __name__ == "__main__":
     live.main()            # 5b. score the season in progress; predict the next gameweek
     report.main()          # 6. charts for the README
     export_tableau.main()  # 7. CSV extracts for Tableau Public
+    export_site.main()     # 8. data file for the website in docs/

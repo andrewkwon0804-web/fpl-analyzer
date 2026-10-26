@@ -44694,15 +44694,18 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Raya,GK,Arsenal,14,90,6.0,3.0,1,5.0
 2026-27,5,Raya,GK,Arsenal,1,90,6.0,4.0,1,7.25
 2026-27,6,Raya,GK,Arsenal,3,90,6.1,3.0,1,6.0
+2026-27,7,Raya,GK,Arsenal,9,90,6.1,3.0,1,5.4
 2026-27,1,Gabriel,DEF,Arsenal,5,90,8.0,2.0,1,
 2026-27,2,Gabriel,DEF,Arsenal,8,90,8.0,3.0,1,5.0
 2026-27,3,Gabriel,DEF,Arsenal,2,90,8.0,4.0,1,6.5
 2026-27,4,Gabriel,DEF,Arsenal,9,90,8.0,3.0,1,5.0
 2026-27,5,Gabriel,DEF,Arsenal,1,90,8.0,4.0,1,6.0
 2026-27,6,Gabriel,DEF,Arsenal,2,90,8.0,3.0,1,5.0
+2026-27,7,Gabriel,DEF,Arsenal,8,90,7.9,3.0,1,4.4
 2026-27,4,J.Timber,DEF,Arsenal,1,45,6.5,3.0,1,0.0
 2026-27,5,J.Timber,DEF,Arsenal,0,59,6.5,4.0,1,0.25
 2026-27,6,J.Timber,DEF,Arsenal,1,27,6.5,3.0,1,0.2
+2026-27,7,J.Timber,DEF,Arsenal,1,24,6.5,3.0,1,0.4
 2026-27,1,Lewis-Skelly,MID,Arsenal,3,90,5.5,2.0,1,
 2026-27,2,Lewis-Skelly,MID,Arsenal,3,70,5.5,3.0,1,3.0
 2026-27,3,Lewis-Skelly,MID,Arsenal,2,66,5.5,4.0,1,3.0
@@ -44714,6 +44717,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Calafiori,DEF,Arsenal,6,90,5.8,3.0,1,7.33
 2026-27,5,Calafiori,DEF,Arsenal,1,90,5.8,4.0,1,7.0
 2026-27,6,Calafiori,DEF,Arsenal,9,81,5.9,3.0,1,5.8
+2026-27,7,Calafiori,DEF,Arsenal,6,90,5.9,3.0,1,5.8
 2026-27,1,Hincapie,DEF,Arsenal,1,9,5.5,2.0,1,
 2026-27,3,Hincapie,DEF,Arsenal,1,23,5.4,4.0,1,0.5
 2026-27,6,Hincapie,DEF,Arsenal,1,8,5.2,3.0,1,0.4
@@ -44722,6 +44726,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,White,DEF,Arsenal,2,90,5.5,4.0,1,9.0
 2026-27,4,White,DEF,Arsenal,1,45,5.5,3.0,1,6.67
 2026-27,6,White,DEF,Arsenal,5,62,5.4,3.0,1,4.2
+2026-27,7,White,DEF,Arsenal,6,65,5.4,3.0,1,3.0
 2026-27,1,Mosquera,DEF,Arsenal,6,90,5.5,2.0,1,
 2026-27,2,Mosquera,DEF,Arsenal,6,78,5.5,3.0,1,6.0
 2026-27,1,Saka,MID,Arsenal,9,67,9.5,2.0,1,
@@ -44730,70 +44735,84 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Saka,MID,Arsenal,8,90,9.5,3.0,1,7.33
 2026-27,5,Saka,MID,Arsenal,2,80,9.5,4.0,1,7.5
 2026-27,6,Saka,MID,Arsenal,2,90,9.6,3.0,1,6.4
+2026-27,7,Saka,MID,Arsenal,3,90,9.6,3.0,1,5.0
 2026-27,1,Rice,MID,Arsenal,3,67,7.5,2.0,1,
 2026-27,2,Rice,MID,Arsenal,5,84,7.5,3.0,1,3.0
 2026-27,3,Rice,MID,Arsenal,5,90,7.5,4.0,1,4.0
 2026-27,4,Rice,MID,Arsenal,6,80,7.4,3.0,1,4.33
 2026-27,5,Rice,MID,Arsenal,1,90,7.4,4.0,1,4.75
 2026-27,6,Rice,MID,Arsenal,7,90,7.4,3.0,1,4.0
+2026-27,7,Rice,MID,Arsenal,9,90,7.3,3.0,1,4.8
 2026-27,1,Eze,MID,Arsenal,1,14,6.5,2.0,1,
 2026-27,2,Eze,MID,Arsenal,1,45,6.5,3.0,1,1.0
 2026-27,4,Eze,MID,Arsenal,1,9,6.3,3.0,1,0.67
 2026-27,5,Eze,MID,Arsenal,1,17,6.3,4.0,1,0.75
+2026-27,7,Eze,MID,Arsenal,1,45,6.2,3.0,1,0.6
 2026-27,1,Ødegaard,MID,Arsenal,11,75,6.5,2.0,1,
 2026-27,2,Ødegaard,MID,Arsenal,3,70,6.6,3.0,1,11.0
 2026-27,3,Ødegaard,MID,Arsenal,10,76,6.6,4.0,1,7.0
 2026-27,4,Ødegaard,MID,Arsenal,3,84,6.7,3.0,1,8.0
 2026-27,5,Ødegaard,MID,Arsenal,2,72,6.8,4.0,1,6.75
 2026-27,6,Ødegaard,MID,Arsenal,1,89,6.8,3.0,1,5.8
+2026-27,7,Ødegaard,MID,Arsenal,3,90,6.8,3.0,1,3.8
 2026-27,1,Madueke,MID,Arsenal,1,22,6.5,2.0,1,
 2026-27,3,Madueke,MID,Arsenal,1,1,6.3,4.0,1,0.5
 2026-27,6,Madueke,MID,Arsenal,2,90,6.2,3.0,1,0.4
+2026-27,7,Madueke,MID,Arsenal,5,45,6.2,3.0,1,0.6
 2026-27,1,Merino,MID,Arsenal,1,14,6.0,2.0,1,
 2026-27,2,Merino,MID,Arsenal,1,19,6.0,3.0,1,1.0
 2026-27,3,Merino,MID,Arsenal,0,13,5.9,4.0,1,1.0
 2026-27,4,Merino,MID,Arsenal,1,5,5.8,3.0,1,0.67
 2026-27,5,Merino,MID,Arsenal,1,30,5.8,4.0,1,0.75
 2026-27,6,Merino,MID,Arsenal,1,1,5.7,3.0,1,0.8
+2026-27,7,Merino,MID,Arsenal,1,24,5.7,3.0,1,0.8
 2026-27,1,Zubimendi,MID,Arsenal,1,22,5.5,2.0,1,
 2026-27,2,Zubimendi,MID,Arsenal,1,5,5.5,3.0,1,1.0
 2026-27,3,Zubimendi,MID,Arsenal,1,23,5.4,4.0,1,1.0
 2026-27,4,Zubimendi,MID,Arsenal,1,9,5.4,3.0,1,1.0
 2026-27,5,Zubimendi,MID,Arsenal,1,30,5.3,4.0,1,1.0
 2026-27,5,Dowman,MID,Arsenal,1,9,5.3,4.0,1,0.0
+2026-27,7,Nørgaard,MID,Everton,0,5,4.8,4.0,1,0.0
 2026-27,3,Gyökeres,FWD,Arsenal,1,12,7.3,4.0,1,0.0
 2026-27,5,Gyökeres,FWD,Arsenal,1,17,7.2,4.0,1,0.25
 2026-27,6,Gyökeres,FWD,Arsenal,1,27,7.1,3.0,1,0.4
+2026-27,7,Gyökeres,FWD,Arsenal,1,24,7.1,3.0,1,0.6
 2026-27,1,Havertz,FWD,Arsenal,6,90,7.5,2.0,1,
 2026-27,2,Havertz,FWD,Arsenal,2,90,7.5,3.0,1,6.0
 2026-27,3,Havertz,FWD,Arsenal,8,77,7.5,4.0,1,4.0
 2026-27,4,Havertz,FWD,Arsenal,1,90,7.5,3.0,1,5.33
 2026-27,5,Havertz,FWD,Arsenal,2,90,7.6,4.0,1,4.25
 2026-27,6,Havertz,FWD,Arsenal,2,62,7.6,3.0,1,3.8
+2026-27,7,Havertz,FWD,Arsenal,2,65,7.5,3.0,1,3.0
 2026-27,2,Martinez,GK,Chelsea,2,90,5.0,3.0,1,0.0
 2026-27,3,Martinez,GK,Chelsea,3,90,5.0,5.0,1,1.0
 2026-27,4,Martinez,GK,Chelsea,2,90,5.0,2.0,1,1.67
 2026-27,5,Martinez,GK,Chelsea,2,90,5.0,3.0,1,1.75
 2026-27,6,Martinez,GK,Chelsea,3,90,5.0,3.0,1,1.8
+2026-27,7,Martinez,GK,Chelsea,8,74,5.0,3.0,1,2.4
 2026-27,1,M.Bizot,GK,Aston Villa,1,90,4.5,4.0,1,
 2026-27,2,Konsa,DEF,Arsenal,1,11,4.5,3.0,1,0.0
 2026-27,3,Konsa,DEF,Arsenal,4,90,4.4,4.0,1,0.5
 2026-27,4,Konsa,DEF,Arsenal,6,90,4.5,3.0,1,1.67
 2026-27,5,Konsa,DEF,Arsenal,1,90,4.5,4.0,1,2.75
 2026-27,6,Konsa,DEF,Arsenal,4,90,4.6,3.0,1,2.4
+2026-27,7,Konsa,DEF,Arsenal,9,90,4.6,3.0,1,3.2
 2026-27,1,Cash,DEF,Aston Villa,-1,90,4.5,4.0,1,
 2026-27,2,Cash,DEF,Aston Villa,2,77,4.5,4.0,1,-1.0
 2026-27,3,Cash,DEF,Aston Villa,6,84,4.5,2.0,1,0.5
 2026-27,5,Cash,DEF,Aston Villa,-1,45,4.4,3.0,1,1.75
 2026-27,6,Cash,DEF,Aston Villa,0,90,4.4,3.0,1,1.2
+2026-27,7,Cash,DEF,Aston Villa,8,90,4.4,3.0,1,1.4
 2026-27,1,Mings,DEF,Aston Villa,1,16,4.5,4.0,1,
 2026-27,3,Mings,DEF,Aston Villa,6,90,4.5,2.0,1,0.5
 2026-27,4,Mings,DEF,Aston Villa,0,65,4.5,3.0,1,2.33
 2026-27,5,Mings,DEF,Aston Villa,3,90,4.5,3.0,1,1.75
 2026-27,6,Mings,DEF,Aston Villa,1,90,4.5,3.0,1,2.0
+2026-27,7,Mings,DEF,Aston Villa,7,90,4.5,3.0,1,2.0
 2026-27,1,Pau,DEF,Aston Villa,0,73,4.5,4.0,1,
 2026-27,2,Pau,DEF,Aston Villa,2,90,4.5,4.0,1,0.0
 2026-27,4,Pau,DEF,Aston Villa,1,24,4.5,3.0,1,0.67
+2026-27,7,Pau,DEF,Aston Villa,1,13,4.4,3.0,1,0.6
 2026-27,1,Bogarde,MID,Aston Villa,1,16,5.0,4.0,1,
 2026-27,1,Maatsen,DEF,Aston Villa,0,81,4.5,4.0,1,
 2026-27,2,Maatsen,DEF,Aston Villa,1,90,4.5,4.0,1,0.0
@@ -44805,18 +44824,21 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Lindelöf,DEF,Aston Villa,1,90,4.5,3.0,1,2.0
 2026-27,5,Lindelöf,DEF,Aston Villa,1,90,4.5,3.0,1,1.75
 2026-27,6,Lindelöf,DEF,Aston Villa,3,90,4.5,3.0,1,1.6
+2026-27,7,Lindelöf,DEF,Aston Villa,9,90,4.5,3.0,1,2.6
 2026-27,1,Rogers,MID,Chelsea,8,81,7.5,3.0,1,
 2026-27,2,Rogers,MID,Chelsea,5,90,7.5,3.0,1,8.0
 2026-27,3,Rogers,MID,Chelsea,6,86,7.5,5.0,1,6.5
 2026-27,4,Rogers,MID,Chelsea,8,90,7.6,2.0,1,6.33
 2026-27,5,Rogers,MID,Chelsea,2,90,7.7,3.0,1,6.75
 2026-27,6,Rogers,MID,Chelsea,9,83,7.8,3.0,1,5.8
+2026-27,7,Rogers,MID,Chelsea,2,90,7.9,3.0,1,6.0
 2026-27,1,Buendía,MID,Aston Villa,2,85,6.0,4.0,1,
 2026-27,2,Buendía,MID,Aston Villa,2,90,6.0,4.0,1,2.0
 2026-27,3,Buendía,MID,Aston Villa,3,74,6.0,2.0,1,2.0
 2026-27,4,Buendía,MID,Aston Villa,2,62,5.9,3.0,1,2.33
 2026-27,5,Buendía,MID,Aston Villa,12,90,5.9,3.0,1,2.25
 2026-27,6,Buendía,MID,Aston Villa,4,63,5.9,3.0,1,4.2
+2026-27,7,Buendía,MID,Aston Villa,3,71,5.9,3.0,1,4.6
 2026-27,1,Guessand,MID,Crystal Palace,1,27,5.5,3.0,1,
 2026-27,2,Guessand,MID,Crystal Palace,1,27,5.5,4.0,1,1.0
 2026-27,1,Tielemans,MID,Man Utd,2,66,6.0,2.0,1,
@@ -44825,24 +44847,28 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Tielemans,MID,Man Utd,2,66,5.9,4.0,1,2.67
 2026-27,5,Tielemans,MID,Man Utd,4,90,5.8,3.0,1,2.5
 2026-27,6,Tielemans,MID,Man Utd,3,58,5.8,2.0,1,2.8
+2026-27,7,Tielemans,MID,Man Utd,7,83,5.7,3.0,1,3.0
 2026-27,1,McGinn,MID,Aston Villa,1,81,5.5,4.0,1,
 2026-27,2,McGinn,MID,Aston Villa,1,90,5.5,4.0,1,1.0
 2026-27,3,McGinn,MID,Aston Villa,3,90,5.4,2.0,1,1.0
 2026-27,4,McGinn,MID,Aston Villa,6,90,5.4,3.0,1,1.67
 2026-27,5,McGinn,MID,Aston Villa,6,83,5.4,3.0,1,2.75
 2026-27,6,McGinn,MID,Aston Villa,10,90,5.4,3.0,1,3.4
+2026-27,7,McGinn,MID,Aston Villa,1,45,5.4,3.0,1,5.2
 2026-27,1,Barkley,MID,Aston Villa,2,73,5.0,4.0,1,
 2026-27,2,Barkley,MID,Aston Villa,2,77,5.0,4.0,1,2.0
 2026-27,3,Barkley,MID,Aston Villa,3,90,5.0,2.0,1,2.0
 2026-27,4,Barkley,MID,Aston Villa,2,62,5.0,3.0,1,2.33
 2026-27,5,Barkley,MID,Aston Villa,1,6,5.0,3.0,1,2.25
 2026-27,6,Barkley,MID,Aston Villa,1,4,5.0,3.0,1,2.0
+2026-27,7,Barkley,MID,Aston Villa,1,18,5.0,3.0,1,1.8
 2026-27,1,Kamara,MID,Aston Villa,2,90,5.0,4.0,1,
 2026-27,2,Kamara,MID,Aston Villa,2,90,5.0,4.0,1,2.0
 2026-27,3,Kamara,MID,Aston Villa,3,90,5.0,2.0,1,2.0
 2026-27,4,Kamara,MID,Aston Villa,2,90,5.0,3.0,1,2.33
 2026-27,5,Kamara,MID,Aston Villa,6,83,5.0,3.0,1,2.25
 2026-27,6,Kamara,MID,Aston Villa,4,90,5.0,3.0,1,3.0
+2026-27,7,Kamara,MID,Aston Villa,5,90,5.0,3.0,1,3.4
 2026-27,1,George Hemmings,MID,Aston Villa,2,90,4.5,4.0,1,
 2026-27,2,George Hemmings,MID,Aston Villa,2,70,4.5,4.0,1,2.0
 2026-27,3,George Hemmings,MID,Aston Villa,3,74,4.5,2.0,1,2.0
@@ -44853,12 +44879,15 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Alysson,MID,Aston Villa,1,15,5.0,2.0,1,0.5
 2026-27,4,Alysson,MID,Aston Villa,6,45,5.0,3.0,1,0.67
 2026-27,6,Alysson,MID,Aston Villa,1,4,5.0,3.0,1,1.6
+2026-27,7,Alysson,MID,Aston Villa,0,45,4.9,3.0,1,1.6
 2026-27,4,Manzambi,MID,Aston Villa,1,27,5.9,3.0,1,0.0
 2026-27,5,Manzambi,MID,Aston Villa,13,71,5.9,3.0,1,0.25
 2026-27,6,Manzambi,MID,Aston Villa,5,85,5.9,3.0,1,2.8
+2026-27,7,Manzambi,MID,Aston Villa,11,71,5.9,3.0,1,3.8
 2026-27,1,Gomes,MID,Aston Villa,-2,39,5.5,4.0,1,
 2026-27,5,Gomes,MID,Aston Villa,4,90,5.5,3.0,1,-0.5
 2026-27,6,Gomes,MID,Aston Villa,2,85,5.5,3.0,1,0.4
+2026-27,7,Gomes,MID,Aston Villa,5,71,5.5,3.0,1,1.2
 2026-27,2,Abraham,FWD,Aston Villa,1,19,5.5,4.0,1,0.0
 2026-27,3,Abraham,FWD,Aston Villa,1,5,5.5,2.0,1,0.5
 2026-27,4,Abraham,FWD,Aston Villa,1,45,5.5,3.0,1,0.67
@@ -44869,24 +44898,29 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Petrović,GK,Bournemouth,1,90,4.5,3.0,1,2.0
 2026-27,5,Petrović,GK,Bournemouth,2,90,4.5,4.0,1,1.75
 2026-27,6,Petrović,GK,Bournemouth,0,90,4.5,4.0,1,1.8
+2026-27,7,Petrović,GK,Bournemouth,6,90,4.5,3.0,1,1.4
 2026-27,1,Hill,DEF,Bournemouth,1,90,5.5,5.0,1,
 2026-27,2,Hill,DEF,Bournemouth,4,90,5.5,3.0,1,1.0
 2026-27,3,Hill,DEF,Bournemouth,1,90,5.5,3.0,1,2.5
 2026-27,4,Hill,DEF,Bournemouth,2,90,5.5,3.0,1,2.0
 2026-27,5,Hill,DEF,Bournemouth,4,90,5.5,4.0,1,2.0
 2026-27,6,Hill,DEF,Bournemouth,2,90,5.5,4.0,1,2.4
+2026-27,7,Hill,DEF,Bournemouth,7,90,5.5,3.0,1,2.6
 2026-27,1,Truffert,DEF,Bournemouth,1,90,5.5,5.0,1,
 2026-27,2,Truffert,DEF,Bournemouth,4,90,5.5,3.0,1,1.0
 2026-27,3,Truffert,DEF,Bournemouth,0,90,5.5,3.0,1,2.5
 2026-27,4,Truffert,DEF,Bournemouth,3,90,5.5,3.0,1,1.67
 2026-27,5,Truffert,DEF,Bournemouth,2,90,5.5,4.0,1,2.0
 2026-27,6,Truffert,DEF,Bournemouth,-1,83,5.4,4.0,1,2.0
+2026-27,7,Truffert,DEF,Bournemouth,6,90,5.4,3.0,1,1.6
+2026-27,7,Diakité,DEF,Bournemouth,1,1,4.9,3.0,1,0.0
 2026-27,1,Smith,DEF,Bournemouth,1,90,4.5,5.0,1,
 2026-27,2,Smith,DEF,Bournemouth,1,90,4.5,3.0,1,1.0
 2026-27,3,Smith,DEF,Bournemouth,0,90,4.5,3.0,1,1.0
 2026-27,4,Smith,DEF,Bournemouth,0,90,4.5,3.0,1,0.67
 2026-27,5,Smith,DEF,Bournemouth,2,74,4.5,4.0,1,0.5
 2026-27,6,Smith,DEF,Bournemouth,0,71,4.5,4.0,1,0.8
+2026-27,7,Smith,DEF,Bournemouth,6,90,4.5,3.0,1,0.6
 2026-27,6,Soler,DEF,Bournemouth,1,6,4.0,4.0,1,0.0
 2026-27,1,Rayan,MID,Bournemouth,2,88,6.5,5.0,1,
 2026-27,2,Rayan,MID,Bournemouth,2,90,6.5,3.0,1,2.0
@@ -44894,12 +44928,14 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Rayan,MID,Bournemouth,2,81,6.4,3.0,1,2.0
 2026-27,5,Rayan,MID,Bournemouth,2,87,6.4,4.0,1,2.0
 2026-27,6,Rayan,MID,Bournemouth,2,90,6.3,4.0,1,2.0
+2026-27,7,Rayan,MID,Bournemouth,3,88,6.3,3.0,1,2.0
 2026-27,1,Tavernier,MID,Bournemouth,10,90,6.0,5.0,1,
 2026-27,2,Tavernier,MID,Bournemouth,1,90,6.0,3.0,1,10.0
 2026-27,3,Tavernier,MID,Bournemouth,10,88,6.0,3.0,1,5.5
 2026-27,4,Tavernier,MID,Bournemouth,8,82,6.0,3.0,1,7.0
 2026-27,5,Tavernier,MID,Bournemouth,2,74,6.1,4.0,1,7.25
 2026-27,6,Tavernier,MID,Bournemouth,1,72,6.1,4.0,1,6.2
+2026-27,7,Tavernier,MID,Bournemouth,10,78,6.1,3.0,1,4.4
 2026-27,1,Scott,MID,Bournemouth,2,90,6.0,5.0,1,
 2026-27,2,Scott,MID,Bournemouth,12,86,6.0,3.0,1,2.0
 2026-27,3,Scott,MID,Bournemouth,10,90,6.0,3.0,1,7.0
@@ -44909,23 +44945,27 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,2,Kluivert,MID,Bournemouth,3,80,6.0,3.0,1,3.0
 2026-27,3,Kluivert,MID,Bournemouth,1,75,6.0,3.0,1,3.0
 2026-27,4,Kluivert,MID,Bournemouth,8,65,6.0,3.0,1,2.33
+2026-27,7,Kluivert,MID,Bournemouth,1,28,5.9,3.0,1,2.4
 2026-27,1,Cook,MID,Bournemouth,3,75,5.0,5.0,1,
 2026-27,2,Cook,MID,Bournemouth,3,68,5.0,3.0,1,3.0
 2026-27,3,Cook,MID,Bournemouth,1,14,5.0,3.0,1,3.0
 2026-27,4,Cook,MID,Bournemouth,0,8,5.0,3.0,1,2.33
 2026-27,5,Cook,MID,Bournemouth,1,15,5.0,4.0,1,1.75
 2026-27,6,Cook,MID,Bournemouth,1,17,5.0,4.0,1,1.6
+2026-27,7,Cook,MID,Bournemouth,2,61,5.0,3.0,1,1.2
 2026-27,1,Gannon-Doak,MID,Bournemouth,1,1,5.0,5.0,1,
 2026-27,3,Gannon-Doak,MID,Bournemouth,1,1,5.0,3.0,1,0.5
 2026-27,4,Gannon-Doak,MID,Bournemouth,1,8,4.9,3.0,1,0.67
 2026-27,5,Gannon-Doak,MID,Bournemouth,1,2,4.9,4.0,1,0.75
 2026-27,6,Gannon-Doak,MID,Bournemouth,1,45,4.9,4.0,1,0.8
+2026-27,7,Gannon-Doak,MID,Bournemouth,1,1,4.8,3.0,1,0.8
 2026-27,1,Adams,MID,Bournemouth,1,15,5.0,5.0,1,
 2026-27,2,Adams,MID,Bournemouth,1,21,5.0,3.0,1,1.0
 2026-27,3,Adams,MID,Bournemouth,4,75,5.0,3.0,1,1.0
 2026-27,4,Adams,MID,Bournemouth,2,81,5.0,3.0,1,2.0
 2026-27,5,Adams,MID,Bournemouth,4,87,5.0,4.0,1,2.0
 2026-27,6,Adams,MID,Bournemouth,1,90,5.0,4.0,1,2.4
+2026-27,7,Adams,MID,Bournemouth,3,88,5.0,3.0,1,2.4
 2026-27,2,Brooks,MID,Bournemouth,1,9,5.0,3.0,1,0.0
 2026-27,3,Brooks,MID,Bournemouth,1,14,5.0,3.0,1,0.5
 2026-27,4,Brooks,MID,Bournemouth,0,7,5.0,3.0,1,0.67
@@ -44936,44 +44976,53 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Christie,MID,Bournemouth,1,24,5.0,3.0,1,0.67
 2026-27,5,Christie,MID,Bournemouth,2,74,5.0,4.0,1,0.75
 2026-27,6,Christie,MID,Bournemouth,3,72,5.0,4.0,1,1.0
+2026-27,7,Christie,MID,Bournemouth,2,90,5.0,3.0,1,1.6
 2026-27,1,Tóth.A,MID,Bournemouth,1,15,5.0,5.0,1,
 2026-27,5,Tóth.A,MID,Bournemouth,1,2,4.9,4.0,1,0.25
+2026-27,7,Adli,MID,Bournemouth,1,11,4.8,3.0,1,0.0
 2026-27,1,Evanilson,FWD,Bournemouth,4,74,6.0,5.0,1,
 2026-27,2,Evanilson,FWD,Bournemouth,5,80,6.0,3.0,1,4.0
 2026-27,3,Evanilson,FWD,Bournemouth,2,90,6.0,3.0,1,4.5
 2026-27,4,Evanilson,FWD,Bournemouth,5,90,6.0,3.0,1,3.67
 2026-27,5,Evanilson,FWD,Bournemouth,2,90,6.0,4.0,1,4.0
 2026-27,6,Evanilson,FWD,Bournemouth,7,90,6.0,4.0,1,3.6
+2026-27,7,Evanilson,FWD,Bournemouth,12,78,6.1,3.0,1,4.2
 2026-27,2,Rodríguez,FWD,Bournemouth,1,9,6.0,3.0,1,0.0
 2026-27,4,Rodríguez,FWD,Bournemouth,1,1,6.0,3.0,1,0.33
 2026-27,6,Rodríguez,FWD,Bournemouth,1,18,6.0,4.0,1,0.4
+2026-27,7,Rodríguez,FWD,Bournemouth,1,11,6.0,3.0,1,0.6
 2026-27,1,Kelleher,GK,Brentford,7,90,5.0,2.0,1,
 2026-27,2,Kelleher,GK,Brentford,2,90,5.0,3.0,1,7.0
 2026-27,3,Kelleher,GK,Brentford,2,90,5.0,3.0,1,4.5
 2026-27,4,Kelleher,GK,Brentford,3,90,5.0,3.0,1,3.67
 2026-27,5,Kelleher,GK,Brentford,6,90,5.0,4.0,1,3.5
 2026-27,6,Kelleher,GK,Brentford,2,90,5.0,3.0,1,4.0
+2026-27,7,Kelleher,GK,Brentford,2,90,5.0,4.0,1,3.0
 2026-27,1,Collins,DEF,Brentford,6,90,5.5,2.0,1,
 2026-27,2,Collins,DEF,Brentford,3,90,5.5,3.0,1,6.0
 2026-27,3,Collins,DEF,Brentford,1,16,5.5,3.0,1,4.5
+2026-27,7,Van den Berg,DEF,Brentford,1,70,4.9,4.0,1,0.0
 2026-27,1,Lewis-Potter,MID,Brentford,10,90,5.5,2.0,1,
 2026-27,2,Lewis-Potter,MID,Brentford,6,87,5.5,3.0,1,10.0
 2026-27,3,Lewis-Potter,MID,Brentford,2,90,5.5,3.0,1,8.0
 2026-27,4,Lewis-Potter,MID,Brentford,1,59,5.5,3.0,1,6.0
 2026-27,5,Lewis-Potter,MID,Brentford,3,80,5.5,4.0,1,4.75
 2026-27,6,Lewis-Potter,MID,Brentford,2,66,5.5,3.0,1,4.4
+2026-27,7,Lewis-Potter,MID,Brentford,9,76,5.5,4.0,1,2.8
 2026-27,1,Ajer,DEF,Brentford,8,90,4.5,2.0,1,
 2026-27,2,Ajer,DEF,Brentford,3,90,4.5,3.0,1,8.0
 2026-27,3,Ajer,DEF,Brentford,2,90,4.5,3.0,1,5.5
 2026-27,4,Ajer,DEF,Brentford,1,90,4.5,3.0,1,4.33
 2026-27,5,Ajer,DEF,Brentford,7,90,4.5,4.0,1,3.5
 2026-27,6,Ajer,DEF,Brentford,6,90,4.5,3.0,1,4.2
+2026-27,7,Ajer,DEF,Brentford,3,90,4.5,4.0,1,3.8
 2026-27,1,Kayode,DEF,Brentford,13,75,4.5,2.0,1,
 2026-27,2,Kayode,DEF,Brentford,2,87,4.6,3.0,1,13.0
 2026-27,3,Kayode,DEF,Brentford,1,45,4.6,3.0,1,7.5
 2026-27,4,Kayode,DEF,Brentford,1,19,4.6,3.0,1,5.33
 2026-27,5,Kayode,DEF,Brentford,6,68,4.6,4.0,1,4.25
 2026-27,6,Kayode,DEF,Brentford,0,90,4.6,3.0,1,4.6
+2026-27,7,Kayode,DEF,Brentford,1,90,4.6,4.0,1,2.0
 2026-27,2,Henry,DEF,Brentford,1,2,4.5,3.0,1,0.0
 2026-27,1,Hickey,DEF,Brentford,1,14,4.5,2.0,1,
 2026-27,2,Hickey,DEF,Brentford,1,2,4.5,3.0,1,1.0
@@ -44981,11 +45030,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Hickey,DEF,Brentford,1,70,4.5,3.0,1,1.0
 2026-27,5,Hickey,DEF,Brentford,1,21,4.5,4.0,1,1.0
 2026-27,6,Hickey,DEF,Brentford,1,45,4.5,3.0,1,1.0
+2026-27,7,Hickey,DEF,Brentford,1,19,4.5,4.0,1,1.0
 2026-27,2,Pinnock,DEF,Coventry City,1,12,4.5,2.0,1,0.0
 2026-27,3,Pinnock,DEF,Coventry City,3,90,4.5,5.0,1,0.5
 2026-27,4,Pinnock,DEF,Coventry City,2,90,4.5,3.0,1,1.33
 2026-27,5,Pinnock,DEF,Coventry City,8,90,4.5,3.0,1,1.5
 2026-27,6,Pinnock,DEF,Coventry City,2,90,4.5,3.0,1,2.8
+2026-27,7,Pinnock,DEF,Coventry City,1,90,4.5,3.0,1,3.2
 2026-27,3,Schuster,DEF,Brentford,4,73,4.5,3.0,1,0.0
 2026-27,4,Schuster,DEF,Brentford,3,90,4.5,3.0,1,1.33
 2026-27,5,Schuster,DEF,Brentford,14,90,4.5,4.0,1,1.75
@@ -44996,51 +45047,61 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Schade,MID,Brentford,15,90,6.0,3.0,1,5.0
 2026-27,5,Schade,MID,Brentford,9,90,6.1,4.0,1,7.5
 2026-27,6,Schade,MID,Brentford,1,51,6.2,3.0,1,7.8
+2026-27,7,Schade,MID,Brentford,0,45,6.2,4.0,1,7.4
 2026-27,1,O.Dango,MID,Brentford,3,66,6.5,2.0,1,
 2026-27,2,O.Dango,MID,Brentford,1,29,6.5,3.0,1,3.0
 2026-27,3,O.Dango,MID,Brentford,1,45,6.5,3.0,1,2.0
 2026-27,4,O.Dango,MID,Brentford,1,30,6.4,3.0,1,1.67
 2026-27,5,O.Dango,MID,Brentford,1,9,6.3,4.0,1,1.5
 2026-27,6,O.Dango,MID,Brentford,1,23,6.3,3.0,1,1.4
+2026-27,7,O.Dango,MID,Brentford,1,45,6.2,4.0,1,1.0
 2026-27,1,Damsgaard,MID,Brentford,1,14,5.5,2.0,1,
 2026-27,2,Damsgaard,MID,Brentford,3,68,5.5,3.0,1,1.0
 2026-27,3,Damsgaard,MID,Brentford,8,85,5.5,3.0,1,2.0
 2026-27,4,Damsgaard,MID,Brentford,1,30,5.5,3.0,1,4.0
 2026-27,5,Damsgaard,MID,Brentford,3,86,5.4,4.0,1,3.25
+2026-27,7,Damsgaard,MID,Brentford,1,13,5.3,4.0,1,3.0
 2026-27,1,Jensen,MID,Brentford,6,66,5.5,2.0,1,
 2026-27,6,Jensen,MID,Brentford,1,23,5.4,3.0,1,1.2
+2026-27,7,Jensen,MID,Brentford,1,45,5.4,4.0,1,0.2
 2026-27,1,Janelt,MID,Brentford,9,90,5.0,2.0,1,
 2026-27,2,Janelt,MID,Brentford,1,90,5.0,3.0,1,9.0
 2026-27,3,Janelt,MID,Brentford,11,90,5.0,3.0,1,5.0
 2026-27,4,Janelt,MID,Brentford,4,90,5.0,3.0,1,7.0
 2026-27,5,Janelt,MID,Brentford,3,90,5.0,4.0,1,6.25
 2026-27,6,Janelt,MID,Brentford,3,90,5.0,3.0,1,5.6
+2026-27,7,Janelt,MID,Brentford,-1,90,5.0,4.0,1,4.4
 2026-27,5,Carvalho,MID,Brentford,6,3,5.0,4.0,1,0.0
 2026-27,5,Henderson,MID,Chelsea,2,90,4.9,3.0,1,0.0
 2026-27,6,Henderson,MID,Chelsea,18,90,4.9,3.0,1,0.4
+2026-27,7,Henderson,MID,Chelsea,3,90,4.9,3.0,1,4.0
 2026-27,1,Yarmoliuk,MID,Brentford,1,23,5.0,2.0,1,
 2026-27,2,Yarmoliuk,MID,Brentford,1,21,5.0,3.0,1,1.0
 2026-27,3,Yarmoliuk,MID,Brentford,0,45,4.9,3.0,1,1.0
 2026-27,4,Yarmoliuk,MID,Brentford,4,59,4.9,3.0,1,0.67
 2026-27,5,Yarmoliuk,MID,Brentford,3,68,4.8,4.0,1,1.5
 2026-27,6,Yarmoliuk,MID,Brentford,8,66,4.8,3.0,1,1.8
+2026-27,7,Yarmoliuk,MID,Brentford,-2,52,4.8,4.0,1,3.2
 2026-27,1,Onyeka,MID,Coventry City,2,90,5.0,5.0,1,
 2026-27,3,Onyeka,MID,Coventry City,2,62,5.0,5.0,1,1.0
 2026-27,4,Onyeka,MID,Coventry City,2,72,4.9,3.0,1,1.33
 2026-27,5,Onyeka,MID,Coventry City,3,90,4.9,3.0,1,1.5
 2026-27,6,Onyeka,MID,Coventry City,1,12,4.9,3.0,1,1.8
+2026-27,7,Onyeka,MID,Coventry City,1,30,4.9,3.0,1,1.6
 2026-27,1,Anthony,MID,Brentford,1,23,6.0,2.0,1,
 2026-27,2,Anthony,MID,Brentford,2,60,6.0,3.0,1,1.0
 2026-27,3,Anthony,MID,Brentford,1,45,6.0,3.0,1,1.5
 2026-27,4,Anthony,MID,Brentford,1,59,6.0,3.0,1,1.33
 2026-27,5,Anthony,MID,Brentford,10,80,5.9,4.0,1,1.25
 2026-27,6,Anthony,MID,Brentford,5,84,5.9,3.0,1,3.0
+2026-27,7,Anthony,MID,Brentford,2,76,5.9,4.0,1,3.8
 2026-27,1,Thiago,FWD,Brentford,0,82,8.0,2.0,1,
 2026-27,2,Thiago,FWD,Brentford,2,90,8.0,3.0,1,0.0
 2026-27,3,Thiago,FWD,Brentford,2,90,8.0,3.0,1,1.0
 2026-27,4,Thiago,FWD,Brentford,1,90,7.9,3.0,1,1.33
 2026-27,5,Thiago,FWD,Brentford,5,90,7.8,4.0,1,1.25
 2026-27,6,Thiago,FWD,Brentford,4,90,7.8,3.0,1,2.0
+2026-27,7,Thiago,FWD,Brentford,4,90,7.8,4.0,1,2.8
 2026-27,1,Wilson,FWD,Brentford,1,7,5.5,2.0,1,
 2026-27,2,Wilson,FWD,Brentford,1,2,5.5,3.0,1,1.0
 2026-27,3,Wilson,FWD,Brentford,1,4,5.5,3.0,1,1.0
@@ -45051,40 +45112,47 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Verbruggen,GK,Brighton,8,90,4.5,2.0,1,3.0
 2026-27,5,Verbruggen,GK,Brighton,6,90,4.5,4.0,1,4.25
 2026-27,6,Verbruggen,GK,Brighton,9,90,4.5,3.0,1,4.6
+2026-27,7,Verbruggen,GK,Brighton,6,90,4.6,2.0,1,5.2
 2026-27,1,Rushworth,GK,Coventry City,1,90,4.5,5.0,1,
 2026-27,2,Rushworth,GK,Coventry City,2,90,4.5,2.0,1,1.0
 2026-27,3,Rushworth,GK,Coventry City,2,90,4.5,5.0,1,1.5
 2026-27,4,Rushworth,GK,Coventry City,0,90,4.5,3.0,1,1.67
 2026-27,5,Rushworth,GK,Coventry City,11,90,4.5,3.0,1,1.25
 2026-27,6,Rushworth,GK,Coventry City,3,90,4.5,3.0,1,3.2
+2026-27,7,Rushworth,GK,Coventry City,1,90,4.5,3.0,1,3.6
 2026-27,1,Van Hecke,DEF,Spurs,1,90,5.0,3.0,1,
 2026-27,2,Van Hecke,DEF,Spurs,1,90,5.0,3.0,1,1.0
 2026-27,3,Van Hecke,DEF,Spurs,8,90,4.9,3.0,1,1.0
 2026-27,4,Van Hecke,DEF,Spurs,8,90,4.9,3.0,1,3.33
 2026-27,5,Van Hecke,DEF,Spurs,6,90,4.9,3.0,1,4.5
 2026-27,6,Van Hecke,DEF,Spurs,3,90,4.9,4.0,1,4.8
+2026-27,7,Van Hecke,DEF,Spurs,4,90,4.9,2.0,1,5.2
 2026-27,2,F.Kadıoğlu,DEF,Brighton,0,90,4.5,4.0,1,0.0
 2026-27,3,F.Kadıoğlu,DEF,Brighton,2,77,4.4,3.0,1,0.0
 2026-27,4,F.Kadıoğlu,DEF,Brighton,6,90,4.4,2.0,1,0.67
 2026-27,5,F.Kadıoğlu,DEF,Brighton,5,75,4.4,4.0,1,2.0
 2026-27,6,F.Kadıoğlu,DEF,Brighton,9,90,4.4,3.0,1,2.6
+2026-27,7,F.Kadıoğlu,DEF,Brighton,6,90,4.4,2.0,1,4.4
 2026-27,1,Boscagli,DEF,Brighton,6,90,4.5,3.0,1,
 2026-27,2,Boscagli,DEF,Brighton,-1,90,4.5,4.0,1,6.0
 2026-27,3,Boscagli,DEF,Brighton,2,90,4.5,3.0,1,2.5
 2026-27,4,Boscagli,DEF,Brighton,6,77,4.5,2.0,1,2.33
 2026-27,5,Boscagli,DEF,Brighton,6,90,4.5,4.0,1,3.25
 2026-27,6,Boscagli,DEF,Brighton,5,67,4.5,3.0,1,3.8
+2026-27,7,Boscagli,DEF,Brighton,10,80,4.5,2.0,1,3.6
 2026-27,1,De Cuyper,DEF,Brighton,17,77,4.5,3.0,1,
 2026-27,2,De Cuyper,DEF,Brighton,0,90,4.6,4.0,1,17.0
 2026-27,3,De Cuyper,DEF,Brighton,4,76,4.7,3.0,1,8.5
 2026-27,4,De Cuyper,DEF,Brighton,11,90,4.8,2.0,1,7.0
 2026-27,5,De Cuyper,DEF,Brighton,6,90,4.9,4.0,1,8.0
 2026-27,6,De Cuyper,DEF,Brighton,15,67,5.0,3.0,1,7.6
+2026-27,7,De Cuyper,DEF,Brighton,6,90,5.2,2.0,1,7.2
 2026-27,1,Dunk,DEF,Brighton,6,90,4.5,3.0,1,
 2026-27,2,Dunk,DEF,Brighton,-1,90,4.5,4.0,1,6.0
 2026-27,3,Dunk,DEF,Brighton,5,90,4.5,3.0,1,2.5
 2026-27,4,Dunk,DEF,Brighton,12,90,4.5,2.0,1,3.33
 2026-27,6,Dunk,DEF,Brighton,1,30,4.5,3.0,1,4.4
+2026-27,7,Dunk,DEF,Brighton,6,89,4.5,2.0,1,3.4
 2026-27,1,Costinha,DEF,Brighton,1,26,4.5,3.0,1,
 2026-27,2,Costinha,DEF,Brighton,0,10,4.5,4.0,1,1.0
 2026-27,3,Costinha,DEF,Brighton,1,12,4.5,3.0,1,0.5
@@ -45092,16 +45160,20 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,5,Costinha,DEF,Brighton,1,14,4.5,4.0,1,0.75
 2026-27,6,Costinha,DEF,Brighton,1,22,4.5,3.0,1,0.8
 2026-27,5,Svoboda,DEF,Brighton,1,4,5.0,4.0,1,0.0
+2026-27,7,Svoboda,DEF,Brighton,1,1,5.0,2.0,1,0.2
 2026-27,1,Hinshelwood,MID,Brighton,16,63,6.0,3.0,1,
+2026-27,7,Hinshelwood,MID,Brighton,6,19,5.9,2.0,1,0.0
 2026-27,1,Groß,MID,Brighton,2,90,5.5,3.0,1,
 2026-27,2,Groß,MID,Brighton,13,90,5.5,4.0,1,2.0
 2026-27,3,Groß,MID,Brighton,1,90,5.5,3.0,1,7.5
 2026-27,4,Groß,MID,Brighton,17,90,5.6,2.0,1,5.33
 2026-27,5,Groß,MID,Brighton,14,90,5.7,4.0,1,8.25
 2026-27,6,Groß,MID,Brighton,6,90,5.9,3.0,1,9.4
+2026-27,7,Groß,MID,Brighton,5,70,6.1,2.0,1,10.2
 2026-27,1,Georginio,FWD,Brighton,5,90,5.5,3.0,1,
 2026-27,5,Georginio,FWD,Brighton,1,14,5.4,4.0,1,1.25
 2026-27,6,Georginio,FWD,Brighton,4,2,5.3,3.0,1,1.2
+2026-27,7,Georginio,FWD,Brighton,1,19,5.3,2.0,1,1.0
 2026-27,4,O'Riley,MID,Brighton,1,6,5.5,2.0,1,0.0
 2026-27,5,O'Riley,MID,Brighton,1,4,5.4,4.0,1,0.25
 2026-27,1,Gomez,MID,Brighton,6,85,5.0,3.0,1,
@@ -45110,25 +45182,30 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Gomez,MID,Brighton,3,83,5.0,2.0,1,4.33
 2026-27,5,Gomez,MID,Brighton,8,85,5.0,4.0,1,4.0
 2026-27,6,Gomez,MID,Brighton,5,87,5.0,3.0,1,4.8
+2026-27,7,Gomez,MID,Brighton,8,90,5.0,2.0,1,4.6
 2026-27,1,Ayari,MID,Brighton,2,63,5.5,3.0,1,
 2026-27,3,Ayari,MID,Brighton,2,90,5.4,3.0,1,1.0
 2026-27,4,Ayari,MID,Brighton,8,90,5.4,2.0,1,1.33
 2026-27,5,Ayari,MID,Brighton,3,90,5.4,4.0,1,3.0
 2026-27,6,Ayari,MID,Brighton,3,87,5.4,3.0,1,3.0
+2026-27,7,Ayari,MID,Brighton,13,80,5.4,2.0,1,3.2
 2026-27,1,Wieffer,DEF,Brighton,7,77,5.0,3.0,1,
 2026-27,2,Wieffer,DEF,Brighton,0,79,5.0,4.0,1,7.0
 2026-27,6,Baleba,MID,Man Utd,3,31,4.9,2.0,1,0.0
+2026-27,7,Baleba,MID,Man Utd,2,73,4.9,3.0,1,0.6
 2026-27,1,Yohanna,MID,Brighton,1,12,5.0,3.0,1,
 2026-27,3,Welbeck,FWD,Chelsea,1,3,5.9,5.0,1,0.0
 2026-27,4,Welbeck,FWD,Chelsea,1,12,5.9,2.0,1,0.33
 2026-27,5,Welbeck,FWD,Chelsea,2,70,5.9,3.0,1,0.5
 2026-27,6,Welbeck,FWD,Chelsea,1,7,5.9,3.0,1,0.8
+2026-27,7,Welbeck,FWD,Chelsea,1,1,5.9,3.0,1,1.0
 2026-27,1,Kostoulas,FWD,Brighton,1,26,5.5,3.0,1,
 2026-27,2,Kostoulas,FWD,Brighton,5,79,5.5,4.0,1,1.0
 2026-27,3,Kostoulas,FWD,Brighton,2,90,5.5,3.0,1,3.0
 2026-27,4,Kostoulas,FWD,Brighton,10,83,5.5,2.0,1,2.67
 2026-27,5,Kostoulas,FWD,Brighton,10,75,5.5,4.0,1,4.5
 2026-27,6,Kostoulas,FWD,Brighton,1,59,5.6,3.0,1,5.6
+2026-27,7,Kostoulas,FWD,Brighton,12,70,5.7,2.0,1,5.6
 2026-27,1,Sánchez,GK,Chelsea,2,90,5.0,3.0,1,
 2026-27,1,James,DEF,Chelsea,0,90,5.5,3.0,1,
 2026-27,2,James,DEF,Chelsea,1,22,5.5,3.0,1,0.0
@@ -45144,21 +45221,26 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Fofana,DEF,Chelsea,1,85,5.0,2.0,1,1.0
 2026-27,5,Fofana,DEF,Chelsea,4,70,5.0,3.0,1,1.0
 2026-27,4,Tosin,DEF,Spurs,1,5,4.4,3.0,1,0.0
+2026-27,7,Tosin,DEF,Spurs,2,70,4.4,2.0,1,0.2
 2026-27,1,Hato,DEF,Chelsea,1,64,4.5,3.0,1,
 2026-27,2,Hato,DEF,Chelsea,4,90,4.5,3.0,1,1.0
 2026-27,3,Hato,DEF,Chelsea,3,59,4.5,5.0,1,2.5
 2026-27,4,Hato,DEF,Chelsea,0,45,4.5,2.0,1,2.67
+2026-27,7,Hato,DEF,Chelsea,11,90,4.5,3.0,1,1.4
 2026-27,1,Colwill,DEF,Chelsea,0,90,5.0,3.0,1,
 2026-27,2,Colwill,DEF,Chelsea,1,71,5.0,3.0,1,0.0
 2026-27,4,Colwill,DEF,Chelsea,1,90,4.9,2.0,1,0.33
 2026-27,5,Colwill,DEF,Chelsea,1,90,4.9,3.0,1,0.5
 2026-27,6,Colwill,DEF,Chelsea,2,90,4.8,3.0,1,0.6
+2026-27,7,Colwill,DEF,Chelsea,6,90,4.8,3.0,1,1.0
 2026-27,1,Acheampong,DEF,Chelsea,3,90,4.5,3.0,1,
 2026-27,2,Acheampong,DEF,Chelsea,1,22,4.5,3.0,1,3.0
 2026-27,3,Acheampong,DEF,Chelsea,1,90,4.5,5.0,1,2.0
 2026-27,5,Acheampong,DEF,Chelsea,0,19,4.5,3.0,1,1.25
 2026-27,6,Acheampong,DEF,Chelsea,2,90,4.5,3.0,1,1.0
+2026-27,7,Acheampong,DEF,Chelsea,7,90,4.5,3.0,1,0.8
 2026-27,6,Palestra,DEF,Chelsea,1,18,5.3,3.0,1,0.0
+2026-27,7,Palestra,DEF,Chelsea,1,1,5.3,3.0,1,0.2
 2026-27,2,Disasi,DEF,Crystal Palace,1,16,4.5,4.0,1,0.0
 2026-27,3,Disasi,DEF,Crystal Palace,3,90,4.5,3.0,1,0.5
 2026-27,4,Disasi,DEF,Crystal Palace,-3,33,4.5,2.0,1,1.33
@@ -45168,17 +45250,20 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Palmer,MID,Chelsea,5,90,9.7,2.0,1,7.0
 2026-27,5,Palmer,MID,Chelsea,2,90,9.7,3.0,1,6.5
 2026-27,6,Palmer,MID,Chelsea,8,87,9.7,3.0,1,5.6
+2026-27,7,Palmer,MID,Chelsea,2,90,9.7,3.0,1,4.6
 2026-27,1,Enzo,MID,Man City,1,25,7.0,3.0,1,
 2026-27,3,Enzo,MID,Man City,3,75,6.9,2.0,1,0.5
 2026-27,4,Enzo,MID,Man City,2,81,6.9,4.0,1,1.33
 2026-27,5,Enzo,MID,Man City,7,90,6.9,3.0,1,1.5
 2026-27,6,Enzo,MID,Man City,3,79,6.9,4.0,1,2.6
+2026-27,7,Enzo,MID,Man City,1,40,6.9,2.0,1,3.0
 2026-27,1,Neto,MID,Chelsea,1,14,6.5,3.0,1,
 2026-27,2,Neto,MID,Chelsea,7,67,6.5,3.0,1,1.0
 2026-27,3,Neto,MID,Chelsea,2,80,6.5,5.0,1,4.0
 2026-27,4,Neto,MID,Chelsea,2,85,6.5,2.0,1,3.33
 2026-27,5,Neto,MID,Chelsea,2,86,6.5,3.0,1,3.0
 2026-27,6,Neto,MID,Chelsea,5,82,6.5,3.0,1,2.8
+2026-27,7,Neto,MID,Chelsea,15,90,6.5,3.0,1,3.6
 2026-27,1,Estêvão,MID,Chelsea,1,7,6.5,3.0,1,
 2026-27,3,Estêvão,MID,Chelsea,1,9,6.4,5.0,1,0.5
 2026-27,4,Estêvão,MID,Chelsea,1,4,6.4,2.0,1,0.67
@@ -45186,6 +45271,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,6,Estêvão,MID,Chelsea,1,6,6.3,3.0,1,0.8
 2026-27,2,Caicedo,MID,Chelsea,1,13,5.5,3.0,1,0.0
 2026-27,6,Caicedo,MID,Chelsea,2,71,5.3,3.0,1,0.2
+2026-27,7,Caicedo,MID,Chelsea,3,90,5.3,3.0,1,0.6
 2026-27,1,Garnacho,MID,Aston Villa,1,4,6.0,4.0,1,
 2026-27,2,Garnacho,MID,Aston Villa,1,12,6.0,4.0,1,1.0
 2026-27,3,Garnacho,MID,Aston Villa,1,15,5.9,2.0,1,1.0
@@ -45194,43 +45280,53 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Lavia,MID,Chelsea,1,59,5.0,5.0,1,4.0
 2026-27,4,Lavia,MID,Chelsea,2,68,5.0,2.0,1,3.0
 2026-27,6,Lavia,MID,Chelsea,1,18,5.0,3.0,1,2.2
+2026-27,7,Lavia,MID,Chelsea,1,1,5.0,3.0,1,2.2
 2026-27,1,Andrey Santos,MID,Man Utd,2,66,5.0,2.0,1,
 2026-27,2,Andrey Santos,MID,Man Utd,1,10,5.0,2.0,1,2.0
 2026-27,3,Andrey Santos,MID,Man Utd,1,6,4.9,3.0,1,1.5
+2026-27,7,Andrey Santos,MID,Man Utd,1,90,4.7,3.0,1,0.4
 2026-27,1,Quenda,MID,Chelsea,1,8,5.5,3.0,1,
 2026-27,5,Quenda,MID,Chelsea,1,19,5.3,3.0,1,0.25
+2026-27,7,Quenda,MID,Chelsea,1,1,5.3,3.0,1,0.2
 2026-27,1,João Pedro,FWD,Chelsea,11,90,7.5,3.0,1,
 2026-27,2,João Pedro,FWD,Chelsea,9,90,7.6,3.0,1,11.0
 2026-27,3,João Pedro,FWD,Chelsea,1,90,7.7,5.0,1,10.0
 2026-27,4,João Pedro,FWD,Chelsea,12,90,7.7,2.0,1,7.0
 2026-27,6,João Pedro,FWD,Chelsea,12,71,7.7,3.0,1,6.6
+2026-27,7,João Pedro,FWD,Chelsea,2,90,7.8,3.0,1,6.8
 2026-27,2,N.Jackson,FWD,Aston Villa,2,70,6.5,4.0,1,0.0
 2026-27,3,N.Jackson,FWD,Aston Villa,2,84,6.5,2.0,1,1.0
 2026-27,4,N.Jackson,FWD,Aston Villa,0,45,6.5,3.0,1,1.33
 2026-27,5,N.Jackson,FWD,Aston Villa,6,87,6.5,3.0,1,1.0
 2026-27,6,N.Jackson,FWD,Aston Villa,9,90,6.5,3.0,1,2.0
+2026-27,7,N.Jackson,FWD,Aston Villa,2,90,6.6,3.0,1,3.8
 2026-27,2,Delap,FWD,Nott'm Forest,1,24,5.5,4.0,1,0.0
 2026-27,3,Delap,FWD,Nott'm Forest,2,73,5.5,2.0,1,0.5
 2026-27,4,Delap,FWD,Nott'm Forest,5,90,5.5,3.0,1,1.0
 2026-27,5,Delap,FWD,Nott'm Forest,1,90,5.5,2.0,1,2.0
 2026-27,6,Delap,FWD,Nott'm Forest,2,71,5.6,3.0,1,1.8
+2026-27,7,Delap,FWD,Nott'm Forest,2,90,5.5,4.0,1,2.2
 2026-27,1,Thomas,DEF,Coventry City,3,90,4.0,5.0,1,
 2026-27,2,Thomas,DEF,Coventry City,8,77,4.0,2.0,1,3.0
 2026-27,3,Thomas,DEF,Coventry City,4,90,4.0,5.0,1,5.5
 2026-27,4,Thomas,DEF,Coventry City,0,90,4.0,3.0,1,5.0
 2026-27,5,Thomas,DEF,Coventry City,9,90,4.0,3.0,1,3.75
 2026-27,6,Thomas,DEF,Coventry City,4,90,4.0,3.0,1,4.8
+2026-27,7,Thomas,DEF,Coventry City,3,90,4.0,3.0,1,5.0
 2026-27,1,van Ewijk,DEF,Coventry City,1,90,4.0,5.0,1,
 2026-27,2,van Ewijk,DEF,Coventry City,2,90,4.0,2.0,1,1.0
 2026-27,3,van Ewijk,DEF,Coventry City,3,90,4.0,5.0,1,1.5
 2026-27,4,van Ewijk,DEF,Coventry City,0,90,4.0,3.0,1,2.0
 2026-27,6,van Ewijk,DEF,Coventry City,6,90,4.0,3.0,1,1.2
+2026-27,7,van Ewijk,DEF,Coventry City,1,90,3.9,3.0,1,2.2
 2026-27,1,Dasilva,DEF,Coventry City,1,90,4.0,5.0,1,
 2026-27,2,Dasilva,DEF,Coventry City,2,90,4.0,2.0,1,1.0
 2026-27,3,Dasilva,DEF,Coventry City,2,84,4.0,5.0,1,1.5
 2026-27,4,Dasilva,DEF,Coventry City,0,90,4.0,3.0,1,1.67
 2026-27,5,Dasilva,DEF,Coventry City,15,90,4.0,3.0,1,1.25
 2026-27,6,Dasilva,DEF,Coventry City,5,90,4.0,3.0,1,4.0
+2026-27,7,Dasilva,DEF,Coventry City,0,90,4.0,3.0,1,4.8
+2026-27,7,Kesler-Hayden,DEF,Coventry City,1,3,3.9,3.0,1,0.0
 2026-27,5,Latibeaudiere,DEF,Coventry City,1,1,4.0,3.0,1,0.0
 2026-27,1,Amenda,DEF,Coventry City,1,90,4.0,5.0,1,
 2026-27,2,Amenda,DEF,Coventry City,1,90,4.0,2.0,1,1.0
@@ -45242,19 +45338,23 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Rudoni,MID,Coventry City,2,72,5.0,3.0,1,2.0
 2026-27,5,Rudoni,MID,Coventry City,5,73,4.9,3.0,1,2.0
 2026-27,6,Rudoni,MID,Coventry City,7,82,4.9,3.0,1,2.6
+2026-27,7,Rudoni,MID,Coventry City,6,86,4.9,3.0,1,3.8
 2026-27,1,Grimes,MID,Coventry City,2,90,5.0,5.0,1,
 2026-27,2,Grimes,MID,Coventry City,2,90,5.0,2.0,1,2.0
 2026-27,3,Grimes,MID,Coventry City,2,90,5.0,5.0,1,2.0
 2026-27,4,Grimes,MID,Coventry City,2,83,5.0,3.0,1,2.0
 2026-27,5,Grimes,MID,Coventry City,3,90,4.9,3.0,1,2.0
 2026-27,6,Grimes,MID,Coventry City,2,82,4.9,3.0,1,2.2
+2026-27,7,Grimes,MID,Coventry City,2,90,4.9,3.0,1,2.2
 2026-27,2,Sakamoto,MID,Coventry City,1,31,5.0,2.0,1,0.0
 2026-27,6,Sakamoto,MID,Coventry City,1,29,4.8,3.0,1,0.2
+2026-27,7,Sakamoto,MID,Coventry City,2,77,4.8,3.0,1,0.4
 2026-27,2,Mason-Clark,MID,Coventry City,1,57,5.5,2.0,1,0.0
 2026-27,3,Mason-Clark,MID,Coventry City,2,70,5.4,5.0,1,0.5
 2026-27,4,Mason-Clark,MID,Coventry City,1,59,5.4,3.0,1,1.0
 2026-27,5,Mason-Clark,MID,Coventry City,1,45,5.4,3.0,1,1.0
 2026-27,6,Mason-Clark,MID,Coventry City,3,60,5.3,3.0,1,1.0
+2026-27,7,Mason-Clark,MID,Coventry City,1,12,5.3,3.0,1,1.6
 2026-27,1,Torp,MID,Coventry City,1,28,5.5,5.0,1,
 2026-27,2,Torp,MID,Coventry City,1,19,5.5,2.0,1,1.0
 2026-27,4,Torp,MID,Coventry City,1,6,5.4,3.0,1,0.67
@@ -45269,6 +45369,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Thomas-Asante,FWD,Coventry City,1,17,5.0,3.0,1,1.33
 2026-27,5,Thomas-Asante,FWD,Coventry City,4,90,5.0,3.0,1,1.25
 2026-27,6,Thomas-Asante,FWD,Coventry City,5,90,5.0,3.0,1,1.8
+2026-27,7,Thomas-Asante,FWD,Coventry City,5,77,5.0,3.0,1,2.4
 2026-27,1,Simms,FWD,Coventry City,2,69,5.0,5.0,1,
 2026-27,3,Simms,FWD,Coventry City,1,19,5.0,5.0,1,1.0
 2026-27,5,Simms,FWD,Coventry City,1,16,5.0,3.0,1,0.75
@@ -45279,34 +45380,40 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Benitez,GK,Crystal Palace,2,90,4.5,2.0,1,0.0
 2026-27,5,Benitez,GK,Crystal Palace,6,90,4.5,3.0,1,0.5
 2026-27,6,Benitez,GK,Crystal Palace,3,90,4.5,3.0,1,1.6
+2026-27,7,Benitez,GK,Crystal Palace,1,90,4.5,4.0,1,2.2
 2026-27,1,Lacroix,DEF,Chelsea,6,90,6.0,3.0,1,
 2026-27,2,Lacroix,DEF,Chelsea,1,90,6.0,3.0,1,6.0
 2026-27,3,Lacroix,DEF,Chelsea,2,90,6.0,5.0,1,3.5
 2026-27,4,Lacroix,DEF,Chelsea,1,4,6.0,2.0,1,3.0
 2026-27,5,Lacroix,DEF,Chelsea,3,90,6.0,3.0,1,2.5
 2026-27,6,Lacroix,DEF,Chelsea,2,90,5.9,3.0,1,2.6
+2026-27,7,Lacroix,DEF,Chelsea,6,90,5.9,3.0,1,1.8
 2026-27,1,Muñoz,DEF,Nott'm Forest,0,54,5.5,3.0,1,
 2026-27,3,Muñoz,DEF,Nott'm Forest,1,31,5.4,2.0,1,0.0
 2026-27,4,Muñoz,DEF,Nott'm Forest,2,90,5.4,3.0,1,0.33
 2026-27,5,Muñoz,DEF,Nott'm Forest,2,82,5.4,2.0,1,0.75
 2026-27,6,Muñoz,DEF,Nott'm Forest,1,90,5.4,3.0,1,1.0
+2026-27,7,Muñoz,DEF,Nott'm Forest,2,90,5.3,4.0,1,1.2
 2026-27,1,Richards,DEF,Crystal Palace,3,90,5.0,3.0,1,
 2026-27,2,Richards,DEF,Crystal Palace,0,90,5.0,4.0,1,3.0
 2026-27,3,Richards,DEF,Crystal Palace,1,90,5.0,3.0,1,1.5
 2026-27,4,Richards,DEF,Crystal Palace,2,90,5.0,2.0,1,1.33
 2026-27,5,Richards,DEF,Crystal Palace,8,90,5.0,3.0,1,1.5
 2026-27,6,Richards,DEF,Crystal Palace,4,90,4.9,3.0,1,2.8
+2026-27,7,Richards,DEF,Crystal Palace,2,90,4.9,4.0,1,3.0
 2026-27,1,Canvot,DEF,Crystal Palace,1,90,5.0,3.0,1,
 2026-27,2,Canvot,DEF,Crystal Palace,0,90,5.0,4.0,1,1.0
 2026-27,3,Canvot,DEF,Crystal Palace,1,90,4.9,3.0,1,0.5
 2026-27,5,Canvot,DEF,Crystal Palace,8,90,4.9,3.0,1,0.5
 2026-27,6,Canvot,DEF,Crystal Palace,4,90,4.8,3.0,1,2.0
+2026-27,7,Canvot,DEF,Crystal Palace,-2,90,4.8,4.0,1,2.6
 2026-27,1,Mitchell,DEF,Crystal Palace,1,90,4.5,3.0,1,
 2026-27,2,Mitchell,DEF,Crystal Palace,0,90,4.5,4.0,1,1.0
 2026-27,3,Mitchell,DEF,Crystal Palace,15,73,4.5,3.0,1,0.5
 2026-27,4,Mitchell,DEF,Crystal Palace,1,76,4.5,2.0,1,5.33
 2026-27,5,Mitchell,DEF,Crystal Palace,7,90,4.5,3.0,1,4.25
 2026-27,6,Mitchell,DEF,Crystal Palace,4,90,4.5,3.0,1,4.8
+2026-27,7,Mitchell,DEF,Crystal Palace,0,90,4.5,4.0,1,5.4
 2026-27,1,Chadi Riad,DEF,Crystal Palace,1,72,4.5,3.0,1,
 2026-27,2,Mingueza,DEF,Crystal Palace,1,15,4.5,4.0,1,0.0
 2026-27,3,Mingueza,DEF,Crystal Palace,1,1,4.4,3.0,1,0.5
@@ -45318,59 +45425,71 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Johnson,MID,Everton,3,74,5.9,3.0,1,1.0
 2026-27,5,Johnson,MID,Everton,3,65,5.9,2.0,1,1.5
 2026-27,6,Johnson,MID,Everton,2,65,5.9,2.0,1,1.8
+2026-27,7,Johnson,MID,Everton,1,5,5.9,4.0,1,2.0
 2026-27,1,Wharton,MID,Crystal Palace,4,90,5.5,3.0,1,
 2026-27,2,Wharton,MID,Crystal Palace,2,90,5.5,4.0,1,4.0
 2026-27,3,Wharton,MID,Crystal Palace,2,90,5.5,3.0,1,3.0
 2026-27,4,Wharton,MID,Crystal Palace,2,76,5.5,2.0,1,2.67
 2026-27,5,Wharton,MID,Crystal Palace,2,90,5.5,3.0,1,2.5
 2026-27,6,Wharton,MID,Crystal Palace,7,90,5.4,3.0,1,2.4
+2026-27,7,Wharton,MID,Crystal Palace,2,90,5.4,4.0,1,3.0
 2026-27,1,Yeremy,MID,Crystal Palace,1,35,5.5,3.0,1,
 2026-27,2,Yeremy,MID,Crystal Palace,5,67,5.5,4.0,1,1.0
 2026-27,3,Yeremy,MID,Crystal Palace,5,88,5.5,3.0,1,3.0
 2026-27,4,Yeremy,MID,Crystal Palace,1,36,5.5,2.0,1,3.67
 2026-27,5,Yeremy,MID,Crystal Palace,2,81,5.5,3.0,1,3.0
 2026-27,6,Yeremy,MID,Crystal Palace,9,82,5.5,3.0,1,2.8
+2026-27,7,Yeremy,MID,Crystal Palace,2,60,5.5,4.0,1,4.4
 2026-27,3,Hughes,MID,Crystal Palace,1,16,4.5,3.0,1,0.0
 2026-27,4,Hughes,MID,Crystal Palace,1,13,4.5,2.0,1,0.33
+2026-27,7,Hughes,MID,Crystal Palace,1,9,4.4,4.0,1,0.4
 2026-27,4,Lerma,MID,Crystal Palace,1,6,4.9,2.0,1,0.0
 2026-27,5,Lerma,MID,Crystal Palace,0,45,4.9,3.0,1,0.25
 2026-27,6,Lerma,MID,Crystal Palace,8,71,4.8,3.0,1,0.2
+2026-27,7,Lerma,MID,Crystal Palace,1,37,4.8,4.0,1,1.8
 2026-27,1,Kamada,MID,Crystal Palace,3,90,5.0,3.0,1,
 2026-27,2,Kamada,MID,Crystal Palace,2,90,5.0,4.0,1,3.0
 2026-27,3,Kamada,MID,Crystal Palace,5,88,5.0,3.0,1,2.5
 2026-27,4,Kamada,MID,Crystal Palace,8,83,5.0,2.0,1,3.33
 2026-27,5,Kamada,MID,Crystal Palace,3,90,5.0,3.0,1,4.5
 2026-27,6,Kamada,MID,Crystal Palace,8,89,5.0,3.0,1,4.2
+2026-27,7,Kamada,MID,Crystal Palace,1,80,5.0,4.0,1,5.2
 2026-27,1,Strand Larsen,FWD,Crystal Palace,1,27,6.0,3.0,1,
 2026-27,2,Strand Larsen,FWD,Crystal Palace,2,62,6.0,4.0,1,1.0
 2026-27,3,Strand Larsen,FWD,Crystal Palace,1,45,6.0,3.0,1,1.5
 2026-27,4,Strand Larsen,FWD,Crystal Palace,8,83,6.0,2.0,1,1.33
 2026-27,5,Strand Larsen,FWD,Crystal Palace,2,81,6.0,3.0,1,3.0
 2026-27,6,Strand Larsen,FWD,Crystal Palace,5,82,6.0,3.0,1,2.8
+2026-27,7,Strand Larsen,FWD,Crystal Palace,2,60,6.0,4.0,1,3.6
 2026-27,1,Mateta,FWD,Crystal Palace,2,62,6.5,3.0,1,
+2026-27,7,Mateta,FWD,Crystal Palace,1,29,6.3,4.0,1,0.0
 2026-27,1,Nketiah,FWD,Crystal Palace,1,55,5.5,3.0,1,
 2026-27,2,Nketiah,FWD,Crystal Palace,2,67,5.5,4.0,1,1.0
 2026-27,3,Nketiah,FWD,Crystal Palace,4,45,5.5,3.0,1,1.5
 2026-27,5,Nketiah,FWD,Crystal Palace,1,8,5.5,3.0,1,1.75
 2026-27,6,Nketiah,FWD,Crystal Palace,1,7,5.5,3.0,1,1.6
+2026-27,7,Nketiah,FWD,Crystal Palace,1,29,5.5,4.0,1,1.6
 2026-27,1,Pickford,GK,Everton,7,90,5.5,2.0,1,
 2026-27,2,Pickford,GK,Everton,3,90,5.5,3.0,1,7.0
 2026-27,3,Pickford,GK,Everton,1,90,5.5,4.0,1,5.0
 2026-27,4,Pickford,GK,Everton,6,90,5.5,3.0,1,3.67
 2026-27,5,Pickford,GK,Everton,8,90,5.5,2.0,1,4.25
 2026-27,6,Pickford,GK,Everton,1,90,5.5,2.0,1,5.0
+2026-27,7,Pickford,GK,Everton,2,90,5.5,4.0,1,3.8
 2026-27,1,Tarkowski,DEF,Everton,6,90,6.0,2.0,1,
 2026-27,2,Tarkowski,DEF,Everton,12,90,6.0,3.0,1,6.0
 2026-27,3,Tarkowski,DEF,Everton,3,90,6.0,4.0,1,9.0
 2026-27,4,Tarkowski,DEF,Everton,8,90,6.0,3.0,1,7.0
 2026-27,5,Tarkowski,DEF,Everton,14,90,6.1,2.0,1,7.25
 2026-27,6,Tarkowski,DEF,Everton,3,90,6.2,2.0,1,8.6
+2026-27,7,Tarkowski,DEF,Everton,0,90,6.2,4.0,1,8.0
 2026-27,1,Branthwaite,DEF,Everton,6,90,5.5,2.0,1,
 2026-27,2,Branthwaite,DEF,Everton,4,90,5.5,3.0,1,6.0
 2026-27,3,Branthwaite,DEF,Everton,3,90,5.5,4.0,1,5.0
 2026-27,4,Branthwaite,DEF,Everton,6,90,5.5,3.0,1,4.33
 2026-27,5,Branthwaite,DEF,Everton,8,90,5.5,2.0,1,4.75
 2026-27,6,Branthwaite,DEF,Everton,3,90,5.5,2.0,1,5.4
+2026-27,7,Branthwaite,DEF,Everton,1,90,5.5,4.0,1,4.8
 2026-27,6,Keane,DEF,Everton,1,90,4.8,2.0,1,0.0
 2026-27,4,O'Brien,DEF,Everton,1,15,4.9,3.0,1,0.0
 2026-27,5,O'Brien,DEF,Everton,1,1,4.9,2.0,1,0.25
@@ -45380,42 +45499,50 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Mykolenko,DEF,Everton,1,90,4.5,4.0,1,5.0
 2026-27,4,Mykolenko,DEF,Everton,11,90,4.5,3.0,1,3.67
 2026-27,5,Mykolenko,DEF,Everton,5,90,4.5,2.0,1,5.5
+2026-27,7,Mykolenko,DEF,Everton,1,90,4.6,4.0,1,4.2
 2026-27,1,Dewsbury-Hall,MID,Everton,11,90,6.5,2.0,1,
 2026-27,2,Dewsbury-Hall,MID,Everton,2,90,6.5,3.0,1,11.0
 2026-27,3,Dewsbury-Hall,MID,Everton,2,90,6.5,4.0,1,6.5
 2026-27,4,Dewsbury-Hall,MID,Everton,2,90,6.5,3.0,1,5.0
 2026-27,5,Dewsbury-Hall,MID,Everton,3,90,6.5,2.0,1,4.25
 2026-27,6,Dewsbury-Hall,MID,Everton,13,90,6.6,2.0,1,4.0
+2026-27,7,Dewsbury-Hall,MID,Everton,2,90,6.6,4.0,1,4.4
 2026-27,1,Ndiaye,MID,Man City,9,90,6.0,2.0,1,
 2026-27,2,Ndiaye,MID,Man City,4,90,6.0,3.0,1,9.0
 2026-27,3,Ndiaye,MID,Man City,3,86,6.0,2.0,1,6.5
 2026-27,4,Ndiaye,MID,Man City,1,45,5.9,4.0,1,5.33
 2026-27,5,Ndiaye,MID,Man City,5,74,5.9,3.0,1,4.25
 2026-27,6,Ndiaye,MID,Man City,1,55,5.8,4.0,1,4.4
+2026-27,7,Ndiaye,MID,Man City,5,90,5.8,2.0,1,2.8
 2026-27,1,Grealish,MID,Everton,1,8,6.5,3.0,1,
 2026-27,3,Grealish,MID,Everton,1,24,6.5,4.0,1,0.5
 2026-27,4,Grealish,MID,Everton,1,25,6.5,3.0,1,0.67
 2026-27,5,Grealish,MID,Everton,3,78,6.5,2.0,1,0.75
 2026-27,6,Grealish,MID,Everton,2,85,6.5,2.0,1,1.2
+2026-27,7,Grealish,MID,Everton,2,84,6.5,4.0,1,1.4
 2026-27,1,Garner,MID,Everton,1,11,6.0,2.0,1,
 2026-27,2,Garner,MID,Everton,1,61,6.0,3.0,1,1.0
 2026-27,3,Garner,MID,Everton,2,76,6.0,4.0,1,1.0
 2026-27,4,Garner,MID,Everton,4,90,6.0,3.0,1,1.33
 2026-27,5,Garner,MID,Everton,3,90,6.0,2.0,1,2.0
 2026-27,6,Garner,MID,Everton,4,90,6.0,2.0,1,2.2
+2026-27,7,Garner,MID,Everton,2,90,6.0,4.0,1,2.8
 2026-27,2,Iroegbunam,MID,Hull City,1,4,5.0,3.0,1,0.0
 2026-27,4,Iroegbunam,MID,Hull City,0,21,5.0,4.0,1,0.33
 2026-27,5,Iroegbunam,MID,Hull City,1,45,5.0,3.0,1,0.25
 2026-27,6,Iroegbunam,MID,Hull City,1,25,5.0,3.0,1,0.4
+2026-27,7,Iroegbunam,MID,Hull City,1,45,5.0,3.0,1,0.6
 2026-27,1,McNeil,MID,Crystal Palace,2,62,5.5,3.0,1,
 2026-27,2,McNeil,MID,Crystal Palace,1,22,5.5,4.0,1,2.0
 2026-27,6,McNeil,MID,Crystal Palace,1,1,5.3,3.0,1,0.6
+2026-27,7,McNeil,MID,Crystal Palace,1,45,5.3,4.0,1,0.4
 2026-27,1,George,MID,Everton,3,83,5.5,2.0,1,
 2026-27,2,George,MID,Everton,2,61,5.5,3.0,1,3.0
 2026-27,3,George,MID,Everton,10,90,5.5,4.0,1,2.5
 2026-27,4,George,MID,Everton,3,64,5.5,3.0,1,5.0
 2026-27,5,George,MID,Everton,1,11,5.5,2.0,1,4.5
 2026-27,6,George,MID,Everton,1,24,5.5,2.0,1,3.8
+2026-27,7,George,MID,Everton,1,35,5.5,4.0,1,3.4
 2026-27,1,Alcaraz,MID,Everton,1,1,5.0,2.0,1,
 2026-27,2,Alcaraz,MID,Everton,0,4,5.0,3.0,1,1.0
 2026-27,6,Alcaraz,MID,Everton,1,4,4.9,2.0,1,0.2
@@ -45425,11 +45552,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Armstrong,MID,Everton,3,90,5.0,3.0,1,3.67
 2026-27,5,Armstrong,MID,Everton,2,90,5.0,2.0,1,3.5
 2026-27,6,Armstrong,MID,Everton,2,77,5.0,2.0,1,3.2
+2026-27,7,Armstrong,MID,Everton,1,84,5.0,4.0,1,2.0
 2026-27,5,Dibling,MID,Everton,1,24,5.4,2.0,1,0.0
 2026-27,6,Dibling,MID,Everton,1,4,5.3,2.0,1,0.2
 2026-27,1,Röhl,MID,Everton,3,90,5.0,2.0,1,
 2026-27,2,Röhl,MID,Everton,2,85,5.0,3.0,1,3.0
 2026-27,3,Röhl,MID,Everton,1,74,5.0,4.0,1,2.5
+2026-27,7,Röhl,MID,Everton,2,90,4.9,4.0,1,0.6
 2026-27,1,Hackney,MID,Everton,3,78,5.5,2.0,1,
 2026-27,2,Hackney,MID,Everton,1,28,5.5,3.0,1,3.0
 2026-27,3,Hackney,MID,Everton,4,15,5.5,4.0,1,2.0
@@ -45444,12 +45573,14 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Barry,FWD,Everton,2,90,5.6,3.0,1,4.0
 2026-27,5,Barry,FWD,Everton,6,90,5.6,2.0,1,3.5
 2026-27,6,Barry,FWD,Everton,6,85,5.7,2.0,1,4.0
+2026-27,7,Barry,FWD,Everton,2,90,5.7,4.0,1,3.6
 2026-27,1,Leno,GK,Fulham,2,90,4.5,4.0,1,
 2026-27,2,Leno,GK,Fulham,3,90,4.5,3.0,1,2.0
 2026-27,3,Leno,GK,Fulham,1,90,4.5,2.0,1,2.5
 2026-27,4,Leno,GK,Fulham,9,90,4.5,4.0,1,2.0
 2026-27,5,Leno,GK,Fulham,3,90,4.5,4.0,1,3.75
 2026-27,6,Leno,GK,Fulham,2,90,4.5,2.0,1,3.6
+2026-27,7,Leno,GK,Fulham,6,90,4.5,2.0,1,3.6
 2026-27,2,Andersen,DEF,Fulham,1,90,5.0,3.0,1,0.0
 2026-27,3,Andersen,DEF,Fulham,1,90,5.0,2.0,1,0.5
 2026-27,5,Andersen,DEF,Fulham,1,10,5.0,4.0,1,0.5
@@ -45458,6 +45589,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Robinson,DEF,Fulham,1,78,4.5,2.0,1,1.5
 2026-27,4,Robinson,DEF,Fulham,6,90,4.5,4.0,1,1.33
 2026-27,5,Robinson,DEF,Fulham,2,90,4.5,4.0,1,2.5
+2026-27,7,Robinson,DEF,Fulham,7,90,4.5,2.0,1,2.2
 2026-27,1,J.Cuenca,DEF,Fulham,3,90,4.5,4.0,1,
 2026-27,4,Tete,DEF,Fulham,0,27,4.4,4.0,1,0.0
 2026-27,6,Tete,DEF,Fulham,1,90,4.4,2.0,1,0.0
@@ -45467,17 +45599,20 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Bassey,DEF,Fulham,6,90,4.5,4.0,1,1.0
 2026-27,5,Bassey,DEF,Fulham,6,90,4.5,4.0,1,2.25
 2026-27,6,Bassey,DEF,Fulham,2,90,4.5,2.0,1,3.0
+2026-27,7,Bassey,DEF,Fulham,8,90,4.5,2.0,1,3.4
 2026-27,1,Castagne,DEF,Fulham,6,90,4.5,4.0,1,
 2026-27,2,Castagne,DEF,Fulham,6,67,4.5,3.0,1,6.0
 2026-27,3,Castagne,DEF,Fulham,1,90,4.5,2.0,1,6.0
 2026-27,4,Castagne,DEF,Fulham,6,71,4.5,4.0,1,4.33
 2026-27,5,Castagne,DEF,Fulham,1,90,4.5,4.0,1,4.75
+2026-27,7,Castagne,DEF,Fulham,8,90,4.5,2.0,1,2.8
 2026-27,1,Diop,DEF,Ipswich Town,2,90,4.0,3.0,1,
 2026-27,2,Diop,DEF,Ipswich Town,2,90,4.0,4.0,1,2.0
 2026-27,3,Diop,DEF,Ipswich Town,3,90,4.0,4.0,1,2.0
 2026-27,4,Diop,DEF,Ipswich Town,1,90,4.0,3.0,1,2.33
 2026-27,5,Diop,DEF,Ipswich Town,4,90,4.0,3.0,1,2.0
 2026-27,6,Diop,DEF,Ipswich Town,2,90,4.0,2.0,1,2.4
+2026-27,7,Diop,DEF,Ipswich Town,3,90,4.0,5.0,1,2.4
 2026-27,1,Wilson,MID,Leeds,3,65,6.5,3.0,1,
 2026-27,2,Wilson,MID,Leeds,1,45,6.5,3.0,1,3.0
 2026-27,3,Wilson,MID,Leeds,0,17,6.4,4.0,1,2.0
@@ -45489,6 +45624,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Iwobi,MID,Fulham,3,76,5.4,4.0,1,2.0
 2026-27,5,Iwobi,MID,Fulham,5,70,5.4,4.0,1,2.25
 2026-27,6,Iwobi,MID,Fulham,4,86,5.4,2.0,1,2.8
+2026-27,7,Iwobi,MID,Fulham,11,90,5.4,2.0,1,3.2
 2026-27,2,Smith Rowe,MID,Fulham,1,14,5.5,3.0,1,0.0
 2026-27,3,Smith Rowe,MID,Fulham,1,11,5.5,2.0,1,0.5
 2026-27,4,Smith Rowe,MID,Fulham,1,13,5.4,4.0,1,0.67
@@ -45504,12 +45640,15 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Bobb,MID,Fulham,3,62,5.5,4.0,1,2.33
 2026-27,5,Bobb,MID,Fulham,3,70,5.5,4.0,1,2.5
 2026-27,6,Bobb,MID,Fulham,3,75,5.5,2.0,1,2.6
+2026-27,7,Bobb,MID,Fulham,3,77,5.5,2.0,1,2.8
 2026-27,1,Berge,MID,Fulham,2,72,5.0,4.0,1,
 2026-27,2,Berge,MID,Fulham,2,82,5.0,3.0,1,2.0
 2026-27,3,Berge,MID,Fulham,1,29,5.0,2.0,1,2.0
 2026-27,4,Berge,MID,Fulham,3,90,4.9,4.0,1,1.67
 2026-27,5,Berge,MID,Fulham,3,76,4.9,4.0,1,2.0
 2026-27,6,Berge,MID,Fulham,2,90,4.9,2.0,1,2.2
+2026-27,7,Berge,MID,Fulham,5,90,4.9,2.0,1,2.2
+2026-27,7,Cairney,MID,Fulham,1,12,4.9,2.0,1,0.0
 2026-27,1,Lukić,MID,Ipswich Town,5,90,5.0,3.0,1,
 2026-27,2,Lukić,MID,Ipswich Town,1,72,5.0,4.0,1,5.0
 2026-27,3,Lukić,MID,Ipswich Town,2,90,5.0,4.0,1,3.0
@@ -45522,10 +45661,12 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,King,MID,Fulham,3,76,5.5,4.0,1,6.33
 2026-27,5,King,MID,Fulham,2,79,5.5,4.0,1,5.5
 2026-27,6,King,MID,Fulham,2,75,5.6,2.0,1,4.8
+2026-27,7,King,MID,Fulham,2,77,5.6,2.0,1,3.8
 2026-27,1,Sessegnon,DEF,Fulham,1,17,4.5,4.0,1,
 2026-27,2,Sessegnon,DEF,Fulham,1,22,4.5,3.0,1,1.0
 2026-27,3,Sessegnon,DEF,Fulham,1,11,4.5,2.0,1,1.0
 2026-27,6,Sessegnon,DEF,Fulham,7,90,4.3,2.0,1,0.6
+2026-27,7,Sessegnon,DEF,Fulham,-2,12,4.3,2.0,1,1.8
 2026-27,1,Muniz,FWD,Fulham,1,8,5.5,4.0,1,
 2026-27,3,Muniz,FWD,Fulham,1,7,5.5,2.0,1,0.5
 2026-27,4,Muniz,FWD,Fulham,1,13,5.4,4.0,1,0.67
@@ -45537,18 +45678,21 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Egan,DEF,Hull City,2,90,4.1,4.0,1,7.67
 2026-27,5,Egan,DEF,Hull City,1,77,4.1,3.0,1,6.25
 2026-27,6,Egan,DEF,Hull City,1,90,4.1,3.0,1,5.2
+2026-27,7,Egan,DEF,Hull City,4,90,4.1,3.0,1,3.8
 2026-27,1,Ajayi,DEF,Hull City,14,63,4.0,4.0,1,
 2026-27,2,Ajayi,DEF,Hull City,6,90,4.0,2.0,1,14.0
 2026-27,3,Ajayi,DEF,Hull City,5,90,4.1,3.0,1,10.0
 2026-27,4,Ajayi,DEF,Hull City,1,90,4.2,4.0,1,8.33
 2026-27,5,Ajayi,DEF,Hull City,1,90,4.2,3.0,1,6.5
 2026-27,6,Ajayi,DEF,Hull City,1,90,4.2,3.0,1,5.4
+2026-27,7,Ajayi,DEF,Hull City,2,90,4.2,3.0,1,2.8
 2026-27,1,Coyle,DEF,Hull City,6,69,4.0,4.0,1,
 2026-27,2,Coyle,DEF,Hull City,0,45,4.0,2.0,1,6.0
 2026-27,3,Coyle,DEF,Hull City,6,63,4.0,3.0,1,3.0
 2026-27,4,Coyle,DEF,Hull City,1,81,4.0,4.0,1,4.0
 2026-27,5,Coyle,DEF,Hull City,1,90,4.0,3.0,1,3.25
 2026-27,6,Coyle,DEF,Hull City,1,90,4.0,3.0,1,2.8
+2026-27,7,Coyle,DEF,Hull City,2,90,4.0,3.0,1,1.8
 2026-27,1,Drameh,DEF,Hull City,1,20,4.0,4.0,1,
 2026-27,2,Drameh,DEF,Hull City,1,45,4.0,2.0,1,1.0
 2026-27,1,Giles,DEF,Hull City,6,84,4.0,4.0,1,
@@ -45557,6 +45701,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Giles,DEF,Hull City,4,90,4.0,4.0,1,6.67
 2026-27,5,Giles,DEF,Hull City,0,90,4.0,3.0,1,6.0
 2026-27,6,Giles,DEF,Hull City,2,63,4.0,3.0,1,4.8
+2026-27,7,Giles,DEF,Hull City,1,22,4.0,3.0,1,4.0
 2026-27,1,McNair,DEF,Hull City,1,26,4.0,4.0,1,
 2026-27,1,Belloumi,MID,Hull City,3,90,5.0,4.0,1,
 2026-27,2,Belloumi,MID,Hull City,6,82,5.0,2.0,1,3.0
@@ -45564,61 +45709,73 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Belloumi,MID,Hull City,13,59,5.0,4.0,1,4.67
 2026-27,5,Belloumi,MID,Hull City,4,82,5.1,3.0,1,6.75
 2026-27,6,Belloumi,MID,Hull City,6,26,5.1,3.0,1,6.2
+2026-27,7,Belloumi,MID,Hull City,2,90,5.2,3.0,1,6.8
 2026-27,1,Millar,MID,Hull City,0,19,5.0,4.0,1,
 2026-27,2,Millar,MID,Hull City,6,31,5.0,2.0,1,0.0
 2026-27,1,Crooks,MID,Hull City,2,90,4.5,4.0,1,
 2026-27,4,Crooks,MID,Hull City,1,68,4.5,4.0,1,0.67
 2026-27,5,Crooks,MID,Hull City,0,45,4.5,3.0,1,0.75
 2026-27,6,Crooks,MID,Hull City,1,64,4.4,3.0,1,0.6
+2026-27,7,Crooks,MID,Hull City,2,67,4.4,3.0,1,0.4
 2026-27,1,Slater,MID,Hull City,6,90,4.5,4.0,1,
 2026-27,2,Slater,MID,Hull City,2,90,4.5,2.0,1,6.0
 2026-27,3,Slater,MID,Hull City,3,90,4.5,3.0,1,4.0
 2026-27,4,Slater,MID,Hull City,2,90,4.5,4.0,1,3.67
 2026-27,5,Slater,MID,Hull City,2,77,4.5,3.0,1,3.25
 2026-27,6,Slater,MID,Hull City,2,74,4.5,3.0,1,3.0
+2026-27,7,Slater,MID,Hull City,1,74,4.5,3.0,1,2.2
 2026-27,1,McBurnie,FWD,Hull City,5,90,5.5,4.0,1,
 2026-27,2,McBurnie,FWD,Hull City,1,90,5.5,2.0,1,5.0
 2026-27,3,McBurnie,FWD,Hull City,2,90,5.5,3.0,1,3.0
 2026-27,4,McBurnie,FWD,Hull City,4,81,5.5,4.0,1,2.67
 2026-27,5,McBurnie,FWD,Hull City,1,90,5.5,3.0,1,3.0
 2026-27,6,McBurnie,FWD,Hull City,1,90,5.5,3.0,1,2.6
+2026-27,7,McBurnie,FWD,Hull City,2,90,5.5,3.0,1,1.8
 2026-27,5,Walton,GK,Ipswich Town,2,90,4.4,3.0,1,0.0
 2026-27,6,Walton,GK,Ipswich Town,2,90,4.4,2.0,1,0.4
+2026-27,7,Walton,GK,Ipswich Town,2,90,4.4,5.0,1,0.8
 2026-27,1,O'Shea,DEF,Ipswich Town,4,90,4.0,3.0,1,
 2026-27,2,O'Shea,DEF,Ipswich Town,0,90,4.0,4.0,1,4.0
 2026-27,3,O'Shea,DEF,Ipswich Town,3,90,4.0,4.0,1,2.0
 2026-27,4,O'Shea,DEF,Ipswich Town,1,90,4.0,3.0,1,2.33
 2026-27,5,O'Shea,DEF,Ipswich Town,2,90,4.0,3.0,1,2.0
 2026-27,6,O'Shea,DEF,Ipswich Town,11,90,4.0,2.0,1,2.0
+2026-27,7,O'Shea,DEF,Ipswich Town,3,90,4.0,5.0,1,3.4
 2026-27,1,Davis,DEF,Ipswich Town,2,90,4.0,3.0,1,
 2026-27,2,Davis,DEF,Ipswich Town,6,90,4.0,4.0,1,2.0
 2026-27,3,Davis,DEF,Ipswich Town,1,90,4.0,4.0,1,4.0
 2026-27,4,Davis,DEF,Ipswich Town,14,90,4.0,3.0,1,3.0
 2026-27,5,Davis,DEF,Ipswich Town,2,90,4.0,3.0,1,5.75
 2026-27,6,Davis,DEF,Ipswich Town,1,90,4.0,2.0,1,5.0
+2026-27,7,Davis,DEF,Ipswich Town,0,90,4.0,5.0,1,4.8
 2026-27,1,Greaves,DEF,Ipswich Town,2,90,4.0,3.0,1,
 2026-27,2,Greaves,DEF,Ipswich Town,-1,90,4.0,4.0,1,2.0
 2026-27,3,Greaves,DEF,Ipswich Town,1,90,4.0,4.0,1,0.5
 2026-27,4,Greaves,DEF,Ipswich Town,1,87,4.0,3.0,1,0.67
+2026-27,7,Greaves,DEF,Ipswich Town,1,90,3.9,5.0,1,0.2
 2026-27,2,Furlong,DEF,Ipswich Town,1,17,4.0,4.0,1,0.0
 2026-27,1,Núñez,MID,Ipswich Town,4,79,5.0,3.0,1,
 2026-27,2,Núñez,MID,Ipswich Town,2,61,5.0,4.0,1,4.0
+2026-27,7,Matusiwa,MID,Ipswich Town,1,19,4.9,5.0,1,0.0
 2026-27,1,Clarke,MID,Ipswich Town,7,19,5.5,3.0,1,
 2026-27,3,Clarke,MID,Ipswich Town,1,24,5.5,4.0,1,3.5
 2026-27,4,Clarke,MID,Ipswich Town,1,62,5.4,3.0,1,2.67
 2026-27,5,Clarke,MID,Ipswich Town,2,65,5.4,3.0,1,2.25
 2026-27,6,Clarke,MID,Ipswich Town,4,27,5.3,2.0,1,2.2
+2026-27,7,Clarke,MID,Ipswich Town,1,1,5.3,5.0,1,1.6
 2026-27,1,Fatawu,MID,Ipswich Town,2,65,5.5,3.0,1,
 2026-27,2,Fatawu,MID,Ipswich Town,4,82,5.5,4.0,1,2.0
 2026-27,3,Fatawu,MID,Ipswich Town,2,78,5.5,4.0,1,3.0
 2026-27,4,Fatawu,MID,Ipswich Town,1,61,5.5,3.0,1,2.67
 2026-27,5,Fatawu,MID,Ipswich Town,-1,66,5.4,3.0,1,2.25
+2026-27,7,Fatawu,MID,Ipswich Town,4,19,5.4,5.0,1,1.2
 2026-27,1,Emersonn,FWD,Ipswich Town,9,65,5.5,3.0,1,
 2026-27,2,Emersonn,FWD,Ipswich Town,1,45,5.5,4.0,1,9.0
 2026-27,3,Emersonn,FWD,Ipswich Town,2,65,5.5,4.0,1,5.0
 2026-27,4,Emersonn,FWD,Ipswich Town,12,62,5.5,3.0,1,4.0
 2026-27,5,Emersonn,FWD,Ipswich Town,2,80,5.5,3.0,1,6.0
 2026-27,6,Emersonn,FWD,Ipswich Town,2,70,5.6,2.0,1,5.2
+2026-27,7,Emersonn,FWD,Ipswich Town,2,77,5.6,5.0,1,3.8
 2026-27,4,Philogene,MID,Ipswich Town,1,28,5.4,3.0,1,0.0
 2026-27,5,Philogene,MID,Ipswich Town,1,24,5.4,3.0,1,0.25
 2026-27,6,Philogene,MID,Ipswich Town,2,62,5.4,2.0,1,0.4
@@ -45626,6 +45783,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,2,Akpom,FWD,Ipswich Town,5,45,5.0,4.0,1,1.0
 2026-27,5,Akpom,FWD,Ipswich Town,1,9,5.0,3.0,1,1.5
 2026-27,6,Akpom,FWD,Ipswich Town,1,19,5.0,2.0,1,1.4
+2026-27,7,Akpom,FWD,Ipswich Town,1,12,5.0,5.0,1,1.4
 2026-27,1,Walle Egeli,FWD,Ipswich Town,1,10,4.5,3.0,1,
 2026-27,6,Walle Egeli,FWD,Ipswich Town,1,9,4.5,2.0,1,0.2
 2026-27,1,McAteer,MID,Ipswich Town,1,24,4.5,3.0,1,
@@ -45647,34 +45805,40 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Bogle,DEF,Leeds,15,82,4.5,3.0,1,7.33
 2026-27,5,Bogle,DEF,Leeds,5,66,4.6,2.0,1,9.25
 2026-27,6,Bogle,DEF,Leeds,1,85,4.6,5.0,1,8.4
+2026-27,7,Bogle,DEF,Leeds,2,90,4.7,4.0,1,7.4
 2026-27,3,Gudmundsson,DEF,Leeds,2,90,4.5,4.0,1,0.0
 2026-27,4,Gudmundsson,DEF,Leeds,6,72,4.5,3.0,1,0.67
 2026-27,5,Gudmundsson,DEF,Leeds,6,90,4.5,2.0,1,2.0
 2026-27,6,Gudmundsson,DEF,Leeds,4,90,4.5,5.0,1,2.8
+2026-27,7,Gudmundsson,DEF,Leeds,1,90,4.5,4.0,1,3.6
 2026-27,1,Justin,DEF,Leeds,10,90,4.5,3.0,1,
 2026-27,2,Justin,DEF,Leeds,2,90,4.5,3.0,1,10.0
 2026-27,3,Justin,DEF,Leeds,4,90,4.5,4.0,1,6.0
 2026-27,4,Justin,DEF,Leeds,2,90,4.5,3.0,1,5.33
 2026-27,5,Justin,DEF,Leeds,8,90,4.5,2.0,1,4.5
 2026-27,6,Justin,DEF,Leeds,6,78,4.5,5.0,1,5.2
+2026-27,7,Justin,DEF,Leeds,2,90,4.5,4.0,1,4.4
 2026-27,1,Muharemović,DEF,Leeds,6,90,5.0,3.0,1,
 2026-27,2,Muharemović,DEF,Leeds,4,90,5.0,3.0,1,6.0
 2026-27,3,Muharemović,DEF,Leeds,4,90,5.0,4.0,1,5.0
 2026-27,4,Muharemović,DEF,Leeds,7,90,5.0,3.0,1,4.67
 2026-27,5,Muharemović,DEF,Leeds,6,90,5.0,2.0,1,5.25
 2026-27,6,Muharemović,DEF,Leeds,2,90,5.0,5.0,1,5.4
+2026-27,7,Muharemović,DEF,Leeds,5,90,5.0,4.0,1,4.6
 2026-27,1,Stach,MID,Leeds,13,90,6.0,3.0,1,
 2026-27,2,Stach,MID,Leeds,4,90,6.0,3.0,1,13.0
 2026-27,3,Stach,MID,Leeds,2,90,6.0,4.0,1,8.5
 2026-27,4,Stach,MID,Leeds,3,87,6.0,3.0,1,6.33
 2026-27,5,Stach,MID,Leeds,5,90,6.0,2.0,1,5.5
 2026-27,6,Stach,MID,Leeds,2,90,6.0,5.0,1,5.4
+2026-27,7,Stach,MID,Leeds,2,90,6.0,4.0,1,3.2
 2026-27,1,Okafor,MID,Leeds,1,24,6.0,3.0,1,
 2026-27,2,Okafor,MID,Leeds,2,68,6.0,3.0,1,1.0
 2026-27,3,Okafor,MID,Leeds,3,61,5.9,4.0,1,1.5
 2026-27,4,Okafor,MID,Leeds,9,71,5.9,3.0,1,2.0
 2026-27,5,Okafor,MID,Leeds,3,75,5.8,2.0,1,3.75
 2026-27,6,Okafor,MID,Leeds,2,70,5.8,5.0,1,3.6
+2026-27,7,Okafor,MID,Leeds,2,73,5.8,4.0,1,3.8
 2026-27,1,Aaronson,MID,Leeds,3,81,5.5,3.0,1,
 2026-27,2,Aaronson,MID,Leeds,1,45,5.5,3.0,1,3.0
 2026-27,3,Aaronson,MID,Leeds,1,28,5.5,4.0,1,2.0
@@ -45687,10 +45851,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Ampadu,MID,Leeds,7,90,5.4,3.0,1,3.0
 2026-27,5,Ampadu,MID,Leeds,5,90,5.4,2.0,1,4.0
 2026-27,6,Ampadu,MID,Leeds,1,90,5.4,5.0,1,4.2
+2026-27,7,Ampadu,MID,Leeds,1,90,5.4,4.0,1,3.4
 2026-27,1,Longstaff,MID,Leeds,1,8,5.0,3.0,1,
 2026-27,4,Longstaff,MID,Leeds,1,2,4.9,3.0,1,0.33
+2026-27,7,Longstaff,MID,Leeds,1,9,4.8,4.0,1,0.2
 2026-27,5,Gelhardt,MID,Hull City,1,7,5.0,3.0,1,0.0
 2026-27,6,Gelhardt,MID,Hull City,8,64,5.0,3.0,1,0.2
+2026-27,7,Gelhardt,MID,Hull City,1,22,5.0,3.0,1,1.8
 2026-27,2,James,MID,Leeds,1,22,5.0,3.0,1,0.0
 2026-27,4,James,MID,Leeds,1,7,5.0,3.0,1,0.33
 2026-27,5,James,MID,Leeds,1,23,4.9,2.0,1,0.5
@@ -45699,46 +45866,55 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Tanaka,MID,Leeds,6,71,4.9,3.0,1,2.0
 2026-27,5,Tanaka,MID,Leeds,2,67,4.9,2.0,1,3.0
 2026-27,6,Tanaka,MID,Leeds,1,70,4.9,5.0,1,2.8
+2026-27,7,Tanaka,MID,Leeds,2,80,4.9,4.0,1,3.0
 2026-27,1,Calvert-Lewin,FWD,Leeds,1,90,6.0,3.0,1,
 2026-27,2,Calvert-Lewin,FWD,Leeds,8,90,6.0,3.0,1,1.0
 2026-27,3,Calvert-Lewin,FWD,Leeds,1,72,6.0,4.0,1,4.5
 2026-27,4,Calvert-Lewin,FWD,Leeds,10,77,6.0,3.0,1,3.33
 2026-27,5,Calvert-Lewin,FWD,Leeds,2,90,6.0,2.0,1,5.0
 2026-27,6,Calvert-Lewin,FWD,Leeds,2,90,6.0,5.0,1,4.4
+2026-27,7,Calvert-Lewin,FWD,Leeds,9,90,6.0,4.0,1,4.6
 2026-27,2,Nmecha,FWD,Leeds,4,21,5.5,3.0,1,0.0
 2026-27,3,Nmecha,FWD,Leeds,1,17,5.5,4.0,1,2.0
 2026-27,4,Nmecha,FWD,Leeds,1,12,5.4,3.0,1,1.67
 2026-27,5,Nmecha,FWD,Leeds,1,14,5.4,2.0,1,1.5
 2026-27,6,Nmecha,FWD,Leeds,1,11,5.4,5.0,1,1.4
+2026-27,7,Nmecha,FWD,Leeds,1,16,5.4,4.0,1,1.6
 2026-27,1,A.Becker,GK,Liverpool,2,90,5.5,3.0,1,
 2026-27,2,A.Becker,GK,Liverpool,0,90,5.5,3.0,1,2.0
 2026-27,3,A.Becker,GK,Liverpool,8,90,5.5,2.0,1,1.0
 2026-27,4,A.Becker,GK,Liverpool,9,90,5.5,2.0,1,3.33
 2026-27,5,A.Becker,GK,Liverpool,8,90,5.5,3.0,1,4.75
 2026-27,6,A.Becker,GK,Liverpool,1,90,5.5,4.0,1,5.4
+2026-27,7,A.Becker,GK,Liverpool,2,90,5.5,3.0,1,5.2
 2026-27,1,Virgil,DEF,Liverpool,2,90,6.5,3.0,1,
 2026-27,2,Virgil,DEF,Liverpool,1,90,6.5,3.0,1,2.0
 2026-27,3,Virgil,DEF,Liverpool,6,90,6.5,2.0,1,1.5
 2026-27,4,Virgil,DEF,Liverpool,8,90,6.5,2.0,1,3.0
 2026-27,5,Virgil,DEF,Liverpool,8,90,6.5,3.0,1,4.25
 2026-27,6,Virgil,DEF,Liverpool,0,90,6.5,4.0,1,5.0
+2026-27,7,Virgil,DEF,Liverpool,4,90,6.5,3.0,1,4.6
 2026-27,1,Frimpong,DEF,Liverpool,0,90,5.5,3.0,1,
 2026-27,2,Frimpong,DEF,Liverpool,1,70,5.5,3.0,1,0.0
 2026-27,4,Frimpong,DEF,Liverpool,1,18,5.4,2.0,1,0.33
 2026-27,6,Frimpong,DEF,Liverpool,1,15,5.3,4.0,1,0.4
+2026-27,7,Frimpong,DEF,Liverpool,1,6,5.2,3.0,1,0.6
 2026-27,1,Kerkez,DEF,Liverpool,0,90,5.5,3.0,1,
 2026-27,2,Kerkez,DEF,Liverpool,1,70,5.5,3.0,1,0.0
 2026-27,3,Kerkez,DEF,Liverpool,5,90,5.5,2.0,1,0.5
 2026-27,4,Kerkez,DEF,Liverpool,1,45,5.4,2.0,1,2.0
 2026-27,5,Kerkez,DEF,Liverpool,6,90,5.4,3.0,1,1.75
 2026-27,6,Kerkez,DEF,Liverpool,1,90,5.3,4.0,1,2.6
+2026-27,7,Kerkez,DEF,Liverpool,2,90,5.3,3.0,1,2.8
 2026-27,6,Gomez,DEF,Liverpool,1,2,4.9,4.0,1,0.0
+2026-27,7,Gomez,DEF,Liverpool,1,11,4.9,3.0,1,0.2
 2026-27,1,Jacquet,DEF,Liverpool,1,69,5.0,3.0,1,
 2026-27,2,Jacquet,DEF,Liverpool,3,76,5.0,3.0,1,1.0
 2026-27,3,Jacquet,DEF,Liverpool,5,90,5.0,2.0,1,2.0
 2026-27,4,Jacquet,DEF,Liverpool,9,90,5.0,2.0,1,3.0
 2026-27,5,Jacquet,DEF,Liverpool,6,90,5.0,3.0,1,4.5
 2026-27,6,Jacquet,DEF,Liverpool,3,87,5.0,4.0,1,4.8
+2026-27,7,Jacquet,DEF,Liverpool,3,90,5.0,3.0,1,5.2
 2026-27,2,Tsimikas,DEF,Liverpool,1,19,5.0,3.0,1,0.0
 2026-27,4,Tsimikas,DEF,Liverpool,1,45,4.9,2.0,1,0.33
 2026-27,1,Wirtz,MID,Liverpool,2,62,7.5,3.0,1,
@@ -45747,6 +45923,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Wirtz,MID,Liverpool,3,90,7.4,2.0,1,3.0
 2026-27,5,Wirtz,MID,Liverpool,6,70,7.3,3.0,1,3.0
 2026-27,6,Wirtz,MID,Liverpool,2,65,7.3,4.0,1,3.6
+2026-27,7,Wirtz,MID,Liverpool,5,90,7.2,3.0,1,3.6
 2026-27,1,Gakpo,MID,Liverpool,12,90,7.0,3.0,1,
 2026-27,2,Gakpo,MID,Liverpool,5,70,7.0,3.0,1,12.0
 2026-27,3,Gakpo,MID,Liverpool,11,90,7.1,2.0,1,8.5
@@ -45757,10 +45934,12 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Szoboszlai,MID,Liverpool,3,90,7.0,2.0,1,6.0
 2026-27,4,Szoboszlai,MID,Liverpool,3,90,7.0,2.0,1,5.0
 2026-27,5,Szoboszlai,MID,Liverpool,2,80,7.0,3.0,1,4.5
+2026-27,7,Szoboszlai,MID,Liverpool,1,31,6.8,3.0,1,2.4
 2026-27,1,Ngumoha,MID,Liverpool,2,62,6.0,3.0,1,
 2026-27,2,Ngumoha,MID,Liverpool,1,19,6.0,3.0,1,2.0
 2026-27,4,Ngumoha,MID,Liverpool,1,18,5.8,2.0,1,1.0
 2026-27,6,Ngumoha,MID,Liverpool,1,15,5.7,4.0,1,0.8
+2026-27,7,Ngumoha,MID,Liverpool,1,38,5.7,3.0,1,0.6
 2026-27,6,Chiesa,MID,Liverpool,1,2,5.3,4.0,1,0.0
 2026-27,1,Gravenberch,MID,Liverpool,5,77,6.0,3.0,1,
 2026-27,2,Gravenberch,MID,Liverpool,1,19,6.0,3.0,1,5.0
@@ -45774,67 +45953,80 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Mac Allister,MID,Liverpool,1,30,5.4,2.0,1,1.67
 2026-27,5,Mac Allister,MID,Liverpool,5,90,5.4,3.0,1,1.5
 2026-27,6,Mac Allister,MID,Liverpool,2,90,5.4,4.0,1,2.2
+2026-27,7,Mac Allister,MID,Liverpool,1,90,5.4,3.0,1,2.4
 2026-27,2,Nyoni,MID,Liverpool,1,13,5.0,3.0,1,0.0
 2026-27,3,Nyoni,MID,Liverpool,1,6,5.0,2.0,1,0.5
 2026-27,5,Nyoni,MID,Liverpool,1,19,4.9,3.0,1,0.5
 2026-27,6,Nyoni,MID,Liverpool,1,24,4.8,4.0,1,0.6
+2026-27,7,Nyoni,MID,Liverpool,1,58,4.8,3.0,1,0.8
 2026-27,1,Munoz,MID,Liverpool,4,27,6.5,3.0,1,
 2026-27,2,Munoz,MID,Liverpool,6,90,6.5,3.0,1,4.0
 2026-27,3,Munoz,MID,Liverpool,3,63,6.5,2.0,1,5.0
 2026-27,4,Munoz,MID,Liverpool,1,59,6.5,2.0,1,4.33
 2026-27,5,Munoz,MID,Liverpool,1,18,6.5,3.0,1,3.5
 2026-27,6,Munoz,MID,Liverpool,2,90,6.5,4.0,1,3.0
+2026-27,7,Munoz,MID,Liverpool,9,78,6.5,3.0,1,2.6
 2026-27,1,Isak,FWD,Liverpool,2,90,9.0,3.0,1,
 2026-27,2,Isak,FWD,Liverpool,8,90,9.0,3.0,1,2.0
 2026-27,3,Isak,FWD,Liverpool,13,63,9.0,2.0,1,5.0
 2026-27,4,Isak,FWD,Liverpool,2,90,9.1,2.0,1,7.67
 2026-27,5,Isak,FWD,Liverpool,8,80,9.1,3.0,1,6.25
+2026-27,7,Isak,FWD,Liverpool,9,78,9.0,3.0,1,6.2
 2026-27,1,Koumas,MID,Liverpool,1,12,5.0,3.0,1,
 2026-27,3,Koumas,MID,Liverpool,1,1,5.0,2.0,1,0.5
 2026-27,5,Koumas,MID,Liverpool,1,9,5.0,3.0,1,0.5
 2026-27,6,Koumas,MID,Liverpool,2,74,5.0,4.0,1,0.6
+2026-27,7,Koumas,MID,Liverpool,1,11,5.0,3.0,1,0.8
 2026-27,1,Donnarumma,GK,Man City,3,90,5.5,3.0,1,
 2026-27,2,Donnarumma,GK,Man City,0,90,5.5,3.0,1,3.0
 2026-27,3,Donnarumma,GK,Man City,7,90,5.5,2.0,1,1.5
 2026-27,4,Donnarumma,GK,Man City,7,90,5.5,4.0,1,3.33
 2026-27,5,Donnarumma,GK,Man City,2,90,5.5,3.0,1,4.25
 2026-27,6,Donnarumma,GK,Man City,9,90,5.5,4.0,1,3.8
+2026-27,7,Donnarumma,GK,Man City,1,90,5.5,2.0,1,5.0
 2026-27,1,Trafford,GK,Leeds,9,90,5.0,3.0,1,
 2026-27,2,Trafford,GK,Leeds,3,90,5.0,3.0,1,9.0
 2026-27,3,Trafford,GK,Leeds,3,90,5.0,4.0,1,6.0
 2026-27,4,Trafford,GK,Leeds,3,90,5.0,3.0,1,5.0
 2026-27,5,Trafford,GK,Leeds,10,90,5.0,2.0,1,4.5
 2026-27,6,Trafford,GK,Leeds,2,90,5.0,5.0,1,5.6
+2026-27,7,Trafford,GK,Leeds,2,90,5.0,4.0,1,4.2
 2026-27,1,O'Reilly,DEF,Man City,2,62,6.5,3.0,1,
 2026-27,2,O'Reilly,DEF,Man City,2,88,6.5,3.0,1,2.0
 2026-27,4,O'Reilly,DEF,Man City,1,8,6.4,4.0,1,1.33
 2026-27,5,O'Reilly,DEF,Man City,1,5,6.4,3.0,1,1.25
 2026-27,6,O'Reilly,DEF,Man City,5,65,6.3,4.0,1,1.2
+2026-27,7,O'Reilly,DEF,Man City,2,60,6.3,2.0,1,1.8
 2026-27,1,Guéhi,DEF,Man City,10,90,6.0,3.0,1,
 2026-27,2,Guéhi,DEF,Man City,2,90,6.0,3.0,1,10.0
 2026-27,3,Guéhi,DEF,Man City,8,90,6.0,2.0,1,6.0
 2026-27,4,Guéhi,DEF,Man City,6,90,6.0,4.0,1,6.67
 2026-27,5,Guéhi,DEF,Man City,4,90,6.0,3.0,1,6.5
 2026-27,6,Guéhi,DEF,Man City,6,90,6.0,4.0,1,6.0
+2026-27,7,Guéhi,DEF,Man City,1,90,6.0,2.0,1,5.2
 2026-27,1,Matheus N.,DEF,Man City,1,33,6.0,3.0,1,
 2026-27,4,Matheus N.,DEF,Man City,9,90,5.9,4.0,1,0.33
 2026-27,5,Matheus N.,DEF,Man City,1,90,5.9,3.0,1,2.5
 2026-27,6,Matheus N.,DEF,Man City,6,90,5.9,4.0,1,2.2
+2026-27,7,Matheus N.,DEF,Man City,2,75,5.9,2.0,1,3.2
 2026-27,1,Rúben,DEF,Man City,2,90,5.5,3.0,1,
 2026-27,2,Rúben,DEF,Man City,2,90,5.5,3.0,1,2.0
 2026-27,3,Rúben,DEF,Man City,6,90,5.5,2.0,1,2.0
 2026-27,4,Rúben,DEF,Man City,6,90,5.5,4.0,1,3.33
 2026-27,5,Rúben,DEF,Man City,1,90,5.5,3.0,1,4.0
 2026-27,6,Rúben,DEF,Man City,6,90,5.5,4.0,1,3.4
+2026-27,7,Rúben,DEF,Man City,1,90,5.5,2.0,1,4.2
 2026-27,1,Gvardiol,DEF,Man City,9,90,5.5,3.0,1,
 2026-27,2,Gvardiol,DEF,Man City,5,74,5.5,3.0,1,9.0
 2026-27,3,Gvardiol,DEF,Man City,8,90,5.6,2.0,1,7.0
 2026-27,4,Gvardiol,DEF,Man City,11,90,5.6,4.0,1,7.33
 2026-27,5,Gvardiol,DEF,Man City,4,90,5.7,3.0,1,8.25
 2026-27,6,Gvardiol,DEF,Man City,4,24,5.7,4.0,1,7.4
+2026-27,7,Gvardiol,DEF,Man City,0,29,5.8,2.0,1,6.4
 2026-27,1,Khusanov,DEF,Man City,2,90,5.5,3.0,1,
 2026-27,2,Khusanov,DEF,Man City,2,88,5.5,3.0,1,2.0
 2026-27,3,Khusanov,DEF,Man City,5,90,5.5,2.0,1,2.0
+2026-27,7,Khusanov,DEF,Man City,1,14,5.4,2.0,1,1.4
 2026-27,1,Lewis,DEF,Man City,1,56,4.5,3.0,1,
 2026-27,2,Vitor Reis,DEF,Man City,1,1,4.5,3.0,1,0.0
 2026-27,1,Semenyo,MID,Man City,2,90,8.5,3.0,1,
@@ -45843,10 +46035,12 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Semenyo,MID,Man City,3,90,8.4,4.0,1,4.33
 2026-27,5,Semenyo,MID,Man City,17,90,8.4,3.0,1,4.0
 2026-27,6,Semenyo,MID,Man City,3,90,8.4,4.0,1,6.6
+2026-27,7,Semenyo,MID,Man City,1,13,8.3,2.0,1,6.8
 2026-27,1,Foden,MID,Man City,1,81,7.0,3.0,1,
 2026-27,2,Foden,MID,Man City,9,90,7.0,3.0,1,1.0
 2026-27,3,Foden,MID,Man City,1,24,7.0,2.0,1,5.0
 2026-27,4,Foden,MID,Man City,-2,22,7.0,4.0,1,3.67
+2026-27,7,Foden,MID,Man City,9,76,6.8,2.0,1,1.6
 2026-27,1,Cherki,MID,Man City,8,27,7.5,3.0,1,
 2026-27,2,Cherki,MID,Man City,14,81,7.5,3.0,1,8.0
 2026-27,3,Cherki,MID,Man City,3,65,7.7,2.0,1,11.0
@@ -45855,11 +46049,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,6,Cherki,MID,Man City,10,90,7.8,4.0,1,6.8
 2026-27,5,Doku,MID,Man City,1,15,7.4,3.0,1,0.0
 2026-27,6,Doku,MID,Man City,12,34,7.4,4.0,1,0.2
+2026-27,7,Doku,MID,Man City,6,76,7.4,2.0,1,2.6
 2026-27,2,Marmoush,FWD,Spurs,2,90,7.0,3.0,1,0.0
 2026-27,3,Marmoush,FWD,Spurs,2,83,7.0,3.0,1,1.0
 2026-27,4,Marmoush,FWD,Spurs,2,76,7.0,3.0,1,1.33
 2026-27,5,Marmoush,FWD,Spurs,2,90,7.0,3.0,1,1.5
 2026-27,6,Marmoush,FWD,Spurs,1,24,7.0,4.0,1,1.6
+2026-27,7,Marmoush,FWD,Spurs,9,86,7.0,2.0,1,1.8
 2026-27,3,Sávio,MID,Spurs,3,60,6.5,3.0,1,0.0
 2026-27,4,Sávio,MID,Spurs,3,90,6.5,3.0,1,1.0
 2026-27,5,Sávio,MID,Spurs,2,90,6.5,3.0,1,1.5
@@ -45868,20 +46064,24 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,N.Gonzalez,MID,Newcastle,2,76,5.5,3.0,1,1.0
 2026-27,4,N.Gonzalez,MID,Newcastle,1,18,5.5,3.0,1,1.33
 2026-27,6,N.Gonzalez,MID,Newcastle,7,90,5.5,2.0,1,1.0
+2026-27,7,N.Gonzalez,MID,Newcastle,3,90,5.5,3.0,1,2.4
 2026-27,1,Kovačić,MID,Man City,1,27,5.5,3.0,1,
 2026-27,2,Kovačić,MID,Man City,1,15,5.5,3.0,1,1.0
+2026-27,7,Kovačić,MID,Man City,5,49,5.3,2.0,1,0.2
 2026-27,1,Haaland,FWD,Man City,2,90,15.5,3.0,1,
 2026-27,2,Haaland,FWD,Man City,13,90,15.5,3.0,1,2.0
 2026-27,3,Haaland,FWD,Man City,9,90,15.5,2.0,1,7.5
 2026-27,4,Haaland,FWD,Man City,9,90,15.5,4.0,1,8.0
 2026-27,5,Haaland,FWD,Man City,6,90,15.6,3.0,1,8.25
 2026-27,6,Haaland,FWD,Man City,6,79,15.6,4.0,1,7.8
+2026-27,7,Haaland,FWD,Man City,13,90,15.7,2.0,1,8.6
 2026-27,1,Lammens,GK,Man Utd,1,90,5.0,2.0,1,
 2026-27,2,Lammens,GK,Man Utd,2,90,5.0,2.0,1,1.0
 2026-27,3,Lammens,GK,Man Utd,2,90,5.0,3.0,1,1.5
 2026-27,4,Lammens,GK,Man Utd,2,90,5.0,4.0,1,1.67
 2026-27,5,Lammens,GK,Man Utd,4,90,4.9,3.0,1,1.75
 2026-27,6,Lammens,GK,Man Utd,2,90,4.9,2.0,1,2.2
+2026-27,7,Lammens,GK,Man Utd,3,90,4.9,3.0,1,2.4
 2026-27,1,Dorgu,MID,Man Utd,0,45,6.0,2.0,1,
 2026-27,2,Dorgu,MID,Man Utd,1,10,6.0,2.0,1,0.0
 2026-27,3,Dorgu,MID,Man Utd,1,20,5.9,3.0,1,0.5
@@ -45893,25 +46093,30 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Dalot,DEF,Man Utd,2,90,4.9,4.0,1,1.33
 2026-27,5,Dalot,DEF,Man Utd,2,90,4.9,3.0,1,1.5
 2026-27,6,Dalot,DEF,Man Utd,0,31,4.9,2.0,1,1.6
+2026-27,7,Dalot,DEF,Man Utd,4,90,4.8,3.0,1,1.4
 2026-27,1,Maguire,DEF,Man Utd,1,90,5.0,2.0,1,
 2026-27,2,Maguire,DEF,Man Utd,4,90,5.0,2.0,1,1.0
 2026-27,3,Maguire,DEF,Man Utd,2,90,5.0,3.0,1,2.5
 2026-27,4,Maguire,DEF,Man Utd,1,90,4.9,4.0,1,2.33
 2026-27,5,Maguire,DEF,Man Utd,2,90,4.9,3.0,1,2.0
 2026-27,6,Maguire,DEF,Man Utd,2,90,4.8,2.0,1,2.0
+2026-27,7,Maguire,DEF,Man Utd,4,90,4.8,3.0,1,2.2
 2026-27,2,Martinez,DEF,Man Utd,1,90,5.0,2.0,1,0.0
 2026-27,3,Martinez,DEF,Man Utd,3,90,5.0,3.0,1,0.5
 2026-27,4,Martinez,DEF,Man Utd,2,90,5.0,4.0,1,1.33
 2026-27,5,Martinez,DEF,Man Utd,0,90,5.0,3.0,1,1.5
 2026-27,6,Martinez,DEF,Man Utd,3,90,4.9,2.0,1,1.2
+2026-27,7,Martinez,DEF,Man Utd,1,45,4.9,3.0,1,1.8
 2026-27,2,Yoro,DEF,Man Utd,1,16,5.0,2.0,1,0.0
 2026-27,3,Yoro,DEF,Man Utd,1,6,4.9,3.0,1,0.5
 2026-27,6,Yoro,DEF,Man Utd,3,58,4.8,2.0,1,0.4
+2026-27,7,Yoro,DEF,Man Utd,4,90,4.8,3.0,1,1.0
 2026-27,1,Heaven,DEF,Man Utd,1,90,4.5,2.0,1,
 2026-27,6,Heaven,DEF,Man Utd,1,1,4.3,2.0,1,0.2
 2026-27,1,Mazraoui,DEF,Man Utd,1,79,4.5,2.0,1,
 2026-27,2,Mazraoui,DEF,Man Utd,1,17,4.5,2.0,1,1.0
 2026-27,3,Mazraoui,DEF,Man Utd,1,1,4.5,3.0,1,1.0
+2026-27,7,Mazraoui,DEF,Man Utd,3,45,4.3,3.0,1,0.4
 2026-27,1,Shaw,DEF,Man Utd,1,90,4.5,2.0,1,
 2026-27,2,Shaw,DEF,Man Utd,2,72,4.5,2.0,1,1.0
 2026-27,3,Shaw,DEF,Man Utd,4,90,4.5,3.0,1,1.5
@@ -45923,18 +46128,21 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,B.Fernandes,MID,Man Utd,2,90,12.0,4.0,1,9.0
 2026-27,5,B.Fernandes,MID,Man Utd,2,90,12.0,3.0,1,7.25
 2026-27,6,B.Fernandes,MID,Man Utd,1,90,11.9,2.0,1,6.2
+2026-27,7,B.Fernandes,MID,Man Utd,1,90,11.8,3.0,1,6.0
 2026-27,1,Mbeumo,MID,Man Utd,2,90,8.0,2.0,1,
 2026-27,2,Mbeumo,MID,Man Utd,11,90,8.0,2.0,1,2.0
 2026-27,3,Mbeumo,MID,Man Utd,8,90,8.0,3.0,1,6.5
 2026-27,4,Mbeumo,MID,Man Utd,2,90,7.9,4.0,1,7.0
 2026-27,5,Mbeumo,MID,Man Utd,2,90,7.9,3.0,1,5.75
 2026-27,6,Mbeumo,MID,Man Utd,8,90,7.9,2.0,1,5.0
+2026-27,7,Mbeumo,MID,Man Utd,8,90,7.8,3.0,1,6.2
 2026-27,1,Cunha,MID,Man Utd,2,79,8.0,2.0,1,
 2026-27,2,Cunha,MID,Man Utd,9,79,8.0,2.0,1,2.0
 2026-27,3,Cunha,MID,Man Utd,3,69,8.0,3.0,1,5.5
 2026-27,4,Cunha,MID,Man Utd,2,90,7.9,4.0,1,4.67
 2026-27,5,Cunha,MID,Man Utd,10,90,7.9,3.0,1,4.0
 2026-27,6,Cunha,MID,Man Utd,10,90,7.9,2.0,1,5.2
+2026-27,7,Cunha,MID,Man Utd,1,6,7.9,3.0,1,6.8
 2026-27,1,Rashford,MID,Man Utd,1,45,7.0,2.0,1,
 2026-27,2,Rashford,MID,Man Utd,2,79,7.0,2.0,1,1.0
 2026-27,3,Rashford,MID,Man Utd,3,69,7.0,3.0,1,1.5
@@ -45942,7 +46150,9 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,5,Rashford,MID,Man Utd,2,76,7.0,3.0,1,2.0
 2026-27,6,Rashford,MID,Man Utd,1,1,6.9,2.0,1,2.0
 2026-27,5,Mount,MID,Man Utd,1,10,5.4,3.0,1,0.0
+2026-27,7,Mount,MID,Man Utd,1,16,5.4,3.0,1,0.2
 2026-27,6,Amad,MID,Man Utd,1,58,5.7,2.0,1,0.0
+2026-27,7,Amad,MID,Man Utd,2,90,5.7,3.0,1,0.2
 2026-27,1,Mainoo,MID,Man Utd,1,23,5.5,2.0,1,
 2026-27,2,Mainoo,MID,Man Utd,4,79,5.5,2.0,1,1.0
 2026-27,3,Mainoo,MID,Man Utd,9,83,5.5,3.0,1,2.5
@@ -45963,6 +46173,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Thiaw,DEF,Newcastle,2,90,5.0,3.0,1,2.67
 2026-27,5,Thiaw,DEF,Newcastle,4,90,5.0,2.0,1,2.5
 2026-27,6,Thiaw,DEF,Newcastle,0,90,5.0,2.0,1,2.8
+2026-27,7,Thiaw,DEF,Newcastle,1,90,5.0,3.0,1,2.2
 2026-27,1,Schär,DEF,Newcastle,1,1,5.0,4.0,1,
 2026-27,5,Schär,DEF,Newcastle,1,24,4.9,2.0,1,0.25
 2026-27,1,Botman,DEF,Newcastle,3,90,5.0,4.0,1,
@@ -45971,25 +46182,30 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Botman,DEF,Newcastle,2,90,5.0,3.0,1,3.0
 2026-27,5,Botman,DEF,Newcastle,4,90,5.0,2.0,1,2.75
 2026-27,6,Botman,DEF,Newcastle,8,90,5.0,2.0,1,3.0
+2026-27,7,Botman,DEF,Newcastle,3,90,5.0,3.0,1,4.0
 2026-27,6,Burn,DEF,Newcastle,1,1,4.8,2.0,1,0.0
+2026-27,7,Burn,DEF,Newcastle,1,1,4.8,3.0,1,0.2
 2026-27,1,Hall,DEF,Newcastle,3,90,5.0,4.0,1,
 2026-27,2,Hall,DEF,Newcastle,11,90,5.0,3.0,1,3.0
 2026-27,3,Hall,DEF,Newcastle,4,89,5.1,3.0,1,7.0
 2026-27,4,Hall,DEF,Newcastle,0,90,5.2,3.0,1,6.0
 2026-27,5,Hall,DEF,Newcastle,13,90,5.2,2.0,1,4.5
 2026-27,6,Hall,DEF,Newcastle,0,90,5.3,2.0,1,6.2
+2026-27,7,Hall,DEF,Newcastle,4,90,5.3,3.0,1,5.6
 2026-27,3,Livramento,DEF,Newcastle,1,1,4.9,3.0,1,0.0
 2026-27,4,Livramento,DEF,Newcastle,3,32,4.9,3.0,1,0.33
 2026-27,2,Bruno G.,MID,Arsenal,1,19,6.9,3.0,1,0.0
 2026-27,4,Bruno G.,MID,Arsenal,7,45,6.8,3.0,1,0.33
 2026-27,5,Bruno G.,MID,Arsenal,1,59,6.7,4.0,1,2.0
 2026-27,6,Bruno G.,MID,Arsenal,9,27,6.7,3.0,1,1.8
+2026-27,7,Bruno G.,MID,Arsenal,3,65,6.7,3.0,1,3.6
 2026-27,1,Barnes,MID,Newcastle,2,90,6.0,4.0,1,
 2026-27,2,Barnes,MID,Newcastle,3,90,6.0,3.0,1,2.0
 2026-27,3,Barnes,MID,Newcastle,12,90,6.0,3.0,1,2.5
 2026-27,4,Barnes,MID,Newcastle,2,90,6.0,3.0,1,5.67
 2026-27,5,Barnes,MID,Newcastle,9,90,6.0,2.0,1,4.75
 2026-27,6,Barnes,MID,Newcastle,2,90,6.1,2.0,1,5.6
+2026-27,7,Barnes,MID,Newcastle,2,90,6.1,3.0,1,5.6
 2026-27,1,Elanga,MID,Newcastle,9,75,6.0,4.0,1,
 2026-27,2,Elanga,MID,Newcastle,8,81,6.0,3.0,1,9.0
 2026-27,3,Elanga,MID,Newcastle,1,76,6.1,3.0,1,8.5
@@ -45999,6 +46215,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Tonali,MID,Spurs,3,90,5.4,3.0,1,3.0
 2026-27,5,Tonali,MID,Spurs,2,83,5.4,3.0,1,3.0
 2026-27,6,Tonali,MID,Spurs,7,90,5.3,4.0,1,2.8
+2026-27,7,Tonali,MID,Spurs,4,90,5.3,2.0,1,3.8
 2026-27,1,J.Ramsey,MID,Newcastle,0,34,5.0,4.0,1,
 2026-27,2,J.Ramsey,MID,Newcastle,1,8,5.0,3.0,1,0.0
 2026-27,3,J.Ramsey,MID,Newcastle,6,27,5.0,3.0,1,0.5
@@ -46009,22 +46226,26 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,5,J.Murphy,MID,Newcastle,1,90,5.9,2.0,1,0.5
 2026-27,6,J.Murphy,MID,Newcastle,1,58,5.9,2.0,1,0.6
 2026-27,6,Joelinton,MID,Newcastle,0,31,5.4,2.0,1,0.0
+2026-27,7,Joelinton,MID,Newcastle,1,89,5.4,3.0,1,0.0
 2026-27,1,L.Miley,MID,Newcastle,3,75,5.5,4.0,1,
 2026-27,2,L.Miley,MID,Newcastle,3,90,5.5,3.0,1,3.0
 2026-27,3,L.Miley,MID,Newcastle,2,62,5.5,3.0,1,3.0
 2026-27,4,L.Miley,MID,Newcastle,0,79,5.5,3.0,1,2.67
 2026-27,5,L.Miley,MID,Newcastle,4,90,5.5,2.0,1,2.0
 2026-27,6,L.Miley,MID,Newcastle,1,58,5.5,2.0,1,2.4
+2026-27,7,L.Miley,MID,Newcastle,2,90,5.5,3.0,1,2.0
 2026-27,1,Willock,MID,Newcastle,6,34,5.0,4.0,1,
 2026-27,2,Willock,MID,Newcastle,3,70,5.0,3.0,1,6.0
 2026-27,3,Willock,MID,Newcastle,2,62,5.0,3.0,1,4.5
 2026-27,4,Willock,MID,Newcastle,1,32,5.0,3.0,1,3.67
 2026-27,5,Willock,MID,Newcastle,10,86,5.0,2.0,1,3.0
 2026-27,6,Willock,MID,Newcastle,1,58,5.0,2.0,1,4.4
+2026-27,7,Willock,MID,Newcastle,1,55,5.0,3.0,1,3.4
 2026-27,2,Touré,MID,Newcastle,1,1,6.0,3.0,1,0.0
 2026-27,4,Touré,MID,Newcastle,6,33,5.8,3.0,1,0.33
 2026-27,5,Touré,MID,Newcastle,1,16,5.8,2.0,1,1.75
 2026-27,6,Touré,MID,Newcastle,1,31,5.8,2.0,1,1.6
+2026-27,7,Touré,MID,Newcastle,1,34,5.8,3.0,1,1.8
 2026-27,1,Steur,MID,Newcastle,1,55,5.0,4.0,1,
 2026-27,2,Steur,MID,Newcastle,1,19,5.0,3.0,1,1.0
 2026-27,3,Steur,MID,Newcastle,1,13,5.0,3.0,1,1.0
@@ -46037,20 +46258,24 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Wissa,FWD,Newcastle,2,90,6.2,3.0,1,4.33
 2026-27,5,Wissa,FWD,Newcastle,0,90,6.2,2.0,1,3.75
 2026-27,6,Wissa,FWD,Newcastle,2,77,6.2,2.0,1,3.0
+2026-27,7,Wissa,FWD,Newcastle,1,90,6.2,3.0,1,2.6
 2026-27,1,Osula,FWD,Newcastle,4,55,6.0,4.0,1,
 2026-27,6,Osula,FWD,Newcastle,1,12,5.8,2.0,1,0.8
+2026-27,7,Osula,FWD,Newcastle,0,34,5.8,3.0,1,0.2
 2026-27,1,Sels,GK,Nott'm Forest,2,90,5.0,3.0,1,
 2026-27,2,Sels,GK,Nott'm Forest,1,90,5.0,4.0,1,2.0
 2026-27,3,Sels,GK,Nott'm Forest,6,90,5.0,2.0,1,1.5
 2026-27,4,Sels,GK,Nott'm Forest,3,90,5.0,3.0,1,3.0
 2026-27,5,Sels,GK,Nott'm Forest,2,90,5.0,2.0,1,3.0
 2026-27,6,Sels,GK,Nott'm Forest,2,90,5.0,3.0,1,2.8
+2026-27,7,Sels,GK,Nott'm Forest,2,90,5.0,4.0,1,2.8
 2026-27,1,N.Williams,DEF,Nott'm Forest,2,90,5.0,3.0,1,
 2026-27,2,N.Williams,DEF,Nott'm Forest,6,90,5.0,4.0,1,2.0
 2026-27,3,N.Williams,DEF,Nott'm Forest,7,90,5.0,2.0,1,4.0
 2026-27,4,N.Williams,DEF,Nott'm Forest,2,90,5.0,3.0,1,5.0
 2026-27,5,N.Williams,DEF,Nott'm Forest,2,90,5.0,2.0,1,4.25
 2026-27,6,N.Williams,DEF,Nott'm Forest,1,90,5.0,3.0,1,3.8
+2026-27,7,N.Williams,DEF,Nott'm Forest,3,90,5.0,4.0,1,3.6
 2026-27,1,Milenković,DEF,Nott'm Forest,2,90,5.5,3.0,1,
 2026-27,2,Milenković,DEF,Nott'm Forest,3,90,5.5,4.0,1,2.0
 2026-27,3,Milenković,DEF,Nott'm Forest,7,90,5.5,2.0,1,2.5
@@ -46060,6 +46285,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Murillo,DEF,Nott'm Forest,6,90,5.5,3.0,1,4.33
 2026-27,5,Murillo,DEF,Nott'm Forest,4,90,5.5,2.0,1,4.75
 2026-27,6,Murillo,DEF,Nott'm Forest,2,90,5.5,3.0,1,4.6
+2026-27,7,Murillo,DEF,Nott'm Forest,2,90,5.5,4.0,1,4.2
 2026-27,1,Aina,DEF,Nott'm Forest,5,73,4.5,3.0,1,
 2026-27,2,Aina,DEF,Nott'm Forest,0,85,4.5,4.0,1,5.0
 2026-27,3,Aina,DEF,Nott'm Forest,1,58,4.5,2.0,1,2.5
@@ -46069,6 +46295,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,2,Jair Cunha,DEF,Nott'm Forest,1,90,4.5,4.0,1,1.0
 2026-27,3,Jair Cunha,DEF,Nott'm Forest,8,90,4.5,2.0,1,1.0
 2026-27,5,Jair Cunha,DEF,Nott'm Forest,1,90,4.5,2.0,1,2.5
+2026-27,7,Jair Cunha,DEF,Nott'm Forest,2,84,4.4,4.0,1,2.0
 2026-27,1,Netz,DEF,Nott'm Forest,1,16,4.5,3.0,1,
 2026-27,2,Netz,DEF,Nott'm Forest,1,4,4.5,4.0,1,1.0
 2026-27,5,Netz,DEF,Nott'm Forest,1,7,4.4,2.0,1,0.5
@@ -46084,30 +46311,37 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Anderson,MID,Man City,5,90,6.3,4.0,1,2.67
 2026-27,5,Anderson,MID,Man City,2,90,6.3,3.0,1,3.25
 2026-27,6,Anderson,MID,Man City,6,90,6.3,4.0,1,3.0
+2026-27,7,Anderson,MID,Man City,1,13,6.3,2.0,1,3.8
 2026-27,2,Hudson-Odoi,MID,Nott'm Forest,1,1,6.0,4.0,1,0.0
 2026-27,6,Hudson-Odoi,MID,Nott'm Forest,1,18,5.8,3.0,1,0.2
+2026-27,7,Hudson-Odoi,MID,Nott'm Forest,1,5,5.8,4.0,1,0.4
 2026-27,1,Ndoye,MID,Nott'm Forest,3,61,5.5,3.0,1,
 2026-27,2,Ndoye,MID,Nott'm Forest,9,65,5.5,4.0,1,3.0
 2026-27,3,Ndoye,MID,Nott'm Forest,1,58,5.5,2.0,1,6.0
 2026-27,4,Ndoye,MID,Nott'm Forest,1,74,5.5,3.0,1,4.33
 2026-27,5,Ndoye,MID,Nott'm Forest,1,58,5.5,2.0,1,3.5
 2026-27,6,Ndoye,MID,Nott'm Forest,7,71,5.5,3.0,1,3.0
+2026-27,7,Ndoye,MID,Nott'm Forest,3,72,5.5,4.0,1,3.8
 2026-27,1,McAtee,MID,Nott'm Forest,3,73,5.5,3.0,1,
 2026-27,2,McAtee,MID,Nott'm Forest,2,90,5.5,4.0,1,3.0
 2026-27,3,McAtee,MID,Nott'm Forest,2,90,5.5,2.0,1,2.5
 2026-27,4,McAtee,MID,Nott'm Forest,3,81,5.5,3.0,1,2.33
 2026-27,5,McAtee,MID,Nott'm Forest,2,82,5.5,2.0,1,2.5
 2026-27,6,McAtee,MID,Nott'm Forest,4,90,5.5,3.0,1,2.4
+2026-27,7,McAtee,MID,Nott'm Forest,2,84,5.5,4.0,1,2.6
 2026-27,2,Dominguez,MID,Nott'm Forest,1,1,5.0,4.0,1,0.0
+2026-27,7,Dominguez,MID,Nott'm Forest,3,73,4.8,4.0,1,0.2
 2026-27,1,I.Sangaré,MID,Nott'm Forest,2,90,5.0,3.0,1,
 2026-27,4,I.Sangaré,MID,Nott'm Forest,1,8,4.9,3.0,1,0.67
 2026-27,5,I.Sangaré,MID,Nott'm Forest,1,7,4.9,2.0,1,0.75
 2026-27,6,I.Sangaré,MID,Nott'm Forest,1,24,4.8,3.0,1,0.8
+2026-27,7,I.Sangaré,MID,Nott'm Forest,1,16,4.8,4.0,1,0.6
 2026-27,1,Wood,FWD,Nott'm Forest,1,28,6.0,3.0,1,
 2026-27,3,Wood,FWD,Nott'm Forest,1,16,5.9,2.0,1,0.5
 2026-27,4,Wood,FWD,Nott'm Forest,1,1,5.9,3.0,1,0.67
 2026-27,5,Wood,FWD,Nott'm Forest,1,17,5.8,2.0,1,0.75
 2026-27,6,Wood,FWD,Nott'm Forest,1,18,5.8,3.0,1,0.8
+2026-27,7,Wood,FWD,Nott'm Forest,1,5,5.8,4.0,1,0.8
 2026-27,1,Igor Jesus,FWD,Nott'm Forest,2,90,6.0,3.0,1,
 2026-27,2,Igor Jesus,FWD,Nott'm Forest,1,90,6.0,4.0,1,2.0
 2026-27,3,Igor Jesus,FWD,Nott'm Forest,1,31,5.9,2.0,1,1.5
@@ -46117,14 +46351,17 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,2,Awoniyi,FWD,Coventry City,2,90,5.5,2.0,1,1.0
 2026-27,3,Awoniyi,FWD,Coventry City,2,70,5.5,5.0,1,1.5
 2026-27,4,Awoniyi,FWD,Coventry City,-2,52,5.5,3.0,1,1.67
+2026-27,7,Awoniyi,FWD,Coventry City,1,30,5.4,3.0,1,0.4
 2026-27,1,Kalimuendo,FWD,Nott'm Forest,1,1,5.5,3.0,1,
 2026-27,6,Kalimuendo,FWD,Nott'm Forest,1,7,5.4,3.0,1,0.2
+2026-27,7,Kalimuendo,FWD,Nott'm Forest,1,17,5.4,4.0,1,0.2
 2026-27,1,Kinsky,GK,Spurs,2,90,4.5,3.0,1,
 2026-27,2,Kinsky,GK,Spurs,1,90,4.5,3.0,1,2.0
 2026-27,3,Kinsky,GK,Spurs,6,90,4.5,3.0,1,1.5
 2026-27,4,Kinsky,GK,Spurs,7,90,4.5,3.0,1,3.0
 2026-27,5,Kinsky,GK,Spurs,2,90,4.5,3.0,1,4.0
 2026-27,6,Kinsky,GK,Spurs,3,90,4.5,4.0,1,3.6
+2026-27,7,Kinsky,GK,Spurs,2,90,4.5,2.0,1,3.8
 2026-27,1,Senesi,DEF,Spurs,3,90,6.0,3.0,1,
 2026-27,6,Senesi,DEF,Spurs,2,88,5.8,4.0,1,0.6
 2026-27,2,Pedro Porro,DEF,Spurs,1,90,5.5,3.0,1,0.0
@@ -46134,39 +46371,47 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Danso,DEF,Sunderland,1,90,5.0,4.0,1,0.67
 2026-27,5,Danso,DEF,Sunderland,0,90,5.0,5.0,1,0.75
 2026-27,6,Danso,DEF,Sunderland,1,90,5.0,3.0,1,0.6
+2026-27,7,Danso,DEF,Sunderland,-3,16,5.0,3.0,1,0.8
 2026-27,1,Robertson,DEF,Spurs,3,90,4.5,3.0,1,
 2026-27,2,Robertson,DEF,Spurs,2,67,4.5,3.0,1,3.0
 2026-27,3,Robertson,DEF,Spurs,1,29,4.5,3.0,1,2.5
 2026-27,4,Robertson,DEF,Spurs,7,90,4.4,3.0,1,2.0
 2026-27,5,Robertson,DEF,Spurs,4,90,4.4,3.0,1,3.25
+2026-27,7,Robertson,DEF,Spurs,5,68,4.4,2.0,1,2.8
 2026-27,2,Van de Ven,DEF,Spurs,0,90,5.0,3.0,1,0.0
 2026-27,3,Van de Ven,DEF,Spurs,9,90,5.0,3.0,1,0.0
 2026-27,4,Van de Ven,DEF,Spurs,6,90,5.0,3.0,1,3.0
 2026-27,5,Van de Ven,DEF,Spurs,1,90,5.0,3.0,1,3.75
 2026-27,6,Van de Ven,DEF,Spurs,1,16,5.0,4.0,1,3.2
+2026-27,7,Van de Ven,DEF,Spurs,2,90,5.0,2.0,1,3.4
 2026-27,1,Vuskovic,DEF,Brighton,6,90,5.0,3.0,1,
 2026-27,2,Vuskovic,DEF,Brighton,0,90,5.0,4.0,1,6.0
 2026-27,3,Vuskovic,DEF,Brighton,12,90,5.0,3.0,1,3.0
 2026-27,4,Vuskovic,DEF,Brighton,6,77,5.0,2.0,1,6.0
 2026-27,5,Vuskovic,DEF,Brighton,8,90,5.0,4.0,1,6.0
 2026-27,6,Vuskovic,DEF,Brighton,8,90,5.0,3.0,1,6.4
+2026-27,7,Vuskovic,DEF,Brighton,11,90,5.1,2.0,1,6.8
 2026-27,1,Udogie,DEF,Spurs,1,4,4.5,3.0,1,
 2026-27,2,Udogie,DEF,Spurs,1,22,4.5,3.0,1,1.0
 2026-27,3,Udogie,DEF,Spurs,5,60,4.5,3.0,1,1.0
 2026-27,6,Udogie,DEF,Spurs,2,73,4.4,4.0,1,1.4
+2026-27,7,Davies,DEF,Spurs,7,21,3.9,2.0,1,0.0
 2026-27,2,Kudus,MID,Spurs,1,22,6.5,3.0,1,0.0
 2026-27,3,Kudus,MID,Spurs,1,29,6.5,3.0,1,0.5
 2026-27,4,Kudus,MID,Spurs,1,27,6.5,3.0,1,0.67
 2026-27,5,Kudus,MID,Spurs,4,45,6.5,3.0,1,0.75
 2026-27,6,Kudus,MID,Spurs,3,65,6.5,4.0,1,1.4
+2026-27,7,Kudus,MID,Spurs,6,86,6.5,2.0,1,2.0
 2026-27,1,Tel,MID,Spurs,2,90,6.0,3.0,1,
 2026-27,2,Tel,MID,Spurs,2,67,6.0,3.0,1,2.0
 2026-27,3,Tel,MID,Spurs,3,73,5.9,3.0,1,2.0
 2026-27,4,Tel,MID,Spurs,1,27,5.8,3.0,1,2.33
+2026-27,7,Tel,MID,Spurs,1,3,5.7,2.0,1,1.2
 2026-27,1,Maddison,MID,Spurs,1,22,6.5,3.0,1,
 2026-27,4,Maddison,MID,Spurs,1,13,6.3,3.0,1,0.33
 2026-27,5,Maddison,MID,Spurs,1,24,6.3,3.0,1,0.5
 2026-27,6,Maddison,MID,Spurs,1,16,6.3,4.0,1,0.6
+2026-27,7,Maddison,MID,Spurs,9,68,6.2,2.0,1,0.6
 2026-27,1,Bentancur,MID,Spurs,1,45,5.5,3.0,1,
 2026-27,2,Bentancur,MID,Spurs,2,90,5.5,3.0,1,1.0
 2026-27,3,Bentancur,MID,Spurs,5,90,5.5,3.0,1,1.5
@@ -46177,15 +46422,18 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,3,Gallagher,MID,Spurs,3,83,5.4,3.0,1,0.0
 2026-27,5,Gallagher,MID,Spurs,6,6,5.3,3.0,1,0.75
 2026-27,6,Gallagher,MID,Spurs,3,73,5.3,4.0,1,1.8
+2026-27,7,Gallagher,MID,Spurs,1,21,5.3,2.0,1,2.4
 2026-27,1,Bergvall,MID,Spurs,1,45,5.5,3.0,1,
 2026-27,4,Bergvall,MID,Spurs,1,27,5.4,3.0,1,0.33
 2026-27,5,Bergvall,MID,Spurs,1,6,5.4,3.0,1,0.5
 2026-27,6,Bergvall,MID,Spurs,3,65,5.3,4.0,1,0.6
+2026-27,7,Kulusevski,MID,Spurs,1,3,6.5,2.0,1,0.0
 2026-27,1,Gray,MID,Spurs,2,85,5.0,3.0,1,
 2026-27,2,Gray,MID,Spurs,2,67,5.0,3.0,1,2.0
 2026-27,4,Gray,MID,Spurs,3,84,5.0,3.0,1,1.33
 2026-27,5,Gray,MID,Spurs,2,71,4.9,3.0,1,1.75
 2026-27,6,Gray,MID,Spurs,3,90,4.9,4.0,1,1.8
+2026-27,7,Gray,MID,Spurs,2,90,4.9,2.0,1,2.0
 2026-27,1,Moore,MID,Spurs,2,67,5.0,3.0,1,
 2026-27,2,Moore,MID,Spurs,1,22,5.0,3.0,1,2.0
 2026-27,1,Fernandes,MID,Spurs,1,45,6.0,3.0,1,
@@ -46194,12 +46442,14 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Fernandes,MID,Spurs,3,62,5.8,3.0,1,1.0
 2026-27,5,Fernandes,MID,Spurs,1,45,5.8,3.0,1,1.5
 2026-27,6,Fernandes,MID,Spurs,1,1,5.7,4.0,1,1.4
+2026-27,7,Fernandes,MID,Spurs,1,19,5.7,2.0,1,1.4
 2026-27,1,Solanke,FWD,Spurs,1,22,6.0,3.0,1,
 2026-27,2,Solanke,FWD,Spurs,1,15,6.0,3.0,1,1.0
 2026-27,3,Solanke,FWD,Spurs,1,6,5.9,3.0,1,1.0
 2026-27,4,Solanke,FWD,Spurs,2,62,5.9,3.0,1,1.0
 2026-27,5,Solanke,FWD,Spurs,2,65,5.8,3.0,1,1.25
 2026-27,6,Solanke,FWD,Spurs,7,90,5.8,4.0,1,1.4
+2026-27,7,Solanke,FWD,Spurs,4,90,5.8,2.0,1,2.6
 2026-27,1,Richarlison,FWD,Spurs,2,67,6.0,3.0,1,
 2026-27,1,Roefs,GK,Sunderland,1,90,5.0,2.0,1,
 2026-27,2,Roefs,GK,Sunderland,6,90,5.0,2.0,1,1.0
@@ -46207,6 +46457,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Roefs,GK,Sunderland,2,90,5.0,4.0,1,3.0
 2026-27,5,Roefs,GK,Sunderland,0,90,4.9,5.0,1,2.75
 2026-27,6,Roefs,GK,Sunderland,1,90,4.9,3.0,1,2.2
+2026-27,7,Roefs,GK,Sunderland,2,90,4.9,3.0,1,2.2
 2026-27,1,Ballard,DEF,Sunderland,0,90,5.0,2.0,1,
 2026-27,2,Ballard,DEF,Sunderland,8,90,5.0,2.0,1,0.0
 2026-27,3,Ballard,DEF,Sunderland,4,90,5.0,3.0,1,4.0
@@ -46217,18 +46468,23 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Mukiele,DEF,Sunderland,0,90,5.5,4.0,1,4.33
 2026-27,5,Mukiele,DEF,Sunderland,0,90,5.4,5.0,1,3.25
 2026-27,6,Mukiele,DEF,Sunderland,3,90,5.4,3.0,1,2.6
+2026-27,7,Mukiele,DEF,Sunderland,3,90,5.4,3.0,1,3.2
 2026-27,1,Hume,DEF,Sunderland,2,79,4.5,2.0,1,
 2026-27,2,Hume,DEF,Sunderland,6,90,4.5,2.0,1,2.0
 2026-27,3,Hume,DEF,Sunderland,1,26,4.5,3.0,1,4.0
 2026-27,5,Hume,DEF,Sunderland,1,11,4.4,5.0,1,2.25
 2026-27,6,Hume,DEF,Sunderland,1,90,4.3,3.0,1,2.0
+2026-27,7,Hume,DEF,Sunderland,3,90,4.3,3.0,1,1.8
 2026-27,1,Alderete,DEF,Sunderland,1,23,5.0,2.0,1,
+2026-27,7,Alderete,DEF,Sunderland,-1,58,4.8,3.0,1,0.0
 2026-27,1,Reinildo,DEF,Sunderland,1,90,4.5,2.0,1,
 2026-27,2,Reinildo,DEF,Sunderland,6,90,4.5,2.0,1,1.0
 2026-27,3,Reinildo,DEF,Sunderland,2,90,4.5,3.0,1,3.5
 2026-27,4,Reinildo,DEF,Sunderland,-2,90,4.5,4.0,1,3.0
 2026-27,6,Reinildo,DEF,Sunderland,2,72,4.4,3.0,1,1.4
+2026-27,7,Reinildo,DEF,Sunderland,1,90,4.4,3.0,1,1.6
 2026-27,1,O'Nien,DEF,Sunderland,1,66,4.0,2.0,1,
+2026-27,7,O'Nien,DEF,Sunderland,1,31,3.9,3.0,1,0.0
 2026-27,1,Meunier,DEF,Sunderland,1,90,4.5,2.0,1,
 2026-27,2,Meunier,DEF,Sunderland,6,90,4.5,2.0,1,1.0
 2026-27,3,Meunier,DEF,Sunderland,2,63,4.5,3.0,1,3.5
@@ -46241,23 +46497,28 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,E.Le Fée,MID,Sunderland,0,90,5.8,4.0,1,4.33
 2026-27,5,E.Le Fée,MID,Sunderland,5,90,5.8,5.0,1,3.25
 2026-27,6,E.Le Fée,MID,Sunderland,2,80,5.7,3.0,1,3.6
+2026-27,7,E.Le Fée,MID,Sunderland,4,90,5.7,3.0,1,3.6
 2026-27,1,Diarra,MID,Sunderland,1,10,5.5,2.0,1,
 2026-27,2,Diarra,MID,Sunderland,4,18,5.5,2.0,1,1.0
+2026-27,7,Diarra,MID,Sunderland,1,31,5.3,3.0,1,0.8
 2026-27,1,Xhaka,MID,Sunderland,9,90,5.5,2.0,1,
 2026-27,2,Xhaka,MID,Sunderland,6,90,5.5,2.0,1,9.0
 2026-27,3,Xhaka,MID,Sunderland,3,90,5.5,3.0,1,7.5
 2026-27,4,Xhaka,MID,Sunderland,1,90,5.5,4.0,1,6.0
 2026-27,5,Xhaka,MID,Sunderland,2,90,5.5,5.0,1,4.75
 2026-27,6,Xhaka,MID,Sunderland,2,90,5.5,3.0,1,4.2
+2026-27,7,Xhaka,MID,Sunderland,2,90,5.4,3.0,1,2.8
 2026-27,1,Sadiki,MID,Sunderland,2,90,5.0,2.0,1,
 2026-27,2,Sadiki,MID,Sunderland,3,90,5.0,2.0,1,2.0
 2026-27,3,Sadiki,MID,Sunderland,1,73,5.0,3.0,1,2.5
 2026-27,4,Sadiki,MID,Sunderland,2,90,4.9,4.0,1,2.0
 2026-27,5,Sadiki,MID,Sunderland,2,67,4.9,5.0,1,2.0
 2026-27,6,Sadiki,MID,Sunderland,3,90,4.9,3.0,1,2.0
+2026-27,7,Sadiki,MID,Sunderland,2,90,4.8,3.0,1,2.2
 2026-27,2,Mundle,MID,Sunderland,1,1,5.0,2.0,1,0.0
 2026-27,1,Rigg,MID,Sunderland,1,10,5.0,2.0,1,
 2026-27,2,Rigg,MID,Sunderland,1,7,5.0,2.0,1,1.0
+2026-27,7,Rigg,MID,Sunderland,1,64,4.8,3.0,1,0.2
 2026-27,1,Talbi,MID,Sunderland,1,31,5.5,2.0,1,
 2026-27,6,Jocelin.T,MID,Sunderland,1,17,4.9,3.0,1,0.0
 2026-27,1,N.Angulo,MID,Sunderland,5,58,5.0,2.0,1,
@@ -46289,17 +46550,21 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Schlager,MID,Nott'm Forest,3,90,5.0,3.0,1,2.67
 2026-27,5,Schlager,MID,Nott'm Forest,2,90,5.0,2.0,1,2.75
 2026-27,6,Schlager,MID,Nott'm Forest,2,65,5.0,3.0,1,2.6
+2026-27,7,Schlager,MID,Nott'm Forest,4,90,5.0,4.0,1,2.8
 2026-27,1,Bamba,MID,Newcastle,1,14,5.0,4.0,1,
 2026-27,4,Bamba,MID,Newcastle,1,10,4.9,3.0,1,0.33
 2026-27,5,Bamba,MID,Newcastle,1,3,4.9,2.0,1,0.5
+2026-27,7,Penders,GK,Chelsea,1,15,4.4,3.0,1,0.0
 2026-27,1,Maeda,MID,Ipswich Town,2,79,5.5,3.0,1,
 2026-27,2,Maeda,MID,Ipswich Town,2,72,5.5,4.0,1,2.0
 2026-27,3,Maeda,MID,Ipswich Town,2,65,5.5,4.0,1,2.0
 2026-27,4,Maeda,MID,Ipswich Town,1,27,5.4,3.0,1,2.0
 2026-27,5,Maeda,MID,Ipswich Town,1,16,5.4,3.0,1,1.75
 2026-27,6,Maeda,MID,Ipswich Town,2,80,5.3,2.0,1,1.6
+2026-27,7,Maeda,MID,Ipswich Town,7,70,5.3,5.0,1,1.6
 2026-27,2,Morita,MID,Hull City,1,45,5.0,2.0,1,0.0
 2026-27,6,Morita,MID,Hull City,1,15,4.9,3.0,1,0.2
+2026-27,7,Morita,MID,Hull City,1,15,4.9,3.0,1,0.4
 2026-27,1,Scherpen,GK,Ipswich Town,2,90,4.5,3.0,1,
 2026-27,2,Scherpen,GK,Ipswich Town,2,90,4.5,4.0,1,2.0
 2026-27,3,Scherpen,GK,Ipswich Town,2,90,4.5,4.0,1,2.0
@@ -46310,18 +46575,21 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,M.Sangaré,MID,Brentford,4,90,5.7,3.0,1,6.0
 2026-27,5,M.Sangaré,MID,Brentford,0,21,5.7,4.0,1,5.5
 2026-27,6,M.Sangaré,MID,Brentford,1,38,5.6,3.0,1,4.4
+2026-27,7,M.Sangaré,MID,Brentford,1,45,5.5,4.0,1,1.8
 2026-27,1,Silva,DEF,Bournemouth,2,90,5.0,5.0,1,
 2026-27,2,Silva,DEF,Bournemouth,4,90,5.0,3.0,1,2.0
 2026-27,3,Silva,DEF,Bournemouth,1,90,5.0,3.0,1,3.0
 2026-27,4,Silva,DEF,Bournemouth,3,90,5.0,3.0,1,2.33
 2026-27,5,Silva,DEF,Bournemouth,3,90,5.0,4.0,1,2.5
 2026-27,6,Silva,DEF,Bournemouth,0,90,5.0,4.0,1,2.6
+2026-27,7,Silva,DEF,Bournemouth,8,90,5.0,3.0,1,2.2
 2026-27,1,Horníček,GK,Newcastle,1,90,5.0,4.0,1,
 2026-27,2,Horníček,GK,Newcastle,7,90,5.0,3.0,1,1.0
 2026-27,3,Horníček,GK,Newcastle,2,90,5.0,3.0,1,4.0
 2026-27,4,Horníček,GK,Newcastle,1,90,5.0,3.0,1,3.33
 2026-27,5,Horníček,GK,Newcastle,3,90,5.0,2.0,1,2.75
 2026-27,6,Horníček,GK,Newcastle,0,90,5.0,2.0,1,2.8
+2026-27,7,Horníček,GK,Newcastle,2,90,5.0,3.0,1,2.6
 2026-27,2,Barco,MID,Chelsea,1,8,5.5,3.0,1,0.0
 2026-27,4,Barco,MID,Chelsea,0,21,5.5,2.0,1,0.33
 2026-27,5,Barco,MID,Chelsea,2,86,5.4,3.0,1,0.25
@@ -46331,19 +46599,23 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Gonzalo,FWD,Fulham,2,76,6.0,4.0,1,3.33
 2026-27,5,Gonzalo,FWD,Fulham,2,79,6.0,4.0,1,3.0
 2026-27,6,Gonzalo,FWD,Fulham,2,86,6.1,2.0,1,2.8
+2026-27,7,Gonzalo,FWD,Fulham,2,84,6.1,2.0,1,2.0
 2026-27,1,Palacios,MID,Fulham,2,72,5.5,4.0,1,
 2026-27,2,Palacios,MID,Fulham,1,75,5.5,3.0,1,2.0
 2026-27,3,Palacios,MID,Fulham,8,60,5.5,2.0,1,1.5
 2026-27,5,Palacios,MID,Fulham,1,19,5.4,4.0,1,2.75
+2026-27,7,Palacios,MID,Fulham,1,5,5.4,2.0,1,2.0
 2026-27,4,Florentino,MID,Ipswich Town,1,13,4.9,3.0,1,0.0
 2026-27,5,Florentino,MID,Ipswich Town,1,17,4.9,3.0,1,0.25
 2026-27,6,Florentino,MID,Ipswich Town,2,62,4.8,2.0,1,0.4
+2026-27,7,Florentino,MID,Ipswich Town,2,70,4.8,5.0,1,0.8
 2026-27,1,Tzolakis,GK,Hull City,10,90,4.5,4.0,1,
 2026-27,2,Tzolakis,GK,Hull City,10,90,4.5,2.0,1,10.0
 2026-27,3,Tzolakis,GK,Hull City,6,90,4.6,3.0,1,10.0
 2026-27,4,Tzolakis,GK,Hull City,2,90,4.6,4.0,1,8.67
 2026-27,5,Tzolakis,GK,Hull City,6,90,4.6,3.0,1,7.0
 2026-27,6,Tzolakis,GK,Hull City,2,90,4.7,3.0,1,6.8
+2026-27,7,Tzolakis,GK,Hull City,3,90,4.7,3.0,1,5.2
 2026-27,6,Sanchez,DEF,Bournemouth,1,18,4.4,4.0,1,0.0
 2026-27,3,Hjertø-Dahl,MID,Hull City,1,8,5.0,3.0,1,0.0
 2026-27,1,Yirenkyi,MID,Coventry City,1,61,5.0,5.0,1,
@@ -46352,6 +46624,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Yirenkyi,MID,Coventry City,1,17,4.9,3.0,1,1.67
 2026-27,5,Yirenkyi,MID,Coventry City,3,90,4.9,3.0,1,1.5
 2026-27,6,Yirenkyi,MID,Coventry City,4,77,4.8,3.0,1,1.8
+2026-27,7,Yirenkyi,MID,Coventry City,0,59,4.8,3.0,1,2.4
 2026-27,1,Stroud,MID,Hull City,3,70,5.0,4.0,1,
 2026-27,2,Stroud,MID,Hull City,0,58,5.0,2.0,1,3.0
 2026-27,3,Stroud,MID,Hull City,3,62,5.0,3.0,1,1.5
@@ -46368,16 +46641,19 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Araujo,DEF,Liverpool,6,71,5.4,2.0,1,3.0
 2026-27,5,Araujo,DEF,Liverpool,7,90,5.4,3.0,1,3.75
 2026-27,6,Araujo,DEF,Liverpool,0,74,5.4,4.0,1,4.4
+2026-27,7,Araujo,DEF,Liverpool,1,45,5.4,3.0,1,4.2
 2026-27,1,Charles,MID,Fulham,1,23,5.0,4.0,1,
 2026-27,2,Charles,MID,Fulham,1,22,5.0,3.0,1,1.0
 2026-27,3,Charles,MID,Fulham,2,78,5.0,2.0,1,1.0
 2026-27,4,Charles,MID,Fulham,5,90,5.0,4.0,1,1.33
 2026-27,5,Charles,MID,Fulham,4,90,5.0,4.0,1,2.25
 2026-27,6,Charles,MID,Fulham,3,70,5.0,2.0,1,2.6
+2026-27,7,Charles,MID,Fulham,3,90,5.0,2.0,1,3.0
 2026-27,3,Diomande,DEF,Nott'm Forest,1,1,5.4,2.0,1,0.0
 2026-27,4,Diomande,DEF,Nott'm Forest,4,90,5.4,3.0,1,0.33
 2026-27,5,Diomande,DEF,Nott'm Forest,2,72,5.4,2.0,1,1.25
 2026-27,6,Diomande,DEF,Nott'm Forest,1,90,5.4,3.0,1,1.4
+2026-27,7,Diomande,DEF,Nott'm Forest,2,90,5.4,4.0,1,1.6
 2026-27,1,Chavarria,DEF,Chelsea,1,25,5.0,3.0,1,
 2026-27,2,Chavarria,DEF,Chelsea,1,18,5.0,3.0,1,1.0
 2026-27,3,Chavarria,DEF,Chelsea,1,30,5.0,5.0,1,1.0
@@ -46387,11 +46663,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,1,Hamer,MID,Coventry City,1,8,5.5,5.0,1,
 2026-27,2,Hamer,MID,Coventry City,1,19,5.5,2.0,1,1.0
 2026-27,3,Hamer,MID,Coventry City,1,5,5.5,5.0,1,1.0
+2026-27,7,Hamer,MID,Coventry City,1,12,5.3,3.0,1,0.4
 2026-27,1,Herrington,DEF,Hull City,1,26,4.0,4.0,1,
 2026-27,2,Herrington,DEF,Hull City,1,31,4.0,2.0,1,1.0
 2026-27,3,Herrington,DEF,Hull City,1,19,4.0,3.0,1,1.0
 2026-27,4,Herrington,DEF,Hull City,1,31,4.0,4.0,1,1.0
 2026-27,5,Herrington,DEF,Hull City,1,90,4.0,3.0,1,1.0
+2026-27,7,Herrington,DEF,Hull City,0,45,4.0,3.0,1,0.8
 2026-27,1,Mendy,DEF,Hull City,15,63,4.0,4.0,1,
 2026-27,2,Mendy,DEF,Hull City,1,58,4.0,2.0,1,15.0
 2026-27,3,Mendy,DEF,Hull City,8,70,4.0,3.0,1,8.0
@@ -46403,6 +46681,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Khalaili,DEF,Crystal Palace,7,90,5.0,2.0,1,2.0
 2026-27,5,Khalaili,DEF,Crystal Palace,6,90,5.0,3.0,1,3.25
 2026-27,6,Khalaili,DEF,Crystal Palace,2,90,5.0,3.0,1,3.8
+2026-27,7,Khalaili,DEF,Crystal Palace,0,90,5.0,4.0,1,4.0
 2026-27,2,Gourna-Douath,MID,Hull City,1,45,5.0,2.0,1,0.0
 2026-27,3,Gourna-Douath,MID,Hull City,2,81,5.0,3.0,1,0.5
 2026-27,5,Gourna-Douath,MID,Hull City,1,12,5.0,3.0,1,0.75
@@ -46412,12 +46691,14 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Enciso,MID,Ipswich Town,2,90,5.5,3.0,1,3.67
 2026-27,5,Enciso,MID,Ipswich Town,2,73,5.5,3.0,1,3.25
 2026-27,6,Enciso,MID,Ipswich Town,2,70,5.5,2.0,1,3.0
+2026-27,7,Enciso,MID,Ipswich Town,2,77,5.5,5.0,1,2.4
 2026-27,1,Ouattara,DEF,Ipswich Town,1,10,4.0,3.0,1,
 2026-27,2,Ouattara,DEF,Ipswich Town,1,17,4.0,4.0,1,1.0
 2026-27,3,Ouattara,DEF,Ipswich Town,1,12,4.0,4.0,1,1.0
 2026-27,4,Ouattara,DEF,Ipswich Town,1,2,4.0,3.0,1,1.0
 2026-27,5,Ouattara,DEF,Ipswich Town,2,90,4.0,3.0,1,1.0
 2026-27,6,Ouattara,DEF,Ipswich Town,10,90,4.0,2.0,1,1.2
+2026-27,7,Ouattara,DEF,Ipswich Town,3,90,4.0,5.0,1,3.0
 2026-27,1,Dedić,DEF,Newcastle,1,90,4.5,4.0,1,
 2026-27,2,Dedić,DEF,Newcastle,11,90,4.5,3.0,1,1.0
 2026-27,3,Dedić,DEF,Newcastle,1,90,4.5,3.0,1,6.0
@@ -46436,13 +46717,16 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Suzuki,GK,Aston Villa,2,90,5.0,3.0,1,4.0
 2026-27,5,Suzuki,GK,Aston Villa,2,90,5.0,3.0,1,3.5
 2026-27,6,Suzuki,GK,Aston Villa,2,90,5.0,3.0,1,3.2
+2026-27,7,Suzuki,GK,Aston Villa,8,90,5.0,3.0,1,3.6
 2026-27,2,Elvedi,DEF,Leeds,1,56,4.5,3.0,1,0.0
 2026-27,3,Elvedi,DEF,Leeds,4,90,4.5,4.0,1,0.5
 2026-27,4,Elvedi,DEF,Leeds,2,90,4.5,3.0,1,1.67
 2026-27,5,Elvedi,DEF,Leeds,6,90,4.5,2.0,1,1.75
 2026-27,6,Elvedi,DEF,Leeds,1,85,4.5,5.0,1,2.6
+2026-27,7,Elvedi,DEF,Leeds,2,90,4.5,4.0,1,2.8
 2026-27,4,Cherif,FWD,Coventry City,1,30,5.0,3.0,1,0.0
 2026-27,6,Cherif,FWD,Coventry City,12,77,5.0,3.0,1,0.2
+2026-27,7,Cherif,FWD,Coventry City,1,59,5.0,3.0,1,2.6
 2026-27,1,Osman,MID,Brighton,1,12,5.0,3.0,1,
 2026-27,2,Osman,MID,Brighton,1,16,5.0,4.0,1,1.0
 2026-27,4,Osman,MID,Brighton,1,12,5.0,2.0,1,0.67
@@ -46452,6 +46736,7 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Yalcouyé,MID,Brighton,8,64,4.5,2.0,1,3.67
 2026-27,5,Yalcouyé,MID,Brighton,1,5,4.5,4.0,1,4.75
 2026-27,6,Yalcouyé,MID,Brighton,1,22,4.5,3.0,1,4.0
+2026-27,7,Yalcouyé,MID,Brighton,1,9,4.5,2.0,1,4.0
 2026-27,1,Jebbison,FWD,Bournemouth,1,15,5.0,5.0,1,
 2026-27,3,Jebbison,FWD,Bournemouth,1,1,5.0,3.0,1,0.5
 2026-27,5,Jebbison,FWD,Bournemouth,1,15,5.0,4.0,1,0.5
@@ -46460,24 +46745,31 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Wan-Bissaka,DEF,Aston Villa,3,90,4.5,3.0,1,1.0
 2026-27,5,Wan-Bissaka,DEF,Aston Villa,1,45,4.5,3.0,1,1.67
 2026-27,6,Wan-Bissaka,DEF,Aston Villa,1,45,4.5,3.0,1,1.5
+2026-27,7,Wan-Bissaka,DEF,Aston Villa,6,76,4.5,3.0,1,1.4
 2026-27,5,Methalie,DEF,Sunderland,-1,90,4.5,5.0,1,0.0
 2026-27,6,Methalie,DEF,Sunderland,1,17,4.5,3.0,1,-0.25
+2026-27,7,Ahoka,MID,Sunderland,1,25,4.5,3.0,1,0.0
 2026-27,6,Hadjam,DEF,Brighton,7,2,4.5,3.0,1,0.0
+2026-27,7,Hadjam,DEF,Brighton,1,9,4.5,2.0,1,1.4
 2026-27,2,Bouaddi,MID,Man City,1,8,5.5,3.0,1,
 2026-27,3,Bouaddi,MID,Man City,1,14,5.5,2.0,1,1.0
 2026-27,6,Bouaddi,MID,Man City,0,10,5.5,4.0,1,0.5
+2026-27,7,Bouaddi,MID,Man City,2,90,5.5,2.0,1,0.4
 2026-27,2,Cho,MID,Hull City,1,7,5.0,2.0,1,
 2026-27,3,Cho,MID,Hull City,1,8,5.0,3.0,1,1.0
 2026-27,4,Cho,MID,Hull City,1,30,5.0,4.0,1,1.0
 2026-27,5,Cho,MID,Hull City,6,27,5.0,3.0,1,1.0
+2026-27,7,Goretzka,MID,Aston Villa,1,18,5.9,3.0,1,0.0
 2026-27,2,Palacios,MID,Ipswich Town,1,28,5.0,4.0,1,
 2026-27,3,Palacios,MID,Ipswich Town,4,77,5.0,4.0,1,1.0
 2026-27,4,Palacios,MID,Ipswich Town,4,90,5.0,3.0,1,2.5
 2026-27,5,Palacios,MID,Ipswich Town,2,80,5.0,3.0,1,3.0
 2026-27,6,Palacios,MID,Ipswich Town,1,27,5.0,2.0,1,2.75
+2026-27,7,Palacios,MID,Ipswich Town,4,90,5.0,5.0,1,2.4
 2026-27,4,Diouf,DEF,Brentford,1,30,4.5,3.0,1,0.0
 2026-27,5,Diouf,DEF,Brentford,1,9,4.5,4.0,1,0.33
 2026-27,6,Diouf,DEF,Brentford,1,90,4.5,3.0,1,0.5
+2026-27,7,Diouf,DEF,Brentford,1,13,4.5,4.0,1,0.6
 2026-27,2,McAidoo,MID,Man City,1,8,4.5,3.0,1,
 2026-27,3,McAidoo,MID,Man City,1,3,4.5,2.0,1,1.0
 2026-27,2,Braithwaite,DEF,Man City,1,1,4.0,3.0,1,
@@ -46485,16 +46777,20 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Barcola,MID,Liverpool,3,71,8.0,2.0,1,1.0
 2026-27,5,Barcola,MID,Liverpool,3,71,8.0,3.0,1,2.0
 2026-27,6,Barcola,MID,Liverpool,2,87,8.0,4.0,1,2.33
+2026-27,7,Barcola,MID,Liverpool,4,90,8.0,3.0,1,2.25
 2026-27,6,Allan,MID,Man City,1,10,6.0,4.0,1,0.0
 2026-27,4,Mbaye,MID,Aston Villa,1,27,6.0,3.0,1,0.0
 2026-27,5,Mbaye,MID,Aston Villa,1,6,6.0,3.0,1,0.5
 2026-27,6,Mbaye,MID,Aston Villa,1,26,6.0,3.0,1,0.67
+2026-27,7,Mbaye,MID,Aston Villa,1,18,6.0,3.0,1,0.75
 2026-27,4,Ahanor,DEF,Crystal Palace,3,90,4.5,2.0,1,0.0
 2026-27,6,Ahanor,DEF,Crystal Palace,1,18,4.5,3.0,1,1.0
+2026-27,7,Ahanor,DEF,Crystal Palace,-1,52,4.5,4.0,1,1.0
 2026-27,3,Fernandez-Pardo,FWD,Newcastle,1,27,6.0,3.0,1,
 2026-27,4,Fernandez-Pardo,FWD,Newcastle,1,57,6.0,3.0,1,1.0
 2026-27,5,Fernandez-Pardo,FWD,Newcastle,2,73,6.0,2.0,1,1.0
 2026-27,6,Fernandez-Pardo,FWD,Newcastle,2,90,6.0,2.0,1,1.33
+2026-27,7,Fernandez-Pardo,FWD,Newcastle,1,55,6.0,3.0,1,1.5
 2026-27,3,Larsson,MID,Fulham,1,11,5.0,2.0,1,
 2026-27,4,Larsson,MID,Fulham,1,13,5.0,4.0,1,1.0
 2026-27,5,Larsson,MID,Fulham,1,13,5.0,4.0,1,1.0
@@ -46503,26 +46799,32 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Vaz,FWD,Hull City,1,8,5.0,4.0,1,0.0
 2026-27,5,Vaz,FWD,Hull City,1,12,5.0,3.0,1,0.5
 2026-27,6,Vaz,FWD,Hull City,1,4,5.0,3.0,1,0.67
+2026-27,7,Vaz,FWD,Hull City,1,22,5.0,3.0,1,0.75
 2026-27,3,Norton-Cuffy,DEF,Hull City,1,26,4.0,3.0,1,
 2026-27,4,Norton-Cuffy,DEF,Hull City,0,8,4.0,4.0,1,1.0
+2026-27,7,Norton-Cuffy,DEF,Hull City,2,67,4.0,3.0,1,0.25
 2026-27,4,Andrés,MID,Brighton,4,25,5.5,2.0,1,0.0
 2026-27,5,Andrés,MID,Brighton,8,84,5.5,4.0,1,2.0
 2026-27,6,Andrés,MID,Brighton,3,90,5.5,3.0,1,4.0
+2026-27,7,Andrés,MID,Brighton,2,90,5.5,2.0,1,3.75
 2026-27,3,Flemming,FWD,Ipswich Town,1,24,5.5,4.0,1,
 2026-27,4,Flemming,FWD,Ipswich Town,5,27,5.5,3.0,1,1.0
 2026-27,5,Flemming,FWD,Ipswich Town,0,9,5.5,3.0,1,3.0
 2026-27,6,Flemming,FWD,Ipswich Town,1,19,5.5,2.0,1,2.0
+2026-27,7,Flemming,FWD,Ipswich Town,5,12,5.5,5.0,1,1.75
 2026-27,4,Bard,DEF,Leeds,1,18,4.5,3.0,1,0.0
 2026-27,3,Thomas,MID,Hull City,1,27,5.5,3.0,1,
 2026-27,4,Thomas,MID,Hull City,1,30,5.5,4.0,1,1.0
 2026-27,5,Thomas,MID,Hull City,2,62,5.5,3.0,1,1.0
 2026-27,6,Thomas,MID,Hull City,7,85,5.5,3.0,1,1.33
+2026-27,7,Thomas,MID,Hull City,2,67,5.5,3.0,1,2.75
 2026-27,3,Chilwell,DEF,Crystal Palace,7,16,4.5,3.0,1,
 2026-27,4,Chilwell,DEF,Crystal Palace,1,13,4.5,2.0,1,7.0
 2026-27,3,Timber,MID,Crystal Palace,2,73,5.0,3.0,1,
 2026-27,4,Timber,MID,Crystal Palace,4,90,5.0,2.0,1,2.0
 2026-27,5,Timber,MID,Crystal Palace,3,90,5.0,3.0,1,3.0
 2026-27,6,Timber,MID,Crystal Palace,7,90,5.0,3.0,1,3.0
+2026-27,7,Timber,MID,Crystal Palace,1,45,5.0,4.0,1,4.0
 2026-27,3,Fofana,MID,Sunderland,1,16,5.5,3.0,1,
 2026-27,4,Fofana,MID,Sunderland,1,14,5.5,4.0,1,1.0
 2026-27,5,Fofana,MID,Sunderland,1,30,5.5,5.0,1,1.0
@@ -46534,10 +46836,13 @@ season,gw,player,position,team,points,minutes,price,fixture_difficulty,n_fixture
 2026-27,4,Maitland-Niles,DEF,Everton,6,74,4.5,3.0,1,7.0
 2026-27,5,Maitland-Niles,DEF,Everton,8,90,4.5,2.0,1,6.5
 2026-27,6,Maitland-Niles,DEF,Everton,4,77,4.5,2.0,1,7.0
+2026-27,7,Maitland-Niles,DEF,Everton,1,54,4.5,4.0,1,6.25
 2026-27,4,Affengruber,DEF,Fulham,8,90,4.5,4.0,1,0.0
 2026-27,5,Affengruber,DEF,Fulham,4,90,4.5,4.0,1,4.0
 2026-27,6,Affengruber,DEF,Fulham,3,90,4.5,2.0,1,4.0
+2026-27,7,Affengruber,DEF,Fulham,6,90,4.5,2.0,1,3.75
 2026-27,6,J.Angulo,FWD,Sunderland,1,9,4.5,3.0,1,0.0
 2026-27,5,Mfuni,DEF,Coventry City,6,90,4.0,3.0,1,0.0
 2026-27,6,Mfuni,DEF,Coventry City,7,7,4.0,3.0,1,3.0
 2026-27,5,Nicoll-Jazuli,MID,Chelsea,1,3,4.5,3.0,1,
+2026-27,7,Tutierov,MID,Sunderland,1,58,5.0,3.0,1,

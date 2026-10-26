@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPL Points Lab</title>
+<meta name="description" content="Predicted Fantasy Premier League points for every player, updated after each gameweek.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='6' fill='none' stroke='%235ef0b0' stroke-width='2.5'/><line x1='16' y1='6' x2='16' y2='26' stroke='%235ef0b0' stroke-width='2.5'/><circle cx='16' cy='16' r='4' fill='none' stroke='%235ef0b0' stroke-width='2.5'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="nav">
+  <div class="bar">
+    <a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#how">How it works</a><a href="#record">Track record</a><a href="#picks">This week</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn gh" href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>
+      <a class="btn primary" href="dashboard.html">Dashboard <span class="chev">›</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="pill reveal" id="pill"><span class="dot"></span><span id="pill-text">Loading this week's picks</span></div>
+      <h1 class="reveal" style="--d:.08s">Who to pick for <span class="gw" id="hero-gw">the next gameweek</span>.</h1>
+      <p class="lede reveal" style="--d:.16s">I trained a model on four seasons of Premier League stats to predict how many
+        FPL points every player will score next week. It retrains after each gameweek.</p>
+      <div class="actions reveal" style="--d:.24s">
+        <a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+      <div id="notice"></div>
+    </div>
+    <div class="pitch reveal" style="--d:.1s" id="pitch" aria-label="The model's best XI"></div>
+    <a class="scroll-cue" href="#how"><span>Scroll</span><i></i></a>
+  </section>
+
+  <section class="block" id="how">
+    <div class="steps">
+      <div class="side">
+        <div class="kicker reveal">How it works</div>
+        <h2 class="big reveal" style="--d:.06s">Four steps from raw stats to a pick.</h2>
+        <p class="sub reveal" style="--d:.12s">Python and SQL from start to finish. The write-up on GitHub covers the
+          details, including the mistakes I caught along the way.</p>
+      </div>
+      <div class="stack">
+        <article class="layer reveal" style="--i:0"><div class="top"><span class="step-n">1</span><span>Python</span></div>
+          <h3>Collect every match</h3>
+          <p>Stats for every player in every Premier League match since 2022-23. This season comes straight from the official
+            FPL API, older seasons from Vaastav Anand's open archive.</p></article>
+        <article class="layer reveal" style="--i:1"><div class="top"><span class="step-n">2</span><span>SQLite</span></div>
+          <h3>Build the features in SQL</h3>
+          <p>Rolling averages of points, minutes, xG and xA, plus how strong the opponent is. Every window ends at
+            <code>1 PRECEDING</code>, so a row only knows about games played before that week's deadline.</p></article>
+        <article class="layer reveal" style="--i:2"><div class="top"><span class="step-n">3</span><span>scikit-learn</span></div>
+          <h3>Train and test the model</h3>
+          <p>A gradient boosting model, tuned on 2024-25 and tested on 2025-26 without ever seeing it. After passing
+            that test it was retrained on all four seasons for this one.</p></article>
+        <article class="layer reveal" style="--i:3"><div class="top"><span class="step-n">4</span><span>Every gameweek</span></div>
+          <h3>Pick the team</h3>
+          <p>Predict the next gameweek, cut flagged players by FPL's chance of playing, and pick the highest-scoring
+            legal XI. A player listed at 25% keeps a quarter of his prediction.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="record">
+    <div class="kicker reveal">Track record</div>
+    <h2 class="big reveal" style="--d:.06s">Is it better than just picking in-form players?</h2>
+    <p class="sub reveal" style="--d:.12s" id="record-sub">Before every deadline this season the model picks a team, and so
+      does a simple rule: the eleven players with the best average so far.</p>
+    <div class="score">
+      <div class="card model reveal" data-reveal-fn="count" data-key="Model">
+        <div class="who"><i style="background:var(--mint)"></i>Model's team, total points</div>
+        <div class="val num">0</div></div>
+      <div class="card reveal" style="--d:.1s" data-reveal-fn="count" data-key="Season average">
+        <div class="who"><i style="background:#8a9592"></i>Simple rule's team, total points</div>
+        <div class="val num">0</div></div>
+    </div>
+    <div class="chart-card reveal" data-reveal-fn="record"><svg id="record-chart" role="img" aria-label="Running points total, model vs simple rule"></svg></div>
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <section class="block" id="picks">
+    <div class="kicker reveal">This week</div>
+    <h2 class="big reveal" style="--d:.06s" id="picks-title">The top picks.</h2>
+    <p class="sub reveal" style="--d:.12s">Ranked by predicted points. Hover to pause. The dashboard has every player, filters and
+      each player's week-by-week record.</p>
+  </section>
+  <div class="marquee reveal" id="marquee"><div class="marquee-track" id="marquee-track"></div></div>
+
+  <section class="block faq" id="faq">
+    <div>
+      <div class="kicker reveal">FAQ</div>
+      <h2 class="big reveal" style="--d:.06s">Questions people ask.</h2>
+    </div>
+    <div class="reveal" style="--d:.1s" id="faq-list">
+      <div class="qa"><button aria-expanded="false">Why doesn't the team fit the £100m budget?<span class="plus"></span></button>
+        <div class="ans"><div><p>The best XI shows who the model rates highest, not a squad you could actually buy. Use it to decide
+          who to bring in or captain, and check prices on the dashboard.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">How does it handle injuries?<span class="plus"></span></button>
+        <div class="ans"><div><p>The model only sees match stats, so it multiplies each prediction by FPL's own chance of playing.
+          The dashboard lists the big names who got cut and what they were predicted before.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">How often does it update?<span class="plus"></span></button>
+        <div class="ans"><div><p>After every gameweek. I run one script that pulls the new results from the FPL API, retrains,
+          and republishes this site.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Is it actually better than a simple rule?<span class="plus"></span></button>
+        <div class="ans"><div><p>Over all of 2025-26, a season it never saw while training, its team beat the season-average rule
+          by about 260 points. This season it's ahead too, but a handful of gameweeks is too few to be sure yet.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Can I run it myself?<span class="plus"></span></button>
+        <div class="ans"><div><p>Yes. Clone the repo, install the requirements and run <code>python run_pipeline.py</code>. It
+          downloads the data, builds the database and writes every result.</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="closing reveal">
+    <h2 id="closing-title">This week's picks are up.</h2>
+    <div class="actions"><a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
+      <a class="btn" href="https://github.com/andrewkwon0804-web/fpl-analyzer">Read the code</a></div>
+  </section>
+
+  <footer>
+    <span>Made by Andrew Kwon</span>
+    <span id="foot-data">Data from the official FPL API</span>
+    <a href="https://github.com/andrewkwon0804-web/fpl-analyzer">github.com/andrewkwon0804-web/fpl-analyzer</a>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/home.js"></script>
+</body>
+</html>
