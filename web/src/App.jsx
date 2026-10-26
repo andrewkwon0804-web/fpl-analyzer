@@ -6,13 +6,7 @@ import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
 import Hero from "./sections/Hero.jsx";
-import BestXI from "./sections/BestXI.jsx";
-import { Rails, Rule } from "./components/hud.jsx";
-import ScrollIsland from "./components/wm/ScrollIsland.jsx";
-import { goTo } from "./components/Nav.jsx";
-import { Fragment } from "react";
-import { LastGameweek, HowItWorks, TrackRecord } from "./sections/Story.jsx";
-import { Findings, TopPicks, FAQ, Closing, Footer } from "./sections/More.jsx";
+import { LastGameweek, TrackRecord, Findings, TopPicks, FAQ, Closing, Footer } from "./sections/Rest.jsx";
 
 // Shown while site.json loads: the same layout in grey blocks, so nothing jumps when data arrives.
 function Skeleton() {
@@ -28,9 +22,6 @@ function Skeleton() {
     </div>
   );
 }
-
-const TOPICS = [["top", "Overview"], ["xi", "This week"], ["last", "Last gameweek"], ["how", "How it works"], ["record", "Track record"],
-  ["findings", "Findings"], ["picks", "Top 14"], ["faq", "Questions"]].map(([id, title]) => ({ id, title }));
 
 function Page({ data }) {
   const [cmd, setCmd] = useState(false);

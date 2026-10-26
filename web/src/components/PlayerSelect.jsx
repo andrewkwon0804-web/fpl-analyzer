@@ -27,9 +27,9 @@ export default function PlayerSelect({ players, value, onPick, onClear, placehol
           if (e.key === "Enter" && hits[cur]) { e.preventDefault(); pick(hits[cur]); e.currentTarget.blur(); }
           if (e.key === "Escape") { setQ(null); e.currentTarget.blur(); }
         }}
-        className={`h-11 w-full rounded-xl border bg-bg/60 px-3.5 text-[15px] outline-none transition-colors placeholder:text-text3 focus:border-mint ${bad ? "border-rose" : "border-line2"}`} />
+        className={`h-11 w-full rounded-[4px] border bg-bg/60 px-3.5 text-[15px] outline-none transition-colors placeholder:text-text3 focus:border-mint ${bad ? "border-rose" : "border-line2"}`} />
       {hits.length > 0 && (
-        <ul role="listbox" className="absolute inset-x-0 top-12 z-40 overflow-hidden rounded-xl border border-line2 bg-surface p-1 shadow-2xl">
+        <ul role="listbox" className="absolute inset-x-0 top-12 z-40 overflow-hidden rounded-[4px] border border-line2 bg-surface p-1 shadow-2xl">
           {hits.map((p, i) => (
             <li key={p.id} role="option" aria-selected={i === cur} onPointerDown={(e) => { e.preventDefault(); pick(p); }} onPointerMove={() => setCur(i)}
               className={`flex cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm ${i === cur ? "bg-raised" : ""}`}>

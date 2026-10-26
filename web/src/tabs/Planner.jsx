@@ -105,7 +105,7 @@ export default function PlannerTab({ data }) {
         </div>
         <p className="mt-3 min-h-5 text-sm text-amber">{ids.length ? problem : ""}</p>
         <button onClick={() => run()} disabled={!!problem || busy}
-          className="mt-2 h-11 rounded-xl bg-text px-5 font-medium text-bg transition-colors hover:bg-mint disabled:opacity-40">
+          className="mt-2 h-11 rounded-[4px] bg-text px-5 font-medium text-bg transition-colors hover:bg-mint disabled:opacity-40">
           {busy ? "Checking every transfer…" : "Find the best transfers ›"}
         </button>
         <p className="mt-4 text-xs leading-relaxed text-text3">Prices are current prices. FPL may sell your players for up to £0.3m less if they rose after you bought them, so lower the bank figure if needed. The squad is saved in this browser.</p>
@@ -138,7 +138,7 @@ export default function PlannerTab({ data }) {
                 {o.moves.map((mv) => {
                   const a = data.byId[mv.out], b = data.byId[mv.in];
                   return (
-                    <div key={mv.in} className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-xl border border-line bg-bg/40 p-3">
+                    <div key={mv.in} className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-[4px] border border-line bg-bg/40 p-3">
                       <div className="min-w-0"><div className="truncate text-rose">{a.name}</div><div className="text-xs text-text3">{a.short}, £{a.price.toFixed(1)}m, {pl.h5[a.id].toFixed(1)} pts</div><Fixtures data={data} team={a.short} gws={pl.GWS} /></div>
                       <span className="text-text3">→</span>
                       <div className="min-w-0"><div className="truncate text-mint">{b.name}</div><div className="text-xs text-text3">{b.short}, £{b.price.toFixed(1)}m, {pl.h5[b.id].toFixed(1)} pts</div><Fixtures data={data} team={b.short} gws={pl.GWS} /></div>

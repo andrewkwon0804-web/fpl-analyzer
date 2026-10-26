@@ -19,7 +19,7 @@ export function Head({ kicker, n, title, children }) {
 
 // Each player's gameweek as a column of pixels: one square per point. Outlined squares are
 // the prediction, lit squares what he scored. Squares light up one row at a time.
-function PixelTeam({ team }) {
+export function PixelTeam({ team }) {
   const [ref, seen] = useInView(0.8);
   const rows = Math.max(...team.map((p) => Math.max(p.points, Math.round(p.pred))), 4);
   const trail = useTrail(rows, { o: seen ? 1 : 0, config: { tension: 300, friction: 26 }, immediate: reduced });

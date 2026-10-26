@@ -22,7 +22,7 @@ export function ToastProvider({ children }) {
       <div className="pointer-events-none fixed inset-x-0 bottom-[max(16px,env(safe-area-inset-bottom))] z-[160] flex flex-col items-center gap-2 px-4" aria-live="polite">
         {tr((st, x) => (
           <animated.div style={{ opacity: st.o, transform: st.y.to((y) => `translateY(${y}px)`) }}
-            className="pointer-events-auto flex items-center gap-4 rounded-xl border border-line2 bg-surface py-2.5 pl-4 pr-2 text-sm shadow-2xl">
+            className="pointer-events-auto flex items-center gap-4 rounded-[4px] border border-line2 bg-surface py-2.5 pl-4 pr-2 text-sm shadow-2xl">
             {x.text}
             {x.undo && <button onClick={() => { x.undo(); drop(x.k); }} className="hit rounded-lg px-3 py-1.5 font-medium text-mint hover:bg-raised">Undo</button>}
             <kbd className="hidden">z</kbd>

@@ -41,7 +41,7 @@ export default function Hero({ data }) {
   const rise = (d) => ({ transition: `opacity 1s ${d}s, transform 1.2s cubic-bezier(.2,.7,.1,1) ${d}s, filter 1s ${d}s`,
     opacity: in_ ? 1 : 0, transform: in_ ? "none" : "translateY(24px)", filter: in_ ? "none" : "blur(8px)" });
   return (
-    <section id="top" data-tint="56 225 168" data-tint2="70 120 255" data-tx="78%" className="relative flex min-h-[100svh] items-center">
+    <section id="top" data-tint="56 225 168" data-tint2="70 120 255" data-tx="78%" data-glow="1" className="relative flex min-h-[100svh] items-center">
       <div ref={box} className="page origin-top-left will-change-transform">
         <div style={rise(0)} className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[12px] uppercase tracking-[0.12em] text-text3">
           Season {m.season} <span className="text-text2">·</span> Gameweek {m.gw}{data.stale && <span className="text-amber">· data through GW{m.played}</span>}

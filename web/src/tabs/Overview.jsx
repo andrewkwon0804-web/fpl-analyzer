@@ -72,8 +72,8 @@ export function PlayersTab({ data, showPlayer }) {
     <div>
       <div className="flex flex-wrap items-center gap-3">
         <input value={q} onChange={(e) => setQ(e.target.value)} type="search" placeholder="Search players or teams" aria-label="Search players or teams"
-          className="h-11 w-full rounded-xl border border-line2 bg-bg/60 px-4 outline-none placeholder:text-text3 focus:border-mint sm:w-72" />
-        <div className="flex gap-1 rounded-xl border border-line2 p-1">
+          className="h-11 w-full rounded-[4px] border border-line2 bg-bg/60 px-4 outline-none placeholder:text-text3 focus:border-mint sm:w-72" />
+        <div className="flex gap-1 rounded-[4px] border border-line2 p-1">
           {["", "GK", "DEF", "MID", "FWD"].map((x) => (
             <button key={x} onClick={() => setPos(x)} aria-pressed={pos === x}
               className={`rounded-lg px-3 py-1.5 font-mono text-xs ${pos === x ? "bg-raised text-mint" : "text-text3 hover:text-text"}`}>{x || "ALL"}</button>

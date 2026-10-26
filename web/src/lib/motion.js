@@ -34,3 +34,24 @@ export function useScrollY() {
   }, []);
   return y;
 }
+
+// 0 → 1 as a tall section scrolls through a pinned (sticky) viewport. Updates every frame
+// without re-rendering React: pass onProgress to drive styles directly.
+export function usePinProgress(onProgress) {
+  const ref = useRef(null);
+  useEffect(() => {
+    let raf = 0, cur = 0;
+    const tick = () => {
+      const el = ref.current;
+      if (el) {
+        const r = el.getBoundingClientRect(), goal = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
+        cur += (goal - cur) * (reduced ? 1 : 0.12);
+        if (r.bottom > -200 && r.top < innerHeight + 200) onProgress(cur);
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [onProgress]);
+  return ref;
+}

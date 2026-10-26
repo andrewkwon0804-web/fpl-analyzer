@@ -38,13 +38,13 @@ export default function Finder({ data, onPick }) {
           if (e.key === "ArrowUp") { e.preventDefault(); setCur((c) => Math.max(0, c - 1)); }
           if (e.key === "Enter" && hits[cur]) pick(hits[cur]);
         }}
-        className="h-[52px] w-full rounded-2xl border border-line2 bg-surface/80 pl-11 pr-12 text-[16px] outline-none transition-colors placeholder:text-text3 focus:border-mint [&::-webkit-search-cancel-button]:hidden" />
+        className="h-[52px] w-full rounded-[6px] border border-line2 bg-surface/80 pl-11 pr-12 text-[16px] outline-none transition-colors placeholder:text-text3 focus:border-mint [&::-webkit-search-cancel-button]:hidden" />
       <kbd className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded-md border border-line2 px-2 font-mono text-xs text-text3 max-sm:hidden">/</kbd>
       {open && (
-        <ul id="finder-list" role="listbox" className="absolute inset-x-0 top-[58px] z-30 overflow-hidden rounded-2xl border border-line2 bg-surface p-1.5 shadow-2xl">
+        <ul id="finder-list" role="listbox" className="absolute inset-x-0 top-[58px] z-30 overflow-hidden rounded-[6px] border border-line2 bg-surface p-1.5 shadow-2xl">
           {hits.map((p, i) => (
             <li key={p.id} role="option" aria-selected={i === cur} onPointerDown={(e) => { e.preventDefault(); pick(p); }} onPointerMove={() => setCur(i)}
-              className={`flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 ${i === cur ? "bg-raised" : ""}`}>
+              className={`flex cursor-pointer items-center justify-between rounded-[4px] px-3 py-2.5 ${i === cur ? "bg-raised" : ""}`}>
               <span>{p.name} <small className="ml-1 text-text3">{p.short} {p.pos}</small></span>
               <span className="num text-sm text-mint">{p.pred.toFixed(1)}</span>
             </li>

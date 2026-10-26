@@ -99,15 +99,7 @@ html.lenis, html.lenis body { height: auto; }
 .no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }
 
 /* HUD framing in the Watermelon UI style: corner brackets instead of full borders */
-.corners {
-  --c: rgb(var(--line2)); --l: 12px;
-  background:
-    linear-gradient(var(--c), var(--c)) top left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top left / 1px var(--l) no-repeat,
-    linear-gradient(var(--c), var(--c)) top right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top right / 1px var(--l) no-repeat,
-    linear-gradient(var(--c), var(--c)) bottom left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom left / 1px var(--l) no-repeat,
-    linear-gradient(var(--c), var(--c)) bottom right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom right / 1px var(--l) no-repeat,
-    rgb(var(--surface) / .55);
-  border: 1px solid rgb(var(--line) / .6);
-}
-.corners:hover { --c: rgb(var(--mint) / .7); }
+/* bordered panel: one hairline, a little lift on hover */
+.corners { background: rgb(var(--bg) / .72); border: 1px solid rgb(var(--line)); border-radius: 6px; backdrop-filter: blur(8px); transition: border-color .4s; }
+.corners:hover { border-color: rgb(var(--line2)); }
 .mono-label { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }

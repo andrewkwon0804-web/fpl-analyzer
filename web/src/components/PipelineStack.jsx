@@ -11,6 +11,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { reduced } from "../lib/motion.js";
+import { usePop } from "./Popover.jsx";
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
@@ -77,6 +78,10 @@ const LAYERS = (data) => [
 export default function PipelineStack({ data }) {
   const wrap = useRef(null), mount = useRef(null), head = useRef(null), boxes = useRef([]), lines = useRef([]);
   const [shown, setShown] = useState(0);
+  const [hover, setHover] = useState(-1);
+  const [tip, setTip] = useState(null);
+  const uiHover = useRef(-1), pinAnchor = useRef(null);
+  const { open: openPop } = usePop();
   const layers = LAYERS(data);
   useEffect(() => {
     const el = mount.current;
@@ -100,7 +105,7 @@ export default function PipelineStack({ data }) {
       g.add(new THREE.Mesh(slabGeo, metal));
       const top = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 3.6), new THREE.MeshStandardMaterial({ map: tex, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.55, roughness: 0.7 }));
       top.rotation.x = -Math.PI / 2; top.position.y = 0.101; g.add(top);
-      stack.add(g); return g;
+      g.userData.top = top; stack.add(g); return g;
     };
     const slabs = [mkSlab(dataTex(data)), mkSlab(featureTex(data)), null, mkSlab(pitchTex())];
 
@@ -123,9 +128,36 @@ export default function PipelineStack({ data }) {
         const isCap = p.id === data.captain, h = p.pred * 0.16;
         const mat = new THREE.MeshStandardMaterial({ color: isCap ? 0xffffff : 0x38e1a8, emissive: isCap ? 0xffffff : 0x38e1a8, emissiveIntensity: isCap ? 1.4 : 0.9 });
         const m = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1, 16), mat);
-        m.position.set((i + 1) / (row.length + 1) * 3.2 - 1.6, 0, rowZ[pos]); slabs[3].add(m); pins.push([m, h]);
+        m.position.set((i + 1) / (row.length + 1) * 3.2 - 1.6, 0, rowZ[pos]); slabs[3].add(m); pins.push([m, h, p]); m.userData.player = p;
       });
     }
+
+    // invisible plate so the model layer can be hovered like the others
+    const graphHit = new THREE.Mesh(new THREE.PlaneGeometry(3.8, 3.8), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+    graphHit.rotation.x = -Math.PI / 2; graph.add(graphHit);
+    slabs.forEach((g, i) => g && g.traverse((o) => (o.userData.layer = i)));
+    graphHit.userData.layer = 2;
+    const hitList = [...slabs.filter(Boolean).flatMap((g) => g.children), graphHit];
+
+    // interaction: drag sideways to turn the stack, hover a layer to lift it, hover a pin for the player
+    const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+    let mouse = null, drag = null, userRot = 0, vel = 0, hovered = -1, pinHit = null, opened = 0;
+    const local = (e) => { const b = el.getBoundingClientRect(); return [e.clientX - b.left, e.clientY - b.top]; };
+    const down = (e) => { if (opened < 0.6) return; drag = { x: e.clientX, moved: 0 }; };
+    const move = (e) => {
+      mouse = local(e);
+      if (drag) { const dx = e.clientX - drag.x; drag.x = e.clientX; drag.moved += Math.abs(dx); vel = dx * 0.008; userRot += vel; }
+    };
+    const up = (e) => {
+      if (drag && drag.moved < 5 && pinHit) {
+        const a = pinAnchor.current, [x, y] = local(e); a.style.left = `${x}px`; a.style.top = `${y}px`;
+        openPop(pinHit, a, `Ranked #${data.rank[pinHit.id]} of ${data.players.length} by predicted points.`);
+      }
+      drag = null;
+    };
+    const leave = () => { mouse = null; drag = null; };
+    el.addEventListener("pointerdown", down); addEventListener("pointermove", move, { passive: true }); addEventListener("pointerup", up); el.addEventListener("pointerleave", leave);
+    const lift = [0, 0, 0, 0];
 
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
@@ -152,7 +184,27 @@ export default function PipelineStack({ data }) {
       slabs[0].position.y = 0; slabs[1].position.y = gap; graph.position.y = gap * 2; slabs[3].position.y = gap * 3;
       graph.scale.setScalar(0.4 + open * 0.6); nodeMat.opacity = open; lineMat.opacity = open * 0.7;
       if (head.current) head.current.style.opacity = String(1 - span(p, 0.22, 0.34));
-      stack.rotation.y = reduced ? 0 : t * 0.05 + p * 0.6;
+      opened = open;
+      if (!drag) { userRot += vel; vel *= 0.94; }
+      stack.rotation.y = (reduced ? 0 : t * 0.04 + p * 0.6) + userRot;
+      // what is under the pointer
+      hovered = uiHover.current; pinHit = null;
+      if (mouse && open > 0.6 && !drag) {
+        ptr.set((mouse[0] / el.clientWidth) * 2 - 1, -(mouse[1] / el.clientHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
+        const ph = ray.intersectObjects(pins.map((x) => x[0]))[0];
+        if (ph) { pinHit = ph.object.userData.player; hovered = 3; }
+        else { const h = ray.intersectObjects(hitList, false)[0]; if (h) hovered = h.object.userData.layer; }
+      }
+      el.style.cursor = pinHit ? "pointer" : drag ? "grabbing" : open > 0.6 ? "grab" : "default";
+      setHover((v) => (v === hovered ? v : hovered));
+      setTip((v) => (pinHit ? (v && v.p === pinHit && Math.abs(v.x - mouse[0]) < 2 ? v : { p: pinHit, x: mouse[0], y: mouse[1] }) : v ? null : v));
+      [0, 1, 2, 3].forEach((i) => {
+        lift[i] += ((hovered === i ? 0.32 : 0) - lift[i]) * 0.12;
+        const g = slabs[i];
+        if (g) g.userData.top.material.emissiveIntensity = THREE.MathUtils.lerp(g.userData.top.material.emissiveIntensity, hovered === -1 ? 0.55 : hovered === i ? 1.0 : 0.3, 0.12);
+      });
+      slabs[0].position.y += lift[0]; slabs[1].position.y += lift[1]; graph.position.y += lift[2]; slabs[3].position.y += lift[3];
+      lineMat.opacity *= hovered === -1 || hovered === 2 ? 1 : 0.4;
       graph.rotation.y = t * 0.15;
       const rise = span(p, 0.6, 0.85);
       pins.forEach(([m, h], i) => { const hh = Math.max(0.001, h * clamp(rise * 1.4 - i * 0.03)); m.scale.y = hh; m.position.y = 0.1 + hh / 2; });
@@ -178,36 +230,46 @@ export default function PipelineStack({ data }) {
       slabs[1].children[1].material.map = slabs[1].children[1].material.emissiveMap = featureTex(data);
       raf = requestAnimationFrame(frame);
     });
-    return () => { cancelAnimationFrame(raf); removeEventListener("resize", size); renderer.dispose(); el.innerHTML = ""; };
+    return () => {
+      cancelAnimationFrame(raf); removeEventListener("resize", size); removeEventListener("pointermove", move); removeEventListener("pointerup", up);
+      el.removeEventListener("pointerdown", down); el.removeEventListener("pointerleave", leave); renderer.dispose(); el.innerHTML = "";
+    };
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <section ref={wrap} id="how" className="relative h-[420vh]" data-tint="56 225 168" data-tint2="70 120 255" data-tx="50%">
+    <section ref={wrap} id="how" className="relative h-[420vh]" data-tint="56 225 168" data-tint2="70 120 255" data-tx="50%" data-glow="0.45">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div ref={head} className="page pointer-events-none absolute inset-x-0 top-28 z-10">
           <div className="mono-label text-text3">How it works</div>
           <h2 className="mt-3 font-display text-[clamp(36px,4.6vw,72px)] font-medium leading-none tracking-[-0.035em]">Four layers, rebuilt every week.</h2>
         </div>
-        <div ref={mount} className="absolute inset-0 [mask-image:linear-gradient(transparent,#000_14%,#000_86%,transparent)]" aria-label="A 3D stack showing the pipeline: data, features, model and picks" role="img" />
+        <div ref={mount} className="absolute inset-0 touch-pan-y [mask-image:linear-gradient(transparent,#000_14%,#000_86%,transparent)]" aria-label="A 3D stack showing the pipeline: data, features, model and picks" role="img" />
         <svg className="pointer-events-none absolute inset-0 h-full w-full max-md:hidden" aria-hidden>
           {layers.map((l, i) => <line key={l.n} ref={(e) => (lines.current[i] = e)} stroke="rgb(var(--text3))" strokeWidth="1" strokeDasharray="2 4"
             style={{ opacity: i < shown ? 0.8 : 0, transition: "opacity .5s" }} />)}
         </svg>
         {layers.map((l, i) => (
-          <div key={l.n} ref={(e) => (boxes.current[i] = e)}
-            className={`absolute w-[min(360px,40vw)] border border-line2 bg-bg/80 p-5 backdrop-blur transition-all duration-700 max-md:inset-x-4 max-md:bottom-6 max-md:w-auto
+          <div key={l.n} ref={(e) => (boxes.current[i] = e)} onMouseEnter={() => (uiHover.current = i)} onMouseLeave={() => (uiHover.current = -1)}
+            className={`absolute w-[min(360px,40vw)] border ${hover === i ? "border-mint/70 bg-surface/90" : "border-line2 bg-bg/80"} p-5 backdrop-blur transition-all duration-700 max-md:inset-x-4 max-md:bottom-6 max-md:w-auto
               ${l.side === "left" ? "md:left-[5vw]" : "md:right-[5vw]"} ${i < shown ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0"}
               ${i < shown - 1 ? "max-md:opacity-0" : ""}`}
             style={{ top: `${[66, 52, 36, 22][i]}%` }}>
             <div className="flex items-center justify-between gap-4">
-              <span className="bg-text px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bg">Layer {l.n}</span>
+              <span className={`${hover === i ? "bg-mint" : "bg-text"} px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bg transition-colors`}>Layer {l.n}</span>
               <span className="font-mono text-[15px]">{l.title}</span>
             </div>
             <p className="mt-4 text-[15px] text-text">{l.head}</p>
             <p className="mt-2 font-mono text-[12px] leading-relaxed text-text3">{l.body}</p>
           </div>
         ))}
-        <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3" style={{ opacity: shown ? 0 : 1, transition: "opacity .4s" }}>Scroll to open the stack</div>
+        <span ref={pinAnchor} data-pop className="pointer-events-none absolute h-0 w-0" />
+        {tip && (
+          <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-[calc(100%+14px)] whitespace-nowrap border border-line2 bg-bg/90 px-3 py-1.5 font-mono text-[12px] backdrop-blur"
+            style={{ left: tip.x, top: tip.y }}>{tip.p.name} <span className="text-text3">{tip.p.short}</span> <span className="text-mint">{tip.p.pred.toFixed(1)}</span></div>
+        )}
+        <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3">
+          {shown ? "Drag to turn · hover a layer · click a pin" : "Scroll to open the stack"}
+        </div>
       </div>
     </section>
   );

@@ -42,7 +42,7 @@ function Card({ pop, data, close }) {
   const t = useTransition(pop, { from: { o: 0, s: 0.94, y: 10 }, enter: { o: 1, s: 1, y: 0 }, leave: { o: 0, s: 0.96, y: 6 }, config: { tension: 320, friction: 26 } });
   return t((st, p) => p && (
     <animated.div ref={ref} data-pop role="dialog" aria-label={`${p.player.name} details`}
-      className="glass fixed z-[120] w-auto rounded-2xl border border-line2 p-5 shadow-2xl max-sm:inset-x-2.5 max-sm:bottom-2.5 sm:w-[340px]"
+      className="glass fixed z-[120] w-auto rounded-[6px] border border-line2 p-5 shadow-2xl max-sm:inset-x-2.5 max-sm:bottom-2.5 sm:w-[340px]"
       style={{ left: innerWidth >= 640 ? pos.x : undefined, top: innerWidth >= 640 ? pos.y : undefined, opacity: st.o,
         transform: to([st.y, st.s], (y, sc) => `translateY(${y}px) scale(${sc})`) }}>
       <Body p={p.player} note={p.note} data={data} close={close} />

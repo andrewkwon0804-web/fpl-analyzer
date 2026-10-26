@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useSiteData } from "./lib/data.js";
-import Aurora from "./components/Aurora.jsx";
+import GlyphField from "./components/GlyphField.jsx";
 import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider } from "./components/Popover.jsx";
 import { ToastProvider } from "./components/Toast.jsx";
 import FluidTabs from "./components/wm/FluidTabs.jsx";
 import { Label, Rails, Readout } from "./components/hud.jsx";
-import { Footer } from "./sections/More.jsx";
+import { Footer } from "./sections/Rest.jsx";
 import { XITab, PlayersTab, LookupTab, RecordTab } from "./tabs/Overview.jsx";
 import TeamTab from "./tabs/Team.jsx";
 import PlannerTab from "./tabs/Planner.jsx";
@@ -60,7 +60,7 @@ function Board({ data }) {
       <Command data={data} open={cmd} setOpen={setCmd} onPlayer={(p) => showPlayer(p.id)} places={places} />
       <Rails />
       <main className="relative z-10">
-        <header className="page pt-28 lg:pt-32" data-tint="94 240 176" data-tint2="106 168 255" data-tx="85%">
+        <header className="page pt-28 lg:pt-32" data-tint="56 225 168" data-tint2="70 120 255" data-tx="85%" data-glow="0.55">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Label>Dashboard · {m.season}</Label>
             <span className={`mono-label flex items-center gap-2 ${data.stale ? "text-amber" : "text-mint"}`}>
@@ -104,7 +104,7 @@ export default function Dashboard() {
   const { data, error } = useSiteData();
   return (
     <ToastProvider>
-      <Aurora />
+      <GlyphField />
       {error ? <p className="page relative z-10 pt-40 text-text2">Couldn't load the predictions ({error}). Refresh the page to try again.</p>
         : !data ? <div className="relative z-10"><Skeleton /></div>
         : <PopProvider data={data}><Board data={data} /></PopProvider>}

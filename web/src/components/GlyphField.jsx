@@ -9,7 +9,7 @@ const GLYPHS = " .·:-+=x*%#0123456789";
 
 const FRAG = `
 precision highp float;
-uniform vec2 res; uniform float t, cell, side, zoom, n; uniform vec3 c1, c2, base; uniform vec2 m; uniform sampler2D atlas;
+uniform vec2 res; uniform float t, cell, side, zoom, n, amp; uniform vec3 c1, c2, base; uniform vec2 m; uniform sampler2D atlas;
 float h(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);
   return mix(mix(h(i), h(i+vec2(1,0)), f.x), mix(h(i+vec2(0,1)), h(i+vec2(1,1)), f.x), f.y); }
@@ -26,6 +26,7 @@ void main(){
   vec2 c = vec2(mix(-0.55, 0.55, side), 0.08);
   float band = exp(-pow(dot(p - c, normalize(vec2(1.0, -0.55))) * 1.6, 2.0)) * smoothstep(1.6, 0.2, length(p - c));
   float light = clamp(band * (0.4 + f * 1.25) + smoothstep(0.35, 0.0, distance(uv, m)) * 0.22, 0.0, 1.0);
+  light *= amp;
   // twinkle: some cells change glyph over time
   float tw = h(id + floor(t * 1.5 + h(id) * 20.0));
   float level = clamp(pow(light, 1.35) * 0.95 + (tw - 0.5) * 0.10, 0.0, 0.999);
@@ -51,7 +52,7 @@ export default function GlyphField() {
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(prog, "v"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    const U = Object.fromEntries(["res", "t", "cell", "side", "zoom", "n", "c1", "c2", "base", "m", "atlas"].map((k) => [k, gl.getUniformLocation(prog, k)]));
+    const U = Object.fromEntries(["res", "t", "cell", "side", "zoom", "n", "amp", "c1", "c2", "base", "m", "atlas"].map((k) => [k, gl.getUniformLocation(prog, k)]));
 
     // glyph atlas: one row of characters drawn white on black
     const N = GLYPHS.length, G = 32, a = document.createElement("canvas"); a.width = N * G; a.height = G;
@@ -65,7 +66,7 @@ export default function GlyphField() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
     const root = () => getComputedStyle(document.documentElement);
-    let cur = { c1: [0.2, 0.85, 0.6], c2: [0.15, 0.45, 0.95], side: 0.75, zoom: 1 }, goal = { ...cur }, base = [0, 0, 0];
+    let cur = { c1: [0.2, 0.85, 0.6], c2: [0.15, 0.45, 0.95], side: 0.75, zoom: 1, amp: 1 }, goal = { ...cur }, base = [0, 0, 0];
     const readTheme = () => { base = rgb(root().getPropertyValue("--bg")); };
     const pick = () => {
       const secs = [...document.querySelectorAll("[data-tint]")];
@@ -74,7 +75,7 @@ export default function GlyphField() {
       if (!el) return;
       const r = root();
       goal = { c1: rgb(el.dataset.tint || r.getPropertyValue("--mint")), c2: rgb(el.dataset.tint2 || r.getPropertyValue("--sky")),
-        side: parseFloat(el.dataset.tx || "75") / 100, zoom: 1 + Math.min(1, scrollY / innerHeight) * 0.35 };
+        side: parseFloat(el.dataset.tx || "75") / 100, amp: parseFloat(el.dataset.glow ?? "0.3"), zoom: 1 + Math.min(1, scrollY / innerHeight) * 0.35 };
     };
     let dpr = 1;
     const size = () => { dpr = Math.min(devicePixelRatio || 1, 2); c.width = innerWidth * dpr; c.height = innerHeight * dpr; gl.viewport(0, 0, c.width, c.height); };
@@ -88,10 +89,10 @@ export default function GlyphField() {
     let raf = 0;
     const lerp = (x, y, k) => x.map((v, i) => v + (y[i] - v) * k);
     const frame = (now) => {
-      cur = { c1: lerp(cur.c1, goal.c1, 0.03), c2: lerp(cur.c2, goal.c2, 0.03), side: cur.side + (goal.side - cur.side) * 0.02, zoom: cur.zoom + (goal.zoom - cur.zoom) * 0.06 };
+      cur = { c1: lerp(cur.c1, goal.c1, 0.03), c2: lerp(cur.c2, goal.c2, 0.03), side: cur.side + (goal.side - cur.side) * 0.02, amp: cur.amp + (goal.amp - cur.amp) * 0.03, zoom: cur.zoom + (goal.zoom - cur.zoom) * 0.06 };
       mouse[0] += (mt[0] - mouse[0]) * 0.05; mouse[1] += (mt[1] - mouse[1]) * 0.05;
       gl.uniform2f(U.res, c.width, c.height); gl.uniform1f(U.t, reduced ? 10 : now / 1000);
-      gl.uniform1f(U.cell, Math.round(10 * dpr)); gl.uniform1f(U.side, cur.side); gl.uniform1f(U.zoom, cur.zoom); gl.uniform1f(U.n, N);
+      gl.uniform1f(U.cell, Math.round(10 * dpr)); gl.uniform1f(U.side, cur.side); gl.uniform1f(U.zoom, cur.zoom); gl.uniform1f(U.amp, cur.amp); gl.uniform1f(U.n, N);
       gl.uniform3fv(U.c1, cur.c1); gl.uniform3fv(U.c2, cur.c2); gl.uniform3fv(U.base, base); gl.uniform2f(U.m, mouse[0], mouse[1]);
       gl.uniform1i(U.atlas, 0);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

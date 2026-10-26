@@ -38,7 +38,7 @@ export default function Command({ data, open, setOpen, onPlayer, places }) {
   return tr((st, show) => show && (
     <animated.div style={{ opacity: st.o }} className="fixed inset-0 z-[150] grid place-items-start bg-bg/60 px-4 pt-[14vh] backdrop-blur-sm" onPointerDown={(e) => e.target === e.currentTarget && setOpen(false)}>
       <animated.div style={{ transform: st.s.to((s) => `scale(${s})`) }} role="dialog" aria-label="Search"
-        className="mx-auto w-full max-w-[560px] overflow-hidden rounded-2xl border border-line2 bg-surface shadow-2xl">
+        className="mx-auto w-full max-w-[560px] overflow-hidden rounded-[6px] border border-line2 bg-surface shadow-2xl">
         <input ref={input} autoFocus value={q} onChange={(e) => { setQ(e.target.value); setCur(0); }}
           onKeyDown={(e) => {
             if (e.key === "ArrowDown") { e.preventDefault(); setCur((c) => Math.min(items.length - 1, c + 1)); }
@@ -49,7 +49,7 @@ export default function Command({ data, open, setOpen, onPlayer, places }) {
         <ul className="max-h-[50vh] overflow-auto p-2" role="listbox">
           {items.map((it, i) => (
             <li key={it.label + it.kind} role="option" aria-selected={i === cur} onPointerMove={() => setCur(i)} onClick={() => run(it)}
-              className={`flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 ${i === cur ? "bg-raised" : ""}`}>
+              className={`flex cursor-pointer items-center justify-between rounded-[4px] px-3 py-2.5 ${i === cur ? "bg-raised" : ""}`}>
               <span>{it.label} <small className="ml-1.5 text-text3">{it.kind}</small></span>
               {it.value && <span className="num font-display text-mint">{it.value}</span>}
             </li>
