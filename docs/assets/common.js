@@ -39,22 +39,26 @@ FPL.nav = () => {
 // Anything with .reveal fades up when it enters the screen. data-reveal-fn runs a hook once.
 FPL.hooks = {};
 FPL.reveal = (root = document) => {
-  const els = root.querySelectorAll(".reveal:not(.in), [data-reveal-fn]:not([data-done])");
-  if (FPL.reduced || !("IntersectionObserver" in window)) {
-    els.forEach((el) => { el.classList.add("in"); FPL.runHook(el); });
-    return;
-  }
-  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add("in");
-    FPL.runHook(e.target);
-    io.unobserve(e.target);
-  }), { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
-  // Whatever is already on screen at load shows straight away (with its stagger delay).
-  els.forEach((el) => {
-    if (el.getBoundingClientRect().top < innerHeight * 0.92) { el.classList.add("in"); FPL.runHook(el); }
-    else io.observe(el);
-  });
+  const els = [...root.querySelectorAll(".reveal:not(.in), [data-reveal-fn]:not([data-done])")];
+  const show = (el) => { el.classList.add("in"); FPL.runHook(el); };
+  if (FPL.reduced) { els.forEach(show); return; }
+  // A plain position check rather than IntersectionObserver: clipped cards have no visible
+  // area until they're revealed, so an observer would never see them.
+  let pending = els, queued = false;
+  const check = () => {
+    queued = false;
+    const line = innerHeight * 0.9;
+    pending = pending.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < line && r.bottom > 0) { show(el); return false; }
+      return true;
+    });
+    if (!pending.length) removeEventListener("scroll", onScroll);
+  };
+  const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(check); } };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  check();
 };
 FPL.runHook = (el) => {
   const fn = el.dataset.revealFn;
@@ -197,79 +201,223 @@ FPL.notice = (data) => data.stale
 FPL.boot = (fn) => {
   FPL.nav();
   FPL.smooth();
-  FPL.fontPicker();
-  FPL.load().then(fn).then(() => FPL.reveal()).catch((err) => {
+  FPL.stage();
+  FPL.progress();
+  FPL.split();
+  FPL.load().then(fn).then(() => { FPL.split(); FPL.reveal(); FPL.tilt(".tilt"); }).catch((err) => {
     console.error(err);
     document.querySelector("main").insertAdjacentHTML("afterbegin",
       `<p class="notice" style="margin-top:120px">Couldn't load the predictions (${FPL.esc(err.message)}). Refresh the page to try again.</p>`);
   });
 };
 
-// ---------------------------------------------------------------- font picker (temporary)
-FPL.FONTS = [["startup", "Clean startup"], ["geo", "Techy geometric"], ["editorial", "Editorial"]];
-FPL.fontPicker = () => {
-  const cur = document.documentElement.dataset.font || "startup";
-  const el = document.createElement("div");
-  el.className = "font-pick";
-  el.innerHTML = `<span>Font</span>${FPL.FONTS.map(([k, n]) => `<button data-f="${k}" aria-pressed="${k === cur}">${n}</button>`).join("")}`;
-  el.addEventListener("click", (e) => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    document.documentElement.dataset.font = b.dataset.f;
-    try { localStorage.setItem("font", b.dataset.f); } catch (err) { /* private mode */ }
-    el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
-    dispatchEvent(new Event("resize"));
-  });
-  document.body.appendChild(el);
+// ---------------------------------------------------------------- scroll scenes
+// One full-screen canvas sits behind the page. Each section names a scene with data-scene
+// (and a glow colour with data-tint). As a section reaches the middle of the screen the
+// background crossfades to its scene. To add a scene, add a function to FPL.scenes:
+//   (ctx, w, h, t, mouse, alpha, state) => void      t is seconds, alpha is 0-1
+FPL.scenes = {};
+const MINT = [94, 240, 176], SKY = [106, 168, 255], AMBER = [245, 196, 81];
+const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
+
+// Scoreboard characters with a slow wave; the cursor lights them up.
+FPL.scenes.chars = (ctx, w, h, t, m, alpha) => {
+  const chars = " .·:-+=x*o#%@", cell = 18;
+  ctx.font = "12px JetBrains Mono, monospace";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  for (let y = cell / 2; y < h; y += cell) {
+    for (let x = cell / 2; x < w; x += cell) {
+      const wave = Math.sin(x * 0.009 + t * 0.7) * Math.cos(y * 0.012 - t * 0.45) * 0.5 + 0.5;
+      const glow = Math.max(0, 1 - Math.hypot(x - m.x, y - m.y) / 220);
+      const v = Math.min(1, wave * wave * 0.5 + glow * 0.95);
+      if (v < 0.12) continue;
+      ctx.fillStyle = glow > 0.05 ? rgba(MINT, (0.1 + glow * 0.55) * alpha) : `rgba(150,170,165,${(v * 0.15 * alpha).toFixed(3)})`;
+      ctx.fillText(chars[Math.min(chars.length - 1, Math.floor(v * chars.length))], x, y);
+    }
+  }
 };
 
-// ---------------------------------------------------------------- character field behind the hero
-// A grid of scoreboard-style characters. A slow wave runs through it and the cursor lights it up.
-FPL.field = () => {
-  const c = document.createElement("canvas");
-  c.className = "field";
-  c.setAttribute("aria-hidden", "true");
-  document.body.prepend(c);
-  const ctx = c.getContext("2d"), chars = " .·:-+=x*o#%@";
-  const cell = 16;
-  let w, h, cols, rows, dpr, mx = -999, my = -999, tx = -999, ty = -999, running = true;
-  const size = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    w = innerWidth; h = innerHeight;
-    c.width = w * dpr; c.height = h * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cols = Math.ceil(w / cell); rows = Math.ceil(h / cell);
-    ctx.font = `12px ${getComputedStyle(document.body).getPropertyValue("--mono") || "monospace"}`;
-    ctx.textAlign = "center"; ctx.textBaseline = "middle";
-  };
-  size();
-  addEventListener("resize", size);
-  addEventListener("pointermove", (e) => { tx = e.clientX; ty = e.clientY; }, { passive: true });
-  const draw = (t) => {
-    if (!running) return;
-    mx += (tx - mx) * 0.08; my += (ty - my) * 0.08;
-    const fade = Math.max(0, 1 - scrollY / (h * 0.9));
-    ctx.clearRect(0, 0, w, h);
-    if (fade > 0) {
-      const time = t / 1000;
-      for (let j = 0; j < rows; j++) {
-        for (let i = 0; i < cols; i++) {
-          const x = i * cell + cell / 2, y = j * cell + cell / 2;
-          const wave = Math.sin(i * 0.16 + time * 0.7) * Math.cos(j * 0.21 - time * 0.45) * 0.5 + 0.5;
-          const d = Math.hypot(x - mx, y - my);
-          const glow = Math.max(0, 1 - d / 190);
-          const v = Math.min(1, wave * wave * 0.5 + glow * 0.95);
-          if (v < 0.12) continue;
-          const ch = chars[Math.min(chars.length - 1, Math.floor(v * chars.length))];
-          ctx.fillStyle = glow > 0.05 ? `rgba(94,240,176,${(0.1 + glow * 0.55) * fade})` : `rgba(150,170,165,${v * 0.16 * fade})`;
-          ctx.fillText(ch, x, y);
-        }
-      }
+// A pitch floor in perspective, rolling towards you. The cursor shifts the vanishing point.
+FPL.scenes.pitch = (ctx, w, h, t, m, alpha) => {
+  const vx = w / 2 + (m.x - w / 2) * 0.05, horizon = h * 0.38 + (m.y - h / 2) * 0.03;
+  ctx.lineWidth = 1;
+  const N = 22;
+  for (let i = 0; i < N; i++) {
+    const z = ((i + t * 0.35) % N) / N, y = horizon + (h - horizon) * Math.pow(z, 2.3);
+    ctx.strokeStyle = rgba(MINT, 0.22 * z * alpha);
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+  }
+  for (let j = -14; j <= 14; j++) {
+    ctx.strokeStyle = rgba(MINT, (j === 0 ? 0.22 : 0.1) * alpha);
+    ctx.beginPath(); ctx.moveTo(vx + j * w * 0.012, horizon); ctx.lineTo(vx + j * w * 0.11, h); ctx.stroke();
+  }
+  // centre circle laid on the floor
+  ctx.strokeStyle = rgba(MINT, 0.18 * alpha);
+  ctx.beginPath(); ctx.ellipse(vx, horizon + (h - horizon) * 0.55, w * 0.16, h * 0.07, 0, 0, Math.PI * 2); ctx.stroke();
+  const fade = ctx.createLinearGradient(0, horizon - 40, 0, horizon + 120);
+  fade.addColorStop(0, "rgba(6,8,10,1)"); fade.addColorStop(1, "rgba(6,8,10,0)");
+  ctx.fillStyle = fade; ctx.fillRect(0, horizon - 40, w, 160);
+};
+
+// Flowing lines, like a stack of running-total charts. They bend away from the cursor.
+FPL.scenes.flow = (ctx, w, h, t, m, alpha) => {
+  ctx.lineWidth = 1.2;
+  for (let i = 0; i < 16; i++) {
+    const base = h * (0.1 + i * 0.055), col = i % 3 === 0 ? MINT : SKY;
+    ctx.strokeStyle = rgba(col, (0.07 + (i % 4) * 0.025) * alpha);
+    ctx.beginPath();
+    for (let x = -20; x <= w + 20; x += 18) {
+      let y = base + Math.sin(x * 0.0035 + t * 0.45 + i * 0.8) * 34 + Math.sin(x * 0.011 - t * 0.3 + i * 1.7) * 10;
+      const d = (x - m.x) ** 2 + (y - m.y) ** 2;
+      y += (y > m.y ? 1 : -1) * 60 * Math.exp(-d / 26000);
+      x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
-    requestAnimationFrame(draw);
+    ctx.stroke();
+  }
+};
+
+// Drifting points that join up when close, like a passing network.
+FPL.scenes.stars = (ctx, w, h, t, m, alpha, st) => {
+  if (!st.pts || st.w !== w) {
+    st.w = w;
+    st.pts = Array.from({ length: Math.round((w * h) / 16000) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25 }));
+  }
+  const P = st.pts;
+  for (const p of P) {
+    const dx = m.x - p.x, dy = m.y - p.y, d = Math.hypot(dx, dy);
+    if (d < 200) { p.vx += (dx / d) * 0.012; p.vy += (dy / d) * 0.012; }
+    p.vx *= 0.99; p.vy *= 0.99;
+    p.x = (p.x + p.vx + w) % w; p.y = (p.y + p.vy + h) % h;
+  }
+  ctx.lineWidth = 1;
+  for (let i = 0; i < P.length; i++) {
+    for (let j = i + 1; j < P.length; j++) {
+      const d = Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y);
+      if (d < 120) { ctx.strokeStyle = rgba(SKY, (1 - d / 120) * 0.16 * alpha); ctx.beginPath(); ctx.moveTo(P[i].x, P[i].y); ctx.lineTo(P[j].x, P[j].y); ctx.stroke(); }
+    }
+  }
+  for (const p of P) { ctx.fillStyle = rgba(SKY, 0.5 * alpha); ctx.fillRect(p.x - 1, p.y - 1, 2, 2); }
+};
+
+// Rising bars along the bottom, like a gameweek points table filling up.
+FPL.scenes.rise = (ctx, w, h, t, m, alpha) => {
+  const bw = 26, gap = 10;
+  for (let i = 0, x = 0; x < w; i++, x += bw + gap) {
+    const n = Math.sin(i * 0.7 + t * 0.9) * 0.5 + Math.sin(i * 0.23 - t * 0.5) * 0.5;
+    const near = Math.max(0, 1 - Math.abs(x - m.x) / 260);
+    const bh = h * (0.08 + 0.14 * (n * 0.5 + 0.5) + 0.14 * near);
+    const g = ctx.createLinearGradient(0, h - bh, 0, h);
+    g.addColorStop(0, rgba(MINT, (0.08 + near * 0.12) * alpha)); g.addColorStop(1, rgba(MINT, 0));
+    ctx.fillStyle = g; ctx.fillRect(x, h - bh, bw, bh);
+  }
+};
+
+FPL.scenes.none = () => {};
+
+FPL.stage = () => {
+  const c = document.createElement("canvas");
+  c.className = "field"; c.setAttribute("aria-hidden", "true");
+  const tint = document.createElement("div");
+  tint.className = "tint"; tint.setAttribute("aria-hidden", "true");
+  document.body.prepend(c, tint);
+  const ctx = c.getContext("2d");
+  const sections = [...document.querySelectorAll("[data-scene]")];
+  const mouse = { x: -999, y: -999 }, target = { x: -999, y: -999 }, state = {};
+  let w, h, cur = sections[0]?.dataset.scene || "chars", prev = null, k = 1, last = performance.now(), dirty = true;
+  const size = () => {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight; c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); dirty = true;
   };
-  if (FPL.reduced) { tx = ty = -999; requestAnimationFrame((t) => { draw(t); running = false; }); }
-  else requestAnimationFrame(draw);
+  const pick = () => {
+    let el = sections[0];
+    for (const s of sections) if (s.getBoundingClientRect().top < h * 0.55) el = s;
+    if (!el) return;
+    const tc = el.dataset.tint || "94,240,176";
+    tint.style.setProperty("--tc", `rgba(${tc},.11)`);
+    tint.style.setProperty("--tx", el.dataset.tx || "75%");
+    if (el.dataset.scene !== cur) { prev = cur; cur = el.dataset.scene; k = 0; dirty = true; }
+  };
+  size(); pick();
+  addEventListener("resize", size);
+  addEventListener("scroll", pick, { passive: true });
+  addEventListener("pointermove", (e) => { target.x = e.clientX; target.y = e.clientY; }, { passive: true });
+  const ease = (x) => 1 - Math.pow(1 - x, 3);
+  const frame = (now) => {
+    const dt = Math.min(64, now - last); last = now;
+    mouse.x += (target.x - mouse.x) * 0.08; mouse.y += (target.y - mouse.y) * 0.08;
+    if (k < 1) k = Math.min(1, k + dt / 1100);
+    ctx.clearRect(0, 0, w, h);
+    const t = now / 1000;
+    if (prev && k < 1) (FPL.scenes[prev] || FPL.scenes.none)(ctx, w, h, t, mouse, 1 - ease(k), state);
+    (FPL.scenes[cur] || FPL.scenes.none)(ctx, w, h, t, mouse, ease(k), state);
+    if (!FPL.reduced) requestAnimationFrame(frame);
+  };
+  if (FPL.reduced) {
+    const still = () => { if (dirty) { k = 1; frame(performance.now()); dirty = false; } };
+    addEventListener("scroll", still, { passive: true }); addEventListener("resize", still); still();
+  } else requestAnimationFrame(frame);
+};
+
+// ---------------------------------------------------------------- transitions
+// Headings rise in word by word from behind a mask.
+FPL.split = (root = document) => {
+  root.querySelectorAll("[data-split]:not(.split)").forEach((el) => {
+    let i = 0;
+    const walk = (node) => [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.append(part); return; }
+          const w = document.createElement("span"); w.className = "w";
+          const inner = document.createElement("span"); inner.textContent = part; inner.style.setProperty("--i", i++);
+          w.append(inner); frag.append(w);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && !n.classList.contains("gw")) walk(n);
+    });
+    walk(el);
+    el.classList.add("split");
+  });
+};
+
+// Cards lean towards the cursor.
+FPL.tilt = (sel) => {
+  if (FPL.reduced || matchMedia("(hover: none)").matches) return;
+  document.querySelectorAll(sel).forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      el.style.setProperty("--ry", `${(x * 7).toFixed(2)}deg`); el.style.setProperty("--rx", `${(-y * 7).toFixed(2)}deg`);
+      el.style.setProperty("--mx", `${((x + 0.5) * 100).toFixed(1)}%`); el.style.setProperty("--my", `${((y + 0.5) * 100).toFixed(1)}%`);
+    });
+    el.addEventListener("pointerleave", () => { el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg"); });
+  });
+};
+
+// A thin bar at the top that fills as you scroll.
+FPL.progress = () => {
+  const bar = document.createElement("div"); bar.className = "progress"; document.body.appendChild(bar);
+  const set = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`; };
+  addEventListener("scroll", set, { passive: true }); set();
+};
+
+// A row of cards that drifts on its own and speeds up while you scroll.
+FPL.marquee = (track) => {
+  let x = 0, boost = 0, lastY = scrollY, paused = false;
+  track.addEventListener("pointerenter", () => { paused = true; });
+  track.addEventListener("pointerleave", () => { paused = false; });
+  const step = () => {
+    const dy = Math.abs(scrollY - lastY); lastY = scrollY;
+    boost += (Math.min(dy, 60) * 0.12 - boost) * 0.08;
+    if (!paused) x -= 0.45 + boost;
+    const half = track.scrollWidth / 2;
+    if (-x >= half) x += half;
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    requestAnimationFrame(step);
+  };
+  if (!FPL.reduced) requestAnimationFrame(step);
 };
 
 // Gentle parallax and fade on the hero as you scroll away from it.
@@ -306,7 +454,8 @@ FPL.bars = (items, { width = 420, height = 170, fmt = (v) => v.toFixed(1), max }
 // Horizontal bars, centered on zero when values can be negative: items [{label, sub, value, color}]
 FPL.hbars = (items, { width = 560, row = 30, fmt = (v) => v.toFixed(2), labelW = 150 } = {}) => {
   const lo = Math.min(0, ...items.map((d) => d.value)), hi = Math.max(0, ...items.map((d) => d.value));
-  const X = (v) => labelW + ((v - lo) / (hi - lo || 1)) * (width - labelW - 56);
+  const room = lo < 0 ? 50 : 0;  // space for the value label left of negative bars
+  const X = (v) => labelW + room + ((v - lo) / (hi - lo || 1)) * (width - labelW - room - 56);
   const height = items.length * row + 6;
   return `<svg viewBox="0 0 ${width} ${height}">
     <line x1="${X(0)}" x2="${X(0)}" y1="0" y2="${height}" stroke="#29333a"/>

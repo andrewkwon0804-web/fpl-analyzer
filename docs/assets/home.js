@@ -1,5 +1,4 @@
 // Home page: fills the hero, track record and this week's picks from site.json.
-FPL.field();
 FPL.parallax(".hero-pitch");
 FPL.boot((data) => {
   const m = data.meta, gw = m.gw, A = data.analysis;
@@ -21,11 +20,11 @@ FPL.boot((data) => {
   const xi = data.edges["Best XI: avg points per GW"], mae = data.edges["MAE (regular starters)"];
   const fmt = (v) => (v > 0 ? "+" : "") + Math.round(v);
   document.getElementById("facts").innerHTML = `
-    <div class="fact reveal"><div class="t">Last season<span>never seen in training</span></div>
+    <div class="fact reveal clip tilt"><div class="t">Last season<span>never seen in training</span></div>
       <div class="v good num">+${data.last_season_edge}</div><p>points over all of 2025-26 for the model's team compared with the simple rule.</p></div>
-    <div class="fact reveal" style="--d:.08s"><div class="t">This season<span>${xi.sure ? "clear" : "too early to say"}</span></div>
+    <div class="fact reveal clip tilt" style="--d:.08s"><div class="t">This season<span>${xi.sure ? "clear" : "too early to say"}</span></div>
       <div class="v num">${fmt(xi.edge)}</div><p>points a week so far. With ${m.played} weeks of data the real gap could be anywhere from ${fmt(xi.lo)} to ${fmt(xi.hi)}.</p></div>
-    <div class="fact reveal" style="--d:.16s"><div class="t">Per player<span>${mae.sure ? "clear" : "not yet"}</span></div>
+    <div class="fact reveal clip tilt" style="--d:.16s"><div class="t">Per player<span>${mae.sure ? "clear" : "not yet"}</span></div>
       <div class="v num">${mae.edge.toFixed(2)}</div><p>points closer, on average, to what each regular starter actually scores.</p></div>`;
 
   // this week marquee (list twice so the loop is seamless)
@@ -35,6 +34,7 @@ FPL.boot((data) => {
     <div class="nm">${FPL.esc(p.name)}</div><div class="tm">${FPL.esc(p.team)}</div>
     <div class="row"><span class="pp num">${p.pred.toFixed(1)}</span><span class="pr num">£${p.price.toFixed(1)}m</span></div></div>`).join("");
   document.getElementById("marquee-track").innerHTML = cards + cards.replaceAll('class="pcard"', 'class="pcard" aria-hidden="true"');
+  FPL.marquee(document.getElementById("marquee-track"));
 
   document.getElementById("closing-title").textContent = `Gameweek ${gw} picks are up.`;
   const when = m.refreshed_at ? new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
@@ -75,12 +75,12 @@ FPL.boot((data) => {
   const mid = A.value.tiers.filter((r) => r.position === "MID");
   const crowd = Object.fromEntries(A.crowd.map((r) => [r.grp, r.points]));
   document.getElementById("bento").innerHTML = `
-    <a class="find wide reveal" href="dashboard.html#analysis-fdr">
+    <a class="find wide reveal clip tilt" href="dashboard.html#analysis-fdr">
       <h3>Defenders score ${(easy.points / hard.points).toFixed(1)} times as many points against the easiest fixtures as the hardest.</h3>
       <p>Average points for defenders who played 60+ minutes, by FPL's difficulty rating for that match.</p>
       <div class="viz">${FPL.bars(def.map((r) => ({ label: `FDR ${r.fdr}`, value: r.points, color: fdrColor[r.fdr] })), { width: 560, height: 170 })}</div>
       <span class="go">See every team's next five fixtures ›</span></a>
-    <a class="find narrow reveal" style="--d:.08s" href="dashboard.html#analysis-xg">
+    <a class="find narrow reveal clip tilt" style="--d:.08s" href="dashboard.html#analysis-xg">
       <h3>Hot finishing doesn't last.</h3>
       <p>Goals minus xG per 90. Players who beat their xG in gameweeks 1-19 were back to normal in 20-38.</p>
       <div class="viz">${FPL.hbars([
@@ -88,12 +88,12 @@ FPL.boot((data) => {
         { label: "Cold, GW1-19", value: cold.first_half, color: "#ff7a8a" }, { label: "Cold, GW20-38", value: cold.second_half, color: "#6a3a3f" },
       ], { width: 360, labelW: 104, row: 34, fmt: (v) => (v > 0 ? "+" : "") + v.toFixed(2) })}</div>
       <span class="go">Who's lucky this season ›</span></a>
-    <a class="find narrow reveal" href="dashboard.html#analysis-value">
+    <a class="find narrow reveal clip tilt" href="dashboard.html#analysis-value">
       <h3>Premium midfielders earn their price.</h3>
       <p>Points per 90 for midfielders by price. Per £m, every tier lands between ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(0)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(0)}.</p>
       <div class="viz">${FPL.bars(mid.map((r) => ({ label: FPL.TIERS[r.tier - 1].replace("Under ", "<").replace("m+", "+").replace(/m$/, ""), value: r.points_per_90, color: "#5ef0b0" })), { width: 360, height: 170 })}</div>
       <span class="go">Best value this season ›</span></a>
-    <a class="find wide reveal" style="--d:.08s" href="dashboard.html#analysis-crowd">
+    <a class="find wide reveal clip tilt" style="--d:.08s" href="dashboard.html#analysis-crowd">
       <h3>The players everyone transfers in score about the same as the ones they sell.</h3>
       <p>Average points that gameweek, for every gameweek since 2022-23. Owning the most popular players is what pays.</p>
       <div class="viz">${FPL.bars([
