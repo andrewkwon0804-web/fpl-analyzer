@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1792978031">
+<link rel="stylesheet" href="assets/site.css?v=1792978397">
 </head>
 <body>
 <header class="nav">
@@ -92,7 +92,7 @@
       <div class="chart-card" style="border:0;padding:6px 0 0"><svg id="record-chart" role="img" aria-label="Running points total"></svg></div>
     </div>
     <div class="box" style="margin-top:14px">
-      <h3>Is the gap real yet?</h3>
+      <h3>Is the gap statistically significant?</h3>
       <table class="edges"><thead><tr><th>Model vs simple rule</th><th>Per week</th><th>Likely range</th><th>Sure?</th></tr></thead>
         <tbody id="edges"></tbody></table>
       <p class="hint" id="edges-note" style="margin-top:12px"></p>
@@ -102,13 +102,13 @@
   <section class="panel" id="tab-analysis" role="tabpanel">
     <div class="seg" id="seg">
       <button class="chip" aria-pressed="true" data-sub="value">Value for money</button>
-      <button class="chip" aria-pressed="false" data-sub="xg">Lucky or good?</button>
+      <button class="chip" aria-pressed="false" data-sub="xg">Goals vs xG</button>
       <button class="chip" aria-pressed="false" data-sub="fdr">Fixture difficulty</button>
-      <button class="chip" aria-pressed="false" data-sub="crowd">Following the crowd</button>
+      <button class="chip" aria-pressed="false" data-sub="crowd">Transfers and ownership</button>
     </div>
 
     <div class="sub-panel on" id="sub-value">
-      <div class="a-head"><h2>Are expensive players worth it?</h2>
+      <div class="a-head"><h2>Price vs points</h2>
         <p>Every player this season with at least 180 minutes, by price and points. The dashed lines mark 5 and 10 points per £m.</p></div>
       <div class="chart-card"><svg id="value-scatter" role="img" aria-label="Price vs points this season"></svg>
         <div class="legend" id="value-legend"></div></div>
@@ -122,13 +122,13 @@
     </div>
 
     <div class="sub-panel" id="sub-xg">
-      <div class="a-head"><h2>Who's finishing above their xG?</h2>
-        <p>Goals scored minus expected goals this season. Big gaps either way usually close, as the test below shows.</p></div>
+      <div class="a-head"><h2>Goals vs expected goals</h2>
+        <p>Goals scored minus expected goals this season. The chart below checks whether gaps like these last.</p></div>
       <div class="a-grid even">
-        <div class="chart-card"><h4>Scoring more than their chances</h4><p class="hint">Goals minus xG</p><div id="xg-over"></div></div>
-        <div class="chart-card"><h4>Scoring less than their chances</h4><p class="hint">Goals minus xG</p><div id="xg-under"></div></div>
+        <div class="chart-card"><h4>Most goals above xG</h4><p class="hint">Goals minus xG</p><div id="xg-over"></div></div>
+        <div class="chart-card"><h4>Most goals below xG</h4><p class="hint">Goals minus xG</p><div id="xg-under"></div></div>
       </div>
-      <div class="chart-card" style="margin-top:14px"><h4>Does it last? 2023-24 to 2025-26</h4>
+      <div class="chart-card" style="margin-top:14px"><h4>First half vs second half of the season, 2023-24 to 2025-26</h4>
         <p class="hint">Players grouped by goals minus xG per 90 in gameweeks 1-19, then the same number for those players in 20-38. 900+ minutes in each half.</p>
         <svg id="xg-reg" role="img" aria-label="First half vs second half finishing"></svg>
         <div class="legend"><span><i style="background:#8a9592"></i>Gameweeks 1-19</span><span><i style="background:var(--mint)"></i>Gameweeks 20-38</span></div></div>
@@ -136,8 +136,8 @@
     </div>
 
     <div class="sub-panel" id="sub-fdr">
-      <div class="a-head"><h2>Do fixture ratings matter?</h2>
-        <p>FPL rates every fixture from 1 (easiest) to 5 (hardest). Here's what players who played 60+ minutes scored at each rating since 2022-23.</p></div>
+      <div class="a-head"><h2>Points by fixture difficulty</h2>
+        <p>FPL rates every fixture from 1 (easiest) to 5 (hardest). Average points for players who played 60+ minutes at each rating, 2022-23 to 2025-26.</p></div>
       <div class="chart-card"><svg id="fdr-lines" role="img" aria-label="Average points by fixture difficulty and position"></svg></div>
       <div class="box" style="margin-top:14px"><h3 id="grid-title">Next five gameweeks</h3>
         <p class="hint">Sorted from the easiest run to the hardest. Capital letters are home games.</p>
@@ -146,8 +146,8 @@
     </div>
 
     <div class="sub-panel" id="sub-crowd">
-      <div class="a-head"><h2>Does following the crowd work?</h2>
-        <p>Every gameweek since 2022-23, I ranked players by transfers in, transfers out and ownership, then averaged what each group scored that week. Only players who played count.</p></div>
+      <div class="a-head"><h2>Transfers, ownership and points</h2>
+        <p>Every gameweek since 2022-23, players are ranked by transfers in, transfers out and ownership, and each group's points that week are averaged. Only players who played count.</p></div>
       <div class="chart-card"><div id="crowd-bars"></div></div>
       <div class="takeaway" id="crowd-take"></div>
     </div>
@@ -160,7 +160,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1792978031"></script>
-<script src="assets/dashboard.js?v=1792978031"></script>
+<script src="assets/common.js?v=1792978397"></script>
+<script src="assets/dashboard.js?v=1792978397"></script>
 </body>
 </html>

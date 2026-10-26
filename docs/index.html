@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1792978031">
+<link rel="stylesheet" href="assets/site.css?v=1792978397">
 </head>
 <body>
 <header class="nav">
@@ -30,7 +30,7 @@
     <div>
       <div class="pill reveal" id="pill"><span class="dot"></span><span id="pill-text">Loading this week's picks</span></div>
       <h1 class="reveal blur" style="--d:.08s">Who to pick for <span class="gw" id="hero-gw">the next gameweek</span>.</h1>
-      <p class="lede reveal blur" style="--d:.2s">I trained a model on four seasons of Premier League stats to predict how many
+      <p class="lede reveal blur" style="--d:.2s">A model trained on four seasons of Premier League stats predicts how many
         FPL points every player will score next week. It retrains after each gameweek.</p>
       <div class="actions reveal" style="--d:.24s">
         <a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
@@ -46,36 +46,36 @@
     <div class="steps">
       <div class="side">
         <div class="kicker reveal">How it works</div>
-        <h2 class="big reveal" data-split style="--d:.06s">Four steps from raw stats to a pick.</h2>
-        <p class="sub reveal blur" style="--d:.25s">Python and SQL from start to finish. The write-up on GitHub covers the
-          details, including the mistakes I caught along the way.</p>
+        <h2 class="big reveal" data-split style="--d:.06s">How the predictions are made</h2>
+        <p class="sub reveal blur" style="--d:.25s">The pipeline is written in Python and SQL. The README on GitHub has the
+          full method and the problems fixed along the way.</p>
         <div class="term reveal clip" style="--d:.2s" data-reveal-fn="terminal" aria-label="Pipeline run">
           <div class="tb"><i></i><i></i><i></i></div><pre id="term"></pre></div>
       </div>
       <div class="stack">
         <article class="layer reveal clip" style="--i:0"><div class="top"><span class="step-n">1</span><span>Python</span></div>
-          <h3>Collect every match</h3>
+          <h3>Data</h3>
           <p>Stats for every player in every Premier League match since 2022-23. This season comes straight from the official
             FPL API, older seasons from Vaastav Anand's open archive.</p></article>
         <article class="layer reveal clip" style="--i:1"><div class="top"><span class="step-n">2</span><span>SQLite</span></div>
-          <h3>Build the features in SQL</h3>
+          <h3>Features in SQL</h3>
           <p>Rolling averages of points, minutes, xG and xA, plus how strong the opponent is. Every window ends at
             <code>1 PRECEDING</code>, so a row only knows about games played before that week's deadline.</p></article>
         <article class="layer reveal clip" style="--i:2"><div class="top"><span class="step-n">3</span><span>scikit-learn</span></div>
-          <h3>Train and test the model</h3>
-          <p>A gradient boosting model, tuned on 2024-25 and tested on 2025-26 without ever seeing it. After passing
-            that test it was retrained on all four seasons for this one.</p></article>
+          <h3>Model training and testing</h3>
+          <p>A gradient boosting model, tuned on 2024-25 and tested on 2025-26, a season left out of training.
+            For this season it was retrained on all four.</p></article>
         <article class="layer reveal clip" style="--i:3"><div class="top"><span class="step-n">4</span><span>Every gameweek</span></div>
-          <h3>Pick the team</h3>
-          <p>Predict the next gameweek, cut flagged players by FPL's chance of playing, and pick the highest-scoring
-            legal XI. A player listed at 25% keeps a quarter of his prediction.</p></article>
+          <h3>Team selection</h3>
+          <p>Each prediction is multiplied by FPL's chance of playing, so a player listed at 25% keeps a quarter
+            of it. The best XI is the highest-predicted legal formation.</p></article>
       </div>
     </div>
   </section>
 
   <section class="block" id="record" data-scene="flow" data-tint="106,168,255" data-tx="25%">
     <div class="kicker reveal">Track record</div>
-    <h2 class="big reveal" data-split style="--d:.06s">Is it better than just picking in-form players?</h2>
+    <h2 class="big reveal" data-split style="--d:.06s">Model vs a simple rule</h2>
     <p class="sub reveal blur" style="--d:.25s" id="record-sub">Before every deadline this season the model picks a team, and so
       does a simple rule: the eleven players with the best average so far.</p>
     <div class="score">
@@ -92,16 +92,16 @@
 
   <section class="block" id="findings" data-scene="stars" data-tint="106,168,255" data-tx="80%">
     <div class="kicker reveal">Findings</div>
-    <h2 class="big reveal" data-split style="--d:.06s">What four seasons of data say.</h2>
-    <p class="sub reveal blur" style="--d:.25s">Questions I wanted answered before trusting any FPL advice. Each one is a SQL query
-      over every match since 2022-23, and the dashboard has the full charts.</p>
+    <h2 class="big reveal" data-split style="--d:.06s">Findings from four seasons of data</h2>
+    <p class="sub reveal blur" style="--d:.25s">Four questions about FPL strategy, each answered with a SQL query
+      over every match since 2022-23. The full charts are on the dashboard.</p>
     <div class="bento" id="bento"></div>
   </section>
 
   <section class="block" id="picks" data-scene="rise" data-tint="94,240,176" data-tx="50%">
     <div class="kicker reveal">This week</div>
-    <h2 class="big reveal" style="--d:.06s" id="picks-title">The top picks.</h2>
-    <p class="sub reveal blur" style="--d:.25s">Ranked by predicted points. Hover to pause. The dashboard has every player, filters and
+    <h2 class="big reveal" style="--d:.06s" id="picks-title">Top predicted players</h2>
+    <p class="sub reveal blur" style="--d:.25s">Ranked by predicted points. The dashboard lists every player, with filters and
       each player's week-by-week record.</p>
   </section>
   <div class="marquee reveal" id="marquee"><div class="marquee-track" id="marquee-track"></div></div>
@@ -109,22 +109,22 @@
   <section class="block faq" id="faq" data-scene="none" data-tint="106,168,255" data-tx="20%">
     <div>
       <div class="kicker reveal">FAQ</div>
-      <h2 class="big reveal" data-split style="--d:.06s">Questions people ask.</h2>
+      <h2 class="big reveal" data-split style="--d:.06s">Common questions</h2>
     </div>
     <div class="reveal" style="--d:.1s" id="faq-list">
       <div class="qa"><button aria-expanded="false">Why doesn't the team fit the £100m budget?<span class="plus"></span></button>
-        <div class="ans"><div><p>The best XI shows who the model rates highest, not a squad you could actually buy. Use it to decide
-          who to bring in or captain, and check prices on the dashboard.</p></div></div></div>
+        <div class="ans"><div><p>The best XI is the eleven highest-predicted players in a legal formation, with no budget limit.
+          It's meant for choosing transfers and a captain, not as a squad to copy.</p></div></div></div>
       <div class="qa"><button aria-expanded="false">How does it handle injuries?<span class="plus"></span></button>
         <div class="ans"><div><p>The model only sees match stats, so it multiplies each prediction by FPL's own chance of playing.
-          The dashboard lists the big names who got cut and what they were predicted before.</p></div></div></div>
+          The dashboard lists the flagged players and their predictions before the cut.</p></div></div></div>
       <div class="qa"><button aria-expanded="false">How often does it update?<span class="plus"></span></button>
-        <div class="ans"><div><p>After every gameweek. I run one script that pulls the new results from the FPL API, retrains,
+        <div class="ans"><div><p>After every gameweek. One script pulls the new results from the FPL API, retrains,
           and republishes this site.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">Is it actually better than a simple rule?<span class="plus"></span></button>
-        <div class="ans"><div><p>Over all of 2025-26, a season it never saw while training, its team beat the season-average rule
-          by about 260 points. This season it's ahead too, but a handful of gameweeks is too few to be sure yet.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">Can I run it myself?<span class="plus"></span></button>
+      <div class="qa"><button aria-expanded="false">How accurate is it?<span class="plus"></span></button>
+        <div class="ans"><div><p>Over 2025-26, a season left out of training, the model's best XI scored about 260 more points than
+          the season-average rule. It's ahead this season too, but this early the sample is too small to be sure.</p></div></div></div>
+      <div class="qa"><button aria-expanded="false">Can anyone run it?<span class="plus"></span></button>
         <div class="ans"><div><p>Yes. Clone the repo, install the requirements and run <code>python run_pipeline.py</code>. It
           downloads the data, builds the database and writes every result.</p></div></div></div>
     </div>
@@ -144,7 +144,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1792978031"></script>
-<script src="assets/home.js?v=1792978031"></script>
+<script src="assets/common.js?v=1792978397"></script>
+<script src="assets/home.js?v=1792978397"></script>
 </body>
 </html>

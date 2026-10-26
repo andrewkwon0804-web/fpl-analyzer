@@ -195,7 +195,7 @@ FPL.recordSeries = (data) => [
 ];
 
 FPL.notice = (data) => data.stale
-  ? `<div class="notice"><b>Heads up</b><span>Gameweek ${data.meta.gw} started on ${FPL.fmtDate(data.kickoff)}, and these picks
+  ? `<div class="notice"><b>Note</b><span>Gameweek ${data.meta.gw} started on ${FPL.fmtDate(data.kickoff)}, and these picks
      only use games through gameweek ${data.meta.played}. They'll catch up on the next data refresh.</span></div>` : "";
 
 FPL.boot = (fn) => {

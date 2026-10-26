@@ -174,7 +174,7 @@ FPL.boot((data) => {
     const mid = T.filter((r) => r.position === "MID"), lo = mid[0], hi = mid[mid.length - 1];
     document.getElementById("value-take").innerHTML = `Midfielders over £10.5m scored <b>${hi.points_per_90.toFixed(1)}</b> points per 90 against
       <b>${lo.points_per_90.toFixed(1)}</b> for those under £5m. Per £m every midfield tier lands between
-      ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(1)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(1)}, so paying more mostly buys more points, not worse value.`;
+      ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(1)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(1)}, so the extra cost buys roughly proportional extra points.`;
     document.getElementById("value-best").innerHTML = A.value.best.map((p, i) => `<div class="list-row"><span><b>${i + 1}. ${FPL.esc(p.name)}</b>
       <small>${p.team} ${p.pos}, £${p.price.toFixed(1)}m, ${p.points} pts</small></span><span class="v">${p.per_m.toFixed(1)}</span></div>`).join("");
   }
@@ -215,7 +215,7 @@ FPL.boot((data) => {
     const hot = R[0], cold = R[R.length - 1];
     document.getElementById("xg-take").innerHTML = `The ${hot.players} players who beat their xG by the most in gameweeks 1-19 (<b>${signed(hot.first_half)}</b> goals per 90)
       were at <b>${signed(hot.second_half)}</b> for the rest of the season. The coldest group went from ${signed(cold.first_half)} to ${signed(cold.second_half)}.
-      So when picking between two players, trust the xG more than the goals.`;
+      For comparing players, xG is a better guide to future goals than goals scored.`;
   }
 
   function drawFdr() {
@@ -244,8 +244,8 @@ FPL.boot((data) => {
     document.getElementById("heat").innerHTML = h;
     const ratio = (p) => { const r = F.filter((x) => x.pos === p); return r[0].points / r[r.length - 1].points; };
     document.getElementById("fdr-take").innerHTML = `Difficulty matters most for defenders: they average <b>${ratio("DEF").toFixed(1)} times</b> the points in their easiest
-      fixtures as their hardest, against <b>${ratio("FWD").toFixed(1)} times</b> for forwards, since clean sheets depend on the opponent far more than goals do.
-      ${FPL.esc(teams[0].t)} have the easiest run right now.`;
+      fixtures as their hardest, against <b>${ratio("FWD").toFixed(1)} times</b> for forwards. Clean sheets depend more on the opponent than goals do, which likely explains the gap.
+      ${FPL.esc(teams[0].t)} have the easiest next five gameweeks.`;
   }
 
   function drawCrowd() {
@@ -256,7 +256,7 @@ FPL.boot((data) => {
     const g = Object.fromEntries(C.map((r) => [r.grp, r.points]));
     document.getElementById("crowd-take").innerHTML = `The ten most transferred-in players averaged <b>${g["Top 10 transferred in"].toFixed(2)}</b> points that week,
       barely more than the ten most sold (<b>${g["Top 10 transferred out"].toFixed(2)}</b>). The ten most owned players averaged ${g["Top 10 most owned"].toFixed(2)}.
-      Jumping on this week's trend adds little. Owning the players everyone already has is what keeps you level.`;
+      On average, following transfer trends adds little, while the most-owned players score the most.`;
   }
 
   // open the tab in the URL, or the best XI

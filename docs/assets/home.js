@@ -28,7 +28,7 @@ FPL.boot((data) => {
       <div class="v num">${mae.edge.toFixed(2)}</div><p>points closer, on average, to what each regular starter actually scores.</p></div>`;
 
   // this week marquee (list twice so the loop is seamless)
-  document.getElementById("picks-title").textContent = `The top picks for gameweek ${gw}.`;
+  document.getElementById("picks-title").textContent = `Top predicted players, gameweek ${gw}`;
   const top = data.players.slice(0, 14);
   const cards = top.map((p, i) => `<div class="pcard"><div class="rk"><span>#${i + 1}</span><span>${p.pos}</span></div>
     <div class="nm">${FPL.esc(p.name)}</div><div class="tm">${FPL.esc(p.team)}</div>
@@ -36,7 +36,7 @@ FPL.boot((data) => {
   document.getElementById("marquee-track").innerHTML = cards + cards.replaceAll('class="pcard"', 'class="pcard" aria-hidden="true"');
   FPL.marquee(document.getElementById("marquee-track"));
 
-  document.getElementById("closing-title").textContent = `Gameweek ${gw} picks are up.`;
+  document.getElementById("closing-title").textContent = `Gameweek ${gw} predictions`;
   const when = m.refreshed_at ? new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
   document.getElementById("foot-data").textContent = `Data from the ${m.source || "open FPL archive"}${when ? `, updated ${when}` : ""}`;
 
@@ -76,33 +76,33 @@ FPL.boot((data) => {
   const crowd = Object.fromEntries(A.crowd.map((r) => [r.grp, r.points]));
   document.getElementById("bento").innerHTML = `
     <a class="find wide reveal clip tilt" href="dashboard.html#analysis-fdr">
-      <h3>Defenders score ${(easy.points / hard.points).toFixed(1)} times as many points against the easiest fixtures as the hardest.</h3>
+      <h3>Defenders average ${easy.points.toFixed(1)} points in the easiest fixtures and ${hard.points.toFixed(1)} in the hardest</h3>
       <p>Average points for defenders who played 60+ minutes, by FPL's difficulty rating for that match.</p>
       <div class="viz">${FPL.bars(def.map((r) => ({ label: `FDR ${r.fdr}`, value: r.points, color: fdrColor[r.fdr] })), { width: 560, height: 170 })}</div>
       <span class="go">See every team's next five fixtures ›</span></a>
     <a class="find narrow reveal clip tilt" style="--d:.08s" href="dashboard.html#analysis-xg">
-      <h3>Hot finishing doesn't last.</h3>
-      <p>Goals minus xG per 90. Players who beat their xG in gameweeks 1-19 were back to normal in 20-38.</p>
+      <h3>Scoring above xG doesn't carry into the second half of a season</h3>
+      <p>Goals minus xG per 90, 2023-24 to 2025-26. The players furthest above their xG in gameweeks 1-19 were level with it in 20-38.</p>
       <div class="viz">${FPL.hbars([
         { label: "Hot, GW1-19", value: hot.first_half, color: "#5ef0b0" }, { label: "Hot, GW20-38", value: hot.second_half, color: "#2c6a52" },
         { label: "Cold, GW1-19", value: cold.first_half, color: "#ff7a8a" }, { label: "Cold, GW20-38", value: cold.second_half, color: "#6a3a3f" },
       ], { width: 360, labelW: 104, row: 34, fmt: (v) => (v > 0 ? "+" : "") + v.toFixed(2) })}</div>
-      <span class="go">Who's lucky this season ›</span></a>
+      <span class="go">This season's goals vs xG ›</span></a>
     <a class="find narrow reveal clip tilt" href="dashboard.html#analysis-value">
-      <h3>Premium midfielders earn their price.</h3>
-      <p>Points per 90 for midfielders by price. Per £m, every tier lands between ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(0)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(0)}.</p>
+      <h3>Expensive midfielders score more per 90 at similar value per £m</h3>
+      <p>Points per 90 for midfielders by price, 2022-23 to 2025-26. Points per £m stays between ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(0)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(0)}.</p>
       <div class="viz">${FPL.bars(mid.map((r) => ({ label: FPL.TIERS[r.tier - 1].replace("Under ", "<").replace("m+", "+").replace(/m$/, ""), value: r.points_per_90, color: "#5ef0b0" })), { width: 360, height: 170 })}</div>
       <span class="go">Best value this season ›</span></a>
     <a class="find wide reveal clip tilt" style="--d:.08s" href="dashboard.html#analysis-crowd">
-      <h3>The players everyone transfers in score about the same as the ones they sell.</h3>
-      <p>Average points that gameweek, for every gameweek since 2022-23. Owning the most popular players is what pays.</p>
+      <h3>The most transferred-in players score about the same as the most transferred-out</h3>
+      <p>Average points that gameweek, every gameweek since 2022-23. The ten most-owned players scored the most.</p>
       <div class="viz">${FPL.bars([
         { label: "Most transferred in", value: crowd["Top 10 transferred in"], color: "#6aa8ff" },
         { label: "Most transferred out", value: crowd["Top 10 transferred out"], color: "#3d5f8f" },
         { label: "Most owned", value: crowd["Top 10 most owned"], color: "#5ef0b0" },
         { label: "Everyone else", value: crowd["Everyone else who played"], color: "#3a4650" },
       ], { width: 560, height: 170, fmt: (v) => v.toFixed(2) })}</div>
-      <span class="go">Template vs differentials ›</span></a>`;
+      <span class="go">Full breakdown ›</span></a>`;
 
   // faq accordion
   document.querySelectorAll(".qa button").forEach((b) => b.addEventListener("click", () => {
