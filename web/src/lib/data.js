@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // The pipeline writes one JSON file; the site reads nothing else.
-const URL = import.meta.env.DEV ? "/data/site.json" : "../data/site.json";
+const URL = import.meta.env.DEV ? "/data/site.json" : "./data/site.json";
 
 const CACHE = "fpl-site-json";
 

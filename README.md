@@ -39,7 +39,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 ## Explore it
 
-* **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. A **transfer planner** takes your 15-man squad, bank and free transfers, and finds the transfers that add the most predicted points over the next five gameweeks within the budget and three-per-club rule. A switch in the top bar turns on a loud version with every effect on. Plain HTML, CSS and JavaScript in [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. A **transfer planner** takes your 15-man squad, bank and free transfers, and finds the transfers that add the most predicted points over the next five gameweeks within the budget and three-per-club rule. The home page explains the pipeline as a 3D stack you can turn and open (three.js), with the track record drawn as you scroll. Built with React and Vite in [`web/`](web/) into [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
@@ -57,7 +57,7 @@ The pipeline also follows the season in progress. Each run re-downloads it, retr
 | Rank correlation per gameweek | 0.71 | 0.68 | 0.66 | 0.65 | 0.64 |
 | MAE, regular starters | 2.31 | 2.35 | 2.35 | 2.35 | 2.37 |
 
-To refresh during the season: `python run_pipeline.py`, then commit `reports/live/` and `docs/data/`.
+To refresh during the season: `python run_pipeline.py`, then commit `reports/live/` and `docs/`. After changing the site's code, rebuild it with `cd web && npm install && npm run build`.
 
 ## The model's FPL team
 
@@ -149,7 +149,8 @@ sql/upcoming.sql         the same features for the next, unplayed gameweek
 sql/horizon.sql          the same features for each of the next six gameweeks (transfer planner)
 sql/site/                analysis queries behind the website's findings
 experiments/             model experiments, including the ones that didn't help
-docs/                    the website (GitHub Pages)
+web/                     the website's source (React, Vite, three.js)
+docs/                    the built website (GitHub Pages)
 sql/analysis/            standalone analysis queries
 sql/tableau_exports.sql  flat views for Tableau
 tests/                   pytest checks for duplicates, double gameweeks, missing xG, and leakage

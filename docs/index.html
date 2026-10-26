@@ -1,188 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FPL Points Lab: predicted Fantasy Premier League points</title>
 <meta name="description" content="Predicted Fantasy Premier League points for every player, updated after each gameweek.">
-<meta property="og:type" content="website">
 <meta property="og:title" content="FPL Points Lab">
+<meta property="og:site_name" content="FPL Points Lab">
+<meta property="og:image:alt" content="FPL Points Lab: the model's best XI on a pitch">
 <meta property="og:description" content="Predicted FPL points for every player, from a model trained on four seasons of Premier League data.">
 <meta property="og:image" content="https://andrewkwon0804-web.github.io/fpl-analyzer/assets/og.png">
-<meta property="og:image:alt" content="FPL Points Lab: the model's best XI on a pitch">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <link rel="canonical" href="https://andrewkwon0804-web.github.io/fpl-analyzer/">
 <meta property="og:url" content="https://andrewkwon0804-web.github.io/fpl-analyzer/">
+<meta property="og:type" content="website">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#030405">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "FPL Points Lab", "url": "https://andrewkwon0804-web.github.io/fpl-analyzer/", "description": "Predicted Fantasy Premier League points for every player, updated after each gameweek.", "author": {"@type": "Person", "name": "Andrew Kwon", "url": "https://github.com/andrewkwon0804-web"}, "inLanguage": "en"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "FPL Points Lab predictions", "description": "Predicted Fantasy Premier League points for every player for the next six gameweeks, from a gradient boosting model trained on four seasons of Premier League match data.", "url": "https://andrewkwon0804-web.github.io/fpl-analyzer/", "creator": {"@type": "Person", "name": "Andrew Kwon", "url": "https://github.com/andrewkwon0804-web"}, "isAccessibleForFree": true, "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://andrewkwon0804-web.github.io/fpl-analyzer/data/site.json"}}</script>
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#06080a">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1793048624">
-<script>try{var q=new URLSearchParams(location.search).get("fx");if(q)localStorage.setItem("fx",q);if((q||localStorage.getItem("fx"))==="loud")document.documentElement.classList.add("fx-loud");}catch(e){}</script>
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script type="module" crossorigin src="./app/index-6qE3Sr48.js"></script>
+  <link rel="modulepreload" crossorigin href="./app/boot-Ce8OKyAU.js">
+  <link rel="stylesheet" crossorigin href="./app/boot-DPOs612h.css">
 </head>
 <body>
-<header class="nav">
-  <div class="bar">
-    <a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
-    <nav class="nav-links" aria-label="Sections">
-      <a href="#last">Last gameweek</a><a href="#how">How it works</a><a href="#record">Track record</a><a href="#findings">Findings</a><a href="#faq">FAQ</a>
-    </nav>
-    <div class="nav-right">
-      <a class="btn gh" href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>
-      <a class="btn primary" href="dashboard.html">Dashboard <span class="chev">›</span></a>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="hero" data-scene="chars" data-tint="94,240,176" data-tx="78%">
-    <div>
-      <div class="pill reveal" id="pill"><span class="dot"></span><span id="pill-text">Loading this week's picks</span></div>
-      <h1 class="reveal blur" style="--d:.08s">Who to pick for <span class="gw" id="hero-gw">the next gameweek</span>.</h1>
-      <p class="lede reveal blur" style="--d:.2s">A model trained on four seasons of Premier League stats predicts how many
-        FPL points every player will score next week. It retrains after each gameweek.</p>
-      <div class="finder reveal" style="--d:.24s" role="combobox" aria-expanded="false" aria-owns="finder-list">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-        <input id="finder" type="search" placeholder="Try any player, e.g. Saka" autocomplete="off" aria-label="Find a player" aria-autocomplete="list" aria-controls="finder-list">
-        <kbd>/</kbd>
-        <ul id="finder-list" role="listbox"></ul>
-      </div>
-      <div class="actions reveal" style="--d:.3s">
-        <a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
-        <a class="btn" href="#how">How it works</a>
-      </div>
-      <div id="notice"></div>
-    </div>
-    <div class="hero-pitch" data-speed="0.07"><div class="pitch reveal clip" style="--d:.15s" id="pitch" aria-label="The model's best XI"></div></div>
-    <a class="scroll-cue" href="#how"><span>Scroll</span><i></i></a>
-  </section>
-
-  <section class="block" id="last" data-scene="flow" data-tint="106,168,255" data-tx="70%">
-    <div class="kicker reveal">Last gameweek</div>
-    <h2 class="big reveal" data-split style="--d:.06s" id="last-title">Last gameweek's result</h2>
-    <p class="sub reveal" style="--d:.2s" id="last-sub"></p>
-    <div class="result reveal" style="--d:.1s" id="last-result"></div>
-    <div class="xi-strip reveal" style="--d:.15s" id="last-xi"></div>
-    <div class="legend" style="margin-top:16px"><span><i style="background:#3a4650"></i>Predicted</span><span><i style="background:var(--mint)"></i>Scored</span></div>
-  </section>
-
-  <section class="block" id="how" data-scene="pitch" data-tint="94,240,176" data-tx="50%">
-    <div class="steps">
-      <div class="side">
-        <div class="kicker reveal">How it works</div>
-        <h2 class="big reveal" data-split style="--d:.06s">How the predictions are made</h2>
-        <p class="sub reveal blur" style="--d:.25s">The pipeline is written in Python and SQL. The README on GitHub has the
-          full method and the problems fixed along the way.</p>
-        <div class="term reveal clip" style="--d:.2s" data-reveal-fn="terminal" aria-label="Pipeline run">
-          <div class="tb"><i></i><i></i><i></i></div><pre id="term"></pre></div>
-      </div>
-      <div class="stack">
-        <article class="layer reveal clip" style="--i:0"><div class="top"><span class="step-n">1</span><span>Python</span></div>
-          <h3>Data</h3>
-          <p>Stats for every player in every Premier League match since 2022-23. This season comes straight from the official
-            FPL API, older seasons from Vaastav Anand's open archive.</p></article>
-        <article class="layer reveal clip" style="--i:1"><div class="top"><span class="step-n">2</span><span>SQLite</span></div>
-          <h3>Features in SQL</h3>
-          <p>Rolling averages of points, minutes, xG and xA, plus how strong the opponent is. Every window ends at
-            <code>1 PRECEDING</code>, so a row only knows about games played before that week's deadline.</p></article>
-        <article class="layer reveal clip" style="--i:2"><div class="top"><span class="step-n">3</span><span>scikit-learn</span></div>
-          <h3>Model training and testing</h3>
-          <p>A gradient boosting model, tuned on 2024-25 and tested on 2025-26, a season left out of training.
-            For this season it was retrained on all four.</p></article>
-        <article class="layer reveal clip" style="--i:3"><div class="top"><span class="step-n">4</span><span>Every gameweek</span></div>
-          <h3>Team selection</h3>
-          <p>Each prediction is multiplied by FPL's chance of playing, so a player listed at 25% keeps a quarter
-            of it. The best XI is the highest-predicted legal formation.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="record" data-scene="flow" data-tint="106,168,255" data-tx="25%">
-    <div class="kicker reveal">Track record</div>
-    <h2 class="big reveal" data-split style="--d:.06s">Model vs a simple rule</h2>
-    <p class="sub reveal blur" style="--d:.25s" id="record-sub">Before every deadline this season the model picks a team, and so
-      does a simple rule: the eleven players with the best average so far.</p>
-    <div class="score">
-      <div class="card model reveal clip" data-reveal-fn="count" data-key="Model">
-        <div class="who"><i style="background:var(--mint)"></i>Model's team, total points</div>
-        <div class="val num">0</div></div>
-      <div class="card reveal clip" style="--d:.1s" data-reveal-fn="count" data-key="Season average">
-        <div class="who"><i style="background:#8a9592"></i>Simple rule's team, total points</div>
-        <div class="val num">0</div></div>
-    </div>
-    <div class="chart-card reveal clip" style="--d:.1s" data-reveal-fn="record"><svg id="record-chart" role="img" aria-label="Running points total, model vs simple rule"></svg></div>
-    <div class="facts" id="facts"></div>
-  </section>
-
-  <section class="block" id="findings" data-scene="stars" data-tint="106,168,255" data-tx="80%">
-    <div class="kicker reveal">Findings</div>
-    <h2 class="big reveal" data-split style="--d:.06s">Findings from four seasons of data</h2>
-    <p class="sub reveal blur" style="--d:.25s">Four questions about FPL strategy, each answered with a SQL query
-      over every match since 2022-23. The full charts are on the dashboard.</p>
-    <div class="bento" id="bento"></div>
-  </section>
-
-  <section class="block" id="picks" data-scene="rise" data-tint="94,240,176" data-tx="50%">
-    <div class="kicker reveal">This week</div>
-    <h2 class="big reveal" style="--d:.06s" id="picks-title">Top predicted players</h2>
-    <p class="sub reveal blur" style="--d:.25s">Ranked by predicted points. The dashboard lists every player, with filters and
-      each player's week-by-week record.</p>
-  </section>
-  <div class="marquee reveal" id="marquee"><div class="marquee-track" id="marquee-track"></div></div>
-
-  <section class="block faq" id="faq" data-scene="none" data-tint="106,168,255" data-tx="20%">
-    <div>
-      <div class="kicker reveal">FAQ</div>
-      <h2 class="big reveal" data-split style="--d:.06s">Common questions</h2>
-    </div>
-    <div class="reveal" style="--d:.1s" id="faq-list">
-      <div class="qa"><button aria-expanded="false">Why doesn't the team fit the £100m budget?<span class="plus"></span></button>
-        <div class="ans"><div><p>The best XI is the eleven highest-predicted players in a legal formation, with no budget limit.
-          It's meant for choosing transfers and a captain, not as a squad to copy.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">How does it handle injuries?<span class="plus"></span></button>
-        <div class="ans"><div><p>The model only sees match stats, so it multiplies each prediction by FPL's own chance of playing.
-          The dashboard lists the flagged players and their predictions before the cut.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">How often does it update?<span class="plus"></span></button>
-        <div class="ans"><div><p>After every gameweek. One script pulls the new results from the FPL API, retrains,
-          and republishes this site.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">How accurate is it?<span class="plus"></span></button>
-        <div class="ans"><div><p>Over 2025-26, a season left out of training, the model's best XI scored about 260 more points than
-          the season-average rule. It's ahead this season too, but this early the sample is too small to be sure.</p></div></div></div>
-      <div class="qa"><button aria-expanded="false">Can anyone run it?<span class="plus"></span></button>
-        <div class="ans"><div><p>Yes. Clone the repo, install the requirements and run <code>python run_pipeline.py</code>. It
-          downloads the data, builds the database and writes every result.</p></div></div></div>
-    </div>
-  </section>
-
-  <section class="closing reveal scale" data-scene="pitch" data-tint="94,240,176" data-tx="50%">
-    <h2 id="closing-title" class="reveal" data-split>This week's picks are up.</h2>
-    <div class="actions"><a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
-      <a class="btn" href="https://github.com/andrewkwon0804-web/fpl-analyzer">Read the code</a></div>
-  </section>
-
-  <footer class="site-foot">
-    <div class="about"><a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
-      <p>Predicted Fantasy Premier League points for every player, rebuilt after each gameweek. Made by Andrew Kwon.</p></div>
-    <div><h5>Site</h5><a href="./">Home</a><a href="dashboard.html">Dashboard</a><a href="dashboard.html#analysis-value">Analysis</a></div>
-    <div><h5>Project</h5><a href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub repo</a>
-      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer#readme">Method and results</a>
-      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer/tree/main/tableau">Tableau workbook</a></div>
-    <div><h5>Data</h5><a href="https://fantasy.premierleague.com/">Official FPL API</a>
-      <a href="https://github.com/vaastav/Fantasy-Premier-League">Vaastav Anand's FPL archive</a></div>
-  </footer>
-  <div class="foot-base"><span id="foot-data">Data from the official FPL API</span><span>Not affiliated with the Premier League or FPL.</span></div>
+<div id="root"><!--pre--><div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
+<header><a href="./">FPL Points Lab</a> · <a href="./dashboard.html">Dashboard</a></header>
+<main>
+<h1>Who to pick for gameweek 8.</h1>
+<p>A model trained on four seasons of Premier League stats predicts how many FPL points every player will score next week. It retrains after each gameweek.</p>
+<h2>Best XI for gameweek 8</h2><ul><li>Haaland, Man City FWD, £15.7m: 6.8 points</li><li>Rogers, Chelsea MID, £8.0m: 5.7 points</li><li>Palmer, Chelsea MID, £9.8m: 5.7 points</li><li>Thiago, Brentford FWD, £7.8m: 5.1 points</li><li>Mbeumo, Man Utd MID, £7.9m: 4.6 points</li><li>Rice, Arsenal MID, £7.4m: 4.5 points</li><li>Gabriel, Arsenal DEF, £7.9m: 4.5 points</li><li>Gibbs-White, Nott&#x27;m Forest MID, £7.9m: 4.3 points</li><li>Lacroix, Chelsea DEF, £5.9m: 4.0 points</li><li>Raya, Arsenal GK, £6.2m: 3.9 points</li><li>Murillo, Nott&#x27;m Forest DEF, £5.5m: 3.8 points</li></ul>
+<h2>Gameweek 7 result</h2><p>The model's best XI scored 50 points. The simple rule's XI scored 48. The best possible XI, picked with hindsight, scored 143.</p>
+<h2>How the predictions are made</h2>
+<p>Stats for every player in every Premier League match since 2022-23 go into SQLite. Rolling features are built in SQL,
+a gradient boosting model is trained with scikit-learn, and each prediction is multiplied by FPL's chance of playing.</p>
+<h2>Track record</h2>
+<p>Over 2025-26, a season left out of training, the model's best XI scored 261 more points than the season-average rule.</p>
+<h2>Top predicted players, gameweek 8</h2><ol><li>Haaland (Man City): 6.8</li><li>Rogers (Chelsea): 5.7</li><li>Palmer (Chelsea): 5.7</li><li>Thiago (Brentford): 5.1</li><li>Mbeumo (Man Utd): 4.6</li><li>Rice (Arsenal): 4.5</li><li>Gabriel (Arsenal): 4.5</li><li>Gibbs-White (Nott&#x27;m Forest): 4.3</li><li>Neto (Chelsea): 4.2</li><li>Groß (Brighton): 4.1</li><li>Stach (Leeds): 4.1</li><li>Calvert-Lewin (Leeds): 4.0</li><li>Lacroix (Chelsea): 4.0</li><li>Ødegaard (Arsenal): 4.0</li></ol>
+<p><a href="./dashboard.html">Open the dashboard</a> · <a href="https://github.com/andrewkwon0804-web/fpl-analyzer">Read the code</a></p>
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1793048624"></script>
-<script src="assets/fx.js?v=1793048624"></script>
-<script src="assets/home.js?v=1793048624"></script>
+</div><!--/pre--></div>
 </body>
 </html>

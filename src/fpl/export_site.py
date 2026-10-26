@@ -1,7 +1,6 @@
 """Step 8: write the data file for the website in docs/ (served by GitHub Pages).
 
-The site is plain HTML and JavaScript, so everything it shows comes from one JSON file
-built here from reports/live/.
+The site (React, built from web/ into docs/) reads one JSON file, built here from reports/live/.
 """
 import json
 import sqlite3

@@ -2,7 +2,7 @@
 
 - sitemap.xml with the date of the latest refresh
 - llms.txt: a plain-text summary of the site and this week's top picks
-- the React page's HTML (docs/v2/index.html) gets a static copy of its content between
+- the site's HTML (docs/index.html, docs/dashboard.html) gets a static copy of its content between
   <!--pre--> and <!--/pre-->, so "view source" and crawlers see text, not an empty <div>.
   React replaces it as soon as the page loads.
 """
@@ -80,7 +80,7 @@ def prerender(data: dict) -> str:
     last = (f"<h2>Gameweek {L['gw']} result</h2><p>The model's best XI scored {L['model']} points. "
             f"The simple rule's XI scored {L['rule']}. The best possible XI, picked with hindsight, scored {L['best']}.</p>") if L else ""
     return f"""<div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
-<header><a href="./">FPL Points Lab</a> · <a href="../dashboard.html">Dashboard</a></header>
+<header><a href="./">FPL Points Lab</a> · <a href="./dashboard.html">Dashboard</a></header>
 <main>
 <h1>Who to pick for gameweek {m['gw']}.</h1>
 <p>A model trained on four seasons of Premier League stats predicts how many FPL points every player will score next week. It retrains after each gameweek.</p>
@@ -92,7 +92,7 @@ a gradient boosting model is trained with scikit-learn, and each prediction is m
 <h2>Track record</h2>
 <p>Over 2025-26, a season left out of training, the model's best XI scored {data['last_season_edge']} more points than the season-average rule.</p>
 <h2>Top predicted players, gameweek {m['gw']}</h2><ol>{top}</ol>
-<p><a href="../dashboard.html">Open the dashboard</a> · <a href="{REPO}">Read the code</a></p>
+<p><a href="./dashboard.html">Open the dashboard</a> · <a href="{REPO}">Read the code</a></p>
 </main>
 </div>"""
 
@@ -113,12 +113,12 @@ def main(data: dict) -> None:
     data = dict(data, byId_captain=next((p["name"] for p in data["players"] if p["id"] == data["captain"]), ""))
     (DOCS / "sitemap.xml").write_text(sitemap(data))
     (DOCS / "llms.txt").write_text(llms(data))
-    page = DOCS / "v2" / "index.html"
+    page = DOCS / "index.html"
     if page.exists():
         text = page.read_text()
         new = re.sub(r"<!--pre-->.*?<!--/pre-->", lambda _: f"<!--pre-->{prerender(data)}<!--/pre-->", text, flags=re.S)
         page.write_text(new)
-    dash = DOCS / "v2" / "dashboard.html"
+    dash = DOCS / "dashboard.html"
     if dash.exists():
         text = dash.read_text()
         dash.write_text(re.sub(r"<!--pre-dash-->.*?<!--/pre-dash-->", lambda _: f"<!--pre-dash-->{prerender_dash(data)}<!--/pre-dash-->", text, flags=re.S))

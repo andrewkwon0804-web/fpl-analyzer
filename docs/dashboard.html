@@ -1,234 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard: best XI, every player and transfer planner · FPL Points Lab</title>
-<meta name="description" content="Best XI, every player's predicted points, player history and the model's track record.">
-<meta property="og:type" content="website">
+<meta name="description" content="Best XI, every player's predicted points, player history, the model's FPL team, a transfer planner and four analyses of FPL data.">
 <meta property="og:title" content="FPL Points Lab dashboard">
-<meta property="og:description" content="Best XI, every player's predicted points, player history and four analyses of four seasons of FPL data.">
-<meta property="og:image" content="https://andrewkwon0804-web.github.io/fpl-analyzer/assets/og.png">
+<meta property="og:site_name" content="FPL Points Lab">
 <meta property="og:image:alt" content="FPL Points Lab: the model's best XI on a pitch">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:description" content="Predicted FPL points for every player, from a model trained on four seasons of Premier League data.">
+<meta property="og:image" content="https://andrewkwon0804-web.github.io/fpl-analyzer/assets/og.png">
 <link rel="canonical" href="https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html">
 <meta property="og:url" content="https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#030405">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "FPL Points Lab dashboard", "url": "https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html", "description": "Best XI, every player's predicted points, player history, the model's FPL team, a transfer planner and four analyses of FPL data.", "isPartOf": {"@type": "WebSite", "name": "FPL Points Lab", "url": "https://andrewkwon0804-web.github.io/fpl-analyzer/"}, "author": {"@type": "Person", "name": "Andrew Kwon", "url": "https://github.com/andrewkwon0804-web"}}</script>
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#06080a">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="32x32">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1793048624">
-<script>try{var q=new URLSearchParams(location.search).get("fx");if(q)localStorage.setItem("fx",q);if((q||localStorage.getItem("fx"))==="loud")document.documentElement.classList.add("fx-loud");}catch(e){}</script>
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script type="module" crossorigin src="./app/dashboard-f_H3-hmb.js"></script>
+  <link rel="modulepreload" crossorigin href="./app/boot-Ce8OKyAU.js">
+  <link rel="stylesheet" crossorigin href="./app/boot-DPOs612h.css">
 </head>
 <body>
-<header class="nav">
-  <div class="bar">
-    <a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
-    <nav class="nav-links" aria-label="Pages">
-      <a href="./">Home</a><a href="dashboard.html" aria-current="page">Dashboard</a>
-      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer">Code</a>
-    </nav>
-    <div class="nav-right">
-      <a class="btn gh" href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>
-      <a class="btn" href="./">Home</a>
-    </div>
-  </div>
-</header>
-
-<main class="wrap dash" data-scene="stars" data-tint="94,240,176" data-tx="85%">
-  <div class="dash-head reveal blur">
-    <h1 id="title">Gameweek</h1>
-    <span class="meta" id="meta"></span>
-  </div>
-  <div id="notice"></div>
-
-  <div class="tabs reveal" style="--d:.08s" role="tablist">
-    <span class="ind" aria-hidden="true"></span>
-    <button role="tab" data-tab="xi" aria-selected="true">Best XI</button>
-    <button role="tab" data-tab="players" aria-selected="false">All players</button>
-    <button role="tab" data-tab="lookup" aria-selected="false">Player lookup</button>
-    <button role="tab" data-tab="record" aria-selected="false">Track record</button>
-    <button role="tab" data-tab="team" aria-selected="false">Model team</button>
-    <button role="tab" data-tab="planner" aria-selected="false">Transfer planner</button>
-    <button role="tab" data-tab="analysis" aria-selected="false">Analysis</button>
-  </div>
-
-  <section class="panel on" id="tab-xi" role="tabpanel">
-    <div class="grid-2">
-      <div><div class="pitch" id="pitch" aria-label="The model's best XI"></div>
-        <p class="hint" id="xi-note" style="margin-top:12px"></p></div>
-      <div class="box">
-        <h3>Injury list</h3>
-        <p class="hint">Players FPL has flagged, with what the model predicted before cutting them down.</p>
-        <div id="injuries"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="tab-players" role="tabpanel">
-    <div class="controls">
-      <input class="search" id="q" type="search" placeholder="Search players or teams" aria-label="Search players or teams">
-      <div class="chips" id="pos">
-        <button class="chip" aria-pressed="true" data-pos="">All</button><button class="chip" aria-pressed="false" data-pos="GK">GK</button>
-        <button class="chip" aria-pressed="false" data-pos="DEF">DEF</button><button class="chip" aria-pressed="false" data-pos="MID">MID</button>
-        <button class="chip" aria-pressed="false" data-pos="FWD">FWD</button>
-      </div>
-      <label class="range">Up to <span class="num">£<span id="price-val"></span>m</span><input type="range" id="price" min="4" step="0.5"></label>
-    </div>
-    <div class="table-wrap"><table class="players">
-      <thead><tr><th data-k="name">Player</th><th data-k="team">Team</th><th data-k="pos">Pos</th>
-        <th class="r" data-k="price">Price</th><th class="r sorted" data-k="pred">Predicted ↓</th>
-        <th class="r" data-k="chance">Chance</th><th data-k="news">FPL news</th></tr></thead>
-      <tbody id="rows"></tbody></table></div>
-    <p class="hint" id="count" style="margin-top:10px"></p>
-  </section>
-
-  <section class="panel" id="tab-lookup" role="tabpanel">
-    <div class="controls">
-      <input class="search" id="who" list="names" placeholder="Type a player's name" aria-label="Player">
-      <datalist id="names"></datalist>
-    </div>
-    <h3 class="big-name" id="who-name" style="font:500 34px/1.1 var(--display);letter-spacing:-.03em;margin:8px 0 18px"></h3>
-    <div class="stat-row" id="who-stats"></div>
-    <div class="chart-card"><svg id="who-chart" role="img" aria-label="Points scored and predicted by gameweek"></svg>
-      <div class="legend"><span><i style="background:#2a3338"></i>Scored</span><span><i style="background:var(--mint)"></i>Predicted before the deadline</span>
-        <span id="who-next"></span></div></div>
-    <p class="hint" id="who-news" style="margin-top:12px"></p>
-  </section>
-
-  <section class="panel" id="tab-record" role="tabpanel">
-    <div class="box">
-      <h3>Model vs the simple rule</h3>
-      <p class="hint">Running total of points scored by each side's best XI this season. The simple rule picks the players with the best average so far.</p>
-      <div class="chart-card" style="border:0;padding:6px 0 0"><svg id="record-chart" role="img" aria-label="Running points total"></svg></div>
-    </div>
-    <div class="box" style="margin-top:14px">
-      <h3>Is the gap statistically significant?</h3>
-      <table class="edges"><thead><tr><th>Model vs simple rule</th><th>Per week</th><th>Likely range</th><th>Sure?</th></tr></thead>
-        <tbody id="edges"></tbody></table>
-      <p class="hint" id="edges-note" style="margin-top:12px"></p>
-    </div>
-  </section>
-
-  <section class="panel" id="tab-team" role="tabpanel">
-    <div class="a-head"><h2>The model's FPL team</h2>
-      <p>A £100m squad picked and managed by the model under FPL's rules: 15 players with 4 on the bench, at most 3
-        per club, one free transfer a week (unused ones roll over), -4 for each extra. Every pick was made before that
-        gameweek's results, by a model trained only on past seasons.</p></div>
-    <div class="stat-row" id="team-stats"></div>
-    <div class="chart-card" style="margin-top:14px"><h4>Points each gameweek</h4><p class="hint" id="team-chart-hint"></p>
-      <svg id="team-chart" role="img" aria-label="Model team points per gameweek"></svg></div>
-    <div class="a-grid" style="margin-top:14px">
-      <div class="box"><h3 id="team-next-title">Next gameweek</h3><p class="hint" id="team-next-hint"></p><div id="team-next"></div></div>
-      <div class="box"><h3>Transfers</h3><p class="hint">Every transfer the team has made, and what each gameweek scored.</p>
-        <table class="edges" id="team-log"></table></div>
-    </div>
-    <p class="hint" style="margin-top:14px">Gameweeks 1-7 were simulated afterwards with the predictions the model made before
-      each deadline. FPL doesn't keep past injury flags, so those weeks didn't know about injuries; from now on each
-      decision is saved before the gameweek starts and never changed.</p>
-  </section>
-
-  <section class="panel" id="tab-planner" role="tabpanel">
-    <div class="a-head"><h2>Transfer planner</h2>
-      <p id="plan-intro">Enter your 15 players, money in the bank and free transfers. The planner checks every legal transfer
-        and scores each squad by its predicted points over the next five gameweeks, with the best XI and captain picked each week.</p></div>
-    <div class="plan-grid">
-      <div class="box">
-        <div class="plan-top"><h3>Your squad</h3><div class="plan-actions">
-          <button class="chip" id="plan-example">Try an example squad</button><button class="chip" id="plan-clear">Clear</button></div></div>
-        <div id="squad"></div>
-        <div class="plan-opts">
-          <label>In the bank <span class="field-in">£<input id="bank" type="number" min="0" max="100" step="0.1" value="0.0">m</span></label>
-          <label>Free transfers <select id="ft"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
-          <label class="check"><input type="checkbox" id="hits"> Allow extra transfers for -4 each</label>
-        </div>
-        <p class="hint" id="squad-msg"></p>
-        <button class="btn primary" id="plan-go" style="margin-top:14px">Find the best transfers <span class="chev">›</span></button>
-      </div>
-      <div id="plan-out"><div class="box empty-plan"><h3>Recommendations show up here</h3>
-        <p class="hint">Start by typing a player's name in each slot, or try the example squad.</p></div></div>
-    </div>
-    <p class="hint" style="margin-top:14px">Prices are current prices. FPL may sell your players for up to £0.1-0.3m less than that
-      if they rose after you bought them, so lower the bank figure if needed. Squads are saved in this browser.</p>
-  </section>
-
-  <section class="panel" id="tab-analysis" role="tabpanel">
-    <div class="seg" id="seg">
-      <button class="chip" aria-pressed="true" data-sub="value">Value for money</button>
-      <button class="chip" aria-pressed="false" data-sub="xg">Goals vs xG</button>
-      <button class="chip" aria-pressed="false" data-sub="fdr">Fixture difficulty</button>
-      <button class="chip" aria-pressed="false" data-sub="crowd">Transfers and ownership</button>
-    </div>
-
-    <div class="sub-panel on" id="sub-value">
-      <div class="a-head"><h2>Price vs points</h2>
-        <p>Every player this season with at least 180 minutes, by price and points. The dashed lines mark 5 and 10 points per £m.</p></div>
-      <div class="chart-card"><svg id="value-scatter" role="img" aria-label="Price vs points this season"></svg>
-        <div class="legend" id="value-legend"></div></div>
-      <div class="a-grid" style="margin-top:14px">
-        <div class="box"><h3>Points per 90 by price, 2022-23 to 2025-26</h3>
-          <p class="hint">Players with 900+ minutes in a season. Greener means more points per 90 minutes.</p>
-          <div class="tier-grid" id="tier-grid"></div>
-          <div class="takeaway" id="value-take"></div></div>
-        <div class="box"><h3>Best value this season</h3><p class="hint">Points per £m, minimum 360 minutes.</p><div id="value-best"></div></div>
-      </div>
-    </div>
-
-    <div class="sub-panel" id="sub-xg">
-      <div class="a-head"><h2>Goals vs expected goals</h2>
-        <p>Goals scored minus expected goals this season. The chart below checks whether gaps like these last.</p></div>
-      <div class="a-grid even">
-        <div class="chart-card"><h4>Most goals above xG</h4><p class="hint">Goals minus xG</p><div id="xg-over"></div></div>
-        <div class="chart-card"><h4>Most goals below xG</h4><p class="hint">Goals minus xG</p><div id="xg-under"></div></div>
-      </div>
-      <div class="chart-card" style="margin-top:14px"><h4>First half vs second half of the season, 2023-24 to 2025-26</h4>
-        <p class="hint">Players grouped by goals minus xG per 90 in gameweeks 1-19, then the same number for those players in 20-38. 900+ minutes in each half.</p>
-        <svg id="xg-reg" role="img" aria-label="First half vs second half finishing"></svg>
-        <div class="legend"><span><i style="background:#8a9592"></i>Gameweeks 1-19</span><span><i style="background:var(--mint)"></i>Gameweeks 20-38</span></div></div>
-      <div class="takeaway" id="xg-take"></div>
-    </div>
-
-    <div class="sub-panel" id="sub-fdr">
-      <div class="a-head"><h2>Points by fixture difficulty</h2>
-        <p>FPL rates every fixture from 1 (easiest) to 5 (hardest). Average points for players who played 60+ minutes at each rating, 2022-23 to 2025-26.</p></div>
-      <div class="chart-card"><svg id="fdr-lines" role="img" aria-label="Average points by fixture difficulty and position"></svg></div>
-      <div class="box" style="margin-top:14px"><h3 id="grid-title">Next five gameweeks</h3>
-        <p class="hint">Sorted from the easiest run to the hardest. Capital letters are home games.</p>
-        <div style="overflow-x:auto"><div class="heat" id="heat"></div></div></div>
-      <div class="takeaway" id="fdr-take"></div>
-    </div>
-
-    <div class="sub-panel" id="sub-crowd">
-      <div class="a-head"><h2>Transfers, ownership and points</h2>
-        <p>Every gameweek since 2022-23, players are ranked by transfers in, transfers out and ownership, and each group's points that week are averaged. Only players who played count.</p></div>
-      <div class="chart-card"><div id="crowd-bars"></div></div>
-      <div class="takeaway" id="crowd-take"></div>
-    </div>
-  </section>
-
-  <footer class="site-foot">
-    <div class="about"><a class="brand" href="./"><span class="brand-mark"></span>FPL Points Lab</a>
-      <p>Predicted Fantasy Premier League points for every player, rebuilt after each gameweek. Made by Andrew Kwon.</p></div>
-    <div><h5>Site</h5><a href="./">Home</a><a href="dashboard.html">Dashboard</a><a href="dashboard.html#analysis-value">Analysis</a></div>
-    <div><h5>Project</h5><a href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub repo</a>
-      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer#readme">Method and results</a>
-      <a href="https://github.com/andrewkwon0804-web/fpl-analyzer/tree/main/tableau">Tableau workbook</a></div>
-    <div><h5>Data</h5><a href="https://fantasy.premierleague.com/">Official FPL API</a>
-      <a href="https://github.com/vaastav/Fantasy-Premier-League">Vaastav Anand's FPL archive</a></div>
-  </footer>
-  <div class="foot-base"><span id="foot-data">Data from the official FPL API</span><span>Not affiliated with the Premier League or FPL.</span></div>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1793048624"></script>
-<script src="assets/fx.js?v=1793048624"></script>
-<script src="assets/planner.js?v=1793048624"></script>
-<script src="assets/dashboard.js?v=1793048624"></script>
+<div id="root"><!--pre-dash--><div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
+<header><a href="./">FPL Points Lab</a> · <a href="./dashboard.html">Dashboard</a></header>
+<main><h1>Gameweek 8</h1>
+<p>Best XI, every player's predicted points, player history, the model's FPL team, a transfer planner and four analyses.</p>
+<h2>Top 50 predicted players</h2><table><tr><th>Player</th><th>Team</th><th>Pos</th><th>Price</th><th>Predicted</th></tr><tr><td>Haaland</td><td>Man City</td><td>FWD</td><td>£15.7m</td><td>6.84</td></tr><tr><td>Rogers</td><td>Chelsea</td><td>MID</td><td>£8.0m</td><td>5.72</td></tr><tr><td>Palmer</td><td>Chelsea</td><td>MID</td><td>£9.8m</td><td>5.69</td></tr><tr><td>Thiago</td><td>Brentford</td><td>FWD</td><td>£7.8m</td><td>5.09</td></tr><tr><td>Mbeumo</td><td>Man Utd</td><td>MID</td><td>£7.9m</td><td>4.57</td></tr><tr><td>Rice</td><td>Arsenal</td><td>MID</td><td>£7.4m</td><td>4.49</td></tr><tr><td>Gabriel</td><td>Arsenal</td><td>DEF</td><td>£7.9m</td><td>4.46</td></tr><tr><td>Gibbs-White</td><td>Nott&#x27;m Forest</td><td>MID</td><td>£7.9m</td><td>4.26</td></tr><tr><td>Neto</td><td>Chelsea</td><td>MID</td><td>£6.6m</td><td>4.23</td></tr><tr><td>Groß</td><td>Brighton</td><td>MID</td><td>£6.2m</td><td>4.11</td></tr><tr><td>Stach</td><td>Leeds</td><td>MID</td><td>£6.0m</td><td>4.06</td></tr><tr><td>Calvert-Lewin</td><td>Leeds</td><td>FWD</td><td>£6.1m</td><td>4.04</td></tr><tr><td>Lacroix</td><td>Chelsea</td><td>DEF</td><td>£5.9m</td><td>3.99</td></tr><tr><td>Ødegaard</td><td>Arsenal</td><td>MID</td><td>£6.8m</td><td>3.96</td></tr><tr><td>Isak</td><td>Liverpool</td><td>FWD</td><td>£9.0m</td><td>3.93</td></tr><tr><td>Raya</td><td>Arsenal</td><td>GK</td><td>£6.2m</td><td>3.92</td></tr><tr><td>Wissa</td><td>Newcastle</td><td>FWD</td><td>£6.1m</td><td>3.91</td></tr><tr><td>N.Jackson</td><td>Aston Villa</td><td>FWD</td><td>£6.7m</td><td>3.90</td></tr><tr><td>Gonzalo</td><td>Fulham</td><td>FWD</td><td>£6.0m</td><td>3.85</td></tr><tr><td>Murillo</td><td>Nott&#x27;m Forest</td><td>DEF</td><td>£5.5m</td><td>3.84</td></tr><tr><td>Donnarumma</td><td>Man City</td><td>GK</td><td>£5.5m</td><td>3.80</td></tr><tr><td>Barcola</td><td>Liverpool</td><td>MID</td><td>£8.1m</td><td>3.79</td></tr><tr><td>Havertz</td><td>Arsenal</td><td>FWD</td><td>£7.5m</td><td>3.75</td></tr><tr><td>Barnes</td><td>Newcastle</td><td>MID</td><td>£6.1m</td><td>3.74</td></tr><tr><td>Guéhi</td><td>Man City</td><td>DEF</td><td>£6.0m</td><td>3.72</td></tr><tr><td>Muñoz</td><td>Nott&#x27;m Forest</td><td>DEF</td><td>£5.3m</td><td>3.72</td></tr><tr><td>E.Le Fée</td><td>Sunderland</td><td>MID</td><td>£5.7m</td><td>3.72</td></tr><tr><td>Leno</td><td>Fulham</td><td>GK</td><td>£4.5m</td><td>3.72</td></tr><tr><td>Delap</td><td>Nott&#x27;m Forest</td><td>FWD</td><td>£5.5m</td><td>3.71</td></tr><tr><td>Henderson</td><td>Chelsea</td><td>MID</td><td>£4.9m</td><td>3.68</td></tr><tr><td>Iwobi</td><td>Fulham</td><td>MID</td><td>£5.4m</td><td>3.68</td></tr><tr><td>Mukiele</td><td>Sunderland</td><td>DEF</td><td>£5.4m</td><td>3.67</td></tr><tr><td>Rudoni</td><td>Coventry City</td><td>MID</td><td>£4.9m</td><td>3.64</td></tr><tr><td>Kelleher</td><td>Brentford</td><td>GK</td><td>£5.0m</td><td>3.62</td></tr><tr><td>Cherki</td><td>Man City</td><td>MID</td><td>£8.0m</td><td>3.61</td></tr><tr><td>Virgil</td><td>Liverpool</td><td>DEF</td><td>£6.4m</td><td>3.60</td></tr><tr><td>Tzolakis</td><td>Hull City</td><td>GK</td><td>£4.7m</td><td>3.57</td></tr><tr><td>João Pedro</td><td>Chelsea</td><td>FWD</td><td>£7.9m</td><td>3.52</td></tr><tr><td>Bassey</td><td>Fulham</td><td>DEF</td><td>£4.5m</td><td>3.49</td></tr><tr><td>Ndoye</td><td>Nott&#x27;m Forest</td><td>MID</td><td>£5.5m</td><td>3.48</td></tr><tr><td>Xhaka</td><td>Sunderland</td><td>MID</td><td>£5.4m</td><td>3.48</td></tr><tr><td>Ajer</td><td>Brentford</td><td>DEF</td><td>£4.5m</td><td>3.44</td></tr><tr><td>Kayode</td><td>Brentford</td><td>DEF</td><td>£4.6m</td><td>3.41</td></tr><tr><td>Rúben</td><td>Man City</td><td>DEF</td><td>£5.5m</td><td>3.41</td></tr><tr><td>Van Hecke</td><td>Spurs</td><td>DEF</td><td>£4.9m</td><td>3.41</td></tr><tr><td>Bobb</td><td>Fulham</td><td>MID</td><td>£5.5m</td><td>3.39</td></tr><tr><td>Hall</td><td>Newcastle</td><td>DEF</td><td>£5.3m</td><td>3.38</td></tr><tr><td>Trafford</td><td>Leeds</td><td>GK</td><td>£5.0m</td><td>3.35</td></tr><tr><td>King</td><td>Fulham</td><td>MID</td><td>£5.6m</td><td>3.35</td></tr><tr><td>Sels</td><td>Nott&#x27;m Forest</td><td>GK</td><td>£5.0m</td><td>3.34</td></tr></table></main></div><!--/pre-dash--></div>
 </body>
 </html>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && python3 ../src/fpl/site_seo.py",
+    "build": "rm -rf ../docs/app && vite build && python3 ../src/fpl/site_seo.py",
     "preview": "vite preview"
   },
   "dependencies": {
