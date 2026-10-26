@@ -8,8 +8,8 @@ import sqlite3
 
 import pandas as pd
 
-from fpl.config import DB_PATH, LIVE_SEASON, REPORTS_DIR, ROOT, SQL_DIR
-from fpl.picks import best_xi
+from fpl.config import DB_PATH, LIVE_SEASON, RAW_DIR, REPORTS_DIR, ROOT, SQL_DIR
+from fpl.picks import best_xi, xi_points
 
 SITE_DATA = ROOT / "docs" / "data" / "site.json"
 
@@ -69,6 +69,33 @@ def analysis(next_gw: int) -> dict:
     return out
 
 
+def last_gameweek(played: pd.DataFrame, weekly: pd.DataFrame) -> dict:
+    """How the model's picks did in the most recent finished gameweek."""
+    gw = int(played.gw.max())
+    g = played[played.gw == gw].reset_index(drop=True)
+    team = best_xi(g, "predicted_points")
+    cap = team.loc[team.is_captain].iloc[0]
+    rule = weekly[(weekly.method == "Season average") & (weekly.gw == gw)].xi_points
+    out = {
+        "gw": gw,
+        "model": int(xi_points(g, "predicted_points", "actual_points")),
+        "rule": int(rule.iloc[0]) if len(rule) else None,
+        "best": int(xi_points(g, "actual_points", "actual_points")),  # best possible XI with hindsight
+        "captain": {"name": cap.web_name, "team": cap.team_short, "pred": round(float(cap.predicted_points), 1),
+                    "points": int(cap.actual_points)},
+        "team": [{"name": r.web_name, "team": r.team_short, "pos": r.position,
+                  "pred": round(float(r.predicted_points), 1), "points": int(r.actual_points), "cap": bool(r.is_captain)}
+                 for r in team.sort_values("actual_points", ascending=False).itertuples()],
+    }
+    events = RAW_DIR / LIVE_SEASON / "events.csv"  # written by fetch_official.py
+    if events.exists():
+        ev = pd.read_csv(events).set_index("id")
+        if gw in ev.index:
+            out["fpl_average"] = int(ev.loc[gw, "average_entry_score"])
+            out["fpl_highest"] = int(ev.loc[gw, "highest_score"])
+    return out
+
+
 def build() -> dict:
     live = REPORTS_DIR / "live"
     nxt = pd.read_csv(live / "next_gameweek_predictions.csv").reset_index(drop=True)
@@ -107,6 +134,7 @@ def build() -> dict:
         "edges": edges,
         "last_season_edge": last_season_edge(),
         "analysis": analysis(int(nxt.gw.iloc[0])),
+        "last_gw": last_gameweek(played, pd.read_csv(live / "season_so_far_weekly.csv")),
     }
 
 

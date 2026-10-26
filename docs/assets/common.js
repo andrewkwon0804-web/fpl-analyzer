@@ -31,6 +31,19 @@ FPL.smooth = () => {
 
 FPL.nav = () => {
   const nav = document.querySelector(".nav");
+  const links = nav.querySelector(".nav-links");
+  if (links) {
+    const btn = document.createElement("button");
+    btn.className = "menu-btn"; btn.setAttribute("aria-label", "Menu"); btn.setAttribute("aria-expanded", "false"); btn.innerHTML = "<i></i>";
+    nav.querySelector(".nav-right").appendChild(btn);
+    const menu = document.createElement("nav");
+    menu.className = "menu"; menu.setAttribute("aria-label", "Menu");
+    menu.innerHTML = links.innerHTML + '<a href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>';
+    nav.appendChild(menu);
+    const toggle = (open) => { nav.classList.toggle("open", open); btn.setAttribute("aria-expanded", open); };
+    btn.addEventListener("click", () => toggle(!nav.classList.contains("open")));
+    menu.addEventListener("click", (e) => { if (e.target.closest("a")) toggle(false); });
+  }
   const set = () => nav.classList.toggle("scrolled", scrollY > 30);
   addEventListener("scroll", set, { passive: true });
   set();
@@ -202,9 +215,8 @@ FPL.boot = (fn) => {
   FPL.nav();
   FPL.smooth();
   FPL.stage();
-  FPL.progress();
   FPL.split();
-  FPL.load().then(fn).then(() => { FPL.split(); FPL.reveal(); FPL.tilt(".tilt"); }).catch((err) => {
+  FPL.load().then(fn).then(() => { FPL.split(); FPL.reveal(); }).catch((err) => {
     console.error(err);
     document.querySelector("main").insertAdjacentHTML("afterbegin",
       `<p class="notice" style="margin-top:120px">Couldn't load the predictions (${FPL.esc(err.message)}). Refresh the page to try again.</p>`);
@@ -221,7 +233,8 @@ const MINT = [94, 240, 176], SKY = [106, 168, 255], AMBER = [245, 196, 81];
 const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
 
 // Scoreboard characters with a slow wave; the cursor lights them up.
-FPL.scenes.chars = (ctx, w, h, t, m, alpha) => {
+FPL.scenes.chars = (ctx, w, h, t, m, base) => {
+  let alpha = base;
   const chars = " .·:-+=x*o#%@", cell = 18;
   ctx.font = "12px JetBrains Mono, monospace";
   ctx.textAlign = "center"; ctx.textBaseline = "middle";
@@ -231,6 +244,9 @@ FPL.scenes.chars = (ctx, w, h, t, m, alpha) => {
       const glow = Math.max(0, 1 - Math.hypot(x - m.x, y - m.y) / 220);
       const v = Math.min(1, wave * wave * 0.5 + glow * 0.95);
       if (v < 0.12) continue;
+      // fade out over the left side, where the headline and text sit
+      const side = w > 900 ? Math.min(1, Math.max(0.08, (x - w * 0.4) / (w * 0.3))) : 0.35;
+      alpha = base * side;
       ctx.fillStyle = glow > 0.05 ? rgba(MINT, (0.1 + glow * 0.55) * alpha) : `rgba(150,170,165,${(v * 0.15 * alpha).toFixed(3)})`;
       ctx.fillText(chars[Math.min(chars.length - 1, Math.floor(v * chars.length))], x, y);
     }
@@ -350,8 +366,9 @@ FPL.stage = () => {
     if (k < 1) k = Math.min(1, k + dt / 1100);
     ctx.clearRect(0, 0, w, h);
     const t = now / 1000;
-    if (prev && k < 1) (FPL.scenes[prev] || FPL.scenes.none)(ctx, w, h, t, mouse, 1 - ease(k), state);
-    (FPL.scenes[cur] || FPL.scenes.none)(ctx, w, h, t, mouse, ease(k), state);
+    const q = 0.75;  // overall strength of the background
+    if (prev && k < 1) (FPL.scenes[prev] || FPL.scenes.none)(ctx, w, h, t, mouse, q * (1 - ease(k)), state);
+    (FPL.scenes[cur] || FPL.scenes.none)(ctx, w, h, t, mouse, q * ease(k), state);
     if (!FPL.reduced) requestAnimationFrame(frame);
   };
   if (FPL.reduced) {
@@ -403,14 +420,13 @@ FPL.progress = () => {
   addEventListener("scroll", set, { passive: true }); set();
 };
 
-// A row of cards that drifts on its own and speeds up while you scroll.
+// A row of cards that drifts on its own and pauses under the cursor.
 FPL.marquee = (track) => {
   let x = 0, boost = 0, lastY = scrollY, paused = false;
   track.addEventListener("pointerenter", () => { paused = true; });
   track.addEventListener("pointerleave", () => { paused = false; });
   const step = () => {
     const dy = Math.abs(scrollY - lastY); lastY = scrollY;
-    boost += (Math.min(dy, 60) * 0.12 - boost) * 0.08;
     if (!paused) x -= 0.45 + boost;
     const half = track.scrollWidth / 2;
     if (-x >= half) x += half;
