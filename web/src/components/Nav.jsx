@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 
 const REPO = "https://github.com/andrewkwon0804-web/fpl-analyzer";
-const LINKS = [["#last", "Last gameweek"], ["#how", "How it works"], ["#record", "Track record"], ["#findings", "Findings"], ["#faq", "FAQ"]];
+export const HOME_LINKS = [["#last", "Last gameweek"], ["#how", "How it works"], ["#record", "Track record"], ["#findings", "Findings"], ["#faq", "FAQ"]];
 
 export function goTo(hash) {
   const el = document.querySelector(hash);
@@ -29,7 +29,7 @@ function ThemeToggle() {
   );
 }
 
-export default function Nav({ onCommand }) {
+export default function Nav({ onCommand, links = HOME_LINKS, cta = ["./dashboard.html", "Dashboard"] }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -50,14 +50,14 @@ export default function Nav({ onCommand }) {
             FPL Points Lab
           </a>
           <nav className="hidden gap-6 text-sm text-text2 lg:flex">
-            {LINKS.map(([h, t]) => <a key={h} href={h} onClick={(e) => { e.preventDefault(); goTo(h); }} className="transition-colors hover:text-text">{t}</a>)}
+            {links.map(([h, t]) => <a key={h} href={h} onClick={(e) => { if (h.startsWith("#")) { e.preventDefault(); goTo(h); } }} className="transition-colors hover:text-text">{t}</a>)}
           </nav>
           <div className="flex items-center gap-2">
             <button onClick={onCommand} className="hidden h-10 items-center gap-2 rounded-xl border border-line2 bg-raised/60 px-3 text-sm text-text3 hover:text-text md:flex">
               Search <kbd className="rounded border border-line2 px-1.5 font-mono text-[11px]">{mac ? "⌘" : "Ctrl"} K</kbd>
             </button>
             <ThemeToggle />
-            <a href="../dashboard.html" className="hidden h-10 items-center rounded-xl bg-text px-4 text-sm font-medium text-bg hover:bg-mint sm:flex">Dashboard ›</a>
+            <a href={cta[0]} className="hidden h-10 items-center rounded-xl bg-text px-4 text-sm font-medium text-bg hover:bg-mint sm:flex">{cta[1]} ›</a>
             <button onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Menu"
               className="grid h-10 w-10 place-items-center rounded-xl border border-line2 bg-raised/60 lg:hidden">
               <span className="relative block h-3 w-4">
@@ -69,7 +69,7 @@ export default function Nav({ onCommand }) {
           </div>
         </div>
         <animated.nav style={{ maxHeight: menu.h, opacity: menu.o }} className="glass mt-2 overflow-hidden rounded-2xl border border-line2 px-4 lg:hidden" aria-label="Menu">
-          {[...LINKS, ["../dashboard.html", "Dashboard"], [REPO, "GitHub"]].map(([h, t]) => (
+          {[...links, cta, [REPO, "GitHub"]].map(([h, t]) => (
             <a key={h} href={h} onClick={(e) => { if (h.startsWith("#")) { e.preventDefault(); goTo(h); } setOpen(false); }}
               className="block border-b border-line py-3.5 text-[17px] last:border-0">{t}</a>
           ))}

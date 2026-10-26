@@ -34,13 +34,15 @@ export function Badge({ children, tone = "neutral", className = "" }) {
   return <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs ${tones[tone]} ${className}`}>{children}</span>;
 }
 
-export function Kicker({ children }) {
+// Small monospace section label, "// 02 LAST GAMEWEEK", with a line that springs out.
+export function Kicker({ children, n }) {
   const [ref, seen] = useInView();
-  const s = useSpring({ width: seen ? 22 : 0, opacity: seen ? 1 : 0, config: spring });
+  const s = useSpring({ width: seen ? 28 : 0, opacity: seen ? 1 : 0, config: spring });
   return (
-    <div ref={ref} className="mb-4 flex items-center gap-3 text-sm text-mint">
-      <animated.span style={{ width: s.width }} className="h-px bg-mint" />
+    <div ref={ref} className="mono-label mb-5 flex items-center gap-3 text-mint">
+      <animated.span style={{ opacity: s.opacity }} className="text-text3">//{n ? ` ${n}` : ""}</animated.span>
       <animated.span style={{ opacity: s.opacity }}>{children}</animated.span>
+      <animated.span style={{ width: s.width }} className="h-px bg-mint/60" />
     </div>
   );
 }

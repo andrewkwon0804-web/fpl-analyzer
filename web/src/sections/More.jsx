@@ -14,7 +14,7 @@ const C = { mint: "rgb(var(--mint))", mint2: "rgb(var(--mint) / .4)", sky: "rgb(
 function Find({ href, title, body, link, wide, delay, children }) {
   return (
     <Reveal delay={delay} className={`min-w-0 ${wide ? "lg:col-span-7" : "lg:col-span-5"}`}>
-      <a href={href} className="card group flex h-full flex-col p-7 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-line2 lg:p-9">
+      <a href={href} className="corners group flex h-full flex-col p-7 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-line2 lg:p-9">
         <h3 className="font-display text-[clamp(21px,1.8vw,27px)] font-medium leading-tight tracking-[-0.015em]">{title}</h3>
         <p className="mt-3 text-[15px] leading-relaxed text-text2">{body}</p>
         <div className="mt-auto pt-8">{children}</div>
@@ -33,18 +33,18 @@ export function Findings({ data }) {
   const ppm = mid.map((r) => r.points_per_m);
   return (
     <section id="findings" data-scene="network" data-tint="106 168 255" data-tx="80%" className="page relative py-28 lg:py-40">
-      <Kicker>Findings</Kicker>
-      <SplitTitle text="Findings from four seasons of data" className="max-w-[900px] font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
+      <Kicker n="05">Findings</Kicker>
+      <SplitTitle text="Four questions, answered in SQL" className="max-w-[900px] font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
       <Reveal delay={150}><p className="mt-5 max-w-[640px] text-[17px] leading-relaxed text-text2">
-        Four questions about FPL strategy, each answered with a SQL query over every match since 2022-23. The full charts are on the dashboard.
+        Each chart is one query over every Premier League match since 2022-23.
       </p></Reveal>
       <div className="mt-12 grid gap-4 lg:grid-cols-12">
-        <Find wide href="../dashboard.html#analysis-fdr" link="See every team's next five fixtures"
+        <Find wide href="./dashboard.html#analysis-fdr" link="See every team's next five fixtures"
           title={`Defenders average ${def[0].points.toFixed(1)} points in the easiest fixtures and ${def[def.length - 1].points.toFixed(1)} in the hardest`}
           body="Average points for defenders who played 60+ minutes, by FPL's difficulty rating for that match.">
           <Bars rows={def.map((r) => ({ label: `FDR ${r.fdr}`, value: r.points, color: FDR[r.fdr] }))} />
         </Find>
-        <Find delay={80} href="../dashboard.html#analysis-xg" link="This season's goals vs xG"
+        <Find delay={80} href="./dashboard.html#analysis-xg" link="This season's goals vs xG"
           title="Scoring above xG doesn't carry into the second half of a season"
           body="Goals minus xG per 90, 2023-24 to 2025-26. The players furthest above their xG in gameweeks 1-19 were level with it in 20-38.">
           <HBars rows={[
@@ -52,12 +52,12 @@ export function Findings({ data }) {
             { label: "Cold, GW1-19", value: cold.first_half, color: C.rose }, { label: "Cold, GW20-38", value: cold.second_half, color: C.rose2 },
           ]} fmt={(v) => (v > 0 ? "+" : "") + v.toFixed(2)} />
         </Find>
-        <Find href="../dashboard.html#analysis-value" link="Best value this season"
+        <Find href="./dashboard.html#analysis-value" link="Best value this season"
           title="Expensive midfielders score more per 90 at similar value per £m"
           body={`Points per 90 for midfielders by price, 2022-23 to 2025-26. Points per £m stays between ${Math.min(...ppm).toFixed(0)} and ${Math.max(...ppm).toFixed(0)}.`}>
           <Bars rows={mid.map((r) => ({ label: TIERS[r.tier - 1], value: r.points_per_90, color: C.mint }))} />
         </Find>
-        <Find wide delay={80} href="../dashboard.html#analysis-crowd" link="Full breakdown"
+        <Find wide delay={80} href="./dashboard.html#analysis-crowd" link="Full breakdown"
           title="The most transferred-in players score about the same as the most transferred-out"
           body="Average points that gameweek, every gameweek since 2022-23. The ten most-owned players scored the most.">
           <Bars fmt={(v) => v.toFixed(2)} rows={[
@@ -78,7 +78,7 @@ export function TopPicks({ data }) {
   const card = (p, i, hidden) => (
     <button key={`${hidden ? "b" : "a"}${p.id}`} data-pid={p.id} aria-hidden={hidden || undefined} tabIndex={hidden ? -1 : 0}
       onClick={(e) => open(p, e.currentTarget, `Ranked #${i + 1} by predicted points this week.`)}
-      className="card w-[230px] shrink-0 p-5 text-left transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-mint/50">
+      className="corners w-[230px] shrink-0 p-5 text-left transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-mint/50">
       <div className="flex justify-between text-xs text-text3"><span>#{i + 1}</span><span>{p.pos}</span></div>
       <div className="mt-4 truncate font-display text-xl font-medium">{p.name}</div>
       <div className="text-sm text-text3">{p.team}</div>
@@ -91,10 +91,10 @@ export function TopPicks({ data }) {
   return (
     <section id="picks" data-scene="dust" data-tint="94 240 176" data-tx="50%" className="relative py-28 lg:py-36">
       <div className="page">
-        <Kicker>This week</Kicker>
-        <SplitTitle text={`Top predicted players, gameweek ${data.meta.gw}`} className="max-w-[900px] font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
+        <Kicker n="06">Top 14</Kicker>
+        <SplitTitle text={`The top 14 for gameweek ${data.meta.gw}`} className="max-w-[900px] font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
         <Reveal delay={150}><p className="mt-5 max-w-[640px] text-[17px] leading-relaxed text-text2">
-          Ranked by predicted points. The dashboard lists every player, with filters and each player's week-by-week record.
+          Hover to pause. Click a card for the next five gameweeks.
         </p></Reveal>
       </div>
       <Reveal className="marquee mt-12 overflow-hidden">
@@ -105,7 +105,7 @@ export function TopPicks({ data }) {
 }
 
 const QA = [
-  ["Why doesn't the best XI fit the £100m budget?", "The best XI is the eleven highest-predicted players in a legal formation, with no budget limit. It's meant for choosing transfers and a captain. The model team on the dashboard is the budget version: a full 15-man squad that follows every FPL rule."],
+  ["Why doesn't the best XI fit the £100m budget?", "The best XI is the eleven highest-predicted players in a legal formation, with no budget limit. Use it to pick transfers and a captain. The model team on the dashboard is the budget version: a full 15-man squad that follows every FPL rule."],
   ["How does it handle injuries and other news?", "The model only sees match stats, so each prediction is multiplied by FPL's own chance of playing. A news file covers things FPL's flags miss, such as a player dropped after a falling-out with his manager."],
   ["How often does it update?", "After every gameweek. One script pulls the new results from the FPL API, retrains and republishes this site."],
   ["How accurate is it?", "Over 2025-26, a season left out of training, the model's best XI scored about 260 more points than the season-average rule. It's ahead this season too, but this early the sample is too small to be sure."],
@@ -135,8 +135,8 @@ export function FAQ() {
   return (
     <section id="faq" data-scene="none" data-tint="106 168 255" data-tx="20%" className="page relative grid gap-10 py-28 lg:grid-cols-[0.8fr_1.2fr] lg:py-40">
       <div>
-        <Kicker>FAQ</Kicker>
-        <SplitTitle text="Common questions" className="font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
+        <Kicker n="07">Questions</Kicker>
+        <SplitTitle text="Questions" className="font-display text-[clamp(36px,5vw,76px)] font-medium leading-[1] tracking-[-0.035em]" />
       </div>
       <Reveal className="border-t border-line">{QA.map(([q, a]) => <Item key={q} q={q} a={a} />)}</Reveal>
     </section>
@@ -148,9 +148,10 @@ export function Closing({ data }) {
     <section data-scene="floor" data-tint="94 240 176" data-tx="50%" className="page relative py-24">
       <Reveal className="relative overflow-hidden rounded-[28px] border border-line2 bg-surface/60 px-6 py-20 text-center sm:px-12 lg:py-28">
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_100%,rgb(var(--mint)/.16),transparent_70%)]" />
-        <SplitTitle text={`Gameweek ${data.meta.gw} predictions`} className="relative font-display text-[clamp(40px,6vw,96px)] font-medium leading-[0.95] tracking-[-0.04em]" />
+        <SplitTitle text="Plan your next five gameweeks" className="relative font-display text-[clamp(40px,6vw,96px)] font-medium leading-[0.95] tracking-[-0.04em]" />
+        <p className="relative mx-auto mt-6 max-w-[520px] text-text2">Enter your 15 players and the planner tests every legal transfer against predicted points for gameweeks {data.planGws[0]} to {data.planGws[data.planGws.length - 1]}.</p>
         <div className="relative mt-10 flex flex-wrap justify-center gap-3">
-          <Button href="../dashboard.html">Open the dashboard</Button>
+          <Button href="./dashboard.html#planner">Open the transfer planner</Button>
           <Button variant="ghost" href={REPO}>Read the code</Button>
         </div>
       </Reveal>
@@ -163,7 +164,7 @@ export function Footer({ data }) {
   const m = data.meta;
   const when = m.refreshed_at ? new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
   const cols = [
-    ["Site", [["./", "Home"], ["../dashboard.html", "Dashboard"], ["../dashboard.html#analysis-value", "Analysis"]]],
+    ["Site", [["./", "Home"], ["./dashboard.html", "Dashboard"], ["./dashboard.html#analysis-value", "Analysis"]]],
     ["Project", [[REPO, "GitHub repo"], [`${REPO}#readme`, "Method and results"], [`${REPO}/tree/main/tableau`, "Tableau workbook"]]],
     ["Data", [["https://fantasy.premierleague.com/", "Official FPL API"], ["https://github.com/vaastav/Fantasy-Premier-League", "Vaastav Anand's FPL archive"]]],
   ];

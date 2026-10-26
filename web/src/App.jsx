@@ -5,6 +5,11 @@ import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
 import Hero from "./sections/Hero.jsx";
+import BestXI from "./sections/BestXI.jsx";
+import { Rails, Rule } from "./components/hud.jsx";
+import ScrollIsland from "./components/wm/ScrollIsland.jsx";
+import { goTo } from "./components/Nav.jsx";
+import { Fragment } from "react";
 import { LastGameweek, HowItWorks, TrackRecord } from "./sections/Story.jsx";
 import { Findings, TopPicks, FAQ, Closing, Footer } from "./sections/More.jsx";
 
@@ -23,6 +28,9 @@ function Skeleton() {
   );
 }
 
+const TOPICS = [["top", "Overview"], ["xi", "Best XI"], ["last", "Last gameweek"], ["how", "How it works"], ["record", "Track record"],
+  ["findings", "Findings"], ["picks", "Top 14"], ["faq", "Questions"]].map(([id, title]) => ({ id, title }));
+
 function Page({ data }) {
   const [cmd, setCmd] = useState(false);
   const { open } = usePop();
@@ -35,17 +43,22 @@ function Page({ data }) {
     <>
       <Nav onCommand={() => setCmd(true)} />
       <Command data={data} open={cmd} setOpen={setCmd} onPlayer={onPlayer} />
+      <Rails />
       <main className="relative z-10">
         <Hero data={data} />
-        {data.last_gw && <LastGameweek data={data} />}
-        <HowItWorks data={data} />
-        <TrackRecord data={data} />
-        <Findings data={data} />
-        <TopPicks data={data} />
-        <FAQ />
-        <Closing data={data} />
+        {[
+          <BestXI key="xi" data={data} />,
+          data.last_gw && <LastGameweek key="last" data={data} />,
+          <HowItWorks key="how" data={data} />,
+          <TrackRecord key="rec" data={data} />,
+          <Findings key="find" data={data} />,
+          <TopPicks key="picks" data={data} />,
+          <FAQ key="faq" />,
+          <Closing key="end" data={data} />,
+        ].filter(Boolean).map((el) => <Fragment key={el.key}><Rule />{el}</Fragment>)}
         <Footer data={data} />
       </main>
+      <ScrollIsland onGo={goTo} topics={TOPICS} />
     </>
   );
 }

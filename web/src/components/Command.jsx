@@ -5,7 +5,7 @@ import { goTo } from "./Nav.jsx";
 
 const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
-export default function Command({ data, open, setOpen, onPlayer }) {
+export default function Command({ data, open, setOpen, onPlayer, places }) {
   const [q, setQ] = useState("");
   const [cur, setCur] = useState(0);
   const input = useRef(null);
@@ -19,20 +19,20 @@ export default function Command({ data, open, setOpen, onPlayer }) {
   }, [setOpen]);
   useEffect(() => { if (open) { setQ(""); setCur(0); setTimeout(() => input.current?.focus(), 30); } }, [open]);
   const items = useMemo(() => {
-    const pages = [
+    const pages = (places || [
       ["Last gameweek's result", "Section", () => goTo("#last")], ["How the predictions are made", "Section", () => goTo("#how")],
       ["Model vs a simple rule", "Section", () => goTo("#record")], ["Findings", "Section", () => goTo("#findings")],
-      ["Dashboard", "Page", () => { location.href = "../dashboard.html"; }],
-      ["Transfer planner", "Page", () => { location.href = "../dashboard.html#planner"; }],
-      ["Model team", "Page", () => { location.href = "../dashboard.html#team"; }],
-      ["Analysis", "Page", () => { location.href = "../dashboard.html#analysis-value"; }],
-    ].map(([label, kind, run]) => ({ label, kind, run }));
+      ["Dashboard", "Page", () => { location.href = "./dashboard.html"; }],
+      ["Transfer planner", "Page", () => { location.href = "./dashboard.html#planner"; }],
+      ["Model team", "Page", () => { location.href = "./dashboard.html#team"; }],
+      ["Analysis", "Page", () => { location.href = "./dashboard.html#analysis-value"; }],
+    ]).map(([label, kind, run]) => ({ label, kind, run }));
     if (!data) return pages;
     const t = norm(q.trim());
     const players = data.players.filter((p) => !t || norm(p.name).includes(t) || norm(p.team).includes(t))
       .slice(0, t ? 8 : 4).map((p) => ({ label: p.name, kind: `${p.short} ${p.pos}`, value: p.pred.toFixed(1), run: () => onPlayer(p) }));
     return [...players, ...pages.filter((x) => !t || norm(x.label).includes(t))];
-  }, [q, data, onPlayer]);
+  }, [q, data, onPlayer, places]);
   const run = (it) => { setOpen(false); setTimeout(it.run, 60); };
   const tr = useTransition(open, { from: { o: 0, s: 0.97 }, enter: { o: 1, s: 1 }, leave: { o: 0, s: 0.98 }, config: { tension: 380, friction: 30 } });
   return tr((st, show) => show && (

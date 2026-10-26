@@ -97,6 +97,14 @@ def last_gameweek(played: pd.DataFrame, weekly: pd.DataFrame) -> dict:
     return out
 
 
+def first_kickoffs() -> dict:
+    """First kickoff of every gameweek that hasn't finished. FPL's deadline is 90 minutes before it."""
+    fx = pd.read_csv(RAW_DIR / LIVE_SEASON / "fixtures.csv")
+    fx = fx[fx.event.notna() & fx.kickoff_time.notna() & (fx.finished.astype(str) != "True")]
+    first = fx.groupby(fx.event.astype(int)).kickoff_time.min()
+    return {str(g): t for g, t in first.items()}
+
+
 def build() -> dict:
     live = REPORTS_DIR / "live"
     nxt = pd.read_csv(live / "next_gameweek_predictions.csv").reset_index(drop=True)
@@ -132,7 +140,7 @@ def build() -> dict:
     return {
         "meta": {**meta, "gw": int(nxt.gw.iloc[0]), "played": int(played.gw.max()),
                  "horizon_gws": sorted(int(g) for g in horizon.gw.unique()),
-                 "xi_cost": _num(xi.price.sum(), 1)},
+                 "xi_cost": _num(xi.price.sum(), 1), "kickoffs": first_kickoffs()},
         "captain": captain_id,
         "players": players,
         "history": history,

@@ -90,3 +90,24 @@ html.lenis, html.lenis body { height: auto; }
 
 .cursor { display: inline-block; width: .55em; height: 1.05em; vertical-align: -.15em; background: rgb(var(--mint)); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
+
+/* flip clock (Watermelon UI) */
+.flip-top { animation: flip-top .6s ease-in forwards; }
+.flip-bottom { animation: flip-bottom .6s ease-out forwards; }
+@keyframes flip-top { 0% { transform: rotateX(0); z-index: 30; } 50%, 100% { transform: rotateX(-90deg); z-index: 10; } }
+@keyframes flip-bottom { 0%, 50% { transform: rotateX(90deg); z-index: 10; } 100% { transform: rotateX(0); z-index: 30; } }
+.no-scrollbar { scrollbar-width: none; } .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* HUD framing in the Watermelon UI style: corner brackets instead of full borders */
+.corners {
+  --c: rgb(var(--line2)); --l: 12px;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top left / 1px var(--l) no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) top right / 1px var(--l) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom left / 1px var(--l) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / var(--l) 1px no-repeat, linear-gradient(var(--c), var(--c)) bottom right / 1px var(--l) no-repeat,
+    rgb(var(--surface) / .55);
+  border: 1px solid rgb(var(--line) / .6);
+}
+.corners:hover { --c: rgb(var(--mint) / .7); }
+.mono-label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }

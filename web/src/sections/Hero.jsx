@@ -1,76 +1,75 @@
-import { useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import Pitch, { ROW_Y } from "../components/Pitch.jsx";
+import Ball from "../components/Ball.jsx";
 import Finder from "../components/Finder.jsx";
+import FlipClock from "../components/wm/FlipClock.jsx";
+import { Label, Readout } from "../components/hud.jsx";
 import { usePop } from "../components/Popover.jsx";
-import { Button, Badge, Parallax } from "../components/ui.jsx";
+import { Button } from "../components/ui.jsx";
 import { reduced } from "../lib/motion.js";
-import { fmtDate } from "../lib/data.js";
 import { goTo } from "../components/Nav.jsx";
 
-function rankNote(data, p) {
-  const rank = data.players.indexOf(p) + 1;
-  if (p.xi) return `Ranked #${rank} of ${data.players.length} by predicted points, and in this week's best XI.`;
-  const xiPos = data.players.filter((x) => x.xi && x.pos === p.pos);
-  const last = xiPos[xiPos.length - 1];
-  return `Ranked #${rank} of ${data.players.length}. Not in the best XI: the lowest ${p.pos} in it, ${last.name}, is predicted ${last.pred.toFixed(1)}.`;
+// The next FPL deadline still ahead: 90 minutes before that gameweek's first kickoff.
+function nextDeadline(meta) {
+  const now = Date.now();
+  for (const [gw, t] of Object.entries(meta.kickoffs || {}).sort((a, b) => +a[0] - +b[0])) {
+    const d = new Date(t).getTime() - 90 * 60e3;
+    if (d > now) return { gw: +gw, at: d };
+  }
+  return null;
 }
 
 export default function Hero({ data }) {
   const { open } = usePop();
-  const pitchBox = useRef(null);
-  const [ghost, setGhost] = useState(null);
-  const m = data.meta;
-  const intro = useSpring({ from: { o: 0, y: 24, b: 8 }, to: { o: 1, y: 0, b: 0 }, delay: 120, config: { tension: 140, friction: 22 }, immediate: reduced });
-  const fx = (k) => ({ opacity: intro.o, transform: intro.y.to((v) => `translateY(${v * k}px)`), filter: intro.b.to((b) => `blur(${b * k}px)`) });
-
-  const onPick = (p, inputEl) => {
-    if (p.xi) {
-      const chip = pitchBox.current.querySelector(`[data-pid="${p.id}"]`);
-      chip?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      if (chip) open(p, chip, rankNote(data, p));
-      return;
-    }
-    const pr = pitchBox.current.getBoundingClientRect(), ir = inputEl.getBoundingClientRect();
-    const tx = pr.left + pr.width / 2, ty = pr.top + pr.height * (ROW_Y[p.pos] + 0.115);
-    setGhost({
-      p, fromX: ir.left + 60 - tx, fromY: ir.top + ir.height / 2 - ty,
-      onLand: () => { const el = pitchBox.current.querySelector(`[data-pid="${p.id}"]`); if (el) open(p, el, rankNote(data, p)); },
-    });
-  };
-
+  const m = data.meta, dl = nextDeadline(m);
+  const intro = useSpring({ from: { k: 0 }, to: { k: 1 }, delay: 100, config: { tension: 120, friction: 22 }, immediate: reduced });
+  const fx = (d) => ({ opacity: intro.k.to((k) => Math.min(1, Math.max(0, k * 1.6 - d))), transform: intro.k.to((k) => `translateY(${(1 - Math.min(1, Math.max(0, k * 1.6 - d))) * 30}px)`) });
+  const updated = new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  const onPick = (p, input) => open(p, input, `Ranked #${data.rank[p.id]} of ${data.players.length} by predicted points.${p.xi ? " In this week's best XI." : ""}`);
   return (
-    <section id="top" data-scene="dust" data-tint="94 240 176" data-tx="75%"
-      className="page relative grid min-h-[100svh] items-center gap-12 pb-20 pt-32 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-      <div>
-        <animated.div style={fx(0.4)}>
-          <Badge tone={data.stale ? "amber" : "mint"}>
-            <span className={`h-1.5 w-1.5 rounded-full ${data.stale ? "bg-amber" : "bg-mint animate-pulse"}`} />
-            {data.stale ? `Gameweek ${m.gw} picks, using games through GW${m.played}` : `Gameweek ${m.gw} picks are live`}
-          </Badge>
+    <section id="top" data-scene="dust" data-tint="94 240 176" data-tx="72%" className="page relative pb-14 pt-28 lg:pt-32">
+      <animated.div style={fx(0)} className="flex flex-wrap items-center justify-between gap-3">
+        <Label>FPL Points Lab · {m.season}</Label>
+        <span className={`mono-label flex items-center gap-2 ${data.stale ? "text-amber" : "text-mint"}`}>
+          <i className={`h-1.5 w-1.5 rounded-full ${data.stale ? "bg-amber" : "animate-pulse bg-mint"}`} />
+          {data.stale ? `GW${m.gw} picks · data through GW${m.played}` : `GW${m.gw} picks live`}
+        </span>
+      </animated.div>
+
+      <div className="relative mt-8 grid items-center gap-6 lg:mt-4 lg:grid-cols-[1.15fr_1fr]">
+        <div className="relative z-10">
+          <animated.h1 style={fx(0.15)} className="font-display text-[clamp(60px,8.4vw,150px)] font-medium leading-[0.86] tracking-[-0.055em]">
+            Every FPL<br />player,<br /><span className="text-mint">predicted.</span>
+          </animated.h1>
+          <animated.p style={fx(0.3)} className="mt-8 max-w-[520px] text-[clamp(16px,1.25vw,18px)] leading-relaxed text-text2">
+            Points for all {data.players.length} players in gameweek {m.gw}, from a model trained on {data.analysis.rows.toLocaleString("en-US")} player
+            matches since 2022. It retrains after every gameweek.
+          </animated.p>
+          <animated.div style={fx(0.42)} className="mt-8"><Finder data={data} onPick={onPick} /></animated.div>
+          <animated.div style={fx(0.52)} className="mt-5 flex flex-wrap gap-3">
+            <Button href="./dashboard.html">Open the dashboard</Button>
+            <Button variant="ghost" href="#xi" onClick={(e) => { e.preventDefault(); goTo("#xi"); }}>This week's XI</Button>
+          </animated.div>
+        </div>
+        <animated.div style={fx(0.2)} className="relative mx-auto w-full max-w-[640px] lg:-ml-10 lg:max-w-none">
+          <Ball data={data} />
+          <p className="mono-label -mt-4 text-center text-[10px] text-text3">{data.players.length} dots, one per player · size = predicted points · drag to spin</p>
         </animated.div>
-        <animated.h1 style={fx(1)} className="mt-6 font-display text-[clamp(44px,6.6vw,104px)] font-medium leading-[0.95] tracking-[-0.04em]">
-          Who to pick for <span className="text-mint">gameweek {m.gw}</span>.
-        </animated.h1>
-        <animated.p style={fx(1.3)} className="mt-6 max-w-[540px] text-[clamp(16px,1.3vw,19px)] leading-relaxed text-text2">
-          A model trained on four seasons of Premier League stats predicts how many FPL points every player will score next week.
-          It retrains after each gameweek.
-        </animated.p>
-        <animated.div style={fx(1.5)} className="mt-8"><Finder data={data} onPick={onPick} /></animated.div>
-        <animated.div style={fx(1.7)} className="mt-6 flex flex-wrap gap-3">
-          <Button href="../dashboard.html">Open the dashboard</Button>
-          <Button variant="ghost" href="#how" onClick={(e) => { e.preventDefault(); goTo("#how"); }}>How it works</Button>
-        </animated.div>
-        {data.stale && (
-          <p className="mt-6 max-w-[540px] rounded-xl border border-amber/30 bg-amber/10 px-4 py-3 text-sm text-text2">
-            Gameweek {m.gw} started on {fmtDate(data.kickoff)}, and these picks only use games through gameweek {m.played}. They update on the next data refresh.
-          </p>
-        )}
       </div>
-      <Parallax speed={-0.06}><div ref={pitchBox}>
-        <Pitch data={data} ghost={ghost} />
-        <p className="mt-3 text-center text-xs text-text3">The model's best XI for gameweek {m.gw}. Click a player for his next five gameweeks.</p>
-      </div></Parallax>
+
+      <animated.div style={fx(0.6)} className="mt-12 grid gap-6 lg:grid-cols-[auto_1fr] lg:items-end">
+        {dl && (
+          <div>
+            <Label className="mb-3">GW{dl.gw} deadline</Label>
+            <FlipClock target={dl.at} className="text-[clamp(30px,3.4vw,46px)]" />
+          </div>
+        )}
+        <Readout items={[
+          ["Model", "Gradient boosting", true],
+          ["Training data", "4 seasons"],
+          ["2025-26 test", `+${data.last_season_edge} pts`],
+          ["Updated", updated],
+        ]} />
+      </animated.div>
     </section>
   );
 }

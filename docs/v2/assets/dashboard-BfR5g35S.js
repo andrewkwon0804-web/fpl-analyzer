@@ -1,0 +1,1 @@
+import{j as e,b as t}from"./boot-DhyF8Cyg.js";function s(){return e.jsxs("p",{className:"page pt-40 text-text2",children:["The new dashboard is being built. ",e.jsx("a",{className:"text-mint",href:"../dashboard.html",children:"Open the current one"}),"."]})}t(e.jsx(s,{}));
