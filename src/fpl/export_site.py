@@ -4,10 +4,11 @@ The site is plain HTML and JavaScript, so everything it shows comes from one JSO
 built here from reports/live/.
 """
 import json
+import sqlite3
 
 import pandas as pd
 
-from fpl.config import REPORTS_DIR, ROOT
+from fpl.config import DB_PATH, LIVE_SEASON, REPORTS_DIR, ROOT, SQL_DIR
 from fpl.picks import best_xi
 
 SITE_DATA = ROOT / "docs" / "data" / "site.json"
@@ -22,6 +23,50 @@ def last_season_edge() -> int:
     sig = pd.read_csv(REPORTS_DIR / "model_significance.csv")
     row = sig[(sig.baseline == "Season average") & (sig.metric == "Best XI: avg points per GW")].iloc[0]
     return int(round(row.model_edge * 38))
+
+
+def query(con, name: str, **params) -> pd.DataFrame:
+    """Run one of the site's analysis queries in sql/site/."""
+    return pd.read_sql((SQL_DIR / "site" / f"{name}.sql").read_text(), con, params={"live": LIVE_SEASON, **params})
+
+
+def rows(df: pd.DataFrame) -> list:
+    return json.loads(df.to_json(orient="records"))
+
+
+def analysis(next_gw: int) -> dict:
+    """The dashboard's four analysis sections, all computed in SQL."""
+    with sqlite3.connect(DB_PATH) as con:
+        # The fixture grid starts at the first gameweek that hasn't kicked off yet.
+        upcoming = con.execute("""SELECT gw FROM fixtures WHERE season = ? AND gw >= ?
+                                  GROUP BY gw HAVING MIN(kickoff_time) > ? ORDER BY gw LIMIT 1""",
+                               (LIVE_SEASON, next_gw, pd.Timestamp.now(tz="UTC").strftime("%Y-%m-%dT%H:%M:%SZ"))).fetchone()
+        grid_gw = upcoming[0] if upcoming else next_gw
+        value_live = query(con, "value_live")
+        xg_live = query(con, "xg_live").sort_values("diff")
+        n_rows = con.execute("SELECT COUNT(*) FROM player_match").fetchone()[0]
+        out = {
+            "rows": n_rows,
+            "value": {
+                "tiers": rows(query(con, "value_tiers")),
+                "players": rows(value_live),
+                "best": rows(value_live[value_live.minutes >= 360]
+                             .assign(per_m=lambda d: (d.points / d.price).round(2))
+                             .sort_values("per_m", ascending=False).head(10)),
+            },
+            "xg": {
+                "over": rows(xg_live.tail(8).iloc[::-1]),
+                "under": rows(xg_live.head(8)),
+                "regression": rows(query(con, "xg_regression")),
+            },
+            "fdr": {
+                "points": rows(query(con, "fdr_points")),
+                "grid_start": int(grid_gw),
+                "grid": rows(query(con, "fixtures_next", gw=int(grid_gw))),
+            },
+            "crowd": rows(query(con, "crowd")),
+        }
+    return out
 
 
 def build() -> dict:
@@ -61,6 +106,7 @@ def build() -> dict:
                    for m, g in weekly.groupby("method")},
         "edges": edges,
         "last_season_edge": last_season_edge(),
+        "analysis": analysis(int(nxt.gw.iloc[0])),
     }
 
 

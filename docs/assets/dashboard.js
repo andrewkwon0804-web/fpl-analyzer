@@ -18,7 +18,8 @@ FPL.boot((data) => {
     });
     document.querySelectorAll(".panel").forEach((p) => p.classList.toggle("on", p.id === `tab-${name}`));
     if (name === "record" && !drawn.record) { drawn.record = true; drawRecord(); }
-    if (push) history.replaceState(null, "", `#${name}`);
+    if (name === "analysis") showSub(curSub, false);
+    if (push) history.replaceState(null, "", name === "analysis" ? `#analysis-${curSub}` : `#${name}`);
   };
   tabs.forEach((b) => b.addEventListener("click", () => show(b.dataset.tab)));
   addEventListener("resize", () => moveInd(tabs.find((b) => b.getAttribute("aria-selected") === "true")));
@@ -103,7 +104,7 @@ FPL.boot((data) => {
   }
 
   function playerChart(svg, hist, p) {
-    const W = 900, H = 300, pad = { l: 40, r: 20, t: 14, b: 34 }, n = m.gw;
+    const W = FPL.autoW(svg), H = W < 600 ? 260 : 300, pad = { l: 40, r: 20, t: 14, b: 34 }, n = m.gw;
     const top = Math.max(6, ...hist.map((h) => Math.max(h[1], h[2])), p.pred), step = niceStep(top / 3);
     const ymax = step * Math.ceil(top / step);
     const ticks = Array.from({ length: Math.round(ymax / step) + 1 }, (_, i) => i * step);
@@ -139,8 +140,128 @@ FPL.boot((data) => {
     <td>${e.sure ? '<span class="yes">Yes</span>' : "Not yet"}</td></tr>`).join("");
   document.getElementById("edges-note").textContent = `The range comes from resampling the ${m.played} played weeks 4,000 times. It only says yes when the whole range is above zero.`;
 
+  // ---------------- analysis
+  const A = data.analysis, subDrawn = {};
+  let curSub = "value";
+  function showSub(name, push = true) {
+    curSub = name;
+    document.querySelectorAll("#seg .chip").forEach((c) => c.setAttribute("aria-pressed", c.dataset.sub === name));
+    document.querySelectorAll(".sub-panel").forEach((p) => p.classList.toggle("on", p.id === `sub-${name}`));
+    if (!subDrawn[name]) { subDrawn[name] = true; ({ value: drawValue, xg: drawXg, fdr: drawFdr, crowd: drawCrowd })[name](); }
+    if (push) history.replaceState(null, "", `#analysis-${name}`);
+  }
+  document.querySelectorAll("#seg .chip").forEach((c) => c.addEventListener("click", () => showSub(c.dataset.sub)));
+  const signed = (v, d = 2) => (v > 0 ? "+" : "") + v.toFixed(d);
+
+  function drawValue() {
+    const pts = A.value.players.map((p) => ({ x: p.price, y: p.points, color: FPL.POS_COLORS[p.pos], r: 4.5,
+      tip: `${p.name} (${p.team}, ${p.pos}): ${p.points} pts at £${p.price.toFixed(1)}m` }));
+    FPL.scatter(document.getElementById("value-scatter"), pts, { xLabel: "Current price (£m)", yLabel: "Points",
+      xfmt: (v) => `£${v}`, guides: [{ slope: 5, label: "5 pts per £m" }, { slope: 10, label: "10 pts per £m" }] });
+    document.getElementById("value-legend").innerHTML = Object.entries(FPL.POS_COLORS)
+      .map(([k, c]) => `<span><i style="background:${c};border-radius:50%"></i>${k}</span>`).join("");
+    const T = A.value.tiers, pos = ["GK", "DEF", "MID", "FWD"];
+    let g = `<span></span>${FPL.TIERS.map((t) => `<span class="h">${t}</span>`).join("")}`;
+    pos.forEach((p) => {
+      g += `<span class="h" style="text-align:left;padding:12px 0">${p}</span>`;
+      for (let t = 1; t <= 5; t++) {
+        const r = T.find((x) => x.position === p && x.tier === t);
+        g += r ? `<span class="c" style="background:rgba(94,240,176,${Math.max(0.05, (r.points_per_90 - 2.6) / 5.5).toFixed(2)})"
+          title="${r.players} player-seasons, ${r.points_per_m} pts per £m">${r.points_per_90.toFixed(1)}</span>` : `<span class="c" style="color:var(--text-3)">-</span>`;
+      }
+    });
+    document.getElementById("tier-grid").innerHTML = g;
+    const mid = T.filter((r) => r.position === "MID"), lo = mid[0], hi = mid[mid.length - 1];
+    document.getElementById("value-take").innerHTML = `Midfielders over £10.5m scored <b>${hi.points_per_90.toFixed(1)}</b> points per 90 against
+      <b>${lo.points_per_90.toFixed(1)}</b> for those under £5m. Per £m every midfield tier lands between
+      ${Math.min(...mid.map((r) => r.points_per_m)).toFixed(1)} and ${Math.max(...mid.map((r) => r.points_per_m)).toFixed(1)}, so paying more mostly buys more points, not worse value.`;
+    document.getElementById("value-best").innerHTML = A.value.best.map((p, i) => `<div class="list-row"><span><b>${i + 1}. ${FPL.esc(p.name)}</b>
+      <small>${p.team} ${p.pos}, £${p.price.toFixed(1)}m, ${p.points} pts</small></span><span class="v">${p.per_m.toFixed(1)}</span></div>`).join("");
+  }
+
+  function drawXg() {
+    const narrow = innerWidth < 700, hw = narrow ? 380 : 560, lw = narrow ? 170 : 270;
+    const fmtRow = (p) => ({ label: p.name, value: p.diff, sub: narrow ? `${p.goals} from ${p.xg.toFixed(1)}`
+      : `${p.team}, ${p.goals} goal${p.goals === 1 ? "" : "s"} from ${p.xg.toFixed(1)} xG` });
+    document.getElementById("xg-over").innerHTML = FPL.hbars(A.xg.over.map((p) => ({ ...fmtRow(p), color: "#5ef0b0" })), { width: hw, labelW: lw, fmt: (v) => signed(v, 1) });
+    document.getElementById("xg-under").innerHTML = FPL.hbars(A.xg.under.map((p) => ({ ...fmtRow(p), color: "#ff7a8a" })), { width: hw, labelW: lw, fmt: (v) => signed(v, 1) });
+    const names = ["Well above xG", "A bit above", "On target", "A bit below", "Well below"];
+    const R = A.xg.regression;
+    // grouped bars around zero
+    const svg = document.getElementById("xg-reg");
+    const W = FPL.autoW(svg), H = 320, pad = { l: 50, r: 10, t: 20, b: 52 };
+    const lim = Math.max(...R.flatMap((r) => [Math.abs(r.first_half), Math.abs(r.second_half)])) * 1.15;
+    const Y = (v) => pad.t + (1 - (v + lim) / (2 * lim)) * (H - pad.t - pad.b);
+    const gw = (W - pad.l - pad.r) / R.length, bw = gw * 0.28;
+    let sv = `<g class="grid">${[-lim / 1.15, 0, lim / 1.15].map((v) => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(v)}" y2="${Y(v)}"/>`).join("")}</g>
+      <line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="#3a4650"/>
+      <g class="axis">${[-lim / 1.15, 0, lim / 1.15].map((v) => `<text x="${pad.l - 8}" y="${Y(v) + 4}" text-anchor="end">${signed(v, 2)}</text>`).join("")}</g>`;
+    R.forEach((r, i) => {
+      const cx = pad.l + gw * i + gw / 2;
+      [[r.first_half, "#8a9592", -1], [r.second_half, "#5ef0b0", 1]].forEach(([v, c, side], k) => {
+        const x = cx + (side < 0 ? -bw - 3 : 3), y = Math.min(Y(0), Y(v)), h = Math.max(2, Math.abs(Y(v) - Y(0)));
+        sv += `<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="4" fill="${c}" data-tip="${names[r.bucket - 1]} (${r.players} players): ${k ? "GW20-38" : "GW1-19"} ${signed(v, 3)} per 90"
+          style="transform-origin:${x}px ${Y(0)}px;animation:grow .8s ${i * 0.07 + k * 0.15}s cubic-bezier(.2,.7,.1,1) both"/>`;
+      });
+      sv += `<text x="${cx}" y="${H - 18}" text-anchor="middle" style="fill:var(--text-2);font-size:${W < 600 ? 10 : 13}px">${names[r.bucket - 1]}</text>
+        <text x="${cx}" y="${H - 1}" text-anchor="middle" style="fill:var(--text-3);font-size:11px">${r.players} players</text>`;
+    });
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.innerHTML = `<style>@keyframes grow{from{transform:scaleY(0)}}</style>${sv}`;
+    svg.querySelectorAll("[data-tip]").forEach((el) => {
+      el.addEventListener("mousemove", (e) => FPL.tip.show(el.dataset.tip, e.clientX, e.clientY));
+      el.addEventListener("mouseleave", FPL.tip.hide);
+    });
+    const hot = R[0], cold = R[R.length - 1];
+    document.getElementById("xg-take").innerHTML = `The ${hot.players} players who beat their xG by the most in gameweeks 1-19 (<b>${signed(hot.first_half)}</b> goals per 90)
+      were at <b>${signed(hot.second_half)}</b> for the rest of the season. The coldest group went from ${signed(cold.first_half)} to ${signed(cold.second_half)}.
+      So when picking between two players, trust the xG more than the goals.`;
+  }
+
+  function drawFdr() {
+    const F = A.fdr.points, cats = ["1", "2", "3", "4", "5"];
+    const series = ["GK", "DEF", "MID", "FWD"].map((p) => ({ name: p, color: FPL.POS_COLORS[p],
+      values: cats.map((c) => (F.find((r) => r.pos === p && r.fdr === +c) || {}).points ?? null) }));
+    FPL.catLines(document.getElementById("fdr-lines"), cats.map((c) => `FDR ${c}`), series, { yLabel: "Avg points", fmt: (v) => v.toFixed(2) });
+    const start = A.fdr.grid_start, gws = [0, 1, 2, 3, 4].map((k) => start + k);
+    document.getElementById("grid-title").textContent = `Gameweeks ${start}-${start + 4}`;
+    const byTeam = {};
+    A.fdr.grid.forEach((r) => { (byTeam[r.team] ??= {})[r.gw] = [...(byTeam[r.team]?.[r.gw] || []), r]; });
+    const teams = Object.entries(byTeam).map(([t, g]) => {
+      const all = Object.values(g).flat();
+      return { t, g, avg: all.reduce((s, r) => s + r.fdr, 0) / all.length };
+    }).sort((a, b) => a.avg - b.avg);
+    let h = `<span class="h l">Team</span>${gws.map((g) => `<span class="h">GW${g}</span>`).join("")}<span class="h">Avg</span>`;
+    teams.forEach(({ t, g, avg }) => {
+      h += `<span class="t">${t}</span>`;
+      gws.forEach((w) => {
+        const f = g[w] || [];
+        h += f.length ? `<span class="c f${Math.round(f.reduce((s, r) => s + r.fdr, 0) / f.length)}" title="${f.map((r) => `${r.home ? "vs" : "at"} ${r.opp}, difficulty ${r.fdr}`).join(" and ")}">${f.map((r) => (r.home ? r.opp : r.opp.toLowerCase())).join(" + ")}</span>`
+          : `<span class="c" style="color:var(--text-3)">blank</span>`;
+      });
+      h += `<span class="s">${avg.toFixed(1)}</span>`;
+    });
+    document.getElementById("heat").innerHTML = h;
+    const ratio = (p) => { const r = F.filter((x) => x.pos === p); return r[0].points / r[r.length - 1].points; };
+    document.getElementById("fdr-take").innerHTML = `Difficulty matters most for defenders: they average <b>${ratio("DEF").toFixed(1)} times</b> the points in their easiest
+      fixtures as their hardest, against <b>${ratio("FWD").toFixed(1)} times</b> for forwards, since clean sheets depend on the opponent far more than goals do.
+      ${FPL.esc(teams[0].t)} have the easiest run right now.`;
+  }
+
+  function drawCrowd() {
+    const C = A.crowd, color = { "Top 10 transferred in": "#6aa8ff", "Top 10 transferred out": "#3d5f8f", "Top 10 most owned": "#5ef0b0",
+      "Owned 11th-50th": "#2c8a5e", "Everyone else who played": "#3a4650" };
+    document.getElementById("crowd-bars").innerHTML = FPL.hbars(C.map((r) => ({ label: r.grp, sub: `${r.n.toLocaleString("en-US")} player-weeks`, value: r.points, color: color[r.grp] })),
+      { width: innerWidth < 700 ? 560 : 900, labelW: innerWidth < 700 ? 250 : 330, row: 44, fmt: (v) => `${v.toFixed(2)} pts` });
+    const g = Object.fromEntries(C.map((r) => [r.grp, r.points]));
+    document.getElementById("crowd-take").innerHTML = `The ten most transferred-in players averaged <b>${g["Top 10 transferred in"].toFixed(2)}</b> points that week,
+      barely more than the ten most sold (<b>${g["Top 10 transferred out"].toFixed(2)}</b>). The ten most owned players averaged ${g["Top 10 most owned"].toFixed(2)}.
+      Jumping on this week's trend adds little. Owning the players everyone already has is what keeps you level.`;
+  }
+
   // open the tab in the URL, or the best XI
   lookup(P[0].id);
   const start = location.hash.slice(1);
-  show(["xi", "players", "lookup", "record"].includes(start) ? start : "xi", false);
+  if (start.startsWith("analysis")) { const sub = start.split("-")[1]; if (["value", "xg", "fdr", "crowd"].includes(sub)) curSub = sub; }
+  show(["xi", "players", "lookup", "record"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);
 });

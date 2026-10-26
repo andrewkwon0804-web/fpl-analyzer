@@ -7,9 +7,12 @@
 <meta name="description" content="Best XI, every player's predicted points, player history and the model's track record.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='6' fill='none' stroke='%235ef0b0' stroke-width='2.5'/><line x1='16' y1='6' x2='16' y2='26' stroke='%235ef0b0' stroke-width='2.5'/><circle cx='16' cy='16' r='4' fill='none' stroke='%235ef0b0' stroke-width='2.5'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<script>try{var f=new URLSearchParams(location.search).get("font")||localStorage.getItem("font");if(f)document.documentElement.dataset.font=f;}catch(e){}</script>
 </head>
 <body>
 <header class="nav">
@@ -39,6 +42,7 @@
     <button role="tab" data-tab="players" aria-selected="false">All players</button>
     <button role="tab" data-tab="lookup" aria-selected="false">Player lookup</button>
     <button role="tab" data-tab="record" aria-selected="false">Track record</button>
+    <button role="tab" data-tab="analysis" aria-selected="false">Analysis</button>
   </div>
 
   <section class="panel on" id="tab-xi" role="tabpanel">
@@ -95,6 +99,60 @@
       <table class="edges"><thead><tr><th>Model vs simple rule</th><th>Per week</th><th>Likely range</th><th>Sure?</th></tr></thead>
         <tbody id="edges"></tbody></table>
       <p class="hint" id="edges-note" style="margin-top:12px"></p>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-analysis" role="tabpanel">
+    <div class="seg" id="seg">
+      <button class="chip" aria-pressed="true" data-sub="value">Value for money</button>
+      <button class="chip" aria-pressed="false" data-sub="xg">Lucky or good?</button>
+      <button class="chip" aria-pressed="false" data-sub="fdr">Fixture difficulty</button>
+      <button class="chip" aria-pressed="false" data-sub="crowd">Following the crowd</button>
+    </div>
+
+    <div class="sub-panel on" id="sub-value">
+      <div class="a-head"><h2>Are expensive players worth it?</h2>
+        <p>Every player this season with at least 180 minutes, by price and points. The dashed lines mark 5 and 10 points per £m.</p></div>
+      <div class="chart-card"><svg id="value-scatter" role="img" aria-label="Price vs points this season"></svg>
+        <div class="legend" id="value-legend"></div></div>
+      <div class="a-grid" style="margin-top:14px">
+        <div class="box"><h3>Points per 90 by price, 2022-23 to 2025-26</h3>
+          <p class="hint">Players with 900+ minutes in a season. Greener means more points per 90 minutes.</p>
+          <div class="tier-grid" id="tier-grid"></div>
+          <div class="takeaway" id="value-take"></div></div>
+        <div class="box"><h3>Best value this season</h3><p class="hint">Points per £m, minimum 360 minutes.</p><div id="value-best"></div></div>
+      </div>
+    </div>
+
+    <div class="sub-panel" id="sub-xg">
+      <div class="a-head"><h2>Who's finishing above their xG?</h2>
+        <p>Goals scored minus expected goals this season. Big gaps either way usually close, as the test below shows.</p></div>
+      <div class="a-grid even">
+        <div class="chart-card"><h4>Scoring more than their chances</h4><p class="hint">Goals minus xG</p><div id="xg-over"></div></div>
+        <div class="chart-card"><h4>Scoring less than their chances</h4><p class="hint">Goals minus xG</p><div id="xg-under"></div></div>
+      </div>
+      <div class="chart-card" style="margin-top:14px"><h4>Does it last? 2023-24 to 2025-26</h4>
+        <p class="hint">Players grouped by goals minus xG per 90 in gameweeks 1-19, then the same number for those players in 20-38. 900+ minutes in each half.</p>
+        <svg id="xg-reg" role="img" aria-label="First half vs second half finishing"></svg>
+        <div class="legend"><span><i style="background:#8a9592"></i>Gameweeks 1-19</span><span><i style="background:var(--mint)"></i>Gameweeks 20-38</span></div></div>
+      <div class="takeaway" id="xg-take"></div>
+    </div>
+
+    <div class="sub-panel" id="sub-fdr">
+      <div class="a-head"><h2>Do fixture ratings matter?</h2>
+        <p>FPL rates every fixture from 1 (easiest) to 5 (hardest). Here's what players who played 60+ minutes scored at each rating since 2022-23.</p></div>
+      <div class="chart-card"><svg id="fdr-lines" role="img" aria-label="Average points by fixture difficulty and position"></svg></div>
+      <div class="box" style="margin-top:14px"><h3 id="grid-title">Next five gameweeks</h3>
+        <p class="hint">Sorted from the easiest run to the hardest. Capital letters are home games.</p>
+        <div style="overflow-x:auto"><div class="heat" id="heat"></div></div></div>
+      <div class="takeaway" id="fdr-take"></div>
+    </div>
+
+    <div class="sub-panel" id="sub-crowd">
+      <div class="a-head"><h2>Does following the crowd work?</h2>
+        <p>Every gameweek since 2022-23, I ranked players by transfers in, transfers out and ownership, then averaged what each group scored that week. Only players who played count.</p></div>
+      <div class="chart-card"><div id="crowd-bars"></div></div>
+      <div class="takeaway" id="crowd-take"></div>
     </div>
   </section>
 
