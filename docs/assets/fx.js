@@ -52,7 +52,7 @@ FPL.fxInit = () => {
     b.addEventListener("pointerleave", () => { b.style.transform = ""; });
   });
 
-  // ---- confetti bursts on clicks
+  // ---- confetti, used only when the transfer planner finds a transfer that adds points
   const cv = document.createElement("canvas"); cv.className = "fx-confetti"; document.body.appendChild(cv);
   const cx = cv.getContext("2d"); let bits = [];
   const sizeCv = () => { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; cx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); };
@@ -76,7 +76,6 @@ FPL.fxInit = () => {
     requestAnimationFrame(draw);
   };
   draw();
-  document.addEventListener("click", (e) => { if (e.target.closest(".btn, .chip, .tabs button, .qa button")) FPL.burst(e.clientX, e.clientY); });
 
   // ---- content skews a little with scroll speed
   let lastY = scrollY, skew = 0;
