@@ -529,7 +529,7 @@ FPL.bars = (items, { width = 420, height = 170, fmt = (v) => v.toFixed(1), max }
   const pad = { t: 22, b: 26 }, n = items.length, gap = 12;
   const top = max ?? Math.max(...items.map((d) => d.value)) * 1.05;
   const bw = (width - gap * (n - 1)) / n;
-  return `<svg viewBox="0 0 ${width} ${height}">${items.map((d, i) => {
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${FPL.esc(items.map((d) => `${String(d.label).replace(/<[^>]+>/g, "")}: ${fmt(d.value)}`).join(", "))}">${items.map((d, i) => {
     const hgt = Math.max(2, (d.value / top) * (height - pad.t - pad.b)), x = i * (bw + gap), y = height - pad.b - hgt;
     return `<rect class="b" x="${x}" y="${y}" width="${bw}" height="${hgt}" rx="5" fill="${d.color}" style="--d:${0.1 + i * 0.08}s"/>
       <text class="lab" x="${x + bw / 2}" y="${y - 7}" text-anchor="middle">${fmt(d.value)}</text>
@@ -543,7 +543,7 @@ FPL.hbars = (items, { width = 560, row = 30, fmt = (v) => v.toFixed(2), labelW =
   const room = lo < 0 ? 50 : 0;  // space for the value label left of negative bars
   const X = (v) => labelW + room + ((v - lo) / (hi - lo || 1)) * (width - labelW - room - 56);
   const height = items.length * row + 6;
-  return `<svg viewBox="0 0 ${width} ${height}">
+  return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${FPL.esc(items.map((d) => `${String(d.label).replace(/<[^>]+>/g, "")}: ${fmt(d.value)}`).join(", "))}">
     <line x1="${X(0)}" x2="${X(0)}" y1="0" y2="${height}" stroke="#29333a"/>
     ${items.map((d, i) => {
       const y = i * row + 4, x0 = X(Math.min(0, d.value)), x1 = X(Math.max(0, d.value));

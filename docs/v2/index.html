@@ -3,13 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FPL Points Lab</title>
+<title>FPL Points Lab (new design preview)</title>
 <meta name="description" content="Predicted FPL points for every player, from a model trained on four seasons of Premier League data.">
 <meta property="og:title" content="FPL Points Lab">
+<meta property="og:site_name" content="FPL Points Lab">
+<meta property="og:image:alt" content="FPL Points Lab: the model's best XI on a pitch">
 <meta property="og:description" content="Predicted FPL points for every player, from a model trained on four seasons of Premier League data.">
 <meta property="og:image" content="https://andrewkwon0804-web.github.io/fpl-analyzer/assets/og.png">
+<link rel="canonical" href="https://andrewkwon0804-web.github.io/fpl-analyzer/">
+<meta property="og:url" content="https://andrewkwon0804-web.github.io/fpl-analyzer/">
+<meta property="og:type" content="website">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#06080a">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='3' width='26' height='26' rx='6' fill='none' stroke='%235ef0b0' stroke-width='2.5'/><line x1='16' y1='6' x2='16' y2='26' stroke='%235ef0b0' stroke-width='2.5'/><circle cx='16' cy='16' r='4' fill='none' stroke='%235ef0b0' stroke-width='2.5'/></svg>">
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="https://andrewkwon0804-web.github.io/fpl-analyzer/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,6 +28,21 @@
   <link rel="stylesheet" crossorigin href="./assets/index-uWbf5m19.css">
 </head>
 <body>
-<div id="root"></div>
+<div id="root"><!--pre--><div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
+<header><a href="./">FPL Points Lab</a> · <a href="../dashboard.html">Dashboard</a></header>
+<main>
+<h1>Who to pick for gameweek 8.</h1>
+<p>A model trained on four seasons of Premier League stats predicts how many FPL points every player will score next week. It retrains after each gameweek.</p>
+<h2>Best XI for gameweek 8</h2><ul><li>Haaland, Man City FWD, £15.7m: 6.8 points</li><li>Rogers, Chelsea MID, £8.0m: 5.7 points</li><li>Palmer, Chelsea MID, £9.8m: 5.7 points</li><li>Thiago, Brentford FWD, £7.8m: 5.1 points</li><li>Mbeumo, Man Utd MID, £7.9m: 4.6 points</li><li>Rice, Arsenal MID, £7.4m: 4.5 points</li><li>Gabriel, Arsenal DEF, £7.9m: 4.5 points</li><li>Gibbs-White, Nott&#x27;m Forest MID, £7.9m: 4.3 points</li><li>Lacroix, Chelsea DEF, £5.9m: 4.0 points</li><li>Raya, Arsenal GK, £6.2m: 3.9 points</li><li>Murillo, Nott&#x27;m Forest DEF, £5.5m: 3.8 points</li></ul>
+<h2>Gameweek 7 result</h2><p>The model's best XI scored 50 points. The simple rule's XI scored 48. The best possible XI, picked with hindsight, scored 143.</p>
+<h2>How the predictions are made</h2>
+<p>Stats for every player in every Premier League match since 2022-23 go into SQLite. Rolling features are built in SQL,
+a gradient boosting model is trained with scikit-learn, and each prediction is multiplied by FPL's chance of playing.</p>
+<h2>Track record</h2>
+<p>Over 2025-26, a season left out of training, the model's best XI scored 261 more points than the season-average rule.</p>
+<h2>Top predicted players, gameweek 8</h2><ol><li>Haaland (Man City): 6.8</li><li>Rogers (Chelsea): 5.7</li><li>Palmer (Chelsea): 5.7</li><li>Thiago (Brentford): 5.1</li><li>Mbeumo (Man Utd): 4.6</li><li>Rice (Arsenal): 4.5</li><li>Gabriel (Arsenal): 4.5</li><li>Gibbs-White (Nott&#x27;m Forest): 4.3</li><li>Neto (Chelsea): 4.2</li><li>Groß (Brighton): 4.1</li><li>Stach (Leeds): 4.1</li><li>Calvert-Lewin (Leeds): 4.0</li><li>Lacroix (Chelsea): 4.0</li><li>Ødegaard (Arsenal): 4.0</li></ol>
+<p><a href="../dashboard.html">Open the dashboard</a> · <a href="https://github.com/andrewkwon0804-web/fpl-analyzer">Read the code</a></p>
+</main>
+</div><!--/pre--></div>
 </body>
 </html>

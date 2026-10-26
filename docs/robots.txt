@@ -1,0 +1,5 @@
+# Every crawler, including AI crawlers, is welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://andrewkwon0804-web.github.io/fpl-analyzer/sitemap.xml

@@ -7,5 +7,5 @@ export default defineConfig(({ command }) => ({
   plugins: [react()],
   base: "./",
   publicDir: command === "serve" ? "../docs" : false,
-  build: { outDir: "../docs/v2", emptyOutDir: true, assetsDir: "assets" },
+  build: { outDir: "../docs/v2", emptyOutDir: true, assetsDir: "assets", sourcemap: false },
 }));

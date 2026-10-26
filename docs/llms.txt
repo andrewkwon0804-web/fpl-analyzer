@@ -1,0 +1,43 @@
+# FPL Points Lab
+
+> Predicted Fantasy Premier League points for every player, from a gradient boosting model trained on
+> four seasons of Premier League match data. Retrained and republished after each gameweek.
+
+Season 2026-27, predictions for gameweek 8 (using games through gameweek 7).
+Data source: official FPL API. Last refreshed: 2026-10-26.
+
+## Pages
+
+- [Home](https://andrewkwon0804-web.github.io/fpl-analyzer/): this week's best XI, last gameweek's result, track record and findings
+- [Dashboard](https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html): every player's prediction, player lookup, model team, transfer planner and analysis
+- [Raw predictions (JSON)](https://andrewkwon0804-web.github.io/fpl-analyzer/data/site.json): everything the site shows, in one file
+- [Source code and method](https://github.com/andrewkwon0804-web/fpl-analyzer#readme): Python, SQL (SQLite) and scikit-learn pipeline
+
+## This week's best XI
+
+Haaland, Rogers, Palmer, Thiago, Mbeumo, Rice, Gabriel, Gibbs-White, Lacroix, Raya, Murillo. Captain: Haaland.
+
+## Top 15 predicted players, gameweek 8
+
+- Haaland (Man City, FWD, £15.7m): 6.8 predicted points
+- Rogers (Chelsea, MID, £8.0m): 5.7 predicted points
+- Palmer (Chelsea, MID, £9.8m): 5.7 predicted points
+- Thiago (Brentford, FWD, £7.8m): 5.1 predicted points
+- Mbeumo (Man Utd, MID, £7.9m): 4.6 predicted points
+- Rice (Arsenal, MID, £7.4m): 4.5 predicted points
+- Gabriel (Arsenal, DEF, £7.9m): 4.5 predicted points
+- Gibbs-White (Nott'm Forest, MID, £7.9m): 4.3 predicted points
+- Neto (Chelsea, MID, £6.6m): 4.2 predicted points
+- Groß (Brighton, MID, £6.2m): 4.1 predicted points
+- Stach (Leeds, MID, £6.0m): 4.1 predicted points
+- Calvert-Lewin (Leeds, FWD, £6.1m): 4.0 predicted points
+- Lacroix (Chelsea, DEF, £5.9m): 4.0 predicted points
+- Ødegaard (Arsenal, MID, £6.8m): 4.0 predicted points
+- Isak (Liverpool, FWD, £9.0m): 3.9 predicted points
+
+## Method in short
+
+Features are rolling averages of points, minutes, xG and xA plus opponent strength, built in SQL with every
+window ending at 1 PRECEDING so no row sees its own match. The model was tuned on 2024-25 and tested on
+2025-26, a season left out of training; over that season its best XI scored 261 more
+points than a team picked by season average. Predictions are multiplied by FPL's chance of playing.

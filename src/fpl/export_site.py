@@ -9,6 +9,7 @@ import sqlite3
 import pandas as pd
 
 from fpl.config import DB_PATH, LIVE_SEASON, RAW_DIR, REPORTS_DIR, ROOT, SQL_DIR
+from fpl import site_seo
 from fpl.picks import best_xi, xi_points
 
 SITE_DATA = ROOT / "docs" / "data" / "site.json"
@@ -150,6 +151,7 @@ def main() -> None:
     data = build()
     SITE_DATA.write_text(json.dumps(data, separators=(",", ":"), ensure_ascii=False))
     print(f"[site] wrote {SITE_DATA.relative_to(ROOT)} ({SITE_DATA.stat().st_size // 1024} KB)")
+    site_seo.main(data)
 
 
 if __name__ == "__main__":
