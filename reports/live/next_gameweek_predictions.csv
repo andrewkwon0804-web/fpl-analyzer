@@ -1,6 +1,5 @@
 season,gw,player_id,web_name,team,team_short,position,price,predicted_points,predicted_raw,pred_season_avg,pred_form,chance_of_playing,news,fixture_difficulty,n_fixtures,home_fixtures,points_l5,points_std,minutes_l5,selected_by_prev
 2026-27,8,411,Haaland,Man City,MCI,FWD,15.7,6.838220762708604,6.838220762708604,8.285714285714286,8.6,100.0,,3.0,1,0,8.6,8.285714285714286,87.8,8489905.0
-2026-27,8,426,B.Fernandes,Man Utd,MUN,MID,11.7,5.73075024136207,5.73075024136207,4.714285714285714,1.6,,,3.0,1,1,1.6,4.714285714285714,90.0,3415322.0
 2026-27,8,40,Rogers,Chelsea,CHE,MID,8.0,5.715370569473764,5.715370569473764,5.714285714285714,5.4,,,2.0,1,1,5.4,5.714285714285714,87.8,5247070.0
 2026-27,8,154,Palmer,Chelsea,CHE,MID,9.8,5.685034667701743,5.685034667701743,5.428571428571429,3.6,100.0,,2.0,1,1,3.6,5.428571428571429,89.4,2900484.0
 2026-27,8,106,Thiago,Brentford,BRE,FWD,7.8,5.09058336356211,5.09058336356211,2.5714285714285716,3.2,,,2.0,1,0,3.2,2.5714285714285716,90.0,988045.0
@@ -429,8 +428,8 @@ season,gw,player_id,web_name,team,team_short,position,price,predicted_points,pre
 2026-27,8,292,Ömür,Hull City,HUL,MID,4.9,0.06678856657000466,0.06678856657000466,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,1777.0
 2026-27,8,590,Benda,Nott'm Forest,NFO,GK,4.5,0.06675047256640389,0.06675047256640389,0.0,0.0,,,2.0,1,0,0.0,0.0,0.0,7461.0
 2026-27,8,344,Gruev,Leeds,LEE,MID,5.0,0.06647235508359592,0.06647235508359592,0.0,0.0,100.0,,3.0,1,0,0.0,0.0,0.0,437.0
-2026-27,8,324,Mehmeti,Ipswich Town,IPS,MID,4.8,0.06640141065490875,0.06640141065490875,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,3226.0
 2026-27,8,434,J.Fletcher,Man Utd,MUN,MID,4.9,0.06640141065490875,0.06640141065490875,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,1183.0
+2026-27,8,324,Mehmeti,Ipswich Town,IPS,MID,4.8,0.06640141065490875,0.06640141065490875,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,3226.0
 2026-27,8,435,Lacey,Man Utd,MUN,MID,4.9,0.06640141065490875,0.06640141065490875,0.14285714285714285,0.0,,,3.0,1,1,0.0,0.14285714285714285,0.0,5878.0
 2026-27,8,378,McConnell,Liverpool,LIV,MID,4.4,0.06621184851364983,0.06621184851364983,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,25008.0
 2026-27,8,288,Dowell,Hull City,HUL,MID,4.4,0.06621184851364983,0.06621184851364983,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,30229.0
@@ -451,8 +450,8 @@ season,gw,player_id,web_name,team,team_short,position,price,predicted_points,pre
 2026-27,8,221,Drakes-Thomas,Crystal Palace,CRY,MID,4.4,0.05203008203270011,0.05203008203270011,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,7339.0
 2026-27,8,122,Minteh,Brighton,BHA,MID,5.8,0.052001593164744536,0.10400318632948907,0.0,0.0,50.0,Leg injury - 50% chance of playing,4.0,1,0,0.0,0.0,0.0,3074.0
 2026-27,8,382,Danns,Liverpool,LIV,FWD,4.5,0.051454857191944134,0.051454857191944134,0.0,0.0,100.0,,3.0,1,1,0.0,0.0,0.0,29117.0
-2026-27,8,437,Bendito Mantato,Man Utd,MUN,MID,4.4,0.04895229323520966,0.04895229323520966,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,19076.0
 2026-27,8,312,Taylor,Ipswich Town,IPS,MID,4.4,0.04895229323520966,0.04895229323520966,0.0,0.0,100.0,,3.0,1,1,0.0,0.0,0.0,4863.0
+2026-27,8,437,Bendito Mantato,Man Utd,MUN,MID,4.4,0.04895229323520966,0.04895229323520966,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,19076.0
 2026-27,8,386,Bettinelli,Man City,MCI,GK,4.4,0.04633384090979289,0.04633384090979289,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,2884.0
 2026-27,8,396,Vitor Reis,Man City,MCI,DEF,4.4,0.04612462817514099,0.04612462817514099,0.14285714285714285,0.0,,,3.0,1,0,0.0,0.14285714285714285,0.0,3627.0
 2026-27,8,134,Oriola,Brighton,BHA,MID,4.4,0.04355462777363208,0.04355462777363208,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,24689.0
@@ -469,22 +468,22 @@ season,gw,player_id,web_name,team,team_short,position,price,predicted_points,pre
 2026-27,8,622,Braithwaite,Man City,MCI,DEF,3.9,0.03169943096887877,0.03169943096887877,0.16666666666666666,0.0,,,3.0,1,0,0.0,0.16666666666666666,0.0,17468.0
 2026-27,8,657,Nunes,Brentford,BRE,MID,4.5,0.03056878485021813,0.03056878485021813,0.0,0.0,,,2.0,1,0,0.0,0.0,0.0,3255.0
 2026-27,8,178,Bidwell,Coventry City,COV,DEF,4.0,0.02860727083430033,0.02860727083430033,0.0,0.0,,,2.0,1,1,0.0,0.0,0.0,8218.0
-2026-27,8,285,McNair,Hull City,HUL,DEF,4.0,0.0283089152026601,0.0283089152026601,0.14285714285714285,0.0,100.0,,3.0,1,1,0.0,0.14285714285714285,0.0,12024.0
-2026-27,8,361,Lucky,Liverpool,LIV,DEF,4.0,0.0283089152026601,0.0283089152026601,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,12772.0
-2026-27,8,355,Davies,Liverpool,LIV,GK,4.0,0.0283089152026601,0.0283089152026601,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,17865.0
 2026-27,8,284,McCarthy,Hull City,HUL,DEF,4.0,0.0283089152026601,0.0283089152026601,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,10309.0
-2026-27,8,424,Amass,Man Utd,MUN,DEF,4.0,0.027921759287564196,0.027921759287564196,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,20706.0
+2026-27,8,361,Lucky,Liverpool,LIV,DEF,4.0,0.0283089152026601,0.0283089152026601,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,12772.0
+2026-27,8,285,McNair,Hull City,HUL,DEF,4.0,0.0283089152026601,0.0283089152026601,0.14285714285714285,0.0,100.0,,3.0,1,1,0.0,0.14285714285714285,0.0,12024.0
+2026-27,8,355,Davies,Liverpool,LIV,GK,4.0,0.0283089152026601,0.0283089152026601,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,17865.0
 2026-27,8,414,Heaton,Man Utd,MUN,GK,4.0,0.027921759287564196,0.027921759287564196,0.0,0.0,100.0,,3.0,1,1,0.0,0.0,0.0,8513.0
+2026-27,8,424,Amass,Man Utd,MUN,DEF,4.0,0.027921759287564196,0.027921759287564196,0.0,0.0,,,3.0,1,1,0.0,0.0,0.0,20706.0
 2026-27,8,227,Travers,Everton,EVE,GK,5.0,0.02776962140036198,0.02776962140036198,0.0,0.0,,,5.0,1,0,0.0,0.0,0.0,4282.0
 2026-27,8,661,Balcombe,Brentford,BRE,GK,4.0,0.02626493457023359,0.02626493457023359,0.0,0.0,,,2.0,1,0,0.0,0.0,0.0,10007.0
 2026-27,8,660,Fredrick,Brentford,BRE,DEF,4.0,0.02626493457023359,0.02626493457023359,0.0,0.0,,,2.0,1,0,0.0,0.0,0.0,1642.0
 2026-27,8,495,Austin,Spurs,TOT,GK,4.0,0.025912733063576793,0.025912733063576793,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,111106.0
 2026-27,8,111,Steele,Brighton,BHA,GK,4.0,0.025525577148480888,0.025525577148480888,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,426833.0
-2026-27,8,665,Mills,Newcastle,NEW,MID,4.5,0.02527987614640693,0.02527987614640693,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,546.0
 2026-27,8,666,Thompson,Newcastle,NEW,MID,4.5,0.02527987614640693,0.02527987614640693,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,711.0
+2026-27,8,665,Mills,Newcastle,NEW,MID,4.5,0.02527987614640693,0.02527987614640693,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,546.0
 2026-27,8,606,Rowe,Aston Villa,AVL,DEF,4.0,0.023421600705489126,0.023421600705489126,0.0,0.0,,,4.0,1,1,0.0,0.0,0.0,17502.0
-2026-27,8,604,Cresswell,Leeds,LEE,MID,4.5,0.02334535067134191,0.02334535067134191,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,14306.0
 2026-27,8,659,Miley,Newcastle,NEW,MID,4.5,0.02334535067134191,0.02334535067134191,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,7054.0
+2026-27,8,604,Cresswell,Leeds,LEE,MID,4.5,0.02334535067134191,0.02334535067134191,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,14306.0
 2026-27,8,615,Di Gregorio,Bournemouth,BOU,GK,4.5,0.023119335635599748,0.023119335635599748,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,4016.0
 2026-27,8,58,Forster,Bournemouth,BOU,GK,4.0,0.022213165210031253,0.022213165210031253,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,388442.0
 2026-27,8,663,Pivas,Newcastle,NEW,DEF,4.0,0.020135561266917495,0.020135561266917495,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,1189.0
@@ -492,179 +491,180 @@ season,gw,player_id,web_name,team,team_short,position,price,predicted_points,pre
 2026-27,8,658,Ibrahim,Brighton,BHA,MID,4.5,0.018070880259075016,0.018070880259075016,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,2096.0
 2026-27,8,625,Cairns,Leeds,LEE,GK,4.0,0.017071808045402172,0.017071808045402172,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,23110.0
 2026-27,8,603,Lienou,Leeds,LEE,DEF,4.0,0.017071808045402172,0.017071808045402172,0.0,0.0,,,3.0,1,0,0.0,0.0,0.0,10801.0
-2026-27,8,509,Byfield,Spurs,TOT,DEF,4.0,0.012184493548231206,0.012184493548231206,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,6460.0
 2026-27,8,510,Rowswell,Spurs,TOT,DEF,4.0,0.012184493548231206,0.012184493548231206,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,9388.0
+2026-27,8,509,Byfield,Spurs,TOT,DEF,4.0,0.012184493548231206,0.012184493548231206,0.0,0.0,,,4.0,1,0,0.0,0.0,0.0,6460.0
 2026-27,8,228,King,Everton,EVE,GK,4.5,0.01032050398066293,0.01032050398066293,0.0,0.0,,,5.0,1,0,0.0,0.0,0.0,4863.0
 2026-27,8,654,Graham,Everton,EVE,MID,4.5,0.0019596366656885705,0.0019596366656885705,0.0,0.0,,,5.0,1,0,0.0,0.0,0.0,10682.0
-2026-27,8,180,Woolfenden,Coventry City,COV,DEF,3.9,0.0,0.043364262156006035,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,12197.0
-2026-27,8,12,Saka,Arsenal,ARS,MID,9.5,0.0,4.951982389232596,0.0,0.0,0.0,Thigh injury - Unknown return date,3.0,1,1,3.4,5.285714285714286,87.8,1887654.0
-2026-27,8,142,James,Chelsea,CHE,DEF,5.2,0.0,0.5654413752118068,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,1,0.4,0.42857142857142855,36.0,487346.0
-2026-27,8,150,M.Sarr,Chelsea,CHE,DEF,4.5,0.0,0.07755471375701442,0.0,0.0,0.0,Has joined Real Sociedad on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2628.0
-2026-27,8,586,Mendy,Hull City,HUL,DEF,4.1,0.0,1.044688716869277,0.0,0.0,0.0,Groin injury - Expected back 31 Oct,3.0,1,1,2.4,4.0,43.6,647964.0
-2026-27,8,146,B.Badiashile,Chelsea,CHE,DEF,4.5,0.0,0.08550722141469085,0.0,0.0,0.0,Has joined Napoli on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,951.0
-2026-27,8,182,Amenda,Coventry City,COV,DEF,3.9,0.0,0.24308568339455366,0.0,0.0,0.0,Calf injury - Unknown return date,2.0,1,1,0.4,0.5714285714285714,36.0,54632.0
-2026-27,8,181,Brau,Coventry City,COV,DEF,4.0,0.0,0.02860727083430033,0.0,0.0,0.0,Has joined Academico de Viseu on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2014.0
 2026-27,8,596,Ruggeri,Aston Villa,AVL,DEF,4.4,0.0,1.3418141662132723,0.0,0.0,0.0,Hamstring injury - Expected back 2 Jan,4.0,1,1,1.0,0.8571428571428571,30.0,8577.0
-2026-27,8,205,Sosa,Crystal Palace,CRY,DEF,4.5,0.0,0.045424745291316876,0.0,0.0,0.0,Has joined FC Cologne on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1431.0
-2026-27,8,143,Chalobah,Chelsea,CHE,DEF,5.5,0.0,0.18225938277149703,0.0,0.0,0.0,Has joined Como permanently,2.0,1,1,0.0,0.0,0.0,7032.0
-2026-27,8,577,Tomiyasu,Crystal Palace,CRY,DEF,4.4,0.0,0.7415812466655726,0.0,0.0,0.0,Calf injury - Expected back 8 Nov,3.0,1,1,0.2,0.42857142857142855,19.6,23596.0
-2026-27,8,187,Eccles,Coventry City,COV,MID,4.8,0.0,0.06818098307720497,0.0,0.0,0.0,Ankle injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,823.0
-2026-27,8,583,Chavarria,Chelsea,CHE,DEF,4.9,0.0,2.2627918698187455,0.0,0.0,0.0,Unspecified injury - Expected back 31 Oct,2.0,1,1,1.6,1.4285714285714286,51.0,23646.0
-2026-27,8,197,Bassette,Coventry City,COV,FWD,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined KVC Westerlo on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2297.0
-2026-27,8,158,Gittens,Chelsea,CHE,MID,5.8,0.0,0.1008461962187042,0.0,0.0,0.0,Ankle injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,2589.0
-2026-27,8,191,Borges Rodrigues,Coventry City,COV,MID,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined Burton Albion on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,7203.0
-2026-27,8,174,Kitching,Coventry City,COV,DEF,4.0,0.0,0.04369527008876939,0.0,0.0,0.0,Has joined Sheffield United on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,32547.0
-2026-27,8,163,D.Essugo,Chelsea,CHE,MID,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined RC Strasbourg on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,8450.0
-2026-27,8,171,Dovin,Coventry City,COV,GK,4.0,0.0,0.057754731022507944,0.0,0.0,0.0,not included in squad.,2.0,1,1,0.0,0.0,0.0,97479.0
-2026-27,8,168,Marc Guiu,Chelsea,CHE,FWD,5.0,0.0,0.07269372543989956,0.0,0.0,0.0,Has joined RB Leipzig permanently,2.0,1,1,0.0,0.0,0.0,17983.0
-2026-27,8,578,Mudryk,Spurs,TOT,MID,5.3,0.0,0.13556006810529353,0.0,0.0,0.0,Ankle injury - Unknown return date,4.0,1,0,0.2,0.14285714285714285,3.2,3634.0
-2026-27,8,192,Andrews,Coventry City,COV,MID,4.5,0.0,0.05225349847107811,0.0,0.0,0.0,Has joined Oxford United on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,24664.0
-2026-27,8,170,Emegha,Chelsea,CHE,FWD,4.9,0.0,0.06818098307720497,0.0,0.0,0.0,Hamstring injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,10540.0
-2026-27,8,196,Markelo,Coventry City,COV,FWD,5.0,0.0,0.053423991755499285,0.0,0.0,0.0,Has joined Shabab Al-Ahli Dubai permanently,2.0,1,1,0.0,0.0,0.0,580.0
-2026-27,8,193,Wright,Coventry City,COV,FWD,5.3,0.0,0.06818098307720497,0.0,0.0,0.0,Thigh injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,6711.0
-2026-27,8,6,Saliba,Arsenal,ARS,DEF,5.9,0.0,0.15482791846720356,0.0,0.0,0.0,Back injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,21906.0
-2026-27,8,128,Buonanotte,Brighton,BHA,MID,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Has joined Elche on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,189.0
-2026-27,8,141,Jörgensen,Chelsea,CHE,GK,5.0,0.0,0.11448277759576565,0.0,0.0,0.0,Has joined RC Strasbourg on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,841.0
-2026-27,8,80,Enes Ünal,Bournemouth,BOU,FWD,5.5,0.0,0.04607587952145618,0.0,0.0,0.0,Has joined Getafe permanently,4.0,1,0,0.0,0.0,0.0,1565.0
-2026-27,8,69,Scott,Bournemouth,BOU,MID,6.0,0.0,1.5733383465727724,0.0,0.0,0.0,Thigh injury - Expected back 8 Nov,4.0,1,0,3.2,4.285714285714286,54.0,340221.0
+2026-27,8,403,Sávio,Spurs,TOT,MID,6.5,0.0,2.261987896135553,0.0,0.0,0.0,Muscular injury - Expected back 7 Nov,4.0,1,0,2.0,1.4285714285714286,66.0,118648.0
+2026-27,8,103,Dasilva,Brentford,BRE,MID,4.8,0.0,0.06277489359162292,0.0,0.0,0.0,Hamstring injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,1202.0
+2026-27,8,102,Yarmoliuk,Brentford,BRE,MID,4.8,0.0,2.30766124508159,0.0,0.0,0.0,Suspended until 8 Nov,2.0,1,0,2.6,2.142857142857143,58.0,76329.0
+2026-27,8,99,Milambo,Brentford,BRE,MID,5.0,0.0,0.04801790226991722,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,200.0
+2026-27,8,349,Mateo Joseph,Leeds,LEE,FWD,4.5,0.0,0.02334535067134191,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,0,0.0,0.0,0.0,5429.0
+2026-27,8,234,Patterson,Everton,EVE,DEF,4.5,0.0,0.03097122069623184,0.0,0.0,0.0,Has joined Torino permanently,5.0,1,0,0.0,0.0,0.0,1375.0
 2026-27,8,65,J.Araujo,Bournemouth,BOU,DEF,4.4,0.0,0.03766711422265358,0.0,0.0,0.0,Thigh injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,1191.0
+2026-27,8,404,Reijnders,Man City,MCI,MID,6.0,0.0,0.08407477219562655,0.0,0.0,0.0,Has joined Al Qadsiah permanently,3.0,1,0,0.0,0.0,0.0,3556.0
+2026-27,8,69,Scott,Bournemouth,BOU,MID,6.0,0.0,1.5733383465727724,0.0,0.0,0.0,Thigh injury - Expected back 8 Nov,4.0,1,0,3.2,4.285714285714286,54.0,340221.0
+2026-27,8,235,Aznou,Everton,EVE,DEF,4.0,-0.0,-0.004313905960251199,0.0,0.0,0.0,Has joined Malaga on loan for the rest of the season,5.0,1,0,0.0,0.0,0.0,8602.0
+2026-27,8,269,Sessegnon,Fulham,FUL,DEF,4.3,0.0,1.8199224856982639,0.0,0.0,0.0,Suspended until 7 Nov,2.0,1,0,1.2,1.1428571428571428,22.6,40448.0
+2026-27,8,423,Shaw,Man Utd,MUN,DEF,4.2,0.0,2.1151145974466523,0.0,0.0,0.0,Unspecified injury - Unknown return date,3.0,1,1,1.8,1.7142857142857142,52.6,655623.0
+2026-27,8,76,Tóth.A,Bournemouth,BOU,MID,4.9,0.0,0.3850977372795827,0.0,0.0,0.0,Hamstring injury - Unknown return date,4.0,1,0,0.2,0.2857142857142857,0.4,1426.0
+2026-27,8,409,Mukasa,Man City,MCI,MID,4.5,0.0,0.023215982273112806,0.0,0.0,0.0,has joined West Ham on loan for the rest of the seaon.,3.0,1,0,0.0,0.0,0.0,8272.0
+2026-27,8,6,Saliba,Arsenal,ARS,DEF,5.9,0.0,0.15482791846720356,0.0,0.0,0.0,Back injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,21906.0
+2026-27,8,329,Rodon,Leeds,LEE,DEF,4.3,0.0,0.28657442212388534,0.0,0.0,0.0,Hamstring injury - Expected back 21 Nov,3.0,1,0,0.0,1.0,0.0,60101.0
+2026-27,8,586,Mendy,Hull City,HUL,DEF,4.1,0.0,1.044688716869277,0.0,0.0,0.0,Groin injury - Expected back 31 Oct,3.0,1,1,2.4,4.0,43.6,647964.0
+2026-27,8,322,Al-Hamadi,Ipswich Town,IPS,FWD,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Sheffield Wednesday on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,4798.0
+2026-27,8,353,Pecsi,Liverpool,LIV,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined TSV Hartberg on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1747.0
+2026-27,8,354,Jaros,Liverpool,LIV,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,2238.0
+2026-27,8,348,Piroe,Leeds,LEE,FWD,5.0,0.0,0.04551921397220398,0.0,0.0,0.0,Has joined West Ham United on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,5514.0
+2026-27,8,583,Chavarria,Chelsea,CHE,DEF,4.9,0.0,2.2627918698187455,0.0,0.0,0.0,Unspecified injury - Expected back 31 Oct,2.0,1,1,1.6,1.4285714285714286,51.0,23646.0
+2026-27,8,407,Echeverri,Man City,MCI,MID,4.9,0.0,0.05542209101451763,0.0,0.0,0.0,Has joined Benfica on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,842.0
+2026-27,8,80,Enes Ünal,Bournemouth,BOU,FWD,5.5,0.0,0.04607587952145618,0.0,0.0,0.0,Has joined Getafe permanently,4.0,1,0,0.0,0.0,0.0,1565.0
+2026-27,8,408,Phillips,Man City,MCI,MID,5.0,0.0,0.040665099692811936,0.0,0.0,0.0,Has joined Sheffield United on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,486.0
+2026-27,8,432,Mainoo,Man Utd,MUN,MID,5.5,0.0,2.4798311922329863,0.0,0.0,0.0,Unspecified injury - Expected back 8 Nov,3.0,1,1,4.2,3.7142857142857144,68.4,153136.0
+2026-27,8,578,Mudryk,Spurs,TOT,MID,5.3,0.0,0.13556006810529353,0.0,0.0,0.0,Ankle injury - Unknown return date,4.0,1,0,0.2,0.14285714285714285,3.2,3634.0
+2026-27,8,577,Tomiyasu,Crystal Palace,CRY,DEF,4.4,0.0,0.7415812466655726,0.0,0.0,0.0,Calf injury - Expected back 8 Nov,3.0,1,1,0.2,0.42857142857142855,19.6,23596.0
+2026-27,8,410,Monga,Man City,MCI,MID,4.9,0.0,0.05542209101451763,0.0,0.0,0.0,Has joined Swansea City on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,773.0
 2026-27,8,63,Milosavljević,Bournemouth,BOU,DEF,4.9,0.0,0.07597616109257348,0.0,0.0,0.0,Thigh injury - Expected back 31 Oct,4.0,1,0,0.0,0.0,0.0,800.0
-2026-27,8,59,Dennis,Bournemouth,BOU,GK,4.0,0.0,0.008484925694685664,0.0,0.0,0.0,Has joined MK Dons permanently,4.0,1,0,0.0,0.0,0.0,11675.0
-2026-27,8,55,Watkins,Aston Villa,AVL,FWD,7.8,0.0,0.17058805654142364,0.0,0.0,0.0,Has joined Al Hilal permanently,4.0,1,1,0.0,0.0,0.0,260331.0
-2026-27,8,49,Iling Jr,Aston Villa,AVL,MID,5.0,0.0,0.04714426075112799,0.0,0.0,0.0,Has joined Bolton Wanderers on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,156.0
-2026-27,8,48,Onana,Aston Villa,AVL,MID,4.9,0.0,0.08985243502869607,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,1,0.0,0.0,0.0,1570.0
-2026-27,8,44,Bailey,Aston Villa,AVL,MID,5.4,0.0,0.08598894329956797,0.0,0.0,0.0,Has joined Olympiakos permanently,4.0,1,1,0.0,0.0,0.0,5068.0
-2026-27,8,39,Nedeljkovic,Aston Villa,AVL,DEF,4.0,0.0,0.023421600705489126,0.0,0.0,0.0,Has joined Rangers on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,12873.0
-2026-27,8,38,A.García,Aston Villa,AVL,DEF,4.0,0.0,0.046423417723203846,0.0,0.0,0.0,Has joined Getafe on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,157961.0
 2026-27,8,30,Digne,Aston Villa,AVL,DEF,4.5,0.0,0.0657979808676138,0.0,0.0,0.0,Has joined Paris Saint-Germain permanently,4.0,1,1,0.0,0.0,0.0,4992.0
-2026-27,8,28,Martinez,Chelsea,CHE,GK,5.0,0.0,3.666732025492589,0.0,0.0,0.0,Head injury - Unknown return date,2.0,1,1,3.6,2.857142857142857,86.8,510043.0
-2026-27,8,652,Azeez,Brighton,BHA,MID,5.5,0.0,0.04938829145990581,0.0,0.0,0.0,Hamstring injury - Expected back 31 Oct,4.0,1,0,0.0,0.0,0.0,258.0
-2026-27,8,27,G.Jesus,Arsenal,ARS,FWD,5.9,0.0,0.09906662379640799,0.0,0.0,0.0,Has joined FC Barcelona permanently,3.0,1,1,0.0,0.0,0.0,14962.0
+2026-27,8,59,Dennis,Bournemouth,BOU,GK,4.0,0.0,0.008484925694685664,0.0,0.0,0.0,Has joined MK Dons permanently,4.0,1,0,0.0,0.0,0.0,11675.0
+2026-27,8,317,Hirst,Ipswich Town,IPS,FWD,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Stoke City permanently,3.0,1,1,0.0,0.0,0.0,7117.0
+2026-27,8,624,Cozier-Duberry,Brighton,BHA,MID,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Has joined Middlesbrough on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,42.0
+2026-27,8,333,Bornauw,Leeds,LEE,DEF,4.5,0.0,0.057174892244219254,0.0,0.0,0.0,Has joined Hamburg SV on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,205.0
+2026-27,8,394,Alleyne,Man City,MCI,DEF,5.0,0.0,0.0649519378421923,0.0,0.0,0.0,Has joined Burnley on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,463.0
 2026-27,8,24,Nelson,Arsenal,ARS,MID,5.5,0.0,0.0816478966833926,0.0,0.0,0.0,has departed the club as a free agent.,3.0,1,1,0.0,0.0,0.0,461.0
+2026-27,8,39,Nedeljkovic,Aston Villa,AVL,DEF,4.0,0.0,0.023421600705489126,0.0,0.0,0.0,Has joined Rangers on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,12873.0
+2026-27,8,342,Harrison,Leeds,LEE,MID,5.0,0.0,0.04551921397220398,0.0,0.0,0.0,Has joined New England Revolution permanently,3.0,1,0,0.0,0.0,0.0,52.0
+2026-27,8,27,G.Jesus,Arsenal,ARS,FWD,5.9,0.0,0.09906662379640799,0.0,0.0,0.0,Has joined FC Barcelona permanently,3.0,1,1,0.0,0.0,0.0,14962.0
+2026-27,8,38,A.García,Aston Villa,AVL,DEF,4.0,0.0,0.046423417723203846,0.0,0.0,0.0,Has joined Getafe on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,157961.0
+2026-27,8,307,Johnson,Ipswich Town,IPS,DEF,4.0,0.0,0.027921759287564196,0.0,0.0,0.0,Has joined Stoke City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,5538.0
+2026-27,8,632,Ansah,Hull City,HUL,FWD,4.9,0.0,0.06678856657000466,0.0,0.0,0.0,Back injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,2476.0
+2026-27,8,28,Martinez,Chelsea,CHE,GK,5.0,0.0,3.666732025492589,0.0,0.0,0.0,Head injury - Unknown return date,2.0,1,1,3.6,2.857142857142857,86.8,510043.0
+2026-27,8,341,Gnonto,Leeds,LEE,MID,5.0,0.0,0.06647235508359592,0.0,0.0,0.0,Has joined ACF Fiorentina on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,664.0
+2026-27,8,311,Burns,Ipswich Town,IPS,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Leicester City permanently,3.0,1,1,0.0,0.0,0.0,205.0
+2026-27,8,275,Cartwright,Hull City,HUL,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Grimsby Town on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,653.0
+2026-27,8,425,Fredricson,Man Utd,MUN,DEF,4.0,0.0,0.027921759287564196,0.0,0.0,0.0,Has joined Lausanne-Sport permanently,3.0,1,1,0.0,0.0,0.0,1212.0
+2026-27,8,314,Ogbene,Ipswich Town,IPS,MID,4.9,0.0,0.06640141065490875,0.0,0.0,0.0,Has joined Lincoln City on loan until January,3.0,1,1,0.0,0.0,0.0,542.0
+2026-27,8,274,Butland,Hull City,HUL,GK,4.4,0.0,0.05770031646527993,0.0,0.0,0.0,Arm injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,7034.0
 2026-27,8,23,Fábio Vieira,Arsenal,ARS,MID,5.5,0.0,0.06551271311433474,0.0,0.0,0.0,Has joined Hamburger SV permanently,3.0,1,1,0.0,0.0,0.0,571.0
 2026-27,8,22,Nwaneri,Arsenal,ARS,MID,5.4,0.0,0.08253659422396661,0.0,0.0,0.0,Has joined Borussia Dortmund on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,596.0
-2026-27,8,76,Tóth.A,Bournemouth,BOU,MID,4.9,0.0,0.3850977372795827,0.0,0.0,0.0,Hamstring injury - Unknown return date,4.0,1,0,0.2,0.2857142857142857,0.4,1426.0
-2026-27,8,99,Milambo,Brentford,BRE,MID,5.0,0.0,0.04801790226991722,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,200.0
-2026-27,8,140,Sánchez,Chelsea,CHE,GK,4.9,0.0,0.30397141393528326,0.0,0.0,0.0,Has joined Como on loan for the rest of the season,2.0,1,1,0.0,0.2857142857142857,0.0,67141.0
-2026-27,8,102,Yarmoliuk,Brentford,BRE,MID,4.8,0.0,2.30766124508159,0.0,0.0,0.0,Suspended until 8 Nov,2.0,1,0,2.6,2.142857142857143,58.0,76329.0
+2026-27,8,319,Szmodics,Ipswich Town,IPS,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Derby County on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,258.0
 2026-27,8,602,Humphreys,Ipswich Town,IPS,MID,4.5,0.0,0.03419530191350396,0.0,0.0,0.0,Has joined Huddersfield Town on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,2153.0
-2026-27,8,139,Ferguson,Brighton,BHA,FWD,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Ankle injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,3131.0
+2026-27,8,397,Semenyo,Man City,MCI,MID,8.2,0.0,4.201676834886756,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,0,6.0,5.285714285714286,74.6,1630558.0
 2026-27,8,607,Lynch,Aston Villa,AVL,MID,4.5,0.0,0.02969514333142889,0.0,0.0,0.0,Has joined Oxford United on loan until January,4.0,1,1,0.0,0.0,0.0,6581.0
-2026-27,8,137,Tzimas,Brighton,BHA,FWD,5.4,0.0,0.0664121725695377,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,696.0
 2026-27,8,609,Shahar,Newcastle,NEW,DEF,4.0,0.0,0.017071808045402172,0.0,0.0,0.0,has joined Arouca on loan for the rest of the seaon.,3.0,1,0,0.0,0.0,0.0,17206.0
 2026-27,8,610,De Fougerolles,Fulham,FUL,DEF,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,has joined  Real Salt Lake on loan for the rest of the seaon.,2.0,1,0,0.0,0.0,0.0,7036.0
 2026-27,8,611,Wan-Bissaka,Aston Villa,AVL,DEF,4.5,0.0,1.485802848955558,0.0,0.0,0.0,Hamstring injury - Expected back 21 Nov,4.0,1,1,2.4,2.1666666666666665,52.2,25902.0
+2026-27,8,248,Beto,Everton,EVE,FWD,5.4,0.0,0.10404530891058003,0.0,0.0,0.0,Has joined Fiorentina permanently,5.0,1,0,0.0,0.2857142857142857,0.0,54356.0
+2026-27,8,18,Martinelli,Arsenal,ARS,MID,6.3,0.0,0.09906662379640799,0.0,0.0,0.0,Has joined Al Hilal permanently,3.0,1,1,0.0,0.0,0.0,6910.0
+2026-27,8,55,Watkins,Aston Villa,AVL,FWD,7.8,0.0,0.17058805654142364,0.0,0.0,0.0,Has joined Al Hilal permanently,4.0,1,1,0.0,0.0,0.0,260331.0
+2026-27,8,652,Azeez,Brighton,BHA,MID,5.5,0.0,0.04938829145990581,0.0,0.0,0.0,Hamstring injury - Expected back 31 Oct,4.0,1,0,0.0,0.0,0.0,258.0
+2026-27,8,426,B.Fernandes,Man Utd,MUN,MID,11.7,0.0,5.73075024136207,0.0,0.0,0.0,Note: Didn't play in gameweek 8 (not injured); availability unclear,3.0,1,1,1.6,4.714285714285714,90.0,3415322.0
+2026-27,8,49,Iling Jr,Aston Villa,AVL,MID,5.0,0.0,0.04714426075112799,0.0,0.0,0.0,Has joined Bolton Wanderers on loan for the rest of the season,4.0,1,1,0.0,0.0,0.0,156.0
+2026-27,8,48,Onana,Aston Villa,AVL,MID,4.9,0.0,0.08985243502869607,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,1,0.0,0.0,0.0,1570.0
+2026-27,8,107,Furo,Brentford,BRE,FWD,4.5,0.0,0.05610383069526602,0.0,0.0,0.0,Unspecified injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,82806.0
+2026-27,8,402,Rodrigo,Man City,MCI,MID,6.5,0.0,0.08407477219562655,0.0,0.0,0.0,Has joined Barcelona permanently,3.0,1,0,0.0,0.0,0.0,1120.0
+2026-27,8,44,Bailey,Aston Villa,AVL,MID,5.4,0.0,0.08598894329956797,0.0,0.0,0.0,Has joined Olympiakos permanently,4.0,1,1,0.0,0.0,0.0,5068.0
+2026-27,8,444,Jaouen,Newcastle,NEW,GK,4.4,0.0,0.046463209308021995,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,0,0.0,0.0,0.0,2032.0
+2026-27,8,357,Frimpong,Liverpool,LIV,DEF,5.2,0.0,0.9958719818682343,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,0.6,0.5714285714285714,7.8,177120.0
+2026-27,8,278,Hughes,Hull City,HUL,DEF,3.9,0.0,0.04306590652436581,0.0,0.0,0.0,Groin injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,17294.0
+2026-27,8,439,Šeško,Man Utd,MUN,FWD,6.9,0.0,0.582437077003801,0.0,0.0,0.0,Shin injury - Unknown return date,3.0,1,1,1.2,1.1428571428571428,8.6,136636.0
+2026-27,8,479,Bindon,Nott'm Forest,NFO,DEF,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined Charlton Athletic on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,10552.0
+2026-27,8,281,Drameh,Hull City,HUL,DEF,4.0,0.0,0.04617815337482047,0.0,0.0,0.0,Has joined Genoa permanently,3.0,1,1,0.0,0.2857142857142857,0.0,4146.0
+2026-27,8,187,Eccles,Coventry City,COV,MID,4.8,0.0,0.06818098307720497,0.0,0.0,0.0,Ankle injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,823.0
+2026-27,8,182,Amenda,Coventry City,COV,DEF,3.9,0.0,0.24308568339455366,0.0,0.0,0.0,Calf injury - Unknown return date,2.0,1,1,0.4,0.5714285714285714,36.0,54632.0
+2026-27,8,181,Brau,Coventry City,COV,DEF,4.0,0.0,0.02860727083430033,0.0,0.0,0.0,Has joined Academico de Viseu on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2014.0
+2026-27,8,484,Hutchinson,Nott'm Forest,NFO,MID,5.4,0.0,0.1018391881049489,0.0,0.0,0.0,Has joined AC Milan on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,7043.0
+2026-27,8,485,Bakwa,Nott'm Forest,NFO,MID,5.5,0.0,0.10095049056437487,0.0,0.0,0.0,Has joined Lille on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,520.0
+2026-27,8,180,Woolfenden,Coventry City,COV,DEF,3.9,0.0,0.043364262156006035,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,12197.0
+2026-27,8,376,Bajcetic,Liverpool,LIV,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Celta Vigo permanently,3.0,1,1,0.0,0.0,0.0,111.0
+2026-27,8,293,Kamara,Hull City,HUL,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Portsmouth permanently,3.0,1,1,0.0,0.0,0.0,170.0
+2026-27,8,475,Savona,Nott'm Forest,NFO,DEF,4.5,0.0,0.11104941610165793,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,274.0
+2026-27,8,491,Igor Jesus,Nott'm Forest,NFO,FWD,5.7,0.0,1.8506752278052303,0.0,0.0,0.0,Calf injury - Unknown return date,2.0,1,0,1.8,1.7142857142857142,15.4,172641.0
+2026-27,8,174,Kitching,Coventry City,COV,DEF,4.0,0.0,0.04369527008876939,0.0,0.0,0.0,Has joined Sheffield United on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,32547.0
+2026-27,8,415,Dorgu,Man Utd,MUN,MID,5.7,0.0,1.2786017289631617,0.0,0.0,0.0,Hamstring injury - Expected back 25 Oct,3.0,1,1,1.8,1.4285714285714286,23.2,43360.0
+2026-27,8,494,Vicario,Spurs,TOT,GK,4.5,0.0,0.08836229066511113,0.0,0.0,0.0,Has joined Juventus on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,12754.0
+2026-27,8,326,Perri,Leeds,LEE,GK,4.5,0.0,0.07425650434221544,0.0,0.0,0.0,Has joined Torino on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,31701.0
+2026-27,8,171,Dovin,Coventry City,COV,GK,4.0,0.0,0.057754731022507944,0.0,0.0,0.0,not included in squad.,2.0,1,1,0.0,0.0,0.0,97479.0
+2026-27,8,170,Emegha,Chelsea,CHE,FWD,4.9,0.0,0.06818098307720497,0.0,0.0,0.0,Hamstring injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,10540.0
+2026-27,8,500,Romero,Spurs,TOT,DEF,5.0,0.0,0.08897045707777683,0.0,0.0,0.0,Has joined Atletico Madrid permanently,4.0,1,0,0.0,0.0,0.0,8968.0
+2026-27,8,168,Marc Guiu,Chelsea,CHE,FWD,5.0,0.0,0.07269372543989956,0.0,0.0,0.0,Has joined RB Leipzig permanently,2.0,1,1,0.0,0.0,0.0,17983.0
+2026-27,8,163,D.Essugo,Chelsea,CHE,MID,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined RC Strasbourg on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,8450.0
+2026-27,8,477,Abbott,Nott'm Forest,NFO,DEF,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined Southampton on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,13623.0
+2026-27,8,441,Obi,Man Utd,MUN,FWD,4.5,0.0,0.06032412298661817,0.0,0.0,0.0,Has joined Willem II on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,89768.0
+2026-27,8,118,Igor,Brighton,BHA,DEF,4.5,0.0,0.04235771840845537,0.0,0.0,0.0,Has joined Burnley permanently,4.0,1,0,0.0,0.0,0.0,3591.0
+2026-27,8,206,Chadi Riad,Crystal Palace,CRY,DEF,4.3,0.0,0.0842694278397569,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.14285714285714285,0.0,1887.0
+2026-27,8,220,Cardines,Crystal Palace,CRY,DEF,4.5,0.0,0.06155992886037475,0.0,0.0,0.0,Has joined Bristol City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,124.0
+2026-27,8,287,Millar,Hull City,HUL,MID,5.0,0.0,0.1557647205044009,0.0,0.0,0.0,Has joined Birmingham on loan for the rest of the season,3.0,1,1,0.0,0.8571428571428571,0.0,2725.0
+2026-27,8,219,J.Rak-Sakyi,Crystal Palace,CRY,MID,4.9,0.0,0.0694791994523992,0.0,0.0,0.0,has joined  Kasimpasa on loan for the rest of the seaon.,3.0,1,1,0.0,0.0,0.0,335.0
+2026-27,8,450,Livramento,Newcastle,NEW,DEF,4.8,0.0,0.27600826019520563,0.0,0.0,0.0,Knee injury - Expected back 7 Nov,3.0,1,0,0.8,0.5714285714285714,6.6,6992.0
+2026-27,8,451,A.Murphy,Newcastle,NEW,DEF,4.0,0.0,0.017071808045402172,0.0,0.0,0.0,Has joined FC Kaiserslautern on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,5529.0
+2026-27,8,217,M.França,Crystal Palace,CRY,MID,4.9,0.0,0.0694791994523992,0.0,0.0,0.0,Has joined Alverca on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,842.0
+2026-27,8,216,Esse,Crystal Palace,CRY,MID,5.0,0.0,0.054722208130693506,0.0,0.0,0.0,Has joined Millwall on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1493.0
+2026-27,8,383,Elliott,Liverpool,LIV,MID,5.4,0.0,0.06678856657000466,0.0,0.0,0.0,Has joined Valencia on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3206.0
+2026-27,8,215,Devenny,Crystal Palace,CRY,MID,5.0,0.0,0.07880989935742784,0.0,0.0,0.0,Has joined Stoke City permanently,3.0,1,1,0.0,0.0,0.0,430.0
+2026-27,8,252,McNally,Fulham,FUL,GK,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined York City on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,10970.0
+2026-27,8,205,Sosa,Crystal Palace,CRY,DEF,4.5,0.0,0.045424745291316876,0.0,0.0,0.0,Has joined FC Cologne on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1431.0
+2026-27,8,191,Borges Rodrigues,Coventry City,COV,MID,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined Burton Albion on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,7203.0
+2026-27,8,291,Matazo,Hull City,HUL,MID,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,573.0
+2026-27,8,463,Woltemade,Newcastle,NEW,FWD,5.9,0.0,0.1950194726977141,0.0,0.0,0.0,Has joined Juventus on loan for the rest of the season,3.0,1,0,0.0,0.5714285714285714,0.0,48818.0
+2026-27,8,380,Ekitiké,Liverpool,LIV,FWD,7.4,0.0,0.11892456813319335,0.0,0.0,0.0,Achilles injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,11716.0
+2026-27,8,197,Bassette,Coventry City,COV,FWD,4.5,0.0,0.03597487433580019,0.0,0.0,0.0,Has joined KVC Westerlo on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2297.0
+2026-27,8,466,Neave,Newcastle,NEW,FWD,4.5,0.0,0.04021775003468619,0.0,0.0,0.0,Has joined Wolves on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,49077.0
+2026-27,8,196,Markelo,Coventry City,COV,FWD,5.0,0.0,0.053423991755499285,0.0,0.0,0.0,Has joined Shabab Al-Ahli Dubai permanently,2.0,1,1,0.0,0.0,0.0,580.0
+2026-27,8,283,Jacob,Hull City,HUL,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Newport County on loan until January,3.0,1,1,0.0,0.0,0.0,730.0
+2026-27,8,193,Wright,Coventry City,COV,FWD,5.3,0.0,0.06818098307720497,0.0,0.0,0.0,Thigh injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,6711.0
+2026-27,8,470,Morato,Nott'm Forest,NFO,DEF,5.0,0.0,0.12849853352135696,0.0,0.0,0.0,Has joined West Ham on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,1821.0
+2026-27,8,192,Andrews,Coventry City,COV,MID,4.5,0.0,0.05225349847107811,0.0,0.0,0.0,Has joined Oxford United on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,24664.0
+2026-27,8,373,C.Jones,Liverpool,LIV,MID,5.5,0.0,0.08998756025616494,0.0,0.0,0.0,Has joined Internazionale permanently,3.0,1,1,0.0,0.0,0.0,2236.0
+2026-27,8,505,Spence,Spurs,TOT,DEF,4.5,0.0,0.05703175147026238,0.0,0.0,0.0,Has joined Internazionale permanently,4.0,1,0,0.0,0.0,0.0,23373.0
+2026-27,8,506,Udogie,Spurs,TOT,DEF,4.4,0.0,0.8911217938092213,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,1.4,1.2857142857142858,26.6,38580.0
+2026-27,8,128,Buonanotte,Brighton,BHA,MID,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Has joined Elche on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,189.0
+2026-27,8,137,Tzimas,Brighton,BHA,FWD,5.4,0.0,0.0664121725695377,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,696.0
+2026-27,8,537,Seelt,Sunderland,SUN,DEF,4.5,0.0,0.04273411240892233,0.0,0.0,0.0,Has joined Swansea City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,495.0
+2026-27,8,538,Hjelde,Sunderland,SUN,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined KV Mechelen on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3453.0
+2026-27,8,299,Burstow,Hull City,HUL,FWD,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Has joined Sheffield Wednesday on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3067.0
+2026-27,8,540,Masuaku,Sunderland,SUN,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Konyaspor permanently,3.0,1,1,0.0,0.0,0.0,13213.0
 2026-27,8,135,Yohanna,Brighton,BHA,MID,4.8,0.0,0.05027698900047983,0.0,0.0,0.0,Unspecified injury - Expected back 31 Oct,4.0,1,0,0.0,0.14285714285714285,0.0,3016.0
 2026-27,8,133,Watson,Brighton,BHA,MID,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Has joined Leicester City on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,101.0
 2026-27,8,132,Howell,Brighton,BHA,MID,4.5,0.0,0.034206063828132904,0.0,0.0,0.0,Has joined Leicester City on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,2754.0
-2026-27,8,215,Devenny,Crystal Palace,CRY,MID,5.0,0.0,0.07880989935742784,0.0,0.0,0.0,Has joined Stoke City permanently,3.0,1,1,0.0,0.0,0.0,430.0
-2026-27,8,121,Mitoma,Brighton,BHA,MID,5.9,0.0,0.08453239790779962,0.0,0.0,0.0,Hamstring injury - Expected back 31 Oct,4.0,1,0,0.0,0.0,0.0,3244.0
-2026-27,8,118,Igor,Brighton,BHA,DEF,4.5,0.0,0.04235771840845537,0.0,0.0,0.0,Has joined Burnley permanently,4.0,1,0,0.0,0.0,0.0,3591.0
-2026-27,8,624,Cozier-Duberry,Brighton,BHA,MID,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Has joined Middlesbrough on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,42.0
-2026-27,8,107,Furo,Brentford,BRE,FWD,4.5,0.0,0.05610383069526602,0.0,0.0,0.0,Unspecified injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,82806.0
-2026-27,8,103,Dasilva,Brentford,BRE,MID,4.8,0.0,0.06277489359162292,0.0,0.0,0.0,Hamstring injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,1202.0
-2026-27,8,632,Ansah,Hull City,HUL,FWD,4.9,0.0,0.06678856657000466,0.0,0.0,0.0,Back injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,2476.0
-2026-27,8,206,Chadi Riad,Crystal Palace,CRY,DEF,4.3,0.0,0.0842694278397569,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.14285714285714285,0.0,1887.0
-2026-27,8,252,McNally,Fulham,FUL,GK,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined York City on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,10970.0
-2026-27,8,216,Esse,Crystal Palace,CRY,MID,5.0,0.0,0.054722208130693506,0.0,0.0,0.0,Has joined Millwall on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1493.0
-2026-27,8,353,Pecsi,Liverpool,LIV,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined TSV Hartberg on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1747.0
-2026-27,8,470,Morato,Nott'm Forest,NFO,DEF,5.0,0.0,0.12849853352135696,0.0,0.0,0.0,Has joined West Ham on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,1821.0
-2026-27,8,368,Szoboszlai,Liverpool,LIV,MID,6.7,0.0,2.5316063975010956,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,1.8,3.0,58.2,2395984.0
-2026-27,8,365,Ramsay,Liverpool,LIV,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined St Mirren on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,8814.0
-2026-27,8,363,Leoni,Liverpool,LIV,DEF,3.9,0.0,0.04306590652436581,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,3216.0
-2026-27,8,475,Savona,Nott'm Forest,NFO,DEF,4.5,0.0,0.11104941610165793,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,0,0.0,0.0,0.0,274.0
-2026-27,8,477,Abbott,Nott'm Forest,NFO,DEF,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined Southampton on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,13623.0
-2026-27,8,360,Bradley,Liverpool,LIV,DEF,4.9,0.0,0.09902791237706143,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,1027.0
-2026-27,8,479,Bindon,Nott'm Forest,NFO,DEF,4.0,0.0,0.017757319592138294,0.0,0.0,0.0,Has joined Charlton Athletic on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,10552.0
-2026-27,8,357,Frimpong,Liverpool,LIV,DEF,5.2,0.0,0.9958719818682343,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,0.6,0.5714285714285714,7.8,177120.0
-2026-27,8,354,Jaros,Liverpool,LIV,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,2238.0
-2026-27,8,484,Hutchinson,Nott'm Forest,NFO,MID,5.4,0.0,0.1018391881049489,0.0,0.0,0.0,Has joined AC Milan on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,7043.0
-2026-27,8,376,Bajcetic,Liverpool,LIV,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Celta Vigo permanently,3.0,1,1,0.0,0.0,0.0,111.0
-2026-27,8,485,Bakwa,Nott'm Forest,NFO,MID,5.5,0.0,0.10095049056437487,0.0,0.0,0.0,Has joined Lille on loan for the rest of the season,2.0,1,0,0.0,0.0,0.0,520.0
-2026-27,8,349,Mateo Joseph,Leeds,LEE,FWD,4.5,0.0,0.02334535067134191,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,0,0.0,0.0,0.0,5429.0
-2026-27,8,348,Piroe,Leeds,LEE,FWD,5.0,0.0,0.04551921397220398,0.0,0.0,0.0,Has joined West Ham United on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,5514.0
-2026-27,8,342,Harrison,Leeds,LEE,MID,5.0,0.0,0.04551921397220398,0.0,0.0,0.0,Has joined New England Revolution permanently,3.0,1,0,0.0,0.0,0.0,52.0
-2026-27,8,341,Gnonto,Leeds,LEE,MID,5.0,0.0,0.06647235508359592,0.0,0.0,0.0,Has joined ACF Fiorentina on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,664.0
-2026-27,8,333,Bornauw,Leeds,LEE,DEF,4.5,0.0,0.057174892244219254,0.0,0.0,0.0,Has joined Hamburg SV on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,205.0
-2026-27,8,491,Igor Jesus,Nott'm Forest,NFO,FWD,5.7,0.0,1.8506752278052303,0.0,0.0,0.0,Calf injury - Unknown return date,2.0,1,0,1.8,1.7142857142857142,15.4,172641.0
-2026-27,8,329,Rodon,Leeds,LEE,DEF,4.3,0.0,0.28657442212388534,0.0,0.0,0.0,Hamstring injury - Expected back 21 Nov,3.0,1,0,0.0,1.0,0.0,60101.0
-2026-27,8,326,Perri,Leeds,LEE,GK,4.5,0.0,0.07425650434221544,0.0,0.0,0.0,Has joined Torino on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,31701.0
-2026-27,8,494,Vicario,Spurs,TOT,GK,4.5,0.0,0.08836229066511113,0.0,0.0,0.0,Has joined Juventus on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,12754.0
-2026-27,8,373,C.Jones,Liverpool,LIV,MID,5.5,0.0,0.08998756025616494,0.0,0.0,0.0,Has joined Internazionale permanently,3.0,1,1,0.0,0.0,0.0,2236.0
-2026-27,8,466,Neave,Newcastle,NEW,FWD,4.5,0.0,0.04021775003468619,0.0,0.0,0.0,Has joined Wolves on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,49077.0
-2026-27,8,217,M.França,Crystal Palace,CRY,MID,4.9,0.0,0.0694791994523992,0.0,0.0,0.0,Has joined Alverca on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,842.0
-2026-27,8,450,Livramento,Newcastle,NEW,DEF,4.8,0.0,0.27600826019520563,0.0,0.0,0.0,Knee injury - Expected back 7 Nov,3.0,1,0,0.8,0.5714285714285714,6.6,6992.0
-2026-27,8,433,Ugarte,Man Utd,MUN,MID,5.0,0.0,0.07573211055993738,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,418.0
-2026-27,8,436,Collyer,Man Utd,MUN,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined West Brom permanently,3.0,1,1,0.0,0.0,0.0,1009.0
-2026-27,8,439,Šeško,Man Utd,MUN,FWD,6.9,0.0,0.582437077003801,0.0,0.0,0.0,Shin injury - Unknown return date,3.0,1,1,1.2,1.1428571428571428,8.6,136636.0
-2026-27,8,425,Fredricson,Man Utd,MUN,DEF,4.0,0.0,0.027921759287564196,0.0,0.0,0.0,Has joined Lausanne-Sport permanently,3.0,1,1,0.0,0.0,0.0,1212.0
-2026-27,8,441,Obi,Man Utd,MUN,FWD,4.5,0.0,0.06032412298661817,0.0,0.0,0.0,Has joined Willem II on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,89768.0
-2026-27,8,444,Jaouen,Newcastle,NEW,GK,4.4,0.0,0.046463209308021995,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,0,0.0,0.0,0.0,2032.0
-2026-27,8,423,Shaw,Man Utd,MUN,DEF,4.2,0.0,2.1151145974466523,0.0,0.0,0.0,Unspecified injury - Unknown return date,3.0,1,1,1.8,1.7142857142857142,52.6,655623.0
-2026-27,8,415,Dorgu,Man Utd,MUN,MID,5.7,0.0,1.2786017289631617,0.0,0.0,0.0,Hamstring injury - Expected back 25 Oct,3.0,1,1,1.8,1.4285714285714286,23.2,43360.0
-2026-27,8,413,Bayindir,Man Utd,MUN,GK,4.5,0.0,0.06664386045521267,0.0,0.0,0.0,Has joined Celta Vigo on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1153.0
-2026-27,8,410,Monga,Man City,MCI,MID,4.9,0.0,0.05542209101451763,0.0,0.0,0.0,Has joined Swansea City on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,773.0
-2026-27,8,451,A.Murphy,Newcastle,NEW,DEF,4.0,0.0,0.017071808045402172,0.0,0.0,0.0,Has joined FC Kaiserslautern on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,5529.0
-2026-27,8,380,Ekitiké,Liverpool,LIV,FWD,7.4,0.0,0.11892456813319335,0.0,0.0,0.0,Achilles injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,11716.0
-2026-27,8,409,Mukasa,Man City,MCI,MID,4.5,0.0,0.023215982273112806,0.0,0.0,0.0,has joined West Ham on loan for the rest of the seaon.,3.0,1,0,0.0,0.0,0.0,8272.0
-2026-27,8,408,Phillips,Man City,MCI,MID,5.0,0.0,0.040665099692811936,0.0,0.0,0.0,Has joined Sheffield United on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,486.0
-2026-27,8,407,Echeverri,Man City,MCI,MID,4.9,0.0,0.05542209101451763,0.0,0.0,0.0,Has joined Benfica on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,842.0
-2026-27,8,404,Reijnders,Man City,MCI,MID,6.0,0.0,0.08407477219562655,0.0,0.0,0.0,Has joined Al Qadsiah permanently,3.0,1,0,0.0,0.0,0.0,3556.0
-2026-27,8,403,Sávio,Spurs,TOT,MID,6.5,0.0,2.261987896135553,0.0,0.0,0.0,Muscular injury - Expected back 7 Nov,4.0,1,0,2.0,1.4285714285714286,66.0,118648.0
-2026-27,8,402,Rodrigo,Man City,MCI,MID,6.5,0.0,0.08407477219562655,0.0,0.0,0.0,Has joined Barcelona permanently,3.0,1,0,0.0,0.0,0.0,1120.0
-2026-27,8,397,Semenyo,Man City,MCI,MID,8.2,0.0,4.201676834886756,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,0,6.0,5.285714285714286,74.6,1630558.0
-2026-27,8,394,Alleyne,Man City,MCI,DEF,5.0,0.0,0.0649519378421923,0.0,0.0,0.0,Has joined Burnley on loan for the rest of the season,3.0,1,0,0.0,0.0,0.0,463.0
-2026-27,8,383,Elliott,Liverpool,LIV,MID,5.4,0.0,0.06678856657000466,0.0,0.0,0.0,Has joined Valencia on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3206.0
-2026-27,8,463,Woltemade,Newcastle,NEW,FWD,5.9,0.0,0.1950194726977141,0.0,0.0,0.0,Has joined Juventus on loan for the rest of the season,3.0,1,0,0.0,0.5714285714285714,0.0,48818.0
-2026-27,8,322,Al-Hamadi,Ipswich Town,IPS,FWD,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Sheffield Wednesday on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,4798.0
-2026-27,8,319,Szmodics,Ipswich Town,IPS,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Derby County on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,258.0
-2026-27,8,317,Hirst,Ipswich Town,IPS,FWD,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Stoke City permanently,3.0,1,1,0.0,0.0,0.0,7117.0
-2026-27,8,269,Sessegnon,Fulham,FUL,DEF,4.3,0.0,1.8199224856982639,0.0,0.0,0.0,Suspended until 7 Nov,2.0,1,0,1.2,1.1428571428571428,22.6,40448.0
-2026-27,8,537,Seelt,Sunderland,SUN,DEF,4.5,0.0,0.04273411240892233,0.0,0.0,0.0,Has joined Swansea City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,495.0
-2026-27,8,538,Hjelde,Sunderland,SUN,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined KV Mechelen on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3453.0
-2026-27,8,281,Drameh,Hull City,HUL,DEF,4.0,0.0,0.04617815337482047,0.0,0.0,0.0,Has joined Genoa permanently,3.0,1,1,0.0,0.2857142857142857,0.0,4146.0
-2026-27,8,540,Masuaku,Sunderland,SUN,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Konyaspor permanently,3.0,1,1,0.0,0.0,0.0,13213.0
-2026-27,8,278,Hughes,Hull City,HUL,DEF,3.9,0.0,0.04306590652436581,0.0,0.0,0.0,Groin injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,17294.0
-2026-27,8,276,Lo-Tutala,Hull City,HUL,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Colchester United on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,2226.0
-2026-27,8,275,Cartwright,Hull City,HUL,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Grimsby Town on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,653.0
-2026-27,8,274,Butland,Hull City,HUL,GK,4.4,0.0,0.05770031646527993,0.0,0.0,0.0,Arm injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,7034.0
 2026-27,8,546,Adingra,Sunderland,SUN,MID,4.9,0.0,0.09087625779673895,0.0,0.0,0.0,Has joined Ajax on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,2155.0
 2026-27,8,547,Mundle,Sunderland,SUN,MID,4.8,0.0,0.06992311668534705,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.14285714285714285,0.0,490.0
-2026-27,8,267,Lukić,Ipswich Town,IPS,MID,4.9,0.0,1.7690284794516176,0.0,0.0,0.0,Groin injury - Unknown return date,3.0,1,1,1.8,2.142857142857143,65.6,10209.0
-2026-27,8,500,Romero,Spurs,TOT,DEF,5.0,0.0,0.08897045707777683,0.0,0.0,0.0,Has joined Atletico Madrid permanently,4.0,1,0,0.0,0.0,0.0,8968.0
-2026-27,8,432,Mainoo,Man Utd,MUN,MID,5.5,0.0,2.4798311922329863,0.0,0.0,0.0,Unspecified injury - Expected back 8 Nov,3.0,1,1,4.2,3.7142857142857144,68.4,153136.0
-2026-27,8,248,Beto,Everton,EVE,FWD,5.4,0.0,0.10404530891058003,0.0,0.0,0.0,Has joined Fiorentina permanently,5.0,1,0,0.0,0.2857142857142857,0.0,54356.0
-2026-27,8,235,Aznou,Everton,EVE,DEF,4.0,-0.0,-0.004313905960251199,0.0,0.0,0.0,Has joined Malaga on loan for the rest of the season,5.0,1,0,0.0,0.0,0.0,8602.0
-2026-27,8,554,Van Oevelen,Ipswich Town,IPS,GK,4.5,0.0,0.04255616922847832,0.0,0.0,0.0,Has joined Valencia on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1650.0
-2026-27,8,556,Targett,Hull City,HUL,DEF,3.9,0.0,0.07221336671257343,0.0,0.0,0.0,Ankle injury - Unknown return date,3.0,1,1,0.0,0.14285714285714285,0.0,151309.0
-2026-27,8,557,Tzolis,Arsenal,ARS,MID,6.2,0.0,1.448948516570023,0.0,0.0,0.0,Hamstring injury - Expected back 1 Nov,3.0,1,1,2.0,2.2857142857142856,48.4,574474.0
-2026-27,8,234,Patterson,Everton,EVE,DEF,4.5,0.0,0.03097122069623184,0.0,0.0,0.0,Has joined Torino permanently,5.0,1,0,0.0,0.0,0.0,1375.0
-2026-27,8,225,Uche,Crystal Palace,CRY,FWD,5.0,0.0,0.054722208130693506,0.0,0.0,0.0,has returned to Getafe CF,3.0,1,1,0.0,0.0,0.0,0.0
-2026-27,8,220,Cardines,Crystal Palace,CRY,DEF,4.5,0.0,0.06155992886037475,0.0,0.0,0.0,Has joined Bristol City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,124.0
-2026-27,8,219,J.Rak-Sakyi,Crystal Palace,CRY,MID,4.9,0.0,0.0694791994523992,0.0,0.0,0.0,has joined  Kasimpasa on loan for the rest of the seaon.,3.0,1,1,0.0,0.0,0.0,335.0
-2026-27,8,283,Jacob,Hull City,HUL,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Newport County on loan until January,3.0,1,1,0.0,0.0,0.0,730.0
-2026-27,8,287,Millar,Hull City,HUL,MID,5.0,0.0,0.1557647205044009,0.0,0.0,0.0,Has joined Birmingham on loan for the rest of the season,3.0,1,1,0.0,0.8571428571428571,0.0,2725.0
-2026-27,8,532,Ballard,Sunderland,SUN,DEF,4.8,0.0,1.2471253622531322,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,1.2,2.0,54.0,157023.0
-2026-27,8,530,Patterson,Sunderland,SUN,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Wrexham permanently,3.0,1,1,0.0,0.0,0.0,12027.0
-2026-27,8,314,Ogbene,Ipswich Town,IPS,MID,4.9,0.0,0.06640141065490875,0.0,0.0,0.0,Has joined Lincoln City on loan until January,3.0,1,1,0.0,0.0,0.0,542.0
-2026-27,8,311,Burns,Ipswich Town,IPS,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined Leicester City permanently,3.0,1,1,0.0,0.0,0.0,205.0
-2026-27,8,307,Johnson,Ipswich Town,IPS,DEF,4.0,0.0,0.027921759287564196,0.0,0.0,0.0,Has joined Stoke City on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,5538.0
-2026-27,8,505,Spence,Spurs,TOT,DEF,4.5,0.0,0.05703175147026238,0.0,0.0,0.0,Has joined Internazionale permanently,4.0,1,0,0.0,0.0,0.0,23373.0
-2026-27,8,506,Udogie,Spurs,TOT,DEF,4.4,0.0,0.8911217938092213,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,1.4,1.2857142857142858,26.6,38580.0
+2026-27,8,413,Bayindir,Man Utd,MUN,GK,4.5,0.0,0.06664386045521267,0.0,0.0,0.0,Has joined Celta Vigo on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1153.0
 2026-27,8,507,Phillips,Spurs,TOT,DEF,4.5,0.0,0.026609690754493393,0.0,0.0,0.0,Has joined Middlesbrough permanently,4.0,1,0,0.0,0.0,0.0,1277.0
+2026-27,8,365,Ramsay,Liverpool,LIV,DEF,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined St Mirren on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,8814.0
+2026-27,8,363,Leoni,Liverpool,LIV,DEF,3.9,0.0,0.04306590652436581,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,3216.0
+2026-27,8,12,Saka,Arsenal,ARS,MID,9.5,0.0,4.951982389232596,0.0,0.0,0.0,Thigh injury - Unknown return date,3.0,1,1,3.4,5.285714285714286,87.8,1887654.0
+2026-27,8,554,Van Oevelen,Ipswich Town,IPS,GK,4.5,0.0,0.04255616922847832,0.0,0.0,0.0,Has joined Valencia on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,1650.0
+2026-27,8,433,Ugarte,Man Utd,MUN,MID,5.0,0.0,0.07573211055993738,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,418.0
+2026-27,8,556,Targett,Hull City,HUL,DEF,3.9,0.0,0.07221336671257343,0.0,0.0,0.0,Ankle injury - Unknown return date,3.0,1,1,0.0,0.14285714285714285,0.0,151309.0
+2026-27,8,225,Uche,Crystal Palace,CRY,FWD,5.0,0.0,0.054722208130693506,0.0,0.0,0.0,has returned to Getafe CF,3.0,1,1,0.0,0.0,0.0,0.0
+2026-27,8,121,Mitoma,Brighton,BHA,MID,5.9,0.0,0.08453239790779962,0.0,0.0,0.0,Hamstring injury - Expected back 31 Oct,4.0,1,0,0.0,0.0,0.0,3244.0
+2026-27,8,267,Lukić,Ipswich Town,IPS,MID,4.9,0.0,1.7690284794516176,0.0,0.0,0.0,Groin injury - Unknown return date,3.0,1,1,1.8,2.142857142857143,65.6,10209.0
+2026-27,8,360,Bradley,Liverpool,LIV,DEF,4.9,0.0,0.09902791237706143,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,1027.0
+2026-27,8,139,Ferguson,Brighton,BHA,FWD,5.0,0.0,0.03551999767877413,0.0,0.0,0.0,Ankle injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,3131.0
+2026-27,8,140,Sánchez,Chelsea,CHE,GK,4.9,0.0,0.30397141393528326,0.0,0.0,0.0,Has joined Como on loan for the rest of the season,2.0,1,1,0.0,0.2857142857142857,0.0,67141.0
+2026-27,8,141,Jörgensen,Chelsea,CHE,GK,5.0,0.0,0.11448277759576565,0.0,0.0,0.0,Has joined RC Strasbourg on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,841.0
+2026-27,8,532,Ballard,Sunderland,SUN,DEF,4.8,0.0,1.2471253622531322,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,1.2,2.0,54.0,157023.0
+2026-27,8,158,Gittens,Chelsea,CHE,MID,5.8,0.0,0.1008461962187042,0.0,0.0,0.0,Ankle injury - Unknown return date,2.0,1,1,0.0,0.0,0.0,2589.0
 2026-27,8,511,Souza,Spurs,TOT,DEF,4.0,0.0,0.012184493548231206,0.0,0.0,0.0,Has joined FC Porto on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,15766.0
 2026-27,8,513,Xavi,Spurs,TOT,MID,5.9,0.0,0.0868560925449192,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,1369.0
-2026-27,8,299,Burstow,Hull City,HUL,FWD,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Has joined Sheffield Wednesday on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,3067.0
-2026-27,8,298,Destan,Hull City,HUL,FWD,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Has joined Konyaspor permanently,3.0,1,1,0.0,0.0,0.0,16429.0
+2026-27,8,296,Akintola,Hull City,HUL,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Omonoia FC permanently,3.0,1,1,0.0,0.0,0.0,2114.0
+2026-27,8,297,Gyabi,Hull City,HUL,MID,4.4,0.0,0.04933944915030557,0.0,0.0,0.0,Thigh injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,1866.0
 2026-27,8,516,Bentancur,Spurs,TOT,MID,5.4,0.0,1.3818746119843148,0.0,0.0,0.0,Suspended until 7 Nov,4.0,1,0,2.0,1.8571428571428572,49.2,15632.0
 2026-27,8,517,Odobert,Spurs,TOT,MID,5.5,0.0,0.0801975080907707,0.0,0.0,0.0,Knee injury - Unknown return date,4.0,1,0,0.0,0.0,0.0,171.0
 2026-27,8,518,P.M.Sarr,Spurs,TOT,MID,4.9,0.0,0.08108620563134471,0.0,0.0,0.0,Has joined Juventus on loan for the rest of the season,4.0,1,0,0.0,0.0,0.0,6608.0
-2026-27,8,297,Gyabi,Hull City,HUL,MID,4.4,0.0,0.04933944915030557,0.0,0.0,0.0,Thigh injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,1866.0
+2026-27,8,150,M.Sarr,Chelsea,CHE,DEF,4.5,0.0,0.07755471375701442,0.0,0.0,0.0,Has joined Real Sociedad on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,2628.0
 2026-27,8,520,Bergvall,Spurs,TOT,MID,5.3,0.0,1.2940731365158438,0.0,0.0,0.0,Knee injury - Expected back 31 Oct,4.0,1,0,1.0,0.8571428571428571,19.6,15028.0
-2026-27,8,296,Akintola,Hull City,HUL,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Omonoia FC permanently,3.0,1,1,0.0,0.0,0.0,2114.0
+2026-27,8,368,Szoboszlai,Liverpool,LIV,MID,6.7,0.0,2.5316063975010956,0.0,0.0,0.0,Hamstring injury - Unknown return date,3.0,1,1,1.8,3.0,58.2,2395984.0
+2026-27,8,298,Destan,Hull City,HUL,FWD,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Has joined Konyaspor permanently,3.0,1,1,0.0,0.0,0.0,16429.0
 2026-27,8,523,Moore,Spurs,TOT,MID,5.0,0.0,0.10930202869278668,0.0,0.0,0.0,Has joined FC Köln on loan for the rest of the season,4.0,1,0,0.0,0.42857142857142855,0.0,4947.0
-2026-27,8,293,Kamara,Hull City,HUL,MID,5.0,0.0,0.052031575248298975,0.0,0.0,0.0,Has joined Portsmouth permanently,3.0,1,1,0.0,0.0,0.0,170.0
-2026-27,8,291,Matazo,Hull City,HUL,MID,4.5,0.0,0.034582457828599866,0.0,0.0,0.0,Knee injury - Unknown return date,3.0,1,1,0.0,0.0,0.0,573.0
+2026-27,8,436,Collyer,Man Utd,MUN,MID,5.0,0.0,0.051644419333203066,0.0,0.0,0.0,Has joined West Brom permanently,3.0,1,1,0.0,0.0,0.0,1009.0
+2026-27,8,146,B.Badiashile,Chelsea,CHE,DEF,4.5,0.0,0.08550722141469085,0.0,0.0,0.0,Has joined Napoli on loan for the rest of the season,2.0,1,1,0.0,0.0,0.0,951.0
+2026-27,8,143,Chalobah,Chelsea,CHE,DEF,5.5,0.0,0.18225938277149703,0.0,0.0,0.0,Has joined Como permanently,2.0,1,1,0.0,0.0,0.0,7032.0
 2026-27,8,527,Richarlison,Spurs,TOT,FWD,5.9,0.0,0.1466650657484122,0.0,0.0,0.0,not included in squad.,4.0,1,0,0.0,0.2857142857142857,0.0,61672.0
 2026-27,8,528,Scarlett,Spurs,TOT,FWD,4.5,0.0,0.04637409447766445,0.0,0.0,0.0,Has joined Leyton Orient permanently,4.0,1,0,0.0,0.0,0.0,106738.0
-2026-27,8,18,Martinelli,Arsenal,ARS,MID,6.3,0.0,0.09906662379640799,0.0,0.0,0.0,Has joined Al Hilal permanently,3.0,1,1,0.0,0.0,0.0,6910.0
+2026-27,8,142,James,Chelsea,CHE,DEF,5.2,0.0,0.5654413752118068,0.0,0.0,0.0,Knee injury - Unknown return date,2.0,1,1,0.4,0.42857142857142855,36.0,487346.0
+2026-27,8,530,Patterson,Sunderland,SUN,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Wrexham permanently,3.0,1,1,0.0,0.0,0.0,12027.0
+2026-27,8,276,Lo-Tutala,Hull City,HUL,GK,4.0,0.0,0.0283089152026601,0.0,0.0,0.0,Has joined Colchester United on loan for the rest of the season,3.0,1,1,0.0,0.0,0.0,2226.0
+2026-27,8,557,Tzolis,Arsenal,ARS,MID,6.2,0.0,1.448948516570023,0.0,0.0,0.0,Hamstring injury - Expected back 1 Nov,3.0,1,1,2.0,2.2857142857142856,48.4,574474.0
