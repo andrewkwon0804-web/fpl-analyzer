@@ -89,7 +89,7 @@ function Body({ p, note, data, close }) {
           );
         })}
       </div>
-      <a href={`./dashboard.html?player=${p.id}#lookup`} className="mt-4 block border-t border-line pt-3 text-sm text-mint">Full record and chart ›</a>
+      <a href={`./dashboard.html?player=${p.id}#lookup`} onClick={(e) => { if (window.__showPlayer) { e.preventDefault(); close(); window.__showPlayer(p.id); } }} className="mt-4 block border-t border-line pt-3 text-sm text-mint">Full record and chart ›</a>
     </>
   );
 }

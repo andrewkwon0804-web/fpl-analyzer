@@ -97,6 +97,18 @@ a gradient boosting model is trained with scikit-learn, and each prediction is m
 </div>"""
 
 
+def prerender_dash(data: dict) -> str:
+    e = html.escape
+    m = data["meta"]
+    rows = "".join(f"<tr><td>{e(p['name'])}</td><td>{e(p['team'])}</td><td>{p['pos']}</td><td>£{p['price']:.1f}m</td><td>{p['pred']:.2f}</td></tr>"
+                   for p in data["players"][:50])
+    return f"""<div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
+<header><a href="./">FPL Points Lab</a> · <a href="./dashboard.html">Dashboard</a></header>
+<main><h1>Gameweek {m['gw']}</h1>
+<p>Best XI, every player's predicted points, player history, the model's FPL team, a transfer planner and four analyses.</p>
+<h2>Top 50 predicted players</h2><table><tr><th>Player</th><th>Team</th><th>Pos</th><th>Price</th><th>Predicted</th></tr>{rows}</table></main></div>"""
+
+
 def main(data: dict) -> None:
     data = dict(data, byId_captain=next((p["name"] for p in data["players"] if p["id"] == data["captain"]), ""))
     (DOCS / "sitemap.xml").write_text(sitemap(data))
@@ -106,6 +118,10 @@ def main(data: dict) -> None:
         text = page.read_text()
         new = re.sub(r"<!--pre-->.*?<!--/pre-->", lambda _: f"<!--pre-->{prerender(data)}<!--/pre-->", text, flags=re.S)
         page.write_text(new)
+    dash = DOCS / "v2" / "dashboard.html"
+    if dash.exists():
+        text = dash.read_text()
+        dash.write_text(re.sub(r"<!--pre-dash-->.*?<!--/pre-dash-->", lambda _: f"<!--pre-dash-->{prerender_dash(data)}<!--/pre-dash-->", text, flags=re.S))
     print("[site] wrote sitemap.xml, llms.txt and the static copy of the React page")
 
 

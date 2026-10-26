@@ -1,9 +1,13 @@
 // Tabs with a pill that slides between them. Adapted from Watermelon UI's fluid-tabs (MIT).
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
 
 export default function FluidTabs({ tabs, active, onChange, id = "tabs" }) {
+  const bar = useRef(null);
+  // keep the selected tab visible when the bar scrolls sideways on phones
+  useEffect(() => { bar.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); }, [active]);
   return (
-    <div role="tablist" className="no-scrollbar relative flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line2 bg-surface/80 p-1 backdrop-blur">
+    <div ref={bar} role="tablist" className="no-scrollbar relative flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-line2 bg-surface/80 p-1 backdrop-blur">
       {tabs.map((t) => {
         const on = active === t.id;
         return (
