@@ -32,14 +32,20 @@ SELECT tm.season, tm.fixture_id, tm.team_id, tm.kickoff_time,
        AVG(x_for.xg)      OVER w AS xg_for_l6,
        AVG(x_against.xg)  OVER w AS xg_against_l6,
        AVG(tm.goals_for)  OVER w AS goals_for_l6,
-       AVG(tm.goals_against) OVER w AS goals_against_l6
+       AVG(tm.goals_against) OVER w AS goals_against_l6,
+       -- season to date, excluding this match: how good the team has been all season
+       AVG(x_for.xg)      OVER wstd AS xg_for_std,
+       AVG(x_against.xg)  OVER wstd AS xg_against_std,
+       AVG(CASE WHEN tm.goals_against = 0 THEN 1.0 ELSE 0.0 END) OVER wstd AS clean_sheet_rate_std
 FROM team_match tm
 LEFT JOIN team_xg x_for
        ON x_for.season = tm.season AND x_for.fixture_id = tm.fixture_id AND x_for.team_id = tm.team_id
 LEFT JOIN team_xg x_against
        ON x_against.season = tm.season AND x_against.fixture_id = tm.fixture_id AND x_against.team_id = tm.opponent_id
 WINDOW w AS (PARTITION BY tm.season, tm.team_id ORDER BY tm.kickoff_time
-             ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING);
+             ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING),
+       wstd AS (PARTITION BY tm.season, tm.team_id ORDER BY tm.kickoff_time
+             ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING);
 
 CREATE INDEX idx_tf ON team_form (season, fixture_id, team_id);
 
@@ -64,7 +70,12 @@ SELECT pm.season, pm.player_id, pm.gw,
        AVG(CASE WHEN pm.was_home = 1 THEN f.home_difficulty ELSE f.away_difficulty END) AS fixture_difficulty,
        AVG(opp.xg_for_l6)             AS opp_attack_xg_l6,   -- threat to clean sheets
        AVG(opp.xg_against_l6)         AS opp_defence_xga_l6, -- how leaky the opponent is
-       AVG(own.xg_for_l6)             AS team_attack_xg_l6
+       AVG(own.xg_for_l6)             AS team_attack_xg_l6,
+       AVG(own.xg_for_std)            AS team_attack_xg_std,
+       AVG(own.xg_against_std)        AS team_defence_xga_std,
+       AVG(own.clean_sheet_rate_std)  AS team_cs_rate_std,
+       AVG(opp.xg_for_std)            AS opp_attack_xg_std,
+       AVG(opp.xg_against_std)        AS opp_defence_xga_std
 FROM player_match pm
 JOIN fixtures f
   ON f.season = pm.season AND f.fixture_id = pm.fixture_id
@@ -97,6 +108,8 @@ SELECT g.season, g.player_id, g.gw,
        -- fixture context (known before the deadline)
        g.n_fixtures, g.home_fixtures, g.fixture_difficulty,
        g.opp_attack_xg_l6, g.opp_defence_xga_l6, g.team_attack_xg_l6,
+       g.team_attack_xg_std, g.team_defence_xga_std, g.team_cs_rate_std,
+       g.opp_attack_xg_std, g.opp_defence_xga_std,
        g.price,
        g.price - FIRST_VALUE(g.price) OVER season_w AS price_change_season,
        LAG(g.selected_by) OVER season_w             AS selected_by_prev,
@@ -112,11 +125,18 @@ SELECT g.season, g.player_id, g.gw,
        AVG(g.bonus)   OVER l5 AS bonus_l5,
        AVG(g.bps)     OVER l5 AS bps_l5,
        AVG(g.ict)     OVER l5 AS ict_l5,
+       AVG(g.defcon)  OVER l5 AS defcon_l5,   -- NULL before 2025-26, when the rule began
        -- season to date (previous gameweeks only)
        AVG(g.points)  OVER std AS points_std,
        AVG(g.minutes) OVER std AS minutes_std,
        SUM(g.xg + g.xa) OVER std AS xgi_total_std,
        COUNT(*)       OVER std AS gws_so_far,
+       AVG(g.defcon)  OVER std AS defcon_std,
+       AVG(g.bonus)   OVER std AS bonus_std,
+       AVG(g.starts)  OVER std AS starts_std,
+       90.0 * SUM(g.points) OVER std / NULLIF(SUM(g.minutes) OVER std, 0) AS points_p90_std,
+       90.0 * SUM(g.xg + g.xa) OVER std
+            / NULLIF(SUM(CASE WHEN g.xg IS NOT NULL THEN g.minutes END) OVER std, 0) AS xgi_p90_std,
        ps.prev_ppg, ps.prev_minutes,
        -- baseline and target
        g.fpl_xp,

@@ -104,6 +104,9 @@ def build() -> dict:
     sig = pd.read_csv(live / "season_so_far_significance.csv")
     meta = json.loads((live / "meta.json").read_text())
 
+    horizon = pd.read_csv(live / "horizon_predictions.csv")
+    hz = {pid: g.sort_values("gw")[["gw", "predicted_points"]].round(2).values.tolist()
+          for pid, g in horizon.groupby("player_id")}
     xi = best_xi(nxt, "predicted_points")
     xi_ids = set(xi.player_id)
     captain_id = int(xi.loc[xi.is_captain, "player_id"].iloc[0])
@@ -113,6 +116,8 @@ def build() -> dict:
         "pos": r.position, "price": _num(r.price, 1), "pred": _num(r.predicted_points),
         "raw": _num(r.predicted_raw), "chance": None if pd.isna(r.chance_of_playing) else int(r.chance_of_playing),
         "news": r.news if isinstance(r.news, str) else "", "xi": int(r.player_id) in xi_ids,
+        # next six gameweeks: [gw, predicted points]; blank gameweeks are missing
+        "h": [[int(g), float(v)] for g, v in hz.get(r.player_id, [])],
     } for r in nxt.itertuples()]
 
     history = {}
@@ -125,6 +130,7 @@ def build() -> dict:
     weekly = weekly[weekly.method.isin(["Model", "Season average"])]
     return {
         "meta": {**meta, "gw": int(nxt.gw.iloc[0]), "played": int(played.gw.max()),
+                 "horizon_gws": sorted(int(g) for g in horizon.gw.unique()),
                  "xi_cost": _num(xi.price.sum(), 1)},
         "captain": captain_id,
         "players": players,

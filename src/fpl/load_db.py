@@ -148,6 +148,7 @@ def main() -> None:
             print(f"  {name:<13} {len(df):>6} rows")
     con.executescript((SQL_DIR / "features.sql").read_text())
     con.executescript((SQL_DIR / "upcoming.sql").read_text())
+    con.executescript((SQL_DIR / "horizon.sql").read_text())
     con.commit()
     con.close()
     print(f"[load] database written to {DB_PATH}")

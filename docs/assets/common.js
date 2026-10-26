@@ -1,5 +1,5 @@
 // Shared code for both pages: data loading, smooth scroll, scroll reveals, the pitch and charts.
-const FPL = {};
+const FPL = { afterLoad: [] };
 
 FPL.load = async () => {
   const res = await fetch("data/site.json", { cache: "no-cache" });
@@ -215,8 +215,9 @@ FPL.boot = (fn) => {
   FPL.nav();
   FPL.smooth();
   FPL.stage();
+  if (FPL.fxInit) FPL.fxInit();
   FPL.split();
-  FPL.load().then(fn).then(() => { FPL.split(); FPL.reveal(); }).catch((err) => {
+  FPL.load().then((d) => { fn(d); FPL.afterLoad.forEach((f) => f(d)); return d; }).then((d) => { FPL.split(); FPL.reveal(); if (FPL.fxAfter) FPL.fxAfter(d); }).catch((err) => {
     console.error(err);
     document.querySelector("main").insertAdjacentHTML("afterbegin",
       `<p class="notice" style="margin-top:120px">Couldn't load the predictions (${FPL.esc(err.message)}). Refresh the page to try again.</p>`);
@@ -245,7 +246,7 @@ FPL.scenes.chars = (ctx, w, h, t, m, base) => {
       const v = Math.min(1, wave * wave * 0.5 + glow * 0.95);
       if (v < 0.12) continue;
       // fade out over the left side, where the headline and text sit
-      const side = w > 900 ? Math.min(1, Math.max(0.08, (x - w * 0.4) / (w * 0.3))) : 0.35;
+      const side = FPL.loud ? 1 : w > 900 ? Math.min(1, Math.max(0.08, (x - w * 0.4) / (w * 0.3))) : 0.35;
       alpha = base * side;
       ctx.fillStyle = glow > 0.05 ? rgba(MINT, (0.1 + glow * 0.55) * alpha) : `rgba(150,170,165,${(v * 0.15 * alpha).toFixed(3)})`;
       ctx.fillText(chars[Math.min(chars.length - 1, Math.floor(v * chars.length))], x, y);
@@ -366,7 +367,7 @@ FPL.stage = () => {
     if (k < 1) k = Math.min(1, k + dt / 1100);
     ctx.clearRect(0, 0, w, h);
     const t = now / 1000;
-    const q = 0.75;  // overall strength of the background
+    const q = FPL.loud ? 1.25 : 0.75;  // overall strength of the background (loud mode turns it up)
     if (prev && k < 1) (FPL.scenes[prev] || FPL.scenes.none)(ctx, w, h, t, mouse, q * (1 - ease(k)), state);
     (FPL.scenes[cur] || FPL.scenes.none)(ctx, w, h, t, mouse, q * ease(k), state);
     if (!FPL.reduced) requestAnimationFrame(frame);

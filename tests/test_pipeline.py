@@ -87,7 +87,11 @@ def test_splits_do_not_overlap():
 LIVE_FEATURES = ["n_fixtures", "home_fixtures", "fixture_difficulty", "opp_attack_xg_l6",
                  "opp_defence_xga_l6", "team_attack_xg_l6", "points_l3", "points_l5", "minutes_l3",
                  "minutes_l5", "starts_l5", "xg_l5", "xa_l5", "xgc_l5", "bonus_l5", "bps_l5", "ict_l5",
-                 "points_std", "minutes_std", "xgi_total_std", "gws_so_far", "prev_ppg", "prev_minutes"]
+                 "points_std", "minutes_std", "xgi_total_std", "gws_so_far", "prev_ppg", "prev_minutes",
+                 # candidate features tested in experiments/ (not used by the model yet)
+                 "team_attack_xg_std", "team_defence_xga_std", "team_cs_rate_std", "opp_attack_xg_std",
+                 "opp_defence_xga_std", "defcon_l5", "defcon_std", "bonus_std", "starts_std",
+                 "points_p90_std", "xgi_p90_std"]
 
 
 def test_upcoming_features_match_training_features(tmp_path):
@@ -122,3 +126,16 @@ def test_upcoming_features_match_training_features(tmp_path):
     both = both[same_fixture]
     for col in LIVE_FEATURES:
         assert np.allclose(both[f"{col}_train"], both[f"{col}_live"], equal_nan=True), col
+
+
+def test_horizon_first_week_matches_upcoming():
+    """The planner's first gameweek must use exactly the same inputs as the live picks."""
+    with sqlite3.connect(DB_PATH) as con:
+        up = pd.read_sql("SELECT * FROM player_upcoming", con)
+        hz = pd.read_sql("SELECT * FROM player_horizon", con)
+    first = hz[hz["gw"] == up["gw"].iloc[0]]
+    assert len(first) == len(up)
+    both = up.merge(first, on="player_id", suffixes=("_up", "_hz"))
+    for col in LIVE_FEATURES:
+        assert np.allclose(both[f"{col}_up"], both[f"{col}_hz"], equal_nan=True), col
+    assert hz.groupby("player_id")["gw"].nunique().max() <= 6

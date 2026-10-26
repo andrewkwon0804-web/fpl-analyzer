@@ -71,6 +71,28 @@ def predict_next_gameweek(model) -> pd.DataFrame:
     return up[cols].sort_values("predicted_points", ascending=False)
 
 
+def predict_horizon(model) -> pd.DataFrame:
+    """Predicted points for each of the next six gameweeks (for the transfer planner).
+
+    Form is "as of now" for every week; only the fixture changes. A backtest on 2025-26
+    (experiments/horizon_backtest.py) shows accuracy fades slowly: rank correlation 0.71
+    one week ahead, 0.64 five weeks ahead.
+    """
+    with sqlite3.connect(DB_PATH) as con:
+        h = pd.read_sql("SELECT * FROM player_horizon", con)
+    if h.empty:
+        return h
+    h["position_code"] = h["position"].map(POSITION_CODES)
+    h["raw"] = model.predict(h[FEATURES])
+    # Injury flags matter most right now. Assume a flagged player gets back to full
+    # availability linearly over three gameweeks; an unflagged player stays at 100%.
+    weeks_out = h.groupby("player_id")["gw"].rank(method="dense") - 1
+    chance = h["chance_of_playing"].fillna(100) / 100
+    recovered = chance + (1 - chance) * (weeks_out / 3).clip(upper=1)
+    h["predicted_points"] = h["raw"] * recovered
+    return h[["gw", "player_id", "predicted_points", "fixture_difficulty", "home_fixtures", "n_fixtures"]]
+
+
 def write_meta(out) -> dict:
     """When the data was refreshed, and when the 'next' gameweek kicks off.
 
@@ -117,6 +139,7 @@ def main() -> dict:
     sig.to_csv(out / "season_so_far_significance.csv", index=False)
     weekly.to_csv(out / "season_so_far_weekly.csv", index=False)
     preds.to_csv(out / "next_gameweek_predictions.csv", index=False)
+    predict_horizon(model).to_csv(out / "horizon_predictions.csv", index=False)
     write_meta(out)
 
     # Every played gameweek of the live season, predicted vs actual (for the app's player lookup).

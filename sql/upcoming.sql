@@ -40,6 +40,12 @@ team_recent AS (        -- each team's last 6 finished matches (same window as t
     WHERE rn <= 6
     GROUP BY season, team_id
 ),
+team_season AS (        -- each team's whole season so far (same as the _std columns in team_form)
+    SELECT tf.season, tf.team_id, AVG(tf.xg_for) AS xg_for_std, AVG(tf.xg_against) AS xg_against_std,
+           AVG(CASE WHEN tf.goals_against = 0 THEN 1.0 ELSE 0.0 END) AS clean_sheet_rate_std
+    FROM team_form tf JOIN live USING (season)
+    GROUP BY tf.season, tf.team_id
+),
 fixture_ctx AS (        -- per team: double gameweeks have two fixtures, blank ones have none
     SELECT tfx.season, tfx.team_id,
            COUNT(*)             AS n_fixtures,
@@ -47,10 +53,17 @@ fixture_ctx AS (        -- per team: double gameweeks have two fixtures, blank o
            AVG(tfx.fdr)         AS fixture_difficulty,
            AVG(opp.xg_for_l6)   AS opp_attack_xg_l6,
            AVG(opp.xg_against_l6) AS opp_defence_xga_l6,
-           AVG(own.xg_for_l6)   AS team_attack_xg_l6
+           AVG(own.xg_for_l6)   AS team_attack_xg_l6,
+           AVG(owns.xg_for_std) AS team_attack_xg_std,
+           AVG(owns.xg_against_std) AS team_defence_xga_std,
+           AVG(owns.clean_sheet_rate_std) AS team_cs_rate_std,
+           AVG(opps.xg_for_std) AS opp_attack_xg_std,
+           AVG(opps.xg_against_std) AS opp_defence_xga_std
     FROM team_fixture tfx
     LEFT JOIN team_recent opp ON opp.season = tfx.season AND opp.team_id = tfx.opp_id
     LEFT JOIN team_recent own ON own.season = tfx.season AND own.team_id = tfx.team_id
+    LEFT JOIN team_season opps ON opps.season = tfx.season AND opps.team_id = tfx.opp_id
+    LEFT JOIN team_season owns ON owns.season = tfx.season AND owns.team_id = tfx.team_id
     GROUP BY tfx.season, tfx.team_id
 ),
 history AS (            -- every played gameweek of the live season, newest first
@@ -72,6 +85,12 @@ form AS (               -- same averages as features.sql, over the most recent r
            AVG(CASE WHEN rn <= 5 THEN bonus   END) AS bonus_l5,
            AVG(CASE WHEN rn <= 5 THEN bps     END) AS bps_l5,
            AVG(CASE WHEN rn <= 5 THEN ict     END) AS ict_l5,
+           AVG(CASE WHEN rn <= 5 THEN defcon  END) AS defcon_l5,
+           AVG(defcon)  AS defcon_std,
+           AVG(bonus)   AS bonus_std,
+           AVG(starts)  AS starts_std,
+           90.0 * SUM(points) / NULLIF(SUM(minutes), 0) AS points_p90_std,
+           90.0 * SUM(xg + xa) / NULLIF(SUM(CASE WHEN xg IS NOT NULL THEN minutes END), 0) AS xgi_p90_std,
            AVG(points)  AS points_std,
            AVG(minutes) AS minutes_std,
            SUM(xg + xa) AS xgi_total_std,
@@ -98,11 +117,14 @@ SELECT p.season, p.player_id, n.gw,
        p.web_name, p.position, t.name AS team, t.short_name AS team_short,
        fc.n_fixtures, fc.home_fixtures, fc.fixture_difficulty,
        fc.opp_attack_xg_l6, fc.opp_defence_xga_l6, fc.team_attack_xg_l6,
+       fc.team_attack_xg_std, fc.team_defence_xga_std, fc.team_cs_rate_std,
+       fc.opp_attack_xg_std, fc.opp_defence_xga_std,
        p.now_cost AS price,
        p.now_cost - COALESCE(f.first_price, p.now_cost) AS price_change_season,
        f.selected_by_prev,
        f.points_l3, f.points_l5, f.minutes_l3, f.minutes_l5, f.starts_l5,
-       f.xg_l5, f.xa_l5, f.xgc_l5, f.bonus_l5, f.bps_l5, f.ict_l5,
+       f.xg_l5, f.xa_l5, f.xgc_l5, f.bonus_l5, f.bps_l5, f.ict_l5, f.defcon_l5,
+       f.defcon_std, f.bonus_std, f.starts_std, f.points_p90_std, f.xgi_p90_std,
        f.points_std, f.minutes_std, f.xgi_total_std,
        COALESCE(f.gws_so_far, 0) AS gws_so_far,
        ps.prev_ppg, ps.prev_minutes,

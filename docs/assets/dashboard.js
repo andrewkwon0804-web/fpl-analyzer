@@ -259,9 +259,11 @@ FPL.boot((data) => {
       On average, following transfer trends adds little, while the most-owned players score the most.`;
   }
 
+  FPL.planner(data);
+
   // open the tab in the URL, or the best XI
   lookup(P[0].id);
   const start = location.hash.slice(1);
   if (start.startsWith("analysis")) { const sub = start.split("-")[1]; if (["value", "xg", "fdr", "crowd"].includes(sub)) curSub = sub; }
-  show(["xi", "players", "lookup", "record"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);
+  show(["xi", "players", "lookup", "record", "planner"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);
 });

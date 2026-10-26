@@ -39,7 +39,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 
 ## Explore it
 
-* **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. Plain HTML, CSS and JavaScript in [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. A **transfer planner** takes your 15-man squad, bank and free transfers, and finds the transfers that add the most predicted points over the next five gameweeks within the budget and three-per-club rule. A switch in the top bar turns on a loud version with every effect on. Plain HTML, CSS and JavaScript in [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
@@ -50,7 +50,22 @@ The pipeline also follows the season in progress. Each run re-downloads it, retr
 
 **Live picks.** The [website](https://andrewkwon0804-web.github.io/fpl-analyzer/) opens on the next gameweek: the predicted best XI, the captain, and the top picks by position and price. Live features are computed in [`sql/upcoming.sql`](sql/upcoming.sql). A test replays the season (hides the last played gameweek and rebuilds them) and checks they match the training features exactly, so live picks use the same inputs the model learned from. Players FPL has flagged are scaled by their chance of playing, which the model can't see on its own.
 
-To refresh during the season: `python run_pipeline.py`, then commit `reports/live/`.
+**Five weeks ahead.** [`sql/horizon.sql`](sql/horizon.sql) builds the same features for each of the next six gameweeks, swapping in each week's own fixture, and the planner uses them. A backtest on 2025-26 ([`experiments/horizon_backtest.py`](experiments/horizon_backtest.py)) shows accuracy fades slowly with distance:
+
+| Weeks ahead | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| Rank correlation per gameweek | 0.71 | 0.68 | 0.66 | 0.65 | 0.64 |
+| MAE, regular starters | 2.31 | 2.35 | 2.35 | 2.35 | 2.37 |
+
+To refresh during the season: `python run_pipeline.py`, then commit `reports/live/` and `docs/data/`.
+
+## What didn't work
+
+Early in 2026-27 the model rated Brighton's in-form players below names like Thiago and Mbeumo, which looked like it trusted last season too much. The experiments in [`experiments/`](experiments/) tested that:
+
+* **Is it biased against breakout players?** No. Regular starters averaging far more than last season (6.4 points a week against 3.3) scored 3.46 the following week; the model predicted 3.50. Players far below last season scored 2.79 against a prediction of 2.78. Hot and cold streaks regress, and the model already accounts for it ([`breakout_bias.py`](experiments/breakout_bias.py)).
+* **More features.** Twelve candidates, all built in SQL with the same no-leakage windows: defensive contributions (the 2025-26 rule), points and xGI per 90, bonus and starts per game, and each team's season-long attack, defence and clean-sheet rate. On the 2025-26 test, error for regular starters went from 2.311 to 2.315; on 2026-27 so far, from 2.343 to 2.368. Neither change is outside the noise, so the model keeps its original inputs ([`feature_sets.py`](experiments/feature_sets.py)). The columns stay in the database for when a second season of defensive-contribution data exists.
+* **Weighting recent seasons more** (2025-26 counted two or three times) moved this season's error by 0.002 and the best-XI points by +2 per gameweek, with a 95% range of -4 to +8. Not enough to adopt ([`season_weights.py`](experiments/season_weights.py)).
 
 ## Four findings
 
@@ -125,6 +140,10 @@ src/fpl/                 ingest, load_db, run_sql, leakage, model, live, picks, 
 sql/schema.sql           relational schema with keys and constraints
 sql/features.sql         feature engineering with window functions
 sql/upcoming.sql         the same features for the next, unplayed gameweek
+sql/horizon.sql          the same features for each of the next six gameweeks (transfer planner)
+sql/site/                analysis queries behind the website's findings
+experiments/             model experiments, including the ones that didn't help
+docs/                    the website (GitHub Pages)
 sql/analysis/            standalone analysis queries
 sql/tableau_exports.sql  flat views for Tableau
 tests/                   pytest checks for duplicates, double gameweeks, missing xG, and leakage
@@ -136,9 +155,10 @@ tableau/                 Tableau workbook, its generator script and CSV extracts
 ## Limitations and next steps
 
 * **Injury news is applied after the model, not learned.** Live picks scale predictions by FPL's chance-of-playing flag, but the archive only keeps an end-of-season snapshot of that flag, so the model can't be trained or tested on it.
-* **Rule change bias.** Defenders are under-predicted in 2025-26; adding defensive-contribution features once a second season of that data exists should close the gap.
+* **Rule change bias.** Defenders are under-predicted in 2025-26. Defensive-contribution features didn't help yet (see What didn't work), but should once a second season of that data exists.
 * **`starts` is incomplete in 2022-23**, because FPL began tracking it mid-season. Minutes-based features carry most of the signal anyway.
-* **Squad optimization.** Turning predictions into a full 15-player squad under the £100m budget and three-per-club rule is a linear programming problem (e.g. with PuLP).
+* **Transfer search is a beam search, not an exact optimizer.** It checks every legal single transfer, then extends the best 12 squads one transfer at a time. An integer program (e.g. with PuLP) would guarantee the best multi-transfer plan.
+* **Selling prices.** FPL sells a player for less than his current price if he rose after you bought him. The planner uses current prices, so the bank may need lowering by hand.
 
 ---
 Data: [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) (MIT) and the official FPL API. Not affiliated with the Premier League or FPL.

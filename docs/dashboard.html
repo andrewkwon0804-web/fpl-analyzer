@@ -18,7 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1792978870">
+<link rel="stylesheet" href="assets/site.css?v=1792980179">
+<script>try{var q=new URLSearchParams(location.search).get("fx");if(q)localStorage.setItem("fx",q);if((q||localStorage.getItem("fx"))==="loud")document.documentElement.classList.add("fx-loud");}catch(e){}</script>
 </head>
 <body>
 <header class="nav">
@@ -48,6 +49,7 @@
     <button role="tab" data-tab="players" aria-selected="false">All players</button>
     <button role="tab" data-tab="lookup" aria-selected="false">Player lookup</button>
     <button role="tab" data-tab="record" aria-selected="false">Track record</button>
+    <button role="tab" data-tab="planner" aria-selected="false">Transfer planner</button>
     <button role="tab" data-tab="analysis" aria-selected="false">Analysis</button>
   </div>
 
@@ -106,6 +108,30 @@
         <tbody id="edges"></tbody></table>
       <p class="hint" id="edges-note" style="margin-top:12px"></p>
     </div>
+  </section>
+
+  <section class="panel" id="tab-planner" role="tabpanel">
+    <div class="a-head"><h2>Transfer planner</h2>
+      <p id="plan-intro">Enter your 15 players, money in the bank and free transfers. The planner checks every legal transfer
+        and scores each squad by its predicted points over the next five gameweeks, with the best XI and captain picked each week.</p></div>
+    <div class="plan-grid">
+      <div class="box">
+        <div class="plan-top"><h3>Your squad</h3><div class="plan-actions">
+          <button class="chip" id="plan-example">Try an example squad</button><button class="chip" id="plan-clear">Clear</button></div></div>
+        <div id="squad"></div>
+        <div class="plan-opts">
+          <label>In the bank <span class="field-in">£<input id="bank" type="number" min="0" max="100" step="0.1" value="0.0">m</span></label>
+          <label>Free transfers <select id="ft"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+          <label class="check"><input type="checkbox" id="hits"> Allow extra transfers for -4 each</label>
+        </div>
+        <p class="hint" id="squad-msg"></p>
+        <button class="btn primary" id="plan-go" style="margin-top:14px">Find the best transfers <span class="chev">›</span></button>
+      </div>
+      <div id="plan-out"><div class="box empty-plan"><h3>Recommendations show up here</h3>
+        <p class="hint">Start by typing a player's name in each slot, or try the example squad.</p></div></div>
+    </div>
+    <p class="hint" style="margin-top:14px">Prices are current prices. FPL may sell your players for up to £0.1-0.3m less than that
+      if they rose after you bought them, so lower the bank figure if needed. Squads are saved in this browser.</p>
   </section>
 
   <section class="panel" id="tab-analysis" role="tabpanel">
@@ -176,7 +202,9 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1792978870"></script>
-<script src="assets/dashboard.js?v=1792978870"></script>
+<script src="assets/common.js?v=1792980179"></script>
+<script src="assets/fx.js?v=1792980179"></script>
+<script src="assets/planner.js?v=1792980179"></script>
+<script src="assets/dashboard.js?v=1792980179"></script>
 </body>
 </html>
