@@ -55,11 +55,14 @@ export default function PitchGL({ data }) {
     const tex = pitchTexture();
     const top = new THREE.Mesh(new THREE.PlaneGeometry(3.8, 5.4), new THREE.MeshStandardMaterial({ map: tex, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.55, roughness: 0.7 }));
     top.rotation.x = -Math.PI / 2; top.position.y = 0.111; board.add(top);
+    const fat = [];
     const pins = placed.map(({ p, x, z }, i) => {
       const cap = p.id === data.captain;
       const mat = new THREE.MeshStandardMaterial({ color: cap ? 0xffffff : 0x38e1a8, emissive: cap ? 0xffffff : 0x38e1a8, emissiveIntensity: cap ? 1.3 : 0.85 });
       const m = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1, 18), mat);
       m.position.set(x, 0, z); m.userData.i = i; board.add(m);
+      const f = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 1, 10), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+      f.userData.i = i; m.add(f); fat.push(f);
       const glow = new THREE.Mesh(new THREE.CircleGeometry(0.13, 32), new THREE.MeshBasicMaterial({ color: 0x38e1a8, transparent: true, opacity: 0.18 }));
       glow.rotation.x = -Math.PI / 2; glow.position.set(x, 0.115, z); board.add(glow);
       return { m, mat, h: p.pred * 0.32, base: mat.emissiveIntensity };
@@ -79,8 +82,14 @@ export default function PitchGL({ data }) {
     const local = (e) => { const b = el.getBoundingClientRect(); return [e.clientX - b.left, e.clientY - b.top]; };
     const down = (e) => { drag = { x: e.clientX, moved: 0 }; };
     const move = (e) => { mouse = local(e); if (drag) { const dx = e.clientX - drag.x; drag.x = e.clientX; drag.moved += Math.abs(dx); vel = dx * 0.008; rot += vel; } };
+    // a click is a press and release without dragging; look up the pin under it fresh
     const up = (e) => {
-      if (drag && drag.moved < 5 && hovered >= 0) { const a = anchor.current, [x, y] = local(e); a.style.left = `${x}px`; a.style.top = `${y}px`; open(placed[hovered].p, a, note(placed[hovered].p)); }
+      if (drag && drag.moved < 5) {
+        const [x, y] = local(e);
+        ptr.set((x / el.clientWidth) * 2 - 1, -(y / el.clientHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
+        const hit = ray.intersectObjects(fat, false)[0];
+        if (hit) { const a = anchor.current, pl = placed[hit.object.userData.i].p; a.style.left = `${x}px`; a.style.top = `${y}px`; open(pl, a, note(pl)); }
+      }
       drag = null;
     };
     el.addEventListener("pointerdown", down); el.addEventListener("pointermove", move); addEventListener("pointerup", up); el.addEventListener("pointerleave", () => { mouse = null; });
@@ -95,7 +104,7 @@ export default function PitchGL({ data }) {
       hovered = -1;
       if (mouse && !drag) {
         ptr.set((mouse[0] / el.clientWidth) * 2 - 1, -(mouse[1] / el.clientHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
-        const hit = ray.intersectObjects(pins.map((x) => x.m))[0]; if (hit) hovered = hit.object.userData.i;
+        const hit = ray.intersectObjects(fat, false)[0]; if (hit) hovered = hit.object.userData.i;
       }
       if (hovered === -1 && labels.current.hoverIdx >= 0) hovered = labels.current.hoverIdx;
       el.style.cursor = hovered >= 0 ? "pointer" : drag ? "grabbing" : "grab";

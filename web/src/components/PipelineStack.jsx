@@ -68,6 +68,8 @@ function pitchTex() {
   });
 }
 
+const LINKS = [["./dashboard.html#players", "Every player's prediction"], ["./dashboard.html#analysis-fdr", "Fixture difficulty"], ["#record", "Track record"], ["./dashboard.html#xi", "Best XI on the dashboard"]];
+
 const LAYERS = (data) => [
   { n: 1, title: "Data", head: "Every Premier League match since 2022-23.", body: `${data.analysis.rows.toLocaleString("en-US")} player rows from the official FPL API and Vaastav Anand's archive, loaded into SQLite.`, side: "left" },
   { n: 2, title: "Features", head: "Form, minutes, xG and fixture difficulty.", body: "Built in SQL. Every rolling window ends the week before, so a row never sees its own match.", side: "right" },
@@ -80,7 +82,8 @@ export default function PipelineStack({ data }) {
   const [shown, setShown] = useState(0);
   const [hover, setHover] = useState(-1);
   const [tip, setTip] = useState(null);
-  const uiHover = useRef(-1), pinAnchor = useRef(null);
+  const uiHover = useRef(-1), pinAnchor = useRef(null), selRef = useRef(-1);
+  const [sel, setSel] = useState(-1);
   const { open: openPop } = usePop();
   const layers = LAYERS(data);
   useEffect(() => {
@@ -121,7 +124,7 @@ export default function PipelineStack({ data }) {
 
     // picks: one pin per player in the best XI, rising out of the pitch
     const xi = data.players.filter((p) => p.xi), rowZ = { GK: 1.45, DEF: 0.75, MID: -0.2, FWD: -1.15 };
-    const pins = [];
+    const pins = [], fatPins = [];
     for (const pos of Object.keys(rowZ)) {
       const row = xi.filter((p) => p.pos === pos);
       row.forEach((p, i) => {
@@ -129,6 +132,9 @@ export default function PipelineStack({ data }) {
         const mat = new THREE.MeshStandardMaterial({ color: isCap ? 0xffffff : 0x38e1a8, emissive: isCap ? 0xffffff : 0x38e1a8, emissiveIntensity: isCap ? 1.4 : 0.9 });
         const m = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1, 16), mat);
         m.position.set((i + 1) / (row.length + 1) * 3.2 - 1.6, 0, rowZ[pos]); slabs[3].add(m); pins.push([m, h, p]); m.userData.player = p;
+        // a wider invisible cylinder around each pin so it's easy to hover and click
+        const fat = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 1, 10), new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false }));
+        fat.userData.player = p; m.add(fat); fatPins.push(fat);
       });
     }
 
@@ -143,14 +149,33 @@ export default function PipelineStack({ data }) {
     const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
     let mouse = null, drag = null, userRot = 0, vel = 0, hovered = -1, pinHit = null, opened = 0;
     const local = (e) => { const b = el.getBoundingClientRect(); return [e.clientX - b.left, e.clientY - b.top]; };
-    const down = (e) => { if (opened < 0.6) return; drag = { x: e.clientX, moved: 0 }; };
+    const down = (e) => { drag = { x: e.clientX, moved: 0 }; };
     const move = (e) => {
       mouse = local(e);
       if (drag) { const dx = e.clientX - drag.x; drag.x = e.clientX; drag.moved += Math.abs(dx); vel = dx * 0.008; userRot += vel; }
     };
+    // what is under a screen point: a player's pin first, then a layer
+    const pickAt = (x, y) => {
+      ptr.set((x / el.clientWidth) * 2 - 1, -(y / el.clientHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
+      const ph = ray.intersectObjects(fatPins, false)[0];
+      if (ph) return { player: ph.object.userData.player, layer: 3 };
+      const h = ray.intersectObjects(hitList, false)[0];
+      return { player: null, layer: h ? h.object.userData.layer : -1 };
+    };
     const up = (e) => {
-      if (drag && drag.moved < 5 && pinHit) {
-        const a = pinAnchor.current, [x, y] = local(e); a.style.left = `${x}px`; a.style.top = `${y}px`;
+      if (!drag || drag.moved >= 5) { drag = null; return; }
+      if (opened < 0.6) { // not open yet: a click scrolls to the point where the stack is fully open
+        drag = null;
+        const r = wrap.current, y = r.offsetTop + (r.offsetHeight - innerHeight) * 0.78;
+        if (window.__lenis) window.__lenis.scrollTo(y, { duration: 1.6 }); else scrollTo({ top: y, behavior: "smooth" });
+        return;
+      }
+      const [x, y] = local(e), hit = pickAt(x, y);
+      pinHit = hit.player;
+      // clicking a layer selects it (its callout shows a link); clicking empty space clears it
+      if (!hit.player) { selRef.current = selRef.current === hit.layer ? -1 : hit.layer; setSel(selRef.current); }
+      if (hit.player) {
+        const a = pinAnchor.current; a.style.left = `${x}px`; a.style.top = `${y}px`;
         openPop(pinHit, a, `Ranked #${data.rank[pinHit.id]} of ${data.players.length} by predicted points.`);
       }
       drag = null;
@@ -174,7 +199,9 @@ export default function PipelineStack({ data }) {
     let raf = 0, p = 0, pt = 0, t0 = performance.now();
     const frame = (now) => {
       const r = wrap.current.getBoundingClientRect();
-      pt = clamp(-r.top / (r.height - innerHeight)); p += (pt - p) * 0.08;
+      const dt = Math.min(0.1, (now - (frame.last || now)) / 1000); frame.last = now;
+      // ease towards the scroll position at the same speed whatever the frame rate
+      pt = clamp(-r.top / (r.height - innerHeight)); p += (pt - p) * (1 - Math.exp(-dt * 5));
       const t = (now - t0) / 1000;
       // camera: from straight above to a three-quarter view, pulling back as the stack opens
       const k = span(p, 0.0, 0.3), open = span(p, 0.25, 0.7), gap = 0.24 + open * 1.25;
@@ -190,12 +217,11 @@ export default function PipelineStack({ data }) {
       // what is under the pointer
       hovered = uiHover.current; pinHit = null;
       if (mouse && open > 0.6 && !drag) {
-        ptr.set((mouse[0] / el.clientWidth) * 2 - 1, -(mouse[1] / el.clientHeight) * 2 + 1); ray.setFromCamera(ptr, camera);
-        const ph = ray.intersectObjects(pins.map((x) => x[0]))[0];
-        if (ph) { pinHit = ph.object.userData.player; hovered = 3; }
-        else { const h = ray.intersectObjects(hitList, false)[0]; if (h) hovered = h.object.userData.layer; }
+        const hit = pickAt(mouse[0], mouse[1]);
+        pinHit = hit.player; if (hit.layer >= 0) hovered = hit.layer;
       }
-      el.style.cursor = pinHit ? "pointer" : drag ? "grabbing" : open > 0.6 ? "grab" : "default";
+      if (hovered === -1) hovered = selRef.current;
+      el.style.cursor = pinHit ? "pointer" : drag ? "grabbing" : open > 0.6 ? "grab" : "pointer";
       setHover((v) => (v === hovered ? v : hovered));
       setTip((v) => (pinHit ? (v && v.p === pinHit && Math.abs(v.x - mouse[0]) < 2 ? v : { p: pinHit, x: mouse[0], y: mouse[1] }) : v ? null : v));
       [0, 1, 2, 3].forEach((i) => {
@@ -260,6 +286,10 @@ export default function PipelineStack({ data }) {
             </div>
             <p className="mt-4 text-[15px] text-text">{l.head}</p>
             <p className="mt-2 font-mono text-[12px] leading-relaxed text-text3">{l.body}</p>
+            <a href={LINKS[i][0]} onClick={(e) => { if (LINKS[i][0].startsWith("#")) { e.preventDefault(); document.querySelector(LINKS[i][0])?.scrollIntoView({ behavior: "smooth" }); } }}
+              className={`grid font-mono text-[12px] uppercase tracking-[0.1em] text-mint transition-[grid-template-rows,opacity,margin] duration-500 ${sel === i || hover === i ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <span className="overflow-hidden">{LINKS[i][1]} ›</span>
+            </a>
           </div>
         ))}
         <span ref={pinAnchor} data-pop className="pointer-events-none absolute h-0 w-0" />
@@ -268,7 +298,7 @@ export default function PipelineStack({ data }) {
             style={{ left: tip.x, top: tip.y }}>{tip.p.name} <span className="text-text3">{tip.p.short}</span> <span className="text-mint">{tip.p.pred.toFixed(1)}</span></div>
         )}
         <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3">
-          {shown ? "Drag to turn · hover a layer · click a pin" : "Scroll to open the stack"}
+          {shown ? "Drag to turn · click a layer · click a pin for the player" : "Scroll or click to open the stack"}
         </div>
       </div>
     </section>
