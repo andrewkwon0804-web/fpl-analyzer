@@ -43,24 +43,6 @@ FPL.fxInit = () => {
   // ---- film grain
   const grain = document.createElement("div"); grain.className = "fx-grain"; document.body.appendChild(grain);
 
-  // ---- custom cursor with a trailing ring
-  if (fine) {
-    const ring = document.createElement("div"), dot = document.createElement("div"), lab = document.createElement("span");
-    ring.className = "fx-ring"; dot.className = "fx-dot"; ring.appendChild(lab);
-    document.body.append(ring, dot);
-    let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
-    addEventListener("pointermove", (e) => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px,${y}px)`; }, { passive: true });
-    const loop = () => { rx += (x - rx) * 0.16; ry += (y - ry) * 0.16; ring.style.transform = `translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); };
-    loop();
-    document.addEventListener("pointerover", (e) => {
-      const t = e.target.closest("a, button, input, select, .find, .pcard, .player, .c, circle[data-tip], rect[data-tip]");
-      ring.classList.toggle("big", !!t);
-      lab.textContent = t && t.matches(".find") ? "open" : t && t.matches(".pcard, .player") ? "view" : "";
-    });
-    addEventListener("pointerdown", () => ring.classList.add("press"));
-    addEventListener("pointerup", () => ring.classList.remove("press"));
-  }
-
   // ---- magnetic buttons
   if (fine) document.querySelectorAll(".btn, .chip, .tabs button").forEach((b) => {
     b.addEventListener("pointermove", (e) => {

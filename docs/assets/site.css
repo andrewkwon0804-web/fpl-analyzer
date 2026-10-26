@@ -516,14 +516,6 @@ main, footer { position: relative; z-index: 1; }
 @keyframes grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-6%, 4%); } 40% { transform: translate(5%, -7%); }
   60% { transform: translate(-3%, 8%); } 80% { transform: translate(7%, 2%); } 100% { transform: translate(0, 0); } }
 
-@media (hover: hover) and (pointer: fine) { html.fx-loud, html.fx-loud * { cursor: none !important; } }
-.fx-ring, .fx-dot { position: fixed; left: 0; top: 0; z-index: 300; pointer-events: none; }
-.fx-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 10px var(--mint); }
-.fx-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; border: 1.5px solid rgba(94, 240, 176, .7);
-  display: grid; place-items: center; transition: width .3s var(--ease-out), height .3s var(--ease-out), margin .3s var(--ease-out), background .3s; mix-blend-mode: difference; }
-.fx-ring.big { width: 74px; height: 74px; margin: -37px 0 0 -37px; background: rgba(94, 240, 176, .15); }
-.fx-ring.press { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
-.fx-ring span { font: 600 10px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--mint); }
 
 .fx-confetti { position: fixed; inset: 0; z-index: 250; pointer-events: none; width: 100%; height: 100%; }
 
