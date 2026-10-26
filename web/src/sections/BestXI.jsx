@@ -1,4 +1,3 @@
-import Pitch from "../components/Pitch.jsx";
 import { Head } from "./Story.jsx";
 import { Reveal, CountUp } from "../components/ui.jsx";
 import { usePop } from "../components/Popover.jsx";
@@ -10,12 +9,11 @@ export default function BestXI({ data }) {
   const total = data.players.filter((p) => p.xi).reduce((s, p) => s + p.pred, 0) + cap.pred;
   return (
     <section id="xi" data-scene="floor" data-tint="94 240 176" data-tx="30%" className="page relative py-24 lg:py-32">
-      <Head n="01" kicker="Best XI" title={`Gameweek ${m.gw} best XI`}>
-        No budget limit: this XI costs £{m.xi_cost}m. Click a player for his next five gameweeks.
+      <Head n="01" kicker="This week" title={`Captain, total and flags`}>
+        The best XI above has no budget limit and costs £{m.xi_cost}m. Use it for transfer targets and the captain, not as a squad to copy.
       </Head>
-      <div className="mt-12 grid gap-4 lg:grid-cols-[1.35fr_1fr]">
-        <Reveal><Pitch data={data} /></Reveal>
-        <div className="grid content-start gap-4">
+      <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="contents">
           <Reveal delay={60} className="corners p-6">
             <div className="mono-label text-text3">Captain</div>
             <button data-pid={cap.id} onClick={(e) => open(cap, e.currentTarget, "Highest predicted points this week, so his points are doubled.")}

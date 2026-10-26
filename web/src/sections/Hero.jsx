@@ -1,5 +1,5 @@
 import { animated, useSpring } from "@react-spring/web";
-import Ball from "../components/Ball.jsx";
+import Pitch3D from "../components/Pitch3D.jsx";
 import Finder from "../components/Finder.jsx";
 import FlipClock from "../components/wm/FlipClock.jsx";
 import { Label, Readout } from "../components/hud.jsx";
@@ -26,7 +26,7 @@ export default function Hero({ data }) {
   const updated = new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
   const onPick = (p, input) => open(p, input, `Ranked #${data.rank[p.id]} of ${data.players.length} by predicted points.${p.xi ? " In this week's best XI." : ""}`);
   return (
-    <section id="top" data-scene="dust" data-tint="94 240 176" data-tx="72%" className="page relative pb-14 pt-28 lg:pt-32">
+    <section id="top" data-scene="dust" data-tint="94 240 176" data-tint2="106 168 255" data-tx="70%" className="page relative pb-14 pt-28 lg:pt-32">
       <animated.div style={fx(0)} className="flex flex-wrap items-center justify-between gap-3">
         <Label>FPL Points Lab · {m.season}</Label>
         <span className={`mono-label flex items-center gap-2 ${data.stale ? "text-amber" : "text-mint"}`}>
@@ -35,28 +35,30 @@ export default function Hero({ data }) {
         </span>
       </animated.div>
 
-      <div className="relative mt-8 grid items-center gap-6 lg:mt-4 lg:grid-cols-[1.15fr_1fr]">
+      <div className="relative mt-8 grid items-center gap-4 lg:mt-2 lg:grid-cols-[1fr_1.05fr]">
         <div className="relative z-10">
-          <animated.h1 style={fx(0.15)} className="font-display text-[clamp(60px,8.4vw,150px)] font-medium leading-[0.86] tracking-[-0.055em]">
-            Every FPL<br />player,<br /><span className="text-mint">predicted.</span>
+          <animated.h1 style={fx(0.15)} className="font-display text-[clamp(60px,7.4vw,128px)] font-medium leading-[0.86] tracking-[-0.055em]">
+            Every FPL<br />player,<br /><span className="bg-gradient-to-r from-mint to-sky bg-clip-text text-transparent">predicted.</span>
           </animated.h1>
-          <animated.p style={fx(0.3)} className="mt-8 max-w-[520px] text-[clamp(16px,1.25vw,18px)] leading-relaxed text-text2">
+          <animated.p style={fx(0.3)} className="mt-7 max-w-[480px] text-[clamp(16px,1.2vw,18px)] leading-relaxed text-text2">
             Points for all {data.players.length} players in gameweek {m.gw}, from a model trained on {data.analysis.rows.toLocaleString("en-US")} player
             matches since 2022. It retrains after every gameweek.
           </animated.p>
-          <animated.div style={fx(0.42)} className="mt-8"><Finder data={data} onPick={onPick} /></animated.div>
-          <animated.div style={fx(0.52)} className="mt-5 flex flex-wrap gap-3">
+          <animated.div style={fx(0.42)} className="mt-7"><Finder data={data} onPick={onPick} /></animated.div>
+          <animated.div style={fx(0.52)} className="mt-4 flex flex-wrap gap-3">
             <Button href="./dashboard.html">Open the dashboard</Button>
-            <Button variant="ghost" href="#xi" onClick={(e) => { e.preventDefault(); goTo("#xi"); }}>This week's XI</Button>
+            <Button variant="ghost" href="./dashboard.html#planner">Plan transfers</Button>
           </animated.div>
         </div>
-        <animated.div style={fx(0.2)} className="relative mx-auto w-full max-w-[640px] lg:-ml-10 lg:max-w-none">
-          <Ball data={data} />
-          <p className="mono-label -mt-4 text-center text-[10px] text-text3">{data.players.length} dots, one per player · size = predicted points · drag to spin</p>
+        <animated.div style={fx(0.25)} className="relative -mx-4 sm:-mx-8 lg:mx-0">
+          <Pitch3D data={data} />
+          <div className="mono-label relative mt-2 flex flex-wrap justify-center gap-x-6 gap-y-1 text-center text-[10px] text-text3">
+            <span>Gameweek {m.gw} best XI</span><span>Pin height = predicted points</span>
+          </div>
         </animated.div>
       </div>
 
-      <animated.div style={fx(0.6)} className="mt-12 grid gap-6 lg:grid-cols-[auto_1fr] lg:items-end">
+      <animated.div style={fx(0.6)} className="mt-10 grid gap-6 lg:grid-cols-[auto_1fr] lg:items-end">
         {dl && (
           <div>
             <Label className="mb-3">GW{dl.gw} deadline</Label>

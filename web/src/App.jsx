@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useSiteData } from "./lib/data.js";
-import Stage from "./components/Stage.jsx";
+import Aurora from "./components/Aurora.jsx";
 import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
@@ -28,7 +28,7 @@ function Skeleton() {
   );
 }
 
-const TOPICS = [["top", "Overview"], ["xi", "Best XI"], ["last", "Last gameweek"], ["how", "How it works"], ["record", "Track record"],
+const TOPICS = [["top", "Overview"], ["xi", "This week"], ["last", "Last gameweek"], ["how", "How it works"], ["record", "Track record"],
   ["findings", "Findings"], ["picks", "Top 14"], ["faq", "Questions"]].map(([id, title]) => ({ id, title }));
 
 function Page({ data }) {
@@ -67,7 +67,7 @@ export default function App() {
   const { data, error } = useSiteData();
   return (
     <>
-      <Stage />
+      <Aurora />
       {error ? (
         <p className="page relative z-10 pt-40 text-text2">Couldn't load the predictions ({error}). Refresh the page to try again.</p>
       ) : !data ? (
