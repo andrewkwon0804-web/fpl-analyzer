@@ -50,7 +50,11 @@ FPL.reveal = (root = document) => {
     FPL.runHook(e.target);
     io.unobserve(e.target);
   }), { threshold: 0.18, rootMargin: "0px 0px -6% 0px" });
-  els.forEach((el) => io.observe(el));
+  // Whatever is already on screen at load shows straight away (with its stagger delay).
+  els.forEach((el) => {
+    if (el.getBoundingClientRect().top < innerHeight * 0.92) { el.classList.add("in"); FPL.runHook(el); }
+    else io.observe(el);
+  });
 };
 FPL.runHook = (el) => {
   const fn = el.dataset.revealFn;
