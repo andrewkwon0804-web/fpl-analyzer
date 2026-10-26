@@ -1,0 +1,1493 @@
+{
+ "weeks": [
+  {
+   "gw": 1,
+   "finished": true,
+   "points": 44,
+   "hits": 0,
+   "transfers": [],
+   "bank": 0.0,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 4.39,
+     "start": true,
+     "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 4.03,
+     "start": true,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 6,
+     "name": "Saliba",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.87,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 3.82,
+     "start": true,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 533,
+     "name": "Mukiele",
+     "team": "SUN",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 3.74,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 8.0,
+     "pred": 4.01,
+     "start": true,
+     "points": 0,
+     "minutes": 82
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 2.95,
+     "start": false,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 125,
+     "name": "Georginio",
+     "team": "BHA",
+     "pos": "FWD",
+     "price": 5.5,
+     "pred": 1.9,
+     "start": false,
+     "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.88,
+     "start": true,
+     "points": 7,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 5.0,
+     "pred": 3.58,
+     "start": false,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 12.0,
+     "pred": 5.22,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 3.99,
+     "start": true,
+     "points": 3,
+     "minutes": 67
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 3.69,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 3.4,
+     "start": true,
+     "points": 1,
+     "minutes": 11
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 3.08,
+     "start": false,
+     "points": 9,
+     "minutes": 90
+    }
+   ],
+   "subs": [
+    [
+     6,
+     544
+    ],
+    [
+     533,
+     346
+    ]
+   ]
+  },
+  {
+   "gw": 2,
+   "finished": true,
+   "points": 107,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 346,
+     "in": 464
+    }
+   ],
+   "bank": 0.0,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 4.89,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 4.72,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 4.09,
+     "start": true,
+     "points": 12,
+     "minutes": 90
+    },
+    {
+     "id": 6,
+     "name": "Saliba",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 0.48,
+     "start": false,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 533,
+     "name": "Mukiele",
+     "team": "SUN",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 0.35,
+     "start": false,
+     "points": 9,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 5.52,
+     "start": true,
+     "points": 8,
+     "minutes": 81
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 8.0,
+     "pred": 4.42,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 125,
+     "name": "Georginio",
+     "team": "BHA",
+     "pos": "FWD",
+     "price": 5.5,
+     "pred": 2.98,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.44,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 5.0,
+     "pred": 2.89,
+     "start": false,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 12.0,
+     "pred": 6.01,
+     "start": true,
+     "points": 23,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 4.21,
+     "start": true,
+     "points": 5,
+     "minutes": 84
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 4.14,
+     "start": true,
+     "points": 13,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 3.58,
+     "start": true,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 2.06,
+     "start": false,
+     "points": 1,
+     "minutes": 61
+    }
+   ],
+   "subs": [
+    [
+     125,
+     239
+    ]
+   ]
+  },
+  {
+   "gw": 3,
+   "finished": true,
+   "points": 34,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 6,
+     "in": 388
+    }
+   ],
+   "bank": 0.0,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 4.76,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 3.9,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 3.44,
+     "start": true,
+     "points": 1,
+     "minutes": 16
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 2.33,
+     "start": false,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 533,
+     "name": "Mukiele",
+     "team": "SUN",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 2.31,
+     "start": false,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.1,
+     "pred": 5.16,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 8.0,
+     "pred": 4.35,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 125,
+     "name": "Georginio",
+     "team": "BHA",
+     "pos": "FWD",
+     "price": 5.5,
+     "pred": 2.46,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 5.0,
+     "pred": 3.1,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 2.88,
+     "start": false,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 12.0,
+     "pred": 6.88,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 7.9,
+     "pred": 4.5,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 3.92,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 3.43,
+     "start": true,
+     "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 1.77,
+     "start": false,
+     "points": 2,
+     "minutes": 76
+    }
+   ],
+   "subs": [
+    [
+     125,
+     229
+    ]
+   ]
+  },
+  {
+   "gw": 4,
+   "finished": true,
+   "points": 52,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 533,
+     "in": 204
+    }
+   ],
+   "bank": 1.0,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 4.64,
+     "start": true,
+     "points": 1,
+     "minutes": 76
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 4.41,
+     "start": true,
+     "points": 9,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.62,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 2.78,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 2.56,
+     "start": false,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 7.9,
+     "pred": 4.45,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.2,
+     "pred": 3.83,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 125,
+     "name": "Georginio",
+     "team": "BHA",
+     "pos": "FWD",
+     "price": 5.4,
+     "pred": 1.73,
+     "start": false,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.57,
+     "start": true,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 5.0,
+     "pred": 2.62,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 12.0,
+     "pred": 6.59,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.4,
+     "pred": 4.58,
+     "start": true,
+     "points": 6,
+     "minutes": 80
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 7.9,
+     "pred": 4.18,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 3.01,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 2.03,
+     "start": false,
+     "points": 4,
+     "minutes": 90
+    }
+   ],
+   "subs": [
+    [
+     84,
+     388
+    ]
+   ]
+  },
+  {
+   "gw": 5,
+   "finished": true,
+   "points": 48,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 125,
+     "in": 346
+    }
+   ],
+   "bank": 0.4,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.1,
+     "pred": 4.34,
+     "start": true,
+     "points": 14,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 3.77,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.58,
+     "start": true,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 3.22,
+     "start": true,
+     "points": 7,
+     "minutes": 90
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.4,
+     "pred": 1.67,
+     "start": false,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 5.05,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.2,
+     "pred": 4.42,
+     "start": true,
+     "points": 0,
+     "minutes": 90
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 7.8,
+     "pred": 4.41,
+     "start": true,
+     "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.92,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.9,
+     "pred": 2.2,
+     "start": false,
+     "points": 0,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 12.0,
+     "pred": 7.63,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 5.61,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.4,
+     "pred": 4.14,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 2.77,
+     "start": false,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 2.7,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    }
+   ],
+   "subs": []
+  },
+  {
+   "gw": 6,
+   "finished": true,
+   "points": 30,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 84,
+     "in": 305
+    }
+   ],
+   "bank": 1.8,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 305,
+     "name": "Davis",
+     "team": "IPS",
+     "pos": "DEF",
+     "price": 4.0,
+     "pred": 4.28,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 4.27,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.2,
+     "pred": 3.98,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 3.08,
+     "start": false,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.01,
+     "start": false,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 7.8,
+     "pred": 4.13,
+     "start": true,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.2,
+     "pred": 4.02,
+     "start": true,
+     "points": 2,
+     "minutes": 77
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 3.22,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.82,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.9,
+     "pred": 2.89,
+     "start": false,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 11.9,
+     "pred": 7.11,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 4.59,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.4,
+     "pred": 4.29,
+     "start": true,
+     "points": 7,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 3.42,
+     "start": true,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 3.32,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    }
+   ],
+   "subs": []
+  },
+  {
+   "gw": 7,
+   "finished": true,
+   "points": 44,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 305,
+     "in": 115
+    }
+   ],
+   "bank": 0.6,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 115,
+     "name": "De Cuyper",
+     "team": "BHA",
+     "pos": "DEF",
+     "price": 5.2,
+     "pred": 4.8,
+     "start": true,
+     "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 4.08,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 7.9,
+     "pred": 3.74,
+     "start": true,
+     "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.2,
+     "pred": 3.37,
+     "start": true,
+     "points": 0,
+     "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 1.92,
+     "start": false,
+     "points": 0,
+     "minutes": 90
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 4.19,
+     "start": true,
+     "points": 9,
+     "minutes": 90
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 7.8,
+     "pred": 4.06,
+     "start": true,
+     "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.2,
+     "pred": 4.05,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.19,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.9,
+     "pred": 2.92,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 11.8,
+     "pred": 5.27,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.3,
+     "pred": 4.32,
+     "start": true,
+     "points": 9,
+     "minutes": 90
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 3.74,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.4,
+     "pred": 3.26,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 3.19,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    }
+   ],
+   "subs": [
+    [
+     480,
+     544
+    ]
+   ]
+  },
+  {
+   "gw": 8,
+   "finished": false,
+   "points": null,
+   "hits": 0,
+   "transfers": [
+    {
+     "out": 480,
+     "in": 40
+    }
+   ],
+   "bank": 0.5,
+   "free_transfers": 1,
+   "captain": 426,
+   "squad": [
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 7.9,
+     "pred": 4.46,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.72,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 3.18,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 115,
+     "name": "De Cuyper",
+     "team": "BHA",
+     "pos": "DEF",
+     "price": 5.3,
+     "pred": 2.52,
+     "start": false,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.2,
+     "pred": 2.3,
+     "start": false,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 106,
+     "name": "Thiago",
+     "team": "BRE",
+     "pos": "FWD",
+     "price": 7.8,
+     "pred": 5.09,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.1,
+     "pred": 4.04,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.1,
+     "pred": 3.91,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.9,
+     "pred": 2.86,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 2.71,
+     "start": false,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 426,
+     "name": "B.Fernandes",
+     "team": "MUN",
+     "pos": "MID",
+     "price": 11.7,
+     "pred": 5.73,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 40,
+     "name": "Rogers",
+     "team": "CHE",
+     "pos": "MID",
+     "price": 8.0,
+     "pred": 5.72,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.4,
+     "pred": 4.49,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.4,
+     "pred": 3.48,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 2.68,
+     "start": false,
+     "points": null,
+     "minutes": null
+    }
+   ],
+   "subs": []
+  }
+ ],
+ "fpl": {}
+}
