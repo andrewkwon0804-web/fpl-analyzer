@@ -200,10 +200,6 @@ FPL.planner = (data) => {
       ? `<div class="option"><div class="head"><h3>No transfer adds points</h3></div><p class="hint" style="margin-top:8px">
           No legal transfer improves this squad's predicted points over ${range}. Saving the transfer is the best move.</p></div>` : "";
     document.getElementById("plan-out").innerHTML = [best, ...useful.filter((o) => o !== best)].map(card).join("") + none;
-    if (FPL.burst && best.net > 0) {  // loud mode: celebrate a good transfer
-      const r = document.querySelector(".option.best").getBoundingClientRect();
-      FPL.burst(r.right - 60, r.top + 30, 60);
-    }
   }
   function run() {
     const ids = readSquad(), problem = validate(ids);

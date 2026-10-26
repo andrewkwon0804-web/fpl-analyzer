@@ -52,31 +52,6 @@ FPL.fxInit = () => {
     b.addEventListener("pointerleave", () => { b.style.transform = ""; });
   });
 
-  // ---- confetti, used only when the transfer planner finds a transfer that adds points
-  const cv = document.createElement("canvas"); cv.className = "fx-confetti"; document.body.appendChild(cv);
-  const cx = cv.getContext("2d"); let bits = [];
-  const sizeCv = () => { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; cx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); };
-  sizeCv(); addEventListener("resize", sizeCv);
-  FPL.burst = (x, y, n = 28) => {
-    const cols = ["#5ef0b0", "#6aa8ff", "#f5c451", "#eef1ef", "#ff7a8a"];
-    for (let i = 0; i < n; i++) {
-      const a = Math.random() * Math.PI * 2, v = 3 + Math.random() * 6;
-      bits.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.4,
-        s: 4 + Math.random() * 5, c: cols[i % cols.length], life: 1 });
-    }
-  };
-  const draw = () => {
-    cx.clearRect(0, 0, innerWidth, innerHeight);
-    bits = bits.filter((b) => b.life > 0);
-    for (const b of bits) {
-      b.vy += 0.22; b.vx *= 0.985; b.x += b.vx; b.y += b.vy; b.r += b.vr; b.life -= 0.012;
-      cx.save(); cx.translate(b.x, b.y); cx.rotate(b.r); cx.globalAlpha = Math.max(0, b.life);
-      cx.fillStyle = b.c; cx.fillRect(-b.s / 2, -b.s / 4, b.s, b.s / 2); cx.restore();
-    }
-    requestAnimationFrame(draw);
-  };
-  draw();
-
   // ---- content skews a little with scroll speed
   let lastY = scrollY, skew = 0;
   const skewEls = () => document.querySelectorAll("section.block, .hero, .dash > *");
