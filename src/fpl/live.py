@@ -12,7 +12,7 @@ import sqlite3
 import numpy as np
 import pandas as pd
 
-from fpl.config import DB_PATH, FINISHED_SEASONS, LIVE_SEASON, REPORTS_DIR
+from fpl.config import DB_PATH, FINISHED_SEASONS, LIVE_SEASON, RAW_DIR, REPORTS_DIR
 from fpl.model import (FEATURES, POSITION_CODES, TARGET, baselines, evaluate, load_features,
                        make_model, paired_bootstrap, per_gameweek)
 
@@ -83,8 +83,10 @@ def write_meta(out) -> dict:
         nxt = con.execute("""SELECT gw, MIN(kickoff_time) FROM fixtures
                              WHERE season = ? AND finished = 0 AND gw > ?""",
                           (LIVE_SEASON, last_played or 0)).fetchone()
+    source_file = RAW_DIR / LIVE_SEASON / "SOURCE"  # written by fetch_official.py
+    source = json.loads(source_file.read_text())["source"] if source_file.exists() else "open FPL archive"
     meta = {"season": LIVE_SEASON, "last_played_gw": last_played, "next_gw": nxt[0],
-            "next_gw_first_kickoff": nxt[1],
+            "next_gw_first_kickoff": nxt[1], "source": source,
             "refreshed_at": pd.Timestamp.now(tz="UTC").isoformat(timespec="seconds")}
     (out / "meta.json").write_text(json.dumps(meta, indent=2))
     kickoff = pd.Timestamp(meta["next_gw_first_kickoff"]) if meta["next_gw_first_kickoff"] else None
