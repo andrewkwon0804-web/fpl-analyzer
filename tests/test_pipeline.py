@@ -139,3 +139,26 @@ def test_horizon_first_week_matches_upcoming():
     for col in LIVE_FEATURES:
         assert np.allclose(both[f"{col}_up"], both[f"{col}_hz"], equal_nan=True), col
     assert hz.groupby("player_id")["gw"].nunique().max() <= 6
+
+
+def test_model_team_follows_fpl_rules():
+    """The simulated team is always a legal FPL squad and never overspends."""
+    import json as _json
+    from fpl import model_team
+    team = _json.loads((model_team.LIVE / "model_team.json").read_text())
+    for w in team["weeks"]:
+        squad = w["squad"]
+        assert len(squad) == 15 and sum(p["start"] for p in squad) == 11
+        counts = pd.Series([p["pos"] for p in squad]).value_counts().to_dict()
+        assert counts == model_team.QUOTA
+        assert pd.Series([p["team"] for p in squad]).value_counts().max() <= model_team.MAX_PER_CLUB
+        assert w["bank"] >= -1e-9
+        assert len(w["transfers"]) <= model_team.MAX_TRANSFERS
+    assert round(sum(p["price"] for p in team["weeks"][0]["squad"]), 1) <= model_team.BUDGET
+
+
+def test_selling_price_rule():
+    from fpl.model_team import selling_price
+    assert selling_price(5.0, 5.3) == 5.1   # keep half of a £0.3m rise, rounded down
+    assert selling_price(5.0, 5.4) == 5.2
+    assert selling_price(5.0, 4.8) == 4.8   # drops are passed on in full

@@ -141,6 +141,7 @@ def build() -> dict:
         "last_season_edge": last_season_edge(),
         "analysis": analysis(int(nxt.gw.iloc[0])),
         "last_gw": last_gameweek(played, pd.read_csv(live / "season_so_far_weekly.csv")),
+        "model_team": json.loads((live / "model_team.json").read_text()) if (live / "model_team.json").exists() else None,
     }
 
 

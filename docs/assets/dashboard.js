@@ -260,6 +260,68 @@ FPL.boot((data) => {
   }
 
   FPL.planner(data);
+  drawTeam();
+
+  // ---------------- model team
+  function drawTeam() {
+    const T = data.model_team;
+    const panel = document.getElementById("tab-team");
+    if (!T) { panel.innerHTML = '<p class="hint">The model team appears after the next pipeline run.</p>'; return; }
+    const done = T.weeks.filter((w) => w.finished), next = T.weeks.find((w) => !w.finished);
+    const total = done.reduce((s, w) => s + w.points, 0);
+    const avgFpl = done.filter((w) => T.fpl[w.gw]).map((w) => T.fpl[w.gw].average);
+    const fplTotal = avgFpl.length === done.length ? avgFpl.reduce((s, v) => s + v, 0) : null;
+    const best = done.reduce((a, b) => (b.points > a.points ? b : a));
+    const moves = done.reduce((s, w) => s + w.transfers.length, 0) + (next ? next.transfers.length : 0);
+    const hits = done.reduce((s, w) => s + w.hits, 0);
+    document.getElementById("team-stats").innerHTML = `
+      <div class="fact"><div class="t">Total, GW1-${done[done.length - 1].gw}<span>after hits</span></div><div class="v good num">${total}</div>
+        <p>${fplTotal !== null ? `${total - fplTotal >= 0 ? "+" : ""}${total - fplTotal} against the average FPL manager (${fplTotal}).` : `${(total / done.length).toFixed(1)} points a gameweek.`}</p></div>
+      <div class="fact"><div class="t">Best gameweek<span>GW${best.gw}</span></div><div class="v num">${best.points}</div>
+        <p>Captain ${FPL.esc((best.squad.find((p) => p.id === best.captain) || {}).name || "")}.</p></div>
+      <div class="fact"><div class="t">Transfers<span>${hits ? `${hits} pts in hits` : "no hits taken"}</span></div><div class="v num">${moves}</div>
+        <p>£${(next || done[done.length - 1]).bank.toFixed(1)}m in the bank now.</p></div>`;
+    // bars with the FPL average as a line when it's known
+    const svg = document.getElementById("team-chart"), W = FPL.autoW(svg), H = 280, pad = { l: 40, r: 16, t: 18, b: 34 };
+    const top = Math.max(...done.map((w) => Math.max(w.points, T.fpl[w.gw]?.average || 0))) * 1.12;
+    const bw = (W - pad.l - pad.r) / done.length, Y = (v) => H - pad.b - (v / top) * (H - pad.t - pad.b);
+    let s = `<g class="grid">${[0, .25, .5, .75, 1].map((k) => `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(top * k)}" y2="${Y(top * k)}"/>`).join("")}</g>
+      <g class="axis">${[0, .5, 1].map((k) => `<text x="${pad.l - 8}" y="${Y(top * k) + 4}" text-anchor="end">${Math.round(top * k)}</text>`).join("")}</g>`;
+    done.forEach((w, i) => {
+      const x = pad.l + i * bw + bw * 0.2, h = Y(0) - Y(w.points);
+      s += `<rect x="${x}" y="${Y(w.points)}" width="${bw * 0.6}" height="${h}" rx="5" fill="#5ef0b0" style="transform-origin:${x}px ${Y(0)}px;animation:grow .7s ${i * 0.06}s cubic-bezier(.2,.7,.1,1) both"
+        data-tip="GW${w.gw}: ${w.points} pts${w.hits ? ` (after -${w.hits})` : ""}${T.fpl[w.gw] ? `, FPL average ${T.fpl[w.gw].average}` : ""}"/>
+        <text x="${x + bw * 0.3}" y="${Y(w.points) - 6}" text-anchor="middle" style="fill:var(--text);font-size:12px;font-family:var(--numf)">${w.points}</text>
+        <text x="${x + bw * 0.3}" y="${H - 12}" text-anchor="middle" style="fill:var(--text-3);font-size:11px">GW${w.gw}</text>`;
+    });
+    const avgPts = done.filter((w) => T.fpl[w.gw]).map((w) => [pad.l + done.indexOf(w) * bw + bw / 2, Y(T.fpl[w.gw].average)]);
+    if (avgPts.length > 1) s += `<path d="${avgPts.map((p, i) => `${i ? "L" : "M"}${p[0]},${p[1]}`).join("")}" fill="none" stroke="#6aa8ff" stroke-width="2" stroke-dasharray="5 5"/>`;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.innerHTML = `<style>@keyframes grow{from{transform:scaleY(0)}}</style>${s}`;
+    svg.querySelectorAll("[data-tip]").forEach((el) => {
+      el.addEventListener("mousemove", (e) => FPL.tip.show(el.dataset.tip, e.clientX, e.clientY));
+      el.addEventListener("mouseleave", FPL.tip.hide);
+    });
+    document.getElementById("team-chart-hint").textContent = avgPts.length > 1
+      ? "Bars are the model team. The dashed line is the average FPL manager." : "The average FPL manager's score is added after the next data refresh.";
+    // next gameweek's squad
+    if (next) {
+      const name = (id) => FPL.esc((next.squad.find((p) => p.id === id) || {}).name || "");
+      document.getElementById("team-next-title").textContent = `Gameweek ${next.gw} squad`;
+      document.getElementById("team-next-hint").textContent = next.transfers.length
+        ? `Transfer${next.transfers.length > 1 ? "s" : ""}: ${next.transfers.map((t) => `${name(t.in)} in`).join(", ")}${next.hits ? `, -${next.hits} hit` : ""}. Predicted points shown.`
+        : "No transfer this week; the free transfer rolls over. Predicted points shown.";
+      const chip = (p) => `<span class="${p.id === next.captain ? "c" : p.start ? "" : "bench"}">${FPL.esc(p.name)}${p.id === next.captain ? " (C)" : ""} ${p.pred.toFixed(1)}</span>`;
+      document.getElementById("team-next").innerHTML = ["GK", "DEF", "MID", "FWD"].map((pos) => `<p class="hint" style="margin:12px 0 4px">${pos}</p>
+        <div class="lineup">${next.squad.filter((p) => p.pos === pos).sort((a, b) => b.start - a.start || b.pred - a.pred).map(chip).join("")}</div>`).join("");
+    }
+    const all = T.weeks;
+    const nm = (w, id) => FPL.esc((w.squad.find((p) => p.id === id) || {}).name || "?");
+    const prevName = (i, id) => { for (let k = i - 1; k >= 0; k--) { const p = all[k].squad.find((q) => q.id === id); if (p) return FPL.esc(p.name); } return "?"; };
+    document.getElementById("team-log").innerHTML = `<thead><tr><th>GW</th><th>Transfers</th><th>Points</th></tr></thead><tbody>${all.map((w, i) =>
+      `<tr><td>${w.gw}</td><td>${w.transfers.length ? w.transfers.map((t) => `${prevName(i, t.out)} › ${nm(w, t.in)}`).join("<br>") : '<span style="color:var(--text-3)">none</span>'}${w.hits ? ` <span style="color:var(--amber)">-${w.hits}</span>` : ""}</td>
+       <td class="n">${w.finished ? w.points : "to play"}</td></tr>`).reverse().join("")}</tbody>`;
+  }
 
   // open the tab in the URL, or the best XI
   lookup(P[0].id);
@@ -269,5 +331,5 @@ FPL.boot((data) => {
   if (data.byId[wanted]) lookup(wanted);
   const start = location.hash.slice(1);
   if (start.startsWith("analysis")) { const sub = start.split("-")[1]; if (["value", "xg", "fdr", "crowd"].includes(sub)) curSub = sub; }
-  show(["xi", "players", "lookup", "record", "planner"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);
+  show(["xi", "players", "lookup", "record", "planner", "team"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);
 });

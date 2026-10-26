@@ -12,7 +12,7 @@ import sqlite3
 import numpy as np
 import pandas as pd
 
-from fpl.config import DB_PATH, FINISHED_SEASONS, LIVE_SEASON, RAW_DIR, REPORTS_DIR
+from fpl.config import DATA_DIR, DB_PATH, FINISHED_SEASONS, LIVE_SEASON, RAW_DIR, REPORTS_DIR
 from fpl.model import (FEATURES, POSITION_CODES, TARGET, baselines, evaluate, load_features,
                        make_model, paired_bootstrap, per_gameweek)
 
@@ -49,12 +49,41 @@ def score_live_season(df: pd.DataFrame, model) -> tuple:
     return results, pd.DataFrame(rows), weekly, live
 
 
+NEWS_FILE = DATA_DIR / "news_overrides.csv"
+
+
+def apply_news(df: pd.DataFrame) -> pd.DataFrame:
+    """Combine FPL's chance of playing with hand-entered news (data/news_overrides.csv).
+
+    FPL only flags injuries and suspensions. The file covers anything else that changes
+    whether a player starts, e.g. a dispute with the manager or a reported rotation. Each
+    row: player_id, chance (0-100), note, until_gw (blank = until removed). The lower of
+    the two chances is used, and the note is added to the player's news.
+    """
+    df = df.copy()
+    df["news"] = df["news"].fillna("")
+    if not NEWS_FILE.exists():
+        return df
+    news = pd.read_csv(NEWS_FILE)
+    for r in news.itertuples():
+        hit = (df.player_id == r.player_id)
+        if "gw" in df and pd.notna(r.until_gw):
+            hit &= df.gw <= r.until_gw
+        if not hit.any():
+            continue
+        fpl = df.loc[hit, "chance_of_playing"].fillna(100)
+        df.loc[hit, "chance_of_playing"] = fpl.clip(upper=r.chance)
+        df.loc[hit, "news"] = (df.loc[hit, "news"] + " " + f"Note: {r.note}").str.strip()
+    return df
+
+
 def predict_next_gameweek(model) -> pd.DataFrame:
     with sqlite3.connect(DB_PATH) as con:
         up = pd.read_sql("SELECT * FROM player_upcoming", con)
     if up.empty:
         print("[live] no upcoming gameweek (season finished?)")
         return up
+    up = apply_news(up)
     up["position_code"] = up["position"].map(POSITION_CODES)
     up["predicted_raw"] = model.predict(up[FEATURES])
     # The model has never seen injury news. FPL publishes a chance of playing (0-100) for
@@ -82,6 +111,7 @@ def predict_horizon(model) -> pd.DataFrame:
         h = pd.read_sql("SELECT * FROM player_horizon", con)
     if h.empty:
         return h
+    h = apply_news(h)
     h["position_code"] = h["position"].map(POSITION_CODES)
     h["raw"] = model.predict(h[FEATURES])
     # Injury flags matter most right now. Assume a flagged player gets back to full

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1792981535">
+<link rel="stylesheet" href="assets/site.css?v=1792982347">
 <script>try{var q=new URLSearchParams(location.search).get("fx");if(q)localStorage.setItem("fx",q);if((q||localStorage.getItem("fx"))==="loud")document.documentElement.classList.add("fx-loud");}catch(e){}</script>
 </head>
 <body>
@@ -49,6 +49,7 @@
     <button role="tab" data-tab="players" aria-selected="false">All players</button>
     <button role="tab" data-tab="lookup" aria-selected="false">Player lookup</button>
     <button role="tab" data-tab="record" aria-selected="false">Track record</button>
+    <button role="tab" data-tab="team" aria-selected="false">Model team</button>
     <button role="tab" data-tab="planner" aria-selected="false">Transfer planner</button>
     <button role="tab" data-tab="analysis" aria-selected="false">Analysis</button>
   </div>
@@ -108,6 +109,24 @@
         <tbody id="edges"></tbody></table>
       <p class="hint" id="edges-note" style="margin-top:12px"></p>
     </div>
+  </section>
+
+  <section class="panel" id="tab-team" role="tabpanel">
+    <div class="a-head"><h2>The model's FPL team</h2>
+      <p>A £100m squad picked and managed by the model under FPL's rules: 15 players with 4 on the bench, at most 3
+        per club, one free transfer a week (unused ones roll over), -4 for each extra. Every pick was made before that
+        gameweek's results, by a model trained only on past seasons.</p></div>
+    <div class="stat-row" id="team-stats"></div>
+    <div class="chart-card" style="margin-top:14px"><h4>Points each gameweek</h4><p class="hint" id="team-chart-hint"></p>
+      <svg id="team-chart" role="img" aria-label="Model team points per gameweek"></svg></div>
+    <div class="a-grid" style="margin-top:14px">
+      <div class="box"><h3 id="team-next-title">Next gameweek</h3><p class="hint" id="team-next-hint"></p><div id="team-next"></div></div>
+      <div class="box"><h3>Transfers</h3><p class="hint">Every transfer the team has made, and what each gameweek scored.</p>
+        <table class="edges" id="team-log"></table></div>
+    </div>
+    <p class="hint" style="margin-top:14px">Gameweeks 1-7 were simulated afterwards with the predictions the model made before
+      each deadline. FPL doesn't keep past injury flags, so those weeks didn't know about injuries; from now on each
+      decision is saved before the gameweek starts and never changed.</p>
   </section>
 
   <section class="panel" id="tab-planner" role="tabpanel">
@@ -202,9 +221,9 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1792981535"></script>
-<script src="assets/fx.js?v=1792981535"></script>
-<script src="assets/planner.js?v=1792981535"></script>
-<script src="assets/dashboard.js?v=1792981535"></script>
+<script src="assets/common.js?v=1792982347"></script>
+<script src="assets/fx.js?v=1792982347"></script>
+<script src="assets/planner.js?v=1792982347"></script>
+<script src="assets/dashboard.js?v=1792982347"></script>
 </body>
 </html>

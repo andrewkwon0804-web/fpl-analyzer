@@ -59,6 +59,12 @@ The pipeline also follows the season in progress. Each run re-downloads it, retr
 
 To refresh during the season: `python run_pipeline.py`, then commit `reports/live/` and `docs/data/`.
 
+## The model's FPL team
+
+[`src/fpl/model_team.py`](src/fpl/model_team.py) runs a simulated FPL team under the real rules: a £100m squad of 15 (two keepers, five defenders, five midfielders, three forwards, at most three per club) picked with integer programming in PuLP, the best XI and captain by predicted points each week, one free transfer a week that rolls over up to five, -4 for each extra, FPL's selling-price rule, auto-subs and the vice-captain. A transfer has to add at least a point of predicted value, so the team doesn't churn on noise. Gameweeks already played use the predictions the model made before each deadline; from now on each week's decision is saved in `reports/live/model_team_log.json` before the gameweek starts and never redone. The dashboard's Model team tab tracks it against the average FPL manager.
+
+**News the flags miss.** FPL's chance-of-playing flag only covers injuries and suspensions. [`data/news_overrides.csv`](data/news_overrides.csv) takes anything else (a dispute with the manager, reported rotation): one row per player with a chance of playing, a note and the last gameweek it applies to. Predictions use the lower of the two chances.
+
 ## What didn't work
 
 Early in 2026-27 the model rated Brighton's in-form players below names like Thiago and Mbeumo, which looked like it trusted last season too much. The experiments in [`experiments/`](experiments/) tested that:
