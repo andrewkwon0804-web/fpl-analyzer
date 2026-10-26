@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { useSiteData } from "./lib/data.js";
-import Aurora from "./components/Aurora.jsx";
+import GlyphField from "./components/GlyphField.jsx";
+import PipelineStack from "./components/PipelineStack.jsx";
 import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
@@ -43,22 +44,17 @@ function Page({ data }) {
     <>
       <Nav onCommand={() => setCmd(true)} />
       <Command data={data} open={cmd} setOpen={setCmd} onPlayer={onPlayer} />
-      <Rails />
       <main className="relative z-10">
         <Hero data={data} />
-        {[
-          <BestXI key="xi" data={data} />,
-          data.last_gw && <LastGameweek key="last" data={data} />,
-          <HowItWorks key="how" data={data} />,
-          <TrackRecord key="rec" data={data} />,
-          <Findings key="find" data={data} />,
-          <TopPicks key="picks" data={data} />,
-          <FAQ key="faq" />,
-          <Closing key="end" data={data} />,
-        ].filter(Boolean).map((el) => <Fragment key={el.key}><Rule />{el}</Fragment>)}
+        <PipelineStack data={data} />
+        {data.last_gw && <LastGameweek data={data} />}
+        <TrackRecord data={data} />
+        <Findings data={data} />
+        <TopPicks data={data} />
+        <FAQ />
+        <Closing data={data} />
         <Footer data={data} />
       </main>
-      <ScrollIsland onGo={goTo} topics={TOPICS} />
     </>
   );
 }
@@ -67,7 +63,7 @@ export default function App() {
   const { data, error } = useSiteData();
   return (
     <>
-      <Aurora />
+      <GlyphField />
       {error ? (
         <p className="page relative z-10 pt-40 text-text2">Couldn't load the predictions ({error}). Refresh the page to try again.</p>
       ) : !data ? (

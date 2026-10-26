@@ -10,9 +10,9 @@ export default {
         mint: c("mint"), sky: c("sky"), amber: c("amber"), rose: c("rose"),
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "Helvetica Neue", "Arial", "sans-serif"],
-        body: ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
-        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+        display: ['"Geist Sans"', "Helvetica Neue", "Arial", "sans-serif"],
+        body: ['"Geist Sans"', "Helvetica Neue", "Arial", "sans-serif"],
+        mono: ['"Geist Mono"', "ui-monospace", "monospace"],
       },
       maxWidth: { page: "1560px" },
     },

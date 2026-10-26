@@ -5,16 +5,16 @@
 /* Design tokens. Every colour in the app comes from here, as "r g b" so Tailwind can add opacity.
    Swap these two blocks to re-theme the whole template. */
 :root, [data-theme="dark"] {
-  --bg: 6 8 10;
-  --surface: 13 17 20;
-  --raised: 19 26 30;
-  --line: 27 34 39;
-  --line2: 41 51 58;
-  --text: 238 241 239;
-  --text2: 165 174 171;
-  --text3: 139 149 146;
-  --mint: 94 240 176;
-  --sky: 106 168 255;
+  --bg: 3 4 5;
+  --surface: 12 13 15;
+  --raised: 22 24 27;
+  --line: 32 34 38;
+  --line2: 48 51 56;
+  --text: 240 241 242;
+  --text2: 168 172 178;
+  --text3: 120 125 132;
+  --mint: 56 225 168;
+  --sky: 70 120 255;
   --amber: 245 196 81;
   --rose: 255 122 138;
   --glow: 0.35;
@@ -110,4 +110,4 @@ html.lenis, html.lenis body { height: auto; }
   border: 1px solid rgb(var(--line) / .6);
 }
 .corners:hover { --c: rgb(var(--mint) / .7); }
-.mono-label { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.mono-label { font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }

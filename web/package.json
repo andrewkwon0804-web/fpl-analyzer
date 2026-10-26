@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/geist-mono": "^5.1.0",
+    "@fontsource/geist-sans": "^5.1.0",
     "@react-spring/web": "9.7.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -16,7 +18,8 @@
     "motion": "^11.15.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
