@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens. Every colour in the app comes from here, as "r g b" so Tailwind can add opacity.
+   Swap these two blocks to re-theme the whole template. */
+:root, [data-theme="dark"] {
+  --bg: 6 8 10;
+  --surface: 13 17 20;
+  --raised: 19 26 30;
+  --line: 27 34 39;
+  --line2: 41 51 58;
+  --text: 238 241 239;
+  --text2: 165 174 171;
+  --text3: 139 149 146;
+  --mint: 94 240 176;
+  --sky: 106 168 255;
+  --amber: 245 196 81;
+  --rose: 255 122 138;
+  --glow: 0.35;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: 246 248 247;
+  --surface: 255 255 255;
+  --raised: 239 243 241;
+  --line: 222 229 226;
+  --line2: 203 212 208;
+  --text: 11 18 16;
+  --text2: 62 74 70;
+  --text3: 98 110 106;
+  --mint: 14 159 102;
+  --sky: 47 107 214;
+  --amber: 183 128 10;
+  --rose: 214 64 88;
+  --glow: 0.12;
+  color-scheme: light;
+}
+
+@layer base {
+  html { background: rgb(var(--bg)); }
+  body { @apply bg-bg text-text font-body antialiased; overflow-x: hidden; }
+  ::selection { background: rgb(var(--mint) / .3); }
+  :focus-visible { outline: 2px solid rgb(var(--mint)); outline-offset: 3px; border-radius: 6px; }
+  .num { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .page { @apply mx-auto w-full max-w-page px-4 sm:px-8 lg:px-14; }
+  .glass { background: rgb(var(--surface) / .72); backdrop-filter: blur(14px) saturate(140%); }
+  .card { @apply rounded-2xl border border-line bg-surface; }
+  .hairline { @apply border-line; }
+  .fdr-1 { background: #1f7a52; color: #eafff4; } .fdr-2 { background: #2c5e47; color: #dff5ea; }
+  .fdr-3 { background: rgb(var(--raised)); color: rgb(var(--text2)); }
+  .fdr-4 { background: #6a3a3f; color: #ffe9ea; } .fdr-5 { background: #8f2f3a; color: #fff0f1; }
+}
+
+/* Lenis smooth scrolling */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* glow behind each section, tweened by the browser when the scene changes */
+@property --tc { syntax: "<color>"; inherits: false; initial-value: rgb(94 240 176 / .1); }
+@property --tx { syntax: "<percentage>"; inherits: false; initial-value: 75%; }
+.tint { background: radial-gradient(55% 50% at var(--tx) 40%, var(--tc), transparent 70%); transition: --tc 1.4s var(--ease), --tx 1.8s var(--ease); }
+
+@layer base {
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+/* loading placeholders */
+.skel { background: linear-gradient(100deg, rgb(var(--raised)) 30%, rgb(var(--line2)) 50%, rgb(var(--raised)) 70%) 0 0 / 300% 100%; animation: skel 1.4s linear infinite; border-radius: 12px; }
+@keyframes skel { to { background-position: -150% 0; } }
+
+/* top picks strip, scrolled by CSS so it costs nothing */
+.marquee { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { animation: marquee 60s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* bigger tap targets on touch screens without changing the layout */
+@media (pointer: coarse) { .hit { position: relative; } .hit::after { content: ""; position: absolute; inset: -8px; } }
+
+/* theme switch crossfade */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; }
+
+.cursor { display: inline-block; width: .55em; height: 1.05em; vertical-align: -.15em; background: rgb(var(--mint)); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
