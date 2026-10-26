@@ -54,7 +54,7 @@ FPL.boot((data) => {
   // this week marquee (list twice so the loop is seamless)
   document.getElementById("picks-title").textContent = `Top predicted players, gameweek ${gw}`;
   const top = data.players.slice(0, 14);
-  const cards = top.map((p, i) => `<div class="pcard"><div class="rk"><span>#${i + 1}</span><span>${p.pos}</span></div>
+  const cards = top.map((p, i) => `<div class="pcard" data-pid="${p.id}" role="button" tabindex="0"><div class="rk"><span>#${i + 1}</span><span>${p.pos}</span></div>
     <div class="nm">${FPL.esc(p.name)}</div><div class="tm">${FPL.esc(p.team)}</div>
     <div class="row"><span class="pp num">${p.pred.toFixed(1)}</span><span class="pr num">£${p.price.toFixed(1)}m</span></div></div>`).join("");
   document.getElementById("marquee-track").innerHTML = cards + cards.replaceAll('class="pcard"', 'class="pcard" aria-hidden="true"');

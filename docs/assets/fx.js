@@ -55,7 +55,7 @@ FPL.fxInit = () => {
     document.addEventListener("pointerover", (e) => {
       const t = e.target.closest("a, button, input, select, .find, .pcard, .player, .c, circle[data-tip], rect[data-tip]");
       ring.classList.toggle("big", !!t);
-      lab.textContent = t && t.matches(".find") ? "open" : t && t.matches(".pcard, .player") ? "pick" : "";
+      lab.textContent = t && t.matches(".find") ? "open" : t && t.matches(".pcard, .player") ? "view" : "";
     });
     addEventListener("pointerdown", () => ring.classList.add("press"));
     addEventListener("pointerup", () => ring.classList.remove("press"));

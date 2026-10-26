@@ -263,6 +263,10 @@ FPL.boot((data) => {
 
   // open the tab in the URL, or the best XI
   lookup(P[0].id);
+  // open a player straight from a pop-up link (dashboard.html?player=ID#lookup)
+  FPL.showPlayer = (id) => { if (data.byId[id]) { lookup(id); show("lookup"); scrollTo({ top: 0, behavior: FPL.reduced ? "auto" : "smooth" }); } };
+  const wanted = +new URLSearchParams(location.search).get("player");
+  if (data.byId[wanted]) lookup(wanted);
   const start = location.hash.slice(1);
   if (start.startsWith("analysis")) { const sub = start.split("-")[1]; if (["value", "xg", "fdr", "crowd"].includes(sub)) curSub = sub; }
   show(["xi", "players", "lookup", "record", "planner"].includes(start) ? start : start.startsWith("analysis") ? "analysis" : "xi", false);

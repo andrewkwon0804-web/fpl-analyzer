@@ -38,7 +38,8 @@ FPL.nav = () => {
     nav.querySelector(".nav-right").appendChild(btn);
     const menu = document.createElement("nav");
     menu.className = "menu"; menu.setAttribute("aria-label", "Menu");
-    menu.innerHTML = links.innerHTML + '<a href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>';
+    const dash = links.querySelector('a[href="dashboard.html"]') ? "" : '<a href="dashboard.html">Dashboard</a>';
+    menu.innerHTML = links.innerHTML + dash + '<a href="https://github.com/andrewkwon0804-web/fpl-analyzer">GitHub</a>';
     nav.appendChild(menu);
     const toggle = (open) => { nav.classList.toggle("open", open); btn.setAttribute("aria-expanded", open); };
     btn.addEventListener("click", () => toggle(!nav.classList.contains("open")));
@@ -110,7 +111,7 @@ FPL.pitch = (el, data, { animate = true } = {}) => {
   const html = rows.map((row) => `<div class="row">${row.map((p) => {
     const cap = p.id === data.captain;
     const flag = p.chance !== null && p.chance < 100 ? `<span class="flag" title="${FPL.esc(p.news)}">!</span>` : "";
-    return `<div class="player${cap ? " cap" : ""}" style="--d:${0.35 + 0.07 * n++}s">
+    return `<div class="player${cap ? " cap" : ""}" data-pid="${p.id}" tabindex="0" role="button" aria-label="${FPL.esc(p.name)}, details" style="--d:${0.35 + 0.07 * n++}s">
       <div class="shirt">${FPL.esc(p.short)}${cap ? '<span class="badge">C</span>' : ""}${flag}</div>
       <div class="nm">${FPL.esc(p.name)}</div>
       <div class="meta"><span class="pts num">${p.pred.toFixed(1)}</span> pts<span class="pr"> · £${p.price.toFixed(1)}m</span></div></div>`;
@@ -211,13 +212,79 @@ FPL.notice = (data) => data.stale
   ? `<div class="notice"><b>Note</b><span>Gameweek ${data.meta.gw} started on ${FPL.fmtDate(data.kickoff)}, and these picks
      only use games through gameweek ${data.meta.played}. They'll catch up on the next data refresh.</span></div>` : "";
 
+// ---------------------------------------------------------------- player pop-up
+// Click (or press Enter on) any element with data-pid to see that player's next five
+// gameweeks, price, injury news and a link to his full record on the dashboard.
+FPL.popover = (data) => {
+  const fixtures = {};
+  data.analysis.fdr.grid.forEach((r) => { (fixtures[r.team] ??= {})[r.gw] = [...(fixtures[r.team]?.[r.gw] || []), r]; });
+  const start = data.analysis.fdr.grid_start;
+  const gws = data.meta.horizon_gws.filter((g) => g >= start).slice(0, 5);
+  const pop = document.createElement("div");
+  pop.className = "pop"; pop.setAttribute("role", "dialog"); pop.hidden = true;
+  document.body.appendChild(pop);
+  let anchor = null;
+  const close = () => { pop.hidden = true; pop.classList.remove("on"); anchor = null; };
+  const place = () => {
+    if (!anchor || innerWidth < 640) return;  // phones: CSS pins it to the bottom
+    const r = anchor.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+    let x = r.left + r.width / 2 - w / 2, y = r.bottom + 10;
+    if (y + h > innerHeight - 12) y = r.top - h - 10;
+    x = Math.max(12, Math.min(innerWidth - w - 12, x));
+    pop.style.left = `${x}px`; pop.style.top = `${Math.max(12, y)}px`;
+  };
+  const open = (el) => {
+    const p = data.byId[+el.dataset.pid];
+    if (!p) return;
+    if (anchor === el) { close(); return; }
+    anchor = el;
+    const pts = Object.fromEntries(p.h.map(([g, v]) => [g, v]));
+    const top = Math.max(1, ...gws.map((g) => pts[g] || 0));
+    const total = gws.reduce((s, g) => s + (pts[g] || 0), 0);
+    const weeks = gws.map((g) => {
+      const f = (fixtures[p.short] || {})[g] || [];
+      const opp = f.length ? f.map((r) => (r.home ? r.opp : r.opp.toLowerCase())).join("+") : "blank";
+      const fdr = f.length ? Math.round(f.reduce((s, r) => s + r.fdr, 0) / f.length) : 0;
+      const v = pts[g] || 0;
+      return `<div class="wk"><span class="v num">${v.toFixed(1)}</span><i style="height:${Math.max(3, (v / top) * 44)}px"></i>
+        <span class="o ${fdr ? `f${fdr}` : ""}">${FPL.esc(opp)}</span><small>GW${g}</small></div>`;
+    }).join("");
+    const flag = p.chance !== null && p.chance < 100
+      ? `<p class="pop-news"><b>${p.chance}% to play.</b> ${FPL.esc(p.news)}</p>` : "";
+    const here = location.pathname.endsWith("dashboard.html");
+    pop.innerHTML = `<button class="pop-x" aria-label="Close">×</button>
+      <div class="pop-head"><div><h4>${FPL.esc(p.name)}</h4><span>${FPL.esc(p.team)}, ${p.pos}, £${p.price.toFixed(1)}m</span></div>
+        <div class="pop-now"><b class="num">${p.pred.toFixed(1)}</b><span>GW${data.meta.gw}</span></div></div>
+      ${flag}
+      <div class="pop-sub">Next five gameweeks<span class="num">${total.toFixed(1)} pts</span></div>
+      <div class="pop-weeks">${weeks}</div>
+      <a class="pop-link" href="dashboard.html?player=${p.id}#lookup" ${here ? 'data-here="1"' : ""}>Full record and chart ›</a>`;
+    pop.hidden = false;
+    requestAnimationFrame(() => { place(); pop.classList.add("on"); });
+  };
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".pop-x")) { close(); return; }
+    const link = e.target.closest(".pop-link[data-here]");
+    if (link) { e.preventDefault(); close(); FPL.showPlayer?.(+new URL(link.href).searchParams.get("player")); return; }
+    const el = e.target.closest("[data-pid]");
+    if (el) { open(el); return; }
+    if (!e.target.closest(".pop")) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+    if (e.key === "Enter" && e.target.matches?.("[data-pid]")) open(e.target);
+  });
+  addEventListener("scroll", () => { if (innerWidth >= 640) place(); }, { passive: true });
+  addEventListener("resize", place);
+};
+
 FPL.boot = (fn) => {
   FPL.nav();
   FPL.smooth();
   FPL.stage();
   if (FPL.fxInit) FPL.fxInit();
   FPL.split();
-  FPL.load().then((d) => { fn(d); FPL.afterLoad.forEach((f) => f(d)); return d; }).then((d) => { FPL.split(); FPL.reveal(); if (FPL.fxAfter) FPL.fxAfter(d); }).catch((err) => {
+  FPL.load().then((d) => { fn(d); FPL.popover(d); FPL.afterLoad.forEach((f) => f(d)); return d; }).then((d) => { FPL.split(); FPL.reveal(); if (FPL.fxAfter) FPL.fxAfter(d); }).catch((err) => {
     console.error(err);
     document.querySelector("main").insertAdjacentHTML("afterbegin",
       `<p class="notice" style="margin-top:120px">Couldn't load the predictions (${FPL.esc(err.message)}). Refresh the page to try again.</p>`);
