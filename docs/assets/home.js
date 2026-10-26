@@ -10,6 +10,70 @@ FPL.boot((data) => {
   document.getElementById("notice").innerHTML = FPL.notice(data);
   FPL.pitch(document.getElementById("pitch"), data);
 
+  // hero search: pick any player and his card flies onto the pitch
+  const finder = document.getElementById("finder"), list = document.getElementById("finder-list"), box = finder.parentElement;
+  const pitchEl = document.getElementById("pitch");
+  const rank = Object.fromEntries(data.players.map((p, i) => [p.id, i + 1]));
+  const xiByPos = {};
+  data.players.filter((p) => p.xi).forEach((p) => { (xiByPos[p.pos] ??= []).push(p); });
+  let hits = [], cur = -1, ghost = null;
+  const norm = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const showList = () => {
+    const q = norm(finder.value.trim());
+    hits = q ? data.players.filter((p) => norm(p.name).includes(q) || norm(p.team).includes(q) || p.short.toLowerCase() === q).slice(0, 6) : [];
+    cur = hits.length ? 0 : -1;
+    list.innerHTML = hits.map((p, i) => `<li role="option" data-i="${i}" class="${i === cur ? "on" : ""}">
+      <span><b>${FPL.esc(p.name)}</b><small>${FPL.esc(p.team)}, ${p.pos}</small></span><em class="num">${p.pred.toFixed(1)}</em></li>`).join("");
+    box.setAttribute("aria-expanded", hits.length > 0);
+  };
+  const clearGhost = () => { if (ghost) { ghost.classList.add("gone"); const g = ghost; setTimeout(() => g.remove(), 400); ghost = null; } };
+  FPL.onPopClose = clearGhost;
+  const choose = (p) => {
+    list.innerHTML = ""; box.setAttribute("aria-expanded", "false"); finder.value = p.name; finder.blur();
+    clearGhost();
+    const inXi = pitchEl.querySelector(`.player[data-pid="${p.id}"]`);
+    if (inXi) {
+      inXi.classList.add("found"); setTimeout(() => inXi.classList.remove("found"), 1600);
+      FPL.openPop(inXi, `In the model's best XI, ranked #${rank[p.id]} of ${data.players.length} this week.`);
+      return;
+    }
+    // not in the XI: fly a card from the search box onto his position's row
+    const weakest = (xiByPos[p.pos] || []).reduce((a, b) => (b.pred < a.pred ? b : a), { pred: Infinity });
+    const gap = weakest.pred - p.pred;
+    const note = weakest.name
+      ? `Ranked #${rank[p.id]} this week. ${FPL.esc(weakest.name)} has the last ${p.pos} spot in the XI with ${weakest.pred.toFixed(1)}, so he'd need ${gap.toFixed(1)} more.`
+      : `Ranked #${rank[p.id]} this week.`;
+    const rows = [...pitchEl.querySelectorAll(".row")], row = rows[["FWD", "MID", "DEF", "GK"].indexOf(p.pos)];
+    const from = finder.getBoundingClientRect(), pr = pitchEl.getBoundingClientRect(), rr = row.getBoundingClientRect();
+    ghost = document.createElement("div");
+    ghost.className = "player ghost"; ghost.dataset.pid = p.id;
+    ghost.innerHTML = `<div class="shirt">${FPL.esc(p.short)}</div><div class="nm">${FPL.esc(p.name)}</div>
+      <div class="meta"><span class="pts num">${p.pred.toFixed(1)}</span> pts</div>`;
+    pitchEl.appendChild(ghost);
+    const tx = rr.left - pr.left + rr.width / 2 - 50, ty = rr.top - pr.top + rr.height + 6;
+    ghost.style.transform = `translate(${from.left - pr.left}px, ${from.top - pr.top}px) scale(.6)`;
+    ghost.getBoundingClientRect();  // start from the search box
+    requestAnimationFrame(() => {
+      ghost.style.transform = `translate(${tx}px, ${ty}px) scale(1)`;
+      setTimeout(() => { if (ghost) FPL.openPop(ghost, note); }, FPL.reduced ? 0 : 700);
+    });
+  };
+  finder.addEventListener("input", showList);
+  finder.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (!hits.length) return;
+      cur = (cur + (e.key === "ArrowDown" ? 1 : hits.length - 1)) % hits.length;
+      list.querySelectorAll("li").forEach((li, i) => li.classList.toggle("on", i === cur));
+    } else if (e.key === "Enter" && cur >= 0) { e.preventDefault(); choose(hits[cur]); }
+    else if (e.key === "Escape") { list.innerHTML = ""; box.setAttribute("aria-expanded", "false"); }
+  });
+  list.addEventListener("pointerdown", (e) => { const li = e.target.closest("li"); if (li) { e.preventDefault(); choose(hits[+li.dataset.i]); } });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== finder && !e.target.closest("input, textarea, select")) { e.preventDefault(); finder.focus(); }
+  });
+  finder.addEventListener("blur", () => setTimeout(() => { list.innerHTML = ""; box.setAttribute("aria-expanded", "false"); }, 120));
+
   // last gameweek: what the model's XI actually scored
   const L = data.last_gw;
   if (L) {

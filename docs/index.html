@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1792980748">
+<link rel="stylesheet" href="assets/site.css?v=1792981535">
 <script>try{var q=new URLSearchParams(location.search).get("fx");if(q)localStorage.setItem("fx",q);if((q||localStorage.getItem("fx"))==="loud")document.documentElement.classList.add("fx-loud");}catch(e){}</script>
 </head>
 <body>
@@ -42,7 +42,13 @@
       <h1 class="reveal blur" style="--d:.08s">Who to pick for <span class="gw" id="hero-gw">the next gameweek</span>.</h1>
       <p class="lede reveal blur" style="--d:.2s">A model trained on four seasons of Premier League stats predicts how many
         FPL points every player will score next week. It retrains after each gameweek.</p>
-      <div class="actions reveal" style="--d:.24s">
+      <div class="finder reveal" style="--d:.24s" role="combobox" aria-expanded="false" aria-owns="finder-list">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <input id="finder" type="search" placeholder="Try any player, e.g. Saka" autocomplete="off" aria-label="Find a player" aria-autocomplete="list" aria-controls="finder-list">
+        <kbd>/</kbd>
+        <ul id="finder-list" role="listbox"></ul>
+      </div>
+      <div class="actions reveal" style="--d:.3s">
         <a class="btn primary" href="dashboard.html">Open the dashboard <span class="chev">›</span></a>
         <a class="btn" href="#how">How it works</a>
       </div>
@@ -169,8 +175,8 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/common.js?v=1792980748"></script>
-<script src="assets/fx.js?v=1792980748"></script>
-<script src="assets/home.js?v=1792980748"></script>
+<script src="assets/common.js?v=1792981535"></script>
+<script src="assets/fx.js?v=1792981535"></script>
+<script src="assets/home.js?v=1792981535"></script>
 </body>
 </html>

@@ -224,7 +224,7 @@ FPL.popover = (data) => {
   pop.className = "pop"; pop.setAttribute("role", "dialog"); pop.hidden = true;
   document.body.appendChild(pop);
   let anchor = null;
-  const close = () => { pop.hidden = true; pop.classList.remove("on"); anchor = null; };
+  const close = () => { pop.hidden = true; pop.classList.remove("on"); anchor = null; if (FPL.onPopClose) FPL.onPopClose(); };
   const place = () => {
     if (!anchor || innerWidth < 640) return;  // phones: CSS pins it to the bottom
     const r = anchor.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
@@ -233,10 +233,10 @@ FPL.popover = (data) => {
     x = Math.max(12, Math.min(innerWidth - w - 12, x));
     pop.style.left = `${x}px`; pop.style.top = `${Math.max(12, y)}px`;
   };
-  const open = (el) => {
+  const open = (el, note = "") => {
     const p = data.byId[+el.dataset.pid];
     if (!p) return;
-    if (anchor === el) { close(); return; }
+    if (anchor === el && !note) { close(); return; }
     anchor = el;
     const pts = Object.fromEntries(p.h.map(([g, v]) => [g, v]));
     const top = Math.max(1, ...gws.map((g) => pts[g] || 0));
@@ -255,20 +255,22 @@ FPL.popover = (data) => {
     pop.innerHTML = `<button class="pop-x" aria-label="Close">×</button>
       <div class="pop-head"><div><h4>${FPL.esc(p.name)}</h4><span>${FPL.esc(p.team)}, ${p.pos}, £${p.price.toFixed(1)}m</span></div>
         <div class="pop-now"><b class="num">${p.pred.toFixed(1)}</b><span>GW${data.meta.gw}</span></div></div>
-      ${flag}
+      ${flag}${note ? `<p class="pop-note">${note}</p>` : ""}
       <div class="pop-sub">Next five gameweeks<span class="num">${total.toFixed(1)} pts</span></div>
       <div class="pop-weeks">${weeks}</div>
       <a class="pop-link" href="dashboard.html?player=${p.id}#lookup" ${here ? 'data-here="1"' : ""}>Full record and chart ›</a>`;
     pop.hidden = false;
     requestAnimationFrame(() => { place(); pop.classList.add("on"); });
   };
+  FPL.openPop = open;
+  FPL.onPopClose = null;
   document.addEventListener("click", (e) => {
     if (e.target.closest(".pop-x")) { close(); return; }
     const link = e.target.closest(".pop-link[data-here]");
     if (link) { e.preventDefault(); close(); FPL.showPlayer?.(+new URL(link.href).searchParams.get("player")); return; }
     const el = e.target.closest("[data-pid]");
     if (el) { open(el); return; }
-    if (!e.target.closest(".pop")) close();
+    if (!e.target.closest(".pop, .finder")) close();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
