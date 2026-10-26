@@ -62,6 +62,7 @@ def apply_news(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
     df["news"] = df["news"].fillna("")
+    df["news_locked"] = False  # rows a news entry covers: its chance holds exactly
     if not NEWS_FILE.exists():
         return df
     news = pd.read_csv(NEWS_FILE)
@@ -73,6 +74,7 @@ def apply_news(df: pd.DataFrame) -> pd.DataFrame:
             continue
         fpl = df.loc[hit, "chance_of_playing"].fillna(100)
         df.loc[hit, "chance_of_playing"] = fpl.clip(upper=r.chance)
+        df.loc[hit, "news_locked"] = True
         df.loc[hit, "news"] = (df.loc[hit, "news"] + " " + f"Note: {r.note}").str.strip()
     return df
 
@@ -118,7 +120,7 @@ def predict_horizon(model) -> pd.DataFrame:
     # availability linearly over three gameweeks; an unflagged player stays at 100%.
     weeks_out = h.groupby("player_id")["gw"].rank(method="dense") - 1
     chance = h["chance_of_playing"].fillna(100) / 100
-    recovered = chance + (1 - chance) * (weeks_out / 3).clip(upper=1)
+    recovered = (chance + (1 - chance) * (weeks_out / 3).clip(upper=1)).where(~h["news_locked"], chance)
     h["predicted_points"] = h["raw"] * recovered
     return h[["gw", "player_id", "predicted_points", "fixture_difficulty", "home_fixtures", "n_fixtures"]]
 
