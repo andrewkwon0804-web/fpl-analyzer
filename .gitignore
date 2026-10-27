@@ -8,3 +8,10 @@ __pycache__/
 
 # React site source
 web/node_modules/
+
+# never commit local notes, secrets or run archives
+CLAUDE.md
+.env
+.env.*
+*.pem
+*.tgz

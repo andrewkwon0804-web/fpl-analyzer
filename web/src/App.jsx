@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { lazy, Suspense, useCallback, useState } from "react";
 import { useSiteData } from "./lib/data.js";
 import GlyphField from "./components/GlyphField.jsx";
-import PipelineStack from "./components/PipelineStack.jsx";
+// three.js is large, so the stack loads after the first screen is up
+const PipelineStack = lazy(() => import("./components/PipelineStack.jsx"));
 import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
@@ -37,12 +38,12 @@ function Page({ data }) {
       <Command data={data} open={cmd} setOpen={setCmd} onPlayer={onPlayer} />
       <main className="relative z-10">
         <Hero data={data} />
-        <PipelineStack data={data} />
+        <Suspense fallback={<section id="how" className="h-[420vh]" />}><PipelineStack data={data} /></Suspense>
         {data.last_gw && <LastGameweek data={data} />}
         <TrackRecord data={data} />
         <Findings data={data} />
         <TopPicks data={data} />
-        <FAQ />
+        <FAQ data={data} />
         <Closing data={data} />
         <Footer data={data} />
       </main>

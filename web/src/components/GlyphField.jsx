@@ -13,7 +13,7 @@ uniform vec2 res; uniform float t, cell, side, zoom, n, amp; uniform vec3 c1, c2
 float h(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.0-2.0*f);
   return mix(mix(h(i), h(i+vec2(1,0)), f.x), mix(h(i+vec2(0,1)), h(i+vec2(1,1)), f.x), f.y); }
-float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int i = 0; i < 5; i++){ v += a*noise(p); p = p*2.02 + 5.3; a *= 0.5; } return v; }
+float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int i = 0; i < 4; i++){ v += a*noise(p); p = p*2.02 + 5.3; a *= 0.5; } return v; }
 void main(){
   vec2 frag = gl_FragCoord.xy;
   vec2 id = floor(frag / cell), inCell = fract(frag / cell);
@@ -75,10 +75,10 @@ export default function GlyphField() {
       if (!el) return;
       const r = root();
       goal = { c1: rgb(el.dataset.tint || r.getPropertyValue("--mint")), c2: rgb(el.dataset.tint2 || r.getPropertyValue("--sky")),
-        side: parseFloat(el.dataset.tx || "75") / 100, amp: parseFloat(el.dataset.glow ?? "0.3"), zoom: 1 + Math.min(1, scrollY / innerHeight) * 0.35 };
+        side: parseFloat(el.dataset.tx || "75") / 100, amp: parseFloat(el.dataset.glow ?? "0.12"), zoom: 1 + Math.min(1, scrollY / innerHeight) * 0.35 };
     };
     let dpr = 1;
-    const size = () => { dpr = Math.min(devicePixelRatio || 1, 2); c.width = innerWidth * dpr; c.height = innerHeight * dpr; gl.viewport(0, 0, c.width, c.height); };
+    const size = () => { dpr = Math.min(devicePixelRatio || 1, 1.5); c.width = innerWidth * dpr; c.height = innerHeight * dpr; gl.viewport(0, 0, c.width, c.height); };
     const mouse = [0.7, 0.5], mt = [0.7, 0.5];
     const move = (e) => { mt[0] = e.clientX / innerWidth; mt[1] = 1 - e.clientY / innerHeight; };
     readTheme(); size(); pick();
@@ -88,7 +88,11 @@ export default function GlyphField() {
     const late = setTimeout(pick, 900);
     let raf = 0;
     const lerp = (x, y, k) => x.map((v, i) => v + (y[i] - v) * k);
+    let drawn = 0;
     const frame = (now) => {
+      // the light moves slowly, so 30 frames a second is plenty; skip work while the tab is hidden
+      if (document.hidden || now - drawn < 32) { raf = requestAnimationFrame(frame); return; }
+      drawn = now;
       cur = { c1: lerp(cur.c1, goal.c1, 0.03), c2: lerp(cur.c2, goal.c2, 0.03), side: cur.side + (goal.side - cur.side) * 0.02, amp: cur.amp + (goal.amp - cur.amp) * 0.03, zoom: cur.zoom + (goal.zoom - cur.zoom) * 0.06 };
       mouse[0] += (mt[0] - mouse[0]) * 0.05; mouse[1] += (mt[1] - mouse[1]) * 0.05;
       gl.uniform2f(U.res, c.width, c.height); gl.uniform1f(U.t, reduced ? 10 : now / 1000);

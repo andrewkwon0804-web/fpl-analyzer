@@ -209,13 +209,30 @@ export function TopPicks({ data }) {
 }
 
 // ------------------------------------------------------------------ questions
-const QA = [
-  ["Why doesn't the best XI fit the £100m budget?", "It's the eleven highest predictions in a legal formation, with no budget limit, meant for choosing transfers and a captain. The model team on the dashboard is the budget version: a full 15-man squad that follows every FPL rule."],
-  ["How does it handle injuries and other news?", "The model only sees match stats, so each prediction is multiplied by FPL's own chance of playing. A news file covers what FPL's flags miss, like a player dropped after a falling-out with his manager."],
-  ["How often does it update?", "After every gameweek. One script pulls the new results from the FPL API, retrains and republishes this site."],
-  ["How accurate is it?", "Over 2025-26, a season left out of training, the model's best XI scored 261 more points than the season-average rule. It's ahead this season too, but seven weeks is too few to be sure."],
-  ["Can I run it myself?", "Yes. Clone the repo, install the requirements and run python run_pipeline.py. It downloads the data, builds the database and writes every result."],
-];
+// Answers are built from this week's data, so they stay true after every refresh.
+const lower = (t) => t.charAt(0).toLowerCase() + t.slice(1);
+function buildQA(data) {
+  const P = data.players, m = data.meta, top = P.slice(0, 3), cap = data.byId[data.captain];
+  let n = 0, err = 0, close = 0;
+  Object.values(data.history).forEach((h) => h.forEach(([, pred, pts, mins]) => { if (mins > 0) { n++; err += Math.abs(pred - pts); close += Math.abs(pred - pts) <= 2; } }));
+  const flagged = P.filter((p) => p.chance !== null && p.chance < 75).sort((a, b) => b.raw - a.raw)[0];
+  const T = data.model_team, hits = T ? T.weeks.reduce((s, w) => s + w.hits, 0) : 0, weeks = T ? T.weeks.filter((w) => w.finished).length : 0;
+  return [
+    [`Who should I captain in gameweek ${m.gw}?`,
+      `${cap.name}, at ${cap.pred.toFixed(1)} predicted points, so ${(Math.round(cap.pred * 10) / 5).toFixed(1)} as captain. ${top[1].name} (${top[1].pred.toFixed(1)}) and ${top[2].name} (${top[2].pred.toFixed(1)}) are next. If you don't own ${cap.name}, the best captain is whoever in your squad sits highest on the dashboard's player list.`],
+    ["How far off are the predictions?",
+      `This season, for players who got on the pitch, the average miss is ${(err / n).toFixed(1)} points, and ${Math.round((close / n) * 100)}% of predictions land within 2 points of the real score. Most of the misses are goals and assists, which swing a lot from week to week. The predictions are best used to rank players against each other.`],
+    ["Is it worth taking a -4 hit?",
+      `Only when the player coming in out-scores the one going out by more than 4 points over the weeks you'll keep him, which is 0.8 a week across five gameweeks. The transfer planner does that sum for you. The model's own team has taken ${hits ? `${hits / 4} hit${hits > 4 ? "s" : ""}` : "no hits"} in ${weeks} gameweeks.`],
+    [flagged ? `Why isn't ${flagged.name} in the best XI?` : "Why is a big name missing from the best XI?",
+      flagged ? `On form and fixtures he'd be predicted ${flagged.raw.toFixed(1)}, but ${flagged.news.startsWith("Note:") ? "this site's news file" : "FPL"} puts his chance of playing at ${flagged.chance}%, and every prediction is multiplied by that chance. The note says: ${lower(flagged.news.replace(/^Note: /, "").replace(/\.$/, ""))}. When the flag goes, he comes back in.`
+        : "Usually an injury flag: every prediction is multiplied by FPL's chance of playing, so a doubtful player drops down the list until the flag goes."],
+    ["What can't it know?",
+      "Anything that isn't in the stats or FPL's flags: a manager's press conference, a surprise rotation, a new penalty taker, or a player who just joined from abroad and has no Premier League minutes to learn from. A small news file covers the obvious cases, like a player dropped after a falling-out."],
+    ["Can I run it myself?",
+      "Yes. Clone the repo, install the requirements and run python run_pipeline.py. It downloads the data, builds the SQLite database, trains the model and writes everything this site shows."],
+  ];
+}
 function QItem({ i, q, a }) {
   const [open, setOpen] = useState(false);
   return (
@@ -231,11 +248,11 @@ function QItem({ i, q, a }) {
     </div>
   );
 }
-export function FAQ() {
+export function FAQ({ data }) {
   return (
     <section id="faq" data-tint="70 120 255" data-tint2="56 225 168" data-tx="15%" className="page relative grid gap-10 py-32 lg:grid-cols-[0.7fr_1.3fr] lg:py-44">
-      <div><Label>Questions</Label><Title className="mt-4">Asked often.</Title></div>
-      <div className="border-t border-line">{QA.map(([q, a], i) => <QItem key={q} i={i} q={q} a={a} />)}</div>
+      <div><Label>Questions</Label><Title className="mt-4">Before you copy the picks.</Title></div>
+      <div className="border-t border-line">{buildQA(data).map(([q, a], i) => <QItem key={q} i={i} q={q} a={a} />)}</div>
     </section>
   );
 }

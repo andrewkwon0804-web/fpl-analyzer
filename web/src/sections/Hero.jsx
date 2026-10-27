@@ -47,7 +47,7 @@ export default function Hero({ data }) {
           Season {m.season} <span className="text-text2">·</span> Gameweek {m.gw}{data.stale && <span className="text-amber">· data through GW{m.played}</span>}
         </div>
         <h1 style={rise(0.08)} className="mt-6 max-w-[1100px] font-display text-[clamp(42px,6vw,92px)] font-medium leading-[1] tracking-[-0.04em]">
-          Predicted FPL Points For<br />All {data.players.length} Players.
+          Predicted FPL points for<br />all {data.players.length} players.
         </h1>
         <div style={rise(0.2)} className="mt-9 flex flex-wrap items-center gap-3">
           <a href="./dashboard.html" className="flex h-9 items-center gap-2 bg-text px-4 font-mono text-[12px] uppercase tracking-[0.1em] text-bg hover:bg-mint">Dashboard <span>›</span></a>

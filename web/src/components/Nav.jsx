@@ -11,23 +11,6 @@ export function goTo(hash) {
   else el.scrollIntoView({ behavior: "smooth" });
 }
 
-function ThemeToggle() {
-  const [theme, setTheme] = useState(document.documentElement.dataset.theme || "dark");
-  const s = useSpring({ x: theme === "light" ? 16 : 0, config: { tension: 400, friction: 26 } });
-  const flip = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    const apply = () => { document.documentElement.dataset.theme = next; setTheme(next); };
-    try { localStorage.setItem("theme", next); } catch (e) { /* storage blocked */ }
-    if (document.startViewTransition) document.startViewTransition(apply); else apply();
-  };
-  return (
-    <button onClick={flip} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-      className="relative grid h-9 w-9 place-items-center rounded-[4px] border border-line2 text-sm text-text2 hover:text-text">
-      <animated.span style={{ transform: s.x.to((x) => `rotate(${x * 11}deg)`) }}>{theme === "dark" ? "☾" : "☀"}</animated.span>
-    </button>
-  );
-}
-
 export default function Nav({ onCommand, links = HOME_LINKS, cta = ["./dashboard.html", "Dashboard"] }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +36,6 @@ export default function Nav({ onCommand, links = HOME_LINKS, cta = ["./dashboard
             <button onClick={onCommand} className="hidden h-9 items-center gap-2 rounded-[4px] border border-line2 px-3 font-mono text-[12px] uppercase tracking-[0.1em] text-text2 hover:text-text md:flex">
               Search <kbd className="text-text3">{mac ? "⌘" : "Ctrl"}K</kbd>
             </button>
-            <ThemeToggle />
             <a href={cta[0]} className="hidden h-9 items-center rounded-[4px] bg-text px-3.5 font-mono text-[12px] uppercase tracking-[0.1em] text-bg hover:bg-mint sm:flex">{cta[1]} ›</a>
             <button onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Menu" className="hit grid h-9 w-9 place-items-center rounded-[4px] border border-line2 lg:hidden">
               <span className="relative block h-3 w-4">

@@ -1,6 +1,6 @@
 // Dashboard tabs: best XI, all players, player lookup and track record.
-import { useMemo, useState } from "react";
-import PitchGL from "../components/PitchGL.jsx";
+import { lazy, Suspense, useMemo, useState } from "react";
+const PitchGL = lazy(() => import("../components/PitchGL.jsx"));
 import PlayerSelect from "../components/PlayerSelect.jsx";
 import { usePop } from "../components/Popover.jsx";
 import { LineChart, PlayerChart, cumulative } from "../components/charts.jsx";
@@ -30,7 +30,7 @@ export function XITab({ data }) {
   return (
     <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
       <div>
-        <PitchGL data={data} />
+        <Suspense fallback={<div className="skel aspect-[4/3.4] w-full" />}><PitchGL data={data} /></Suspense>
         <p className="relative mt-3 text-sm text-text3">No budget limit: this XI costs £{data.meta.xi_cost}m. Pin height is predicted points and the captain's label shows ×2.</p>
       </div>
       <Box title="Flagged by FPL" hint="What the model predicted before the cut, and FPL's chance of playing.">

@@ -248,7 +248,9 @@ export default function PipelineStack({ data }) {
         const bx = layers[i].side === "left" ? b.right - m.left : b.left - m.left, by = b.top - m.top + b.height / 2;
         line.setAttribute("x1", bx); line.setAttribute("y1", by); line.setAttribute("x2", ax); line.setAttribute("y2", ay);
       });
-      composer.render();
+      // only draw while on screen and the tab is visible
+      const vb = el.getBoundingClientRect();
+      if (!document.hidden && vb.bottom > 0 && vb.top < innerHeight) composer.render();
       raf = requestAnimationFrame(frame);
     };
     document.fonts.ready.then(() => { // redraw text textures once Geist Mono is ready
@@ -276,7 +278,7 @@ export default function PipelineStack({ data }) {
         </svg>
         {layers.map((l, i) => (
           <div key={l.n} ref={(e) => (boxes.current[i] = e)} onMouseEnter={() => (uiHover.current = i)} onMouseLeave={() => (uiHover.current = -1)}
-            className={`absolute w-[min(360px,40vw)] border ${hover === i ? "border-mint/70 bg-surface/90" : "border-line2 bg-bg/80"} p-5 backdrop-blur transition-all duration-700 max-md:inset-x-4 max-md:bottom-6 max-md:w-auto
+            className={`absolute w-[min(360px,40vw)] border ${hover === i ? "border-mint/70 bg-surface/90" : "border-line2 bg-bg/80"} p-5 backdrop-blur transition-all duration-700 max-md:inset-x-4 max-md:!top-auto max-md:bottom-[88px] max-md:w-auto max-md:p-4
               ${l.side === "left" ? "md:left-[5vw]" : "md:right-[5vw]"} ${i < shown ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0"}
               ${i < shown - 1 ? "max-md:opacity-0" : ""}`}
             style={{ top: `${[66, 52, 36, 22][i]}%` }}>
@@ -297,7 +299,7 @@ export default function PipelineStack({ data }) {
           <div className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-[calc(100%+14px)] whitespace-nowrap border border-line2 bg-bg/90 px-3 py-1.5 font-mono text-[12px] backdrop-blur"
             style={{ left: tip.x, top: tip.y }}>{tip.p.name} <span className="text-text3">{tip.p.short}</span> <span className="text-mint">{tip.p.pred.toFixed(1)}</span></div>
         )}
-        <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3">
+        <div className="mono-label absolute inset-x-0 bottom-8 px-4 text-center text-[10px] text-text3 max-md:bottom-5">
           {shown ? "Drag to turn · click a layer · click a pin for the player" : "Scroll or click to open the stack"}
         </div>
       </div>

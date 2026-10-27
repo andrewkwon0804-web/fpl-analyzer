@@ -122,7 +122,9 @@ export default function PitchGL({ data }) {
         }
       });
       board.updateMatrixWorld(true);
-      composer.render();
+      // only draw while on screen and the tab is visible
+      const vb = el.getBoundingClientRect();
+      if (!document.hidden && vb.bottom > 0 && vb.top < innerHeight) composer.render();
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
