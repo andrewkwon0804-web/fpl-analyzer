@@ -40,6 +40,8 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 ## Explore it
 
 * **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. A **transfer planner** takes your 15-man squad, bank, free transfers and remaining chips, and plans the next five gameweeks: when to use or roll each free transfer, whether a -4 hit pays, who to captain each week and when to play each chip. It searches week by week (a beam search in a Web Worker) within the budget and three-per-club rule, and a squad can be shared as a link. The home page explains the pipeline as a 3D stack you can turn and open (three.js), with the track record drawn as you scroll. Built with React and Vite in [`web/`](web/) into [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
+* **[Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html)**: how the model did on 2025-26, a season it never trained on. Results against two simple baselines with 95% bootstrap intervals, the whole season replayed as best-XI picks, rank correlation by week and by how far ahead, calibration by position, lift by decile, a prediction-range explorer, residuals, error slices, permutation importance and the leakage check. Charts are [Observable Plot](https://observablehq.com/plot/); each figure has a table view and a CSV download. Its data comes from [`src/fpl/export_research.py`](src/fpl/export_research.py).
+* **SQL lab** (on the model report): a trimmed copy of the SQLite database (6 tables, 5.6 MB gzipped) runs in the browser through [sql.js](https://sql.js.org/) in a Web Worker, with a CodeMirror editor that autocompletes table and column names. The queries below load as presets; results show as a sortable table or a chart.
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
@@ -125,7 +127,7 @@ open FPL archive (CSV)                 SQLite: fpl.db
 
 ## SQL analysis
 
-Questions answered in `sql/analysis/` (results in `reports/sql_results/`):
+Questions answered in `sql/analysis/` (results in `reports/sql_results/`; all six run in the browser on the [model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html#sql)):
 
 | Query | Question |
 |---|---|

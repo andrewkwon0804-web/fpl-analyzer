@@ -274,7 +274,7 @@ export function Footer({ data }) {
   const m = data.meta;
   const when = m.refreshed_at ? new Date(m.refreshed_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
   const cols = [
-    ["Site", [["./", "Home"], ["./dashboard.html", "Dashboard"], ["./dashboard.html#planner", "Transfer planner"]]],
+    ["Site", [["./", "Home"], ["./dashboard.html", "Dashboard"], ["./dashboard.html#planner", "Transfer planner"], ["./research.html", "Model report"]]],
     ["Project", [[REPO, "GitHub"], [`${REPO}#readme`, "Method"], [`${REPO}/tree/main/tableau`, "Tableau"]]],
     ["Data", [["https://fantasy.premierleague.com/", "FPL API"], ["https://github.com/vaastav/Fantasy-Premier-League", "Vaastav archive"]]],
   ];

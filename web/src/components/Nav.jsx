@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
 
 const REPO = "https://github.com/andrewkwon0804-web/fpl-analyzer";
-export const HOME_LINKS = [["#how", "How it works"], ["#record", "Track record"], ["#findings", "Findings"], ["#faq", "FAQ"]];
+export const HOME_LINKS = [["#how", "How it works"], ["#record", "Track record"], ["#findings", "Findings"], ["./research.html", "Model report"], ["#faq", "FAQ"]];
 
 export function goTo(hash) {
   const el = document.querySelector(hash);

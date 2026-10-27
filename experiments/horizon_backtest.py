@@ -20,4 +20,6 @@ for j in range(0, 5):
     reg = x.minutes_l5.fillna(0) >= 60
     corr = x.groupby("gw").apply(lambda g: g["pred"].corr(g[M.TARGET], method="spearman")).mean()
     rows.append({"weeks ahead": j + 1, "MAE regulars": (x.pred - x[M.TARGET])[reg].abs().mean(), "rank corr": corr, "rows": len(x)})
-print(pd.DataFrame(rows).round(3).to_string(index=False))
+out = pd.DataFrame(rows).round(3)
+print(out.to_string(index=False))
+out.to_csv(M.REPORTS_DIR / "horizon_backtest.csv", index=False)  # read by export_research.py

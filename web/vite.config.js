@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 // third-party scripts, styles, fonts or requests. Added at build time only, because the dev
 // server needs inline scripts for hot reloading.
 const CSP = [
-  "default-src 'self'", "script-src 'self'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data: blob:",
+  "default-src 'self'", "script-src 'self' 'wasm-unsafe-eval'", "style-src 'self' 'unsafe-inline'", "img-src 'self' data: blob:",
   "font-src 'self' data:", "connect-src 'self'", "worker-src 'self' blob:", "object-src 'none'",
   "base-uri 'self'", "form-action 'none'", "upgrade-insecure-requests",
 ].join("; ");
@@ -21,6 +21,6 @@ export default defineConfig(({ command }) => ({
   publicDir: command === "serve" ? "../docs" : false,
   build: {
     outDir: "../docs", emptyOutDir: false, assetsDir: "app", sourcemap: false,
-    rollupOptions: { input: { index: resolve(__dirname, "index.html"), dashboard: resolve(__dirname, "dashboard.html") } },
+    rollupOptions: { input: { index: resolve(__dirname, "index.html"), dashboard: resolve(__dirname, "dashboard.html"), research: resolve(__dirname, "research.html") } },
   },
 }));

@@ -2,7 +2,7 @@
 
 - sitemap.xml with the date of the latest refresh
 - llms.txt: a plain-text summary of the site and this week's top picks
-- the site's HTML (docs/index.html, docs/dashboard.html) gets a static copy of its content between
+- the site's HTML (docs/index.html, docs/dashboard.html, docs/research.html) gets a static copy of its content between
   <!--pre--> and <!--/pre-->, so "view source" and crawlers see text, not an empty <div>.
   React replaces it as soon as the page loads.
 """
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "docs"
 BASE = "https://andrewkwon0804-web.github.io/fpl-analyzer/"
 REPO = "https://github.com/andrewkwon0804-web/fpl-analyzer"
-PAGES = [("", "1.0"), ("dashboard.html", "0.8")]
+PAGES = [("", "1.0"), ("dashboard.html", "0.8"), ("research.html", "0.7")]
 
 
 def sitemap(data: dict) -> str:
@@ -47,6 +47,7 @@ Data source: {m.get('source', 'open FPL archive')}. Last refreshed: {(m.get('ref
 
 - [Home]({BASE}): this week's best XI, last gameweek's result, track record and findings
 - [Dashboard]({BASE}dashboard.html): every player's prediction, player lookup, model team, transfer planner and analysis
+- [Model report]({BASE}research.html): accuracy on a held-out season against simple baselines, calibration, error analysis, feature importance, leakage check and an in-browser SQL lab
 - [Raw predictions (JSON)]({BASE}data/site.json): everything the site shows, in one file
 - [Source code and method]({REPO}#readme): Python, SQL (SQLite) and scikit-learn pipeline
 
@@ -109,6 +110,28 @@ def prerender_dash(data: dict) -> str:
 <h2>Top 50 predicted players</h2><table><tr><th>Player</th><th>Team</th><th>Pos</th><th>Price</th><th>Predicted</th></tr>{rows}</table></main></div>"""
 
 
+def prerender_research() -> str:
+    """Plain HTML version of the model report, from research.json."""
+    path = DOCS / "data" / "research.json"
+    if not path.exists():
+        return ""
+    import json
+    r = json.loads(path.read_text())
+    e = html.escape
+    m = r["meta"]
+    cols = ["MAE (regular starters)", "Rank correlation per GW", "Best XI: avg points per GW", "Captain pick: avg points"]
+    head = "".join(f"<th>{e(c)}</th>" for c in cols)
+    rows = "".join("<tr><td>" + e(x["method"]) + "</td>" + "".join(f"<td>{'' if x[c] is None else x[c]}</td>" for c in cols) + "</tr>" for x in r["results"])
+    return f"""<div class="page" style="padding:120px 24px;max-width:900px;margin:auto;font-family:Inter,sans-serif">
+<header><a href="./">FPL Points Lab</a> · <a href="./dashboard.html">Dashboard</a> · <a href="./research.html">Model report</a></header>
+<main><h1>Tested on a season it never saw.</h1>
+<p>Trained on {e(", ".join(m["train_seasons"]))}, tuned on {e(m["valid_season"])}, tested once on all {m["gameweeks"]} gameweeks of {e(m["test_season"])}
+({m["test_rows"]:,} predictions, {m["features"]} features).</p>
+<h2>Results on {e(m["test_season"])}</h2><table><tr><th>Method</th>{head}</tr>{rows}</table>
+<p>The report also covers 95% bootstrap intervals, a season-long best-XI backtest, calibration, lift by decile, prediction ranges,
+residuals, error slices, permutation feature importance, a leakage check and an in-browser SQL lab.</p></main></div>"""
+
+
 def main(data: dict) -> None:
     data = dict(data, byId_captain=next((p["name"] for p in data["players"] if p["id"] == data["captain"]), ""))
     (DOCS / "sitemap.xml").write_text(sitemap(data))
@@ -122,6 +145,10 @@ def main(data: dict) -> None:
     if dash.exists():
         text = dash.read_text()
         dash.write_text(re.sub(r"<!--pre-dash-->.*?<!--/pre-dash-->", lambda _: f"<!--pre-dash-->{prerender_dash(data)}<!--/pre-dash-->", text, flags=re.S))
+    research = DOCS / "research.html"
+    if research.exists():
+        text = research.read_text()
+        research.write_text(re.sub(r"<!--pre-research-->.*?<!--/pre-research-->", lambda _: f"<!--pre-research-->{prerender_research()}<!--/pre-research-->", text, flags=re.S))
     print("[site] wrote sitemap.xml, llms.txt and the static copy of the React page")
 
 

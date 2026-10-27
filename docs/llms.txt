@@ -10,6 +10,7 @@ Data source: official FPL API. Last refreshed: 2026-10-26.
 
 - [Home](https://andrewkwon0804-web.github.io/fpl-analyzer/): this week's best XI, last gameweek's result, track record and findings
 - [Dashboard](https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html): every player's prediction, player lookup, model team, transfer planner and analysis
+- [Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html): accuracy on a held-out season against simple baselines, calibration, error analysis, feature importance, leakage check and an in-browser SQL lab
 - [Raw predictions (JSON)](https://andrewkwon0804-web.github.io/fpl-analyzer/data/site.json): everything the site shows, in one file
 - [Source code and method](https://github.com/andrewkwon0804-web/fpl-analyzer#readme): Python, SQL (SQLite) and scikit-learn pipeline
 

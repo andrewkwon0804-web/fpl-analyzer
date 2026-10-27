@@ -17,7 +17,7 @@ import { Value, Xg, Fdr, Crowd } from "./tabs/Analysis.jsx";
 const TABS = [["xi", "Best XI"], ["players", "All players"], ["lookup", "Player lookup"], ["record", "Track record"], ["team", "Model team"], ["planner", "Transfer planner"], ["analysis", "Analysis"]]
   .map(([id, label]) => ({ id, label }));
 const SUBS = [["value", "Value for money"], ["xg", "Goals vs xG"], ["fdr", "Fixture difficulty"], ["crowd", "Transfers and ownership"]].map(([id, label]) => ({ id, label }));
-const LINKS = [["./", "Home"], ["./#record", "Track record"], ["./#findings", "Findings"], ["./#faq", "FAQ"]];
+const LINKS = [["./", "Home"], ["./#record", "Track record"], ["./research.html", "Model report"], ["./#faq", "FAQ"]];
 
 function readHash() {
   const h = location.hash.slice(1);
