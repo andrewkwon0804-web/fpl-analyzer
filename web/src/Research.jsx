@@ -9,7 +9,7 @@ import { Footer, Title } from "./sections/Rest.jsx";
 import { DataTable, Figure, Stat } from "./components/report/kit.jsx";
 import {
   BacktestFigure, BiasFigure, CalibrationFigure, EdgeFigure, HorizonFigure, ImportanceFigure,
-  LeakageFigure, LiftFigure, RangeFigure, RankFigure, ResidualFigure, SliceFigure, WeeklyGapFigure,
+  LeakageFigure, LiftFigure, RangeFigure, RankFigure, ResidualFigure, RuleEraFigure, SliceFigure, WeeklyGapFigure,
 } from "./components/report/figures.jsx";
 // CodeMirror and sql.js only load when the reader gets near the lab
 const SqlLab = lazy(() => import("./components/report/SqlLab.jsx"));
@@ -18,10 +18,10 @@ const REPO = "https://github.com/andrewkwon0804-web/fpl-analyzer";
 const LINKS = [["./", "Home"], ["./dashboard.html", "Dashboard"], ["#sql", "SQL lab"], ["#method", "Method"]];
 const SECTIONS = [
   ["baselines", "Against simple rules"], ["backtest", "A season of picks"], ["ranking", "Getting the order right"],
-  ["calibration", "Are the numbers honest?"], ["lift", "Does higher mean more?"], ["errors", "Where it misses"],
+  ["calibration", "Are the numbers honest?"], ["defenders", "Fixing the defender bias"], ["lift", "Does higher mean more?"], ["errors", "Where it misses"],
   ["features", "What drives it"], ["sql", "SQL lab"], ["method", "Method and limits"],
 ];
-const TINTS = ["56 225 168", "70 120 255", "56 225 168", "245 196 81", "56 225 168", "70 120 255", "56 225 168", "70 120 255", "56 225 168"];
+const TINTS = ["56 225 168", "70 120 255", "56 225 168", "245 196 81", "70 120 255", "56 225 168", "70 120 255", "56 225 168", "70 120 255", "56 225 168"];
 
 function useResearch() {
   const [s, set] = useState({ R: null, error: null });
@@ -154,12 +154,13 @@ function Method({ R }) {
     ["Features", `${m.features} columns, each computed only from games before that gameweek's deadline: minutes, points, xG, xA, bonus and ICT over the last 3 and 5 weeks; fixture difficulty, home games and number of fixtures; team and opponent xG over 6 weeks; price, ownership and last season's minutes and points per game.`],
     ["Split", `By season, never at random. A random split would put a player's later weeks in training and his earlier ones in the test, so the model would be graded on games it had effectively seen. Train ${m.train_seasons.join(" + ")}, tune ${m.valid_season}, test ${m.test_season} once.`],
     ["Baselines", "Season average so far and the last-5-gameweek average, the two rules most managers use without thinking about it. Both get the same best-XI and captain rules as the model."],
+    ["Live record", "Since gameweek 10 of 2026-27, a scheduled job saves each gameweek's picks to the repo before the deadline and scores them after the games. The home page shows that record next to the replayed one."],
     ["Uncertainty", "Each comparison is repeated on 4,000 resamples of the 38 gameweeks (paired, so the model and the baseline see the same weeks). The interval is the middle 95% of those results."],
   ];
   const limits = [
     "It only knows what happened on the pitch. Team news after the deadline, a manager's rotation plan or a new penalty taker show up a week late.",
     "Players with no history (new signings, promoted teams' squads) start from their price and position until they build a few games.",
-    "Rule changes break the past. Defensive contribution points arrived in 2025-26, and defenders are under-predicted because of it (figure 8).",
+    "Rule changes break the past. Defensive contribution points arrived in 2025-26 and left defenders under-predicted (figure 8) until the live model was told about the rule (figure 15).",
     "A single FPL score is mostly noise: a goal is worth 4 to 6 points and arrives at random. Even a perfect estimate of a player's expected points would miss by a couple of points in most weeks.",
   ];
   return (
@@ -227,26 +228,30 @@ function Report({ R }) {
               <BiasFigure R={R} />
             </div>
           </Section>
-          <Section id="lift" n={5} title="A higher number should mean more points."
+          <Section id="defenders" n={5} title="Fixing the defender bias, and what it cost."
+            intro="Figure 8 shows defenders under-predicted by half a point a week. The training seasons all predate the 2025-26 rule that pays defenders for tackles, clearances, blocks and interceptions, so the model had never seen those points. One extra input fixes most of it.">
+            <RuleEraFigure R={R} />
+          </Section>
+          <Section id="lift" n={6} title="A higher number should mean more points."
             intro="Sort every prediction from lowest to highest and the actual points should climb with it. They do, but any single prediction still covers a wide range, and the range explorer shows how wide.">
             <LiftFigure R={R} />
             <RangeFigure R={R} />
           </Section>
-          <Section id="errors" n={6} title="Where it misses, and by how much."
+          <Section id="errors" n={7} title="Where it misses, and by how much."
             intro="The average miss hides two things: the shape of the misses, and the groups of players where the model is no better than a long average.">
             <ResidualFigure R={R} />
             <SliceFigure R={R} />
           </Section>
-          <Section id="features" n={7} title="What the model leans on."
+          <Section id="features" n={8} title="What the model leans on."
             intro="Which inputs carry the predictions, and a check that none of them quietly contains the answer.">
             <ImportanceFigure R={R} />
             <LeakageFigure R={R} />
           </Section>
-          <Section id="sql" n={8} title="Ask the database yourself."
+          <Section id="sql" n={9} title="Ask the database yourself."
             intro="The project's SQLite database, trimmed to six tables, running in this tab through WebAssembly. The tabs are the analysis queries from the repo's sql/analysis folder. Edit them, or write your own: autocomplete knows every table and column.">
             <Suspense fallback={<div className="skel h-[620px] rounded-[6px]" />}><SqlLab queries={R.queries} /></Suspense>
           </Section>
-          <Section id="method" n={9} title="How it was built, and what it can't know.">
+          <Section id="method" n={10} title="How it was built, and what it can't know.">
             <Method R={R} />
           </Section>
         </div>

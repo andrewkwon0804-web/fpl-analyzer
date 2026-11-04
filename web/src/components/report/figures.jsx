@@ -219,7 +219,7 @@ export function BiasFigure({ R }) {
   return (
     <Figure n={8} title="Bias by position" file="bias-by-position"
       caption="Average prediction minus average score for regular starters. Below zero means the model expected too little."
-      takeaway={def ? `Defenders come in ${Math.abs(def.bias).toFixed(2)} points a week under. 2025-26 added points for defensive contributions (tackles, blocks, clearances), a rule none of the training seasons had, so the model has never seen defenders earn them.` : null}
+      takeaway={def ? `Defenders come in ${Math.abs(def.bias).toFixed(2)} points a week under. 2025-26 added points for defensive contributions (tackles, blocks, clearances), a rule none of the training seasons had, so the model has never seen defenders earn them. Section 5 tests a fix.` : null}
       table={{ columns: [{ key: "position", label: "Position" }, { key: "avg_pred", label: "Predicted", num: true, fmt: r2 }, { key: "avg_actual", label: "Actual", num: true, fmt: r2 }, { key: "bias", label: "Bias", num: true, fmt: r2 }, { key: "rows", label: "Rows", num: true }], rows }}>
       <div ref={ref} />
     </Figure>
@@ -440,6 +440,42 @@ export function LeakageFigure({ R }) {
       takeaway={xp ? `FPL's own expected-points column correlates ${xp.corr_this_gw.toFixed(2)} with the same week's points but ${xp.corr_next_gw.toFixed(2)} with the next: it's updated after kickoff, so it's kept out of the model and shown in the results table only as a reference.` : null}
       table={{ columns: [{ key: "column", label: "Column" }, { key: "corr_this_gw", label: "Same GW", num: true, fmt: fmt(3) }, { key: "corr_next_gw", label: "Next GW", num: true, fmt: fmt(3) }, { key: "ratio", label: "Ratio", num: true, fmt: r2 }, { key: "verdict", label: "Verdict", className: (r) => (r.verdict === "LEAKS" ? "text-rose" : "text-text2") }], rows }}>
       <div ref={ref} />
+    </Figure>
+  );
+}
+
+// ---------- 15. the defender fix (experiments/rule_era.py) ----------
+function BiasPanel({ rows, title }) {
+  const long = rows.flatMap((r) => ["GK", "DEF", "MID", "FWD"].map((p) => ({ version: r.version, pos: p, bias: r[`bias ${p}`] })));
+  const ref = usePlot(() => ({
+    height: 220, marginLeft: 44,
+    fx: { domain: ["GK", "DEF", "MID", "FWD"], label: null },
+    x: { domain: ["v1", "v2 era"], axis: null, padding: 0.15 },
+    y: { label: "Predicted minus actual", grid: true, domain: [-0.45, 0.2] },
+    color: { domain: ["v1", "v2 era"], range: [C.muted, C.model] },
+    marks: [
+      Plot.barY(long, { fx: "pos", x: "version", y: "bias", fill: "version", rx: 2 }),
+      Plot.ruleY([0], { stroke: C.ink, strokeOpacity: 0.5 }),
+      Plot.tip(long, Plot.pointerX({ fx: "pos", x: "version", y: "bias", title: (d) => `${d.pos}, ${d.version === "v1" ? "current inputs" : "with the rule flag"}\n${d.bias > 0 ? "+" : ""}${d.bias.toFixed(3)} points a week` })),
+    ],
+  }), [rows]);
+  return <div className="min-w-0"><div className="mb-1 text-[12.5px] text-text2">{title}</div><div ref={ref} /></div>;
+}
+export function RuleEraFigure({ R }) {
+  const rows = (R.rule_era || []).filter((r) => r.version !== "v2 era+dc");
+  if (!rows.length) return null;
+  const A = rows.filter((r) => r.test.startsWith("A")), B = rows.filter((r) => r.test.startsWith("B"));
+  const g = (set, v, k) => set.find((r) => r.version === v)[k];
+  return (
+    <Figure n={15} title="Telling the model about the new rule" file="rule-era"
+      legend={<Legend items={[["Current inputs", C.muted], ["With the rule flag", C.model]]} />}
+      caption={`The rule flag is one extra input: 1 for seasons that pay defensive-contribution points, 0 before. Left: trained on 2022-23 to 2024-25 plus the first half of 2025-26, tested on its second half (19 gameweeks). Right: trained on every finished season, tested on 2026-27 gameweeks ${B[0] ? `1 to ${B[0].gameweeks}` : "so far"}.`}
+      takeaway={`The flag moves the defender bias from ${g(A, "v1", "bias DEF").toFixed(2)} to ${g(A, "v2 era", "bias DEF").toFixed(2)} points a week and the best XI from ${g(A, "v1", "best XI/GW").toFixed(1)} to ${g(A, "v2 era", "best XI/GW").toFixed(1)} (within the noise), but the average miss gets worse (${g(A, "v1", "MAE regulars").toFixed(3)} to ${g(A, "v2 era", "MAE regulars").toFixed(3)}). Both are true at once because FPL scores are skewed: regular starters average ${R.skew.mean.toFixed(1)} points but the typical score is ${R.skew.median.toFixed(0)}, and the number with the smallest average miss sits nearer the typical score than the average. The live model uses the flag, because picking defenders fairly matters more to a manager than the last 0.03 of average miss.`}
+      table={{ columns: [{ key: "test", label: "Test" }, { key: "version", label: "Version" }, { key: "MAE regulars", label: "Avg miss", num: true, fmt: fmt(3) }, { key: "rank corr", label: "Rank corr", num: true, fmt: fmt(3) }, { key: "best XI/GW", label: "Best XI/GW", num: true, fmt: fmt(1) }, ...["GK", "DEF", "MID", "FWD"].map((p) => ({ key: `bias ${p}`, label: `Bias ${p}`, num: true, fmt: fmt(3) }))], rows }}>
+      <div className="grid gap-6 md:grid-cols-2">
+        <BiasPanel rows={A} title="2025-26, second half" />
+        <BiasPanel rows={B} title="2026-27 so far" />
+      </div>
     </Figure>
   );
 }

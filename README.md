@@ -1,13 +1,31 @@
 # FPL Points Lab
 
-**Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw.**
+**Predicting Fantasy Premier League points with SQL feature engineering and gradient boosting, tested on a season the model never saw, and updated automatically every gameweek.**
 
-**[Visit the website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**
+[![Refresh data](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/refresh.yml/badge.svg)](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/refresh.yml)
+[![CI](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/ci.yml)
 
-Python · SQL (SQLite, window functions, CTEs) · scikit-learn · Tableau · Streamlit · pytest
+**[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)** · **[Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html)** · **[Dashboard](https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html)**
+
+Python · SQL (SQLite, window functions, CTEs) · scikit-learn · pytest · GitHub Actions · React · three.js · Observable Plot · Tableau
 
 > Andrew Kwon, B.S. Information Sciences @ UIUC. Follow-up to my earlier
 > [FPL Analyzer](https://github.com/andrewkwon084/fpl-analyzer) (a React app with a hand-tuned value score).
+
+## The short version
+
+**Question.** Can a model predict next week's FPL points well enough to pick a better team than the rules most managers already use (a player's season average, or his last five games)?
+
+**Approach.** 118,000 player-match rows from 2022-23 on, loaded into SQLite. 27 features built in SQL with window functions that always end the week before, so no row sees its own match (a test checks this). A gradient boosting model trained on two seasons, tuned on a third and scored once on a fourth. Uncertainty from a paired bootstrap over gameweeks, because players in the same week share fixtures and luck.
+
+**Result.** On 2025-26, which the model never saw, its weekly best XI scored 6.9 more points a week than the season-average rule (95% interval +2.7 to +11.1), about 260 points over the season. Prediction error for regular starters fell 8%. The captain pick alone was *not* reliably better, and the report says so.
+
+**What I found along the way.**
+* Defenders were under-predicted by 0.52 points a week, because the training seasons predate the 2025-26 rule that pays defensive contributions. Telling the model about the rule fixed most of the bias but made the average error slightly worse. That isn't a contradiction: FPL scores are skewed (regular starters average 3.2 points, the typical score is 2), and the number with the smallest average error sits below the true average. I kept the fix, since picking defenders fairly matters more than 0.03 points of error ([`experiments/rule_era.py`](experiments/rule_era.py)).
+* FPL's own expected-points column looks like the best predictor until you check it: it correlates 0.55 with the same week's points and 0.14 with the next week's, so it is filled in after the games. It's excluded ([`src/fpl/leakage.py`](src/fpl/leakage.py)).
+* On ranking alone the model and the five-week form rule tie (0.710 vs 0.711 rank correlation). The model's lead comes from not picking players who then don't play: form's captain sat out 13% of weeks, the model's 3%.
+
+**Running on its own.** A GitHub Actions workflow pulls the official FPL API every six hours, re-runs the weekly part of the pipeline, runs the tests and publishes the site. Before each deadline it saves that gameweek's picks to [`reports/ledger/`](reports/ledger/); after the games it scores them. The commit history is the proof that each pick was made before kickoff.
 
 ---
 
@@ -42,6 +60,7 @@ Each week, every method picks its best XI (a valid FPL formation, captain's poin
 * **[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)**: a home page with this week's picks and the model's track record, plus a dashboard with the best XI, players downgraded for injury news, every player's prediction with filters, each player's predictions vs points this season, the track record so far, and four analyses built in SQL ([`sql/site/`](sql/site/)): value for money by price tier, whether finishing above xG lasts, how much fixture difficulty matters (with every team's next five fixtures), and whether following transfer trends pays. A **transfer planner** takes your 15-man squad, bank, free transfers and remaining chips, and plans the next five gameweeks: when to use or roll each free transfer, whether a -4 hit pays, who to captain each week and when to play each chip. It searches week by week (a beam search in a Web Worker) within the budget and three-per-club rule, and a squad can be shared as a link. The home page explains the pipeline as a 3D stack you can turn and open (three.js), with the track record drawn as you scroll. Built with React and Vite in [`web/`](web/) into [`docs/`](docs/), served by GitHub Pages and fed by one JSON file that [`src/fpl/export_site.py`](src/fpl/export_site.py) writes. An older Streamlit version is in [`app/streamlit_app.py`](app/streamlit_app.py).
 * **[Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html)**: how the model did on 2025-26, a season it never trained on. Results against two simple baselines with 95% bootstrap intervals, the whole season replayed as best-XI picks, rank correlation by week and by how far ahead, calibration by position, lift by decile, a prediction-range explorer, residuals, error slices, permutation importance and the leakage check. Charts are [Observable Plot](https://observablehq.com/plot/); each figure has a table view and a CSV download. Its data comes from [`src/fpl/export_research.py`](src/fpl/export_research.py).
 * **SQL lab** (on the model report): a trimmed copy of the SQLite database (6 tables, 5.6 MB gzipped) runs in the browser through [sql.js](https://sql.js.org/) in a Web Worker, with a CodeMirror editor that autocompletes table and column names. The queries below load as presets; results show as a sortable table or a chart.
+* **Prediction ledger**: picks saved before every deadline since 2026-27 gameweek 10 and scored after the games ([`src/fpl/ledger.py`](src/fpl/ledger.py)), shown on the home page as "Called before kickoff".
 * **Tableau dashboards**: model scorecard, value finder and team attack vs defence, in [`tableau/FPL Points Lab.twbx`](tableau/). The workbook is generated from the CSV extracts by [`tableau/build_workbook.py`](tableau/build_workbook.py).
 
 ## This season (2026-27)
@@ -143,15 +162,17 @@ Note on query 02: the data stores ownership as a raw count of managers, not a pe
 ## Repository layout
 
 ```
-run_pipeline.py          one command to rebuild everything
-src/fpl/                 ingest, load_db, run_sql, leakage, model, live, picks, report, export_tableau
+run_pipeline.py          one command to rebuild everything (--refresh: the weekly update only)
+src/fpl/                 ingest, load_db, run_sql, leakage, model, live, ledger, picks, report, exports
+.github/workflows/       refresh.yml (scheduled data refresh), ci.yml (site build on every push)
+reports/ledger/          picks saved before each deadline, and their scores
 sql/schema.sql           relational schema with keys and constraints
 sql/features.sql         feature engineering with window functions
 sql/upcoming.sql         the same features for the next, unplayed gameweek
 sql/horizon.sql          the same features for each of the next six gameweeks (transfer planner)
 sql/site/                analysis queries behind the website's findings
 experiments/             model experiments, including the ones that didn't help
-web/                     the website's source (React, Vite, three.js)
+web/                     the website's source (React, Vite, three.js, Observable Plot, sql.js)
 docs/                    the built website (GitHub Pages)
 sql/analysis/            standalone analysis queries
 sql/tableau_exports.sql  flat views for Tableau
@@ -164,9 +185,10 @@ tableau/                 Tableau workbook, its generator script and CSV extracts
 ## Limitations and next steps
 
 * **Injury news is applied after the model, not learned.** Live picks scale predictions by FPL's chance-of-playing flag, but the archive only keeps an end-of-season snapshot of that flag, so the model can't be trained or tested on it.
-* **Rule change bias.** Defenders are under-predicted in 2025-26. Defensive-contribution features didn't help yet (see What didn't work), but should once a second season of that data exists.
+* **Rule change bias.** Defenders were under-predicted in 2025-26. A flag for seasons under the new rule fixes most of it in the live model, at a small cost in average error (see the short version above). The 2025-26 held-out test keeps the original inputs, since its training seasons all predate the rule.
+* **Platform differences.** Gradient boosting on Linux and on macOS (Apple silicon) can differ in the last decimal places, which is enough to flip a close tuning choice. The held-out numbers above come from one fixed run; the scheduled refresh only re-runs the live part, with the tuned settings in `reports/best_params.json`.
 * **`starts` is incomplete in 2022-23**, because FPL began tracking it mid-season. Minutes-based features carry most of the signal anyway.
-* **Transfer search is a beam search, not an exact optimizer.** It checks every legal single transfer, then extends the best 12 squads one transfer at a time. An integer program (e.g. with PuLP) would guarantee the best multi-transfer plan.
+* **Transfer search is a beam search, not an exact optimizer.** It keeps the best 10 plans each week, trying 1 to 3 transfers from each. An integer program (e.g. with PuLP) would guarantee the best multi-transfer plan.
 * **Selling prices.** FPL sells a player for less than his current price if he rose after you bought him. The planner uses current prices, so the bank may need lowering by hand.
 
 ---

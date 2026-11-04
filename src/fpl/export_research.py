@@ -114,6 +114,13 @@ def main() -> None:
         return " ".join(lines).removeprefix("Q:").strip()
     queries = [{"file": f.name, "title": title(f.read_text()), "sql": f.read_text()} for f in sorted(sql_dir.glob("*.sql"))]
 
+    # experiments/rule_era.py: does flagging the defensive-contribution seasons fix the defender bias?
+    rule_file = REPORTS_DIR / "rule_era.csv"
+    rule_era = records(pd.read_csv(rule_file)) if rule_file.exists() else []
+    feats = load_features()
+    recent = feats[(feats.season >= "2025-26") & (feats.minutes_l5.fillna(0) >= 60)][TARGET]
+    skew = {"mean": r2(recent.mean()), "median": r2(recent.median())}
+
     horizon_file = REPORTS_DIR / "horizon_backtest.csv"
     horizon = records(pd.read_csv(horizon_file)) if horizon_file.exists() else []
 
@@ -133,6 +140,8 @@ def main() -> None:
         "leakage": records(leak),
         "bias": records(bias),
         "horizon": horizon,
+        "rule_era": rule_era,
+        "skew": skew,
         "queries": queries,
     }
     OUT.mkdir(parents=True, exist_ok=True)
