@@ -1,11 +1,13 @@
 gw,method,xi_points
-1,Model,41.0
-2,Model,130.0
+1,Model,35.0
+2,Model,115.0
 3,Model,73.0
 4,Model,67.0
-5,Model,45.0
-6,Model,54.0
-7,Model,56.0
+5,Model,55.0
+6,Model,59.0
+7,Model,76.0
+8,Model,57.0
+9,Model,46.0
 1,Season average,46.0
 2,Season average,48.0
 3,Season average,29.0
@@ -13,6 +15,8 @@ gw,method,xi_points
 5,Season average,68.0
 6,Season average,70.0
 7,Season average,48.0
+8,Season average,36.0
+9,Season average,44.0
 1,Recent form,46.0
 2,Recent form,48.0
 3,Recent form,29.0
@@ -20,3 +24,5 @@ gw,method,xi_points
 5,Recent form,68.0
 6,Recent form,70.0
 7,Recent form,45.0
+8,Recent form,44.0
+9,Recent form,63.0
