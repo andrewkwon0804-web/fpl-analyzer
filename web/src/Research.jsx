@@ -13,15 +13,16 @@ import {
 } from "./components/report/figures.jsx";
 // CodeMirror and sql.js only load when the reader gets near the lab
 const SqlLab = lazy(() => import("./components/report/SqlLab.jsx"));
+const ModelTree = lazy(() => import("./components/report/ModelTree.jsx"));
 
 const REPO = "https://github.com/andrewkwon0804-web/fpl-analyzer";
 const LINKS = [["./", "Home"], ["./dashboard.html", "Dashboard"], ["#sql", "SQL lab"], ["#method", "Method"]];
 const SECTIONS = [
   ["baselines", "Against simple rules"], ["backtest", "A season of picks"], ["ranking", "Getting the order right"],
   ["calibration", "Are the numbers honest?"], ["defenders", "Fixing the defender bias"], ["lift", "Does higher mean more?"], ["errors", "Where it misses"],
-  ["features", "What drives it"], ["sql", "SQL lab"], ["method", "Method and limits"],
+  ["features", "What drives it"], ["tree", "Inside one tree"], ["sql", "SQL lab"], ["method", "Method and limits"],
 ];
-const TINTS = ["56 225 168", "70 120 255", "56 225 168", "245 196 81", "70 120 255", "56 225 168", "70 120 255", "56 225 168", "70 120 255", "56 225 168"];
+const TINTS = ["56 225 168", "56 225 168", "70 120 255", "56 225 168", "245 196 81", "70 120 255", "56 225 168", "70 120 255", "56 225 168", "70 120 255", "56 225 168"];
 
 function useResearch() {
   const [s, set] = useState({ R: null, error: null });
@@ -247,11 +248,15 @@ function Report({ R }) {
             <ImportanceFigure R={R} />
             <LeakageFigure R={R} />
           </Section>
-          <Section id="sql" n={9} title="Ask the database yourself."
+          <Section id="tree" n={9} title="Inside one of the model's trees."
+            intro="The model is a sum of small decision trees, each nudging a prediction up or down a little. This is the first one, which does more of the work than any other. Real 2025-26 player-weeks drop in at the top and take the same yes-or-no turns the model takes, using the same cut-offs; the leaf they land in is how much this tree adds or takes away. Hover a point for its rule, and drag to turn.">
+            <Suspense fallback={<div className="skel h-[620px] rounded-[6px]" />}><ModelTree /></Suspense>
+          </Section>
+          <Section id="sql" n={10} title="Ask the database yourself."
             intro="The project's SQLite database, trimmed to six tables, running in this tab through WebAssembly. The tabs are the analysis queries from the repo's sql/analysis folder. Edit them, or write your own: autocomplete knows every table and column.">
             <Suspense fallback={<div className="skel h-[620px] rounded-[6px]" />}><SqlLab queries={R.queries} /></Suspense>
           </Section>
-          <Section id="method" n={10} title="How it was built, and what it can't know.">
+          <Section id="method" n={11} title="How it was built, and what it can't know.">
             <Method R={R} />
           </Section>
         </div>

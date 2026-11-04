@@ -11,6 +11,7 @@ import { PopProvider, usePop } from "./components/Popover.jsx";
 import Hero from "./sections/Hero.jsx";
 import Ledger from "./sections/Ledger.jsx";
 import CaptainCards from "./components/CaptainCards.jsx";
+import CaptainPlinko from "./components/CaptainPlinko.jsx";
 import { LastGameweek, TrackRecord, Findings, TopPicks, FAQ, Closing, Footer } from "./sections/Rest.jsx";
 
 // Shown while site.json loads: the same layout in grey blocks, so nothing jumps when data arrives.
@@ -45,6 +46,7 @@ function Page({ data }) {
         <Suspense fallback={<section id="how" className="h-[420vh]" />}><PipelineStack data={data} /></Suspense>
         <Suspense fallback={<section id="market" className="h-[330vh]" />}><PlayerMarket data={data} /></Suspense>
         <CaptainCards data={data} />
+        <CaptainPlinko data={data} />
         {data.last_gw && <LastGameweek data={data} />}
         <TrackRecord data={data} />
         <Ledger data={data} />

@@ -380,7 +380,7 @@ export function SliceFigure({ R }) {
 }
 
 // ---------- 13. permutation importance ----------
-const FEATURE_NAMES = {
+export const FEATURE_NAMES = {
   minutes_l3: "Minutes, last 3 GWs", minutes_l5: "Minutes, last 5 GWs", minutes_std: "Minutes, spread", prev_minutes: "Minutes, last season",
   fixture_difficulty: "Fixture difficulty", n_fixtures: "Fixtures this GW", home_fixtures: "Home fixtures", points_std: "Points, spread",
   points_l3: "Points, last 3 GWs", points_l5: "Points, last 5 GWs", xa_l5: "xA, last 5", xg_l5: "xG, last 5", xgc_l5: "xG conceded, last 5",

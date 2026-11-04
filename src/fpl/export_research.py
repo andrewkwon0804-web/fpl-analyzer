@@ -148,6 +148,8 @@ def main() -> None:
     (OUT / "research.json").write_text(json.dumps(data, separators=(",", ":"), ensure_ascii=False))
     print(f"[research] wrote research.json ({(OUT / 'research.json').stat().st_size // 1024} KB)")
     lite_db()
+    from fpl import export_tree
+    export_tree.main()
 
 
 # columns kept in the browser copy: enough to run every query in sql/analysis/ and explore

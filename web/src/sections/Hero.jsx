@@ -1,9 +1,11 @@
 // First screen. Plain statement, two actions, the sources. As you scroll it sinks back into
 // the page while the pipeline stack below takes over.
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import Finder from "../components/Finder.jsx";
 import { usePop } from "../components/Popover.jsx";
 import { reduced } from "../lib/motion.js";
+// three.js loads after the text is up
+const LeagueBall = lazy(() => import("../components/LeagueBall.jsx"));
 
 function Copy({ text }) {
   const [done, setDone] = useState(false);
@@ -41,14 +43,14 @@ export default function Hero({ data }) {
   const rise = (d) => ({ transition: `opacity 1s ${d}s, transform 1.2s cubic-bezier(.2,.7,.1,1) ${d}s, filter 1s ${d}s`,
     opacity: in_ ? 1 : 0, transform: in_ ? "none" : "translateY(24px)", filter: in_ ? "none" : "blur(8px)" });
   return (
-    <section id="top" data-tint="56 225 168" data-tint2="70 120 255" data-tx="78%" data-glow="1" className="relative flex min-h-[100svh] items-center">
+    <section id="top" data-tint="56 225 168" data-tint2="70 120 255" data-tx="78%" data-glow="1" className="relative flex min-h-[100svh] flex-col justify-center max-lg:pb-6 max-lg:pt-28 lg:flex-row lg:items-center">
       <div ref={box} className="page origin-top-left will-change-transform">
         <div style={rise(0)} className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[12px] uppercase tracking-[0.12em] text-text3">
           Season {m.season} <span className="text-text2">·</span> Gameweek {m.gw}{data.stale && <span className="text-amber">· data through GW{m.played}</span>}
         </div>
-        <h1 style={rise(0.08)} className="mt-6 max-w-[1180px] font-display text-[clamp(38px,5.4vw,84px)] font-medium leading-[1] tracking-[-0.04em]">
+        <h1 style={rise(0.08)} className="mt-6 max-w-[min(1180px,52vw)] max-lg:max-w-none font-display text-[clamp(38px,4.3vw,72px)] font-medium leading-[1] tracking-[-0.04em]">
           Predicted FPL points for all {data.players.length} players.{" "}
-          <span className="text-text3">Refreshed every six hours, and checked against a season the model never saw.</span>
+          <span className="text-text3">Refreshed every six hours, tested on a season it never saw.</span>
         </h1>
         <div style={rise(0.2)} className="mt-9 flex flex-wrap items-center gap-3">
           <a href="./dashboard.html" className="flex h-9 items-center gap-2 bg-text px-4 font-mono text-[12px] uppercase tracking-[0.1em] text-bg hover:bg-mint">Dashboard <span>›</span></a>
@@ -60,7 +62,10 @@ export default function Hero({ data }) {
         </div>
         <div style={rise(0.4)} className="mt-14 max-w-[420px]"><Finder data={data} onPick={onPick} /></div>
       </div>
-      <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3">Scroll</div>
+      <div style={rise(0.15)} className="relative mt-4 h-[340px] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-auto lg:w-[50%]">
+        <Suspense fallback={null}><LeagueBall data={data} /></Suspense>
+      </div>
+      <div className="mono-label absolute inset-x-0 bottom-8 text-center text-[10px] text-text3 max-lg:hidden">Scroll</div>
     </section>
   );
 }
