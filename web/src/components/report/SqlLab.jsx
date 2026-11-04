@@ -117,7 +117,9 @@ function Editor({ value, onChange, onRun, schema }) {
 function guess(columns, rows) {
   const isNum = columns.map((_, i) => rows.length > 0 && rows.slice(0, 50).every((r) => r[i] === null || typeof r[i] === "number"));
   const nums = columns.filter((_, i) => isNum[i]), cats = columns.filter((_, i) => !isNum[i]);
-  return { isNum: Object.fromEntries(columns.map((c, i) => [c, isNum[i]])), x: cats[0] ?? nums[0], y: nums.at(-1) ?? null, color: cats.length > 1 ? cats[1] : "" };
+  // ids, ranks and counts make poor default values; prefer a measure if there is one
+  const measures = nums.filter((c) => !/(^|_)(id|rank|gw|n)$|rank|^season$/i.test(c));
+  return { isNum: Object.fromEntries(columns.map((c, i) => [c, isNum[i]])), x: cats[0] ?? nums[0], y: measures.at(-1) ?? nums.at(-1) ?? null, color: cats.length > 1 ? cats[1] : "" };
 }
 
 function ResultChart({ result, axes, setAxes }) {

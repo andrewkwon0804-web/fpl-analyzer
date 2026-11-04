@@ -59,6 +59,8 @@ jobs:
           git add -A docs reports tableau
           MSG=$(python -c "import json; m = json.load(open('reports/live/meta.json')); print('Data refresh: GW%s played, GW%s picks' % (m['last_played_gw'], m['next_gw']))")
           git commit -m "$MSG"
+          # someone may have pushed while this ran; keep their code and this run's data
+          git pull --rebase -X theirs origin main
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 

@@ -46,11 +46,13 @@ export default function Hero({ data }) {
         <div style={rise(0)} className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[12px] uppercase tracking-[0.12em] text-text3">
           Season {m.season} <span className="text-text2">·</span> Gameweek {m.gw}{data.stale && <span className="text-amber">· data through GW{m.played}</span>}
         </div>
-        <h1 style={rise(0.08)} className="mt-6 max-w-[1100px] font-display text-[clamp(42px,6vw,92px)] font-medium leading-[1] tracking-[-0.04em]">
-          Predicted FPL points for<br />all {data.players.length} players.
+        <h1 style={rise(0.08)} className="mt-6 max-w-[1180px] font-display text-[clamp(38px,5.4vw,84px)] font-medium leading-[1] tracking-[-0.04em]">
+          Predicted FPL points for all {data.players.length} players.{" "}
+          <span className="text-text3">Refreshed every six hours, and checked against a season the model never saw.</span>
         </h1>
         <div style={rise(0.2)} className="mt-9 flex flex-wrap items-center gap-3">
           <a href="./dashboard.html" className="flex h-9 items-center gap-2 bg-text px-4 font-mono text-[12px] uppercase tracking-[0.1em] text-bg hover:bg-mint">Dashboard <span>›</span></a>
+          <a href="./research.html" className="flex h-9 items-center border border-line2 px-4 font-mono text-[12px] uppercase tracking-[0.1em] text-text2 hover:text-text">Model report</a>
           <Copy text="python run_pipeline.py" />
         </div>
         <div style={rise(0.3)} className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] uppercase tracking-[0.1em]">

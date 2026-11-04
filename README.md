@@ -5,7 +5,7 @@
 [![Refresh data](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/refresh.yml/badge.svg)](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/refresh.yml)
 [![CI](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/andrewkwon0804-web/fpl-analyzer/actions/workflows/ci.yml)
 
-**[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)** · **[Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html)** · **[Dashboard](https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html)**
+**[Website](https://andrewkwon0804-web.github.io/fpl-analyzer/)** · **[Model report](https://andrewkwon0804-web.github.io/fpl-analyzer/research.html)** · **[Dashboard](https://andrewkwon0804-web.github.io/fpl-analyzer/dashboard.html)** · **[50-second demo video](https://andrewkwon0804-web.github.io/fpl-analyzer/media/fpl-points-lab-demo.mp4)**
 
 Python · SQL (SQLite, window functions, CTEs) · scikit-learn · pytest · GitHub Actions · React · three.js · Observable Plot · Tableau
 

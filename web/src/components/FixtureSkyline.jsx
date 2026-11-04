@@ -124,7 +124,7 @@ export default function FixtureSkyline({ data }) {
           Each tower is a game. Taller and greener means easier, by FPL's difficulty rating. Teams are sorted so the easiest run is at the front: {best.join(", ")}. {worst.join(" and ")} have the hardest. Drag to turn it.
         </p>
       </div>
-      <div className="relative h-[min(78vh,680px)] min-h-[420px]">
+      <div className="relative h-[min(78vh,680px)] min-h-[420px] overflow-hidden">
         <div ref={mount} className="absolute inset-0 touch-pan-y" role="img" aria-label={`Fixture difficulty for every team over gameweeks ${gws[0]} to ${gws.at(-1)}. Easiest runs: ${best.join(", ")}.`} />
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           {teams.map((t) => <span key={t.team} ref={(e) => (labels.current[`t${t.team}`] = e)} className="absolute left-0 top-0 -translate-x-full -translate-y-1/2 pr-1 font-mono text-[10.5px] text-text3" style={{ opacity: 0 }}>{t.team}</span>)}

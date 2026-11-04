@@ -166,6 +166,28 @@ export function RecordTab({ data }) {
           <LineChart series={[{ name: "Model", color: "rgb(var(--mint))", points: cumulative(data.weekly.Model) }, { name: "Simple rule", color: "rgb(var(--text3))", points: cumulative(data.weekly["Season average"]) }]} />
         </div>
       </Box>
+      <Box title="Saved before kickoff" hint="Each gameweek's picks are committed to the repo before the deadline and scored after the games, so this record can't be replayed with hindsight.">
+        <div className="mt-4 overflow-x-auto">
+          {(data.ledger?.scored.length || data.ledger?.pending.length) ? (
+            <table className="w-full min-w-[520px] text-sm">
+              <thead><tr className="mono-label border-b border-line text-left text-[10px] text-text3"><th className="py-2 font-normal">Gameweek</th><th className="font-normal">Saved</th><th className="font-normal">Model XI</th><th className="font-normal">Rule XI</th><th className="font-normal">Captain</th></tr></thead>
+              <tbody>
+                {[...data.ledger.pending.map((r) => ({ ...r, wait: true })), ...[...data.ledger.scored].reverse()].map((r) => (
+                  <tr key={r.gw} className="border-b border-line/60">
+                    <td className="py-3">GW{r.gw}</td>
+                    <td className="font-mono text-xs text-text2">{new Date(r.saved_at).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "UTC" })} UTC</td>
+                    {r.wait ? <td colSpan={3} className="text-text3">Waiting for the games</td> : (<>
+                      <td className="num font-mono text-mint">{Math.round(r.model_xi)}</td>
+                      <td className="num font-mono text-text2">{Math.round(r.rule_xi)}</td>
+                      <td className="text-text2">{r.captain} <span className="font-mono text-xs text-text3">{Math.round(r.captain_points)}</span></td>
+                    </>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : <p className="text-text3">The first saved picks appear after the next refresh before a deadline.</p>}
+        </div>
+      </Box>
       <Box title="Is the gap real?" hint={`The range comes from resampling the ${data.meta.played} played weeks 4,000 times. It says yes only when the whole range is above zero.`}>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[520px] text-sm">
