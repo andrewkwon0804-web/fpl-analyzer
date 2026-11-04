@@ -104,6 +104,17 @@ def first_kickoffs() -> dict:
     return {str(g): t for g, t in first.items()}
 
 
+def ledger_rows() -> dict:
+    """Picks saved before each deadline (ledger.py): scored weeks and the week still to play."""
+    folder = REPORTS_DIR / "ledger"
+    index = json.loads((folder / "index.json").read_text()) if (folder / "index.json").exists() else {}
+    scores = pd.read_csv(folder / "scores.csv") if (folder / "scores.csv").exists() else pd.DataFrame()
+    scored = set(scores.gw.astype(int)) if not scores.empty else set()
+    pending = [{"gw": int(k), "saved_at": v["saved_at"], "deadline": v["deadline"]}
+               for k, v in index.items() if int(k) not in scored]
+    return {"scored": rows(scores) if not scores.empty else [], "pending": pending}
+
+
 def build() -> dict:
     live = REPORTS_DIR / "live"
     nxt = pd.read_csv(live / "next_gameweek_predictions.csv").reset_index(drop=True)
@@ -149,6 +160,7 @@ def build() -> dict:
         "last_season_edge": last_season_edge(),
         "analysis": analysis(int(nxt.gw.iloc[0])),
         "last_gw": last_gameweek(played, pd.read_csv(live / "season_so_far_weekly.csv")),
+        "ledger": ledger_rows(),
         "model_team": json.loads((live / "model_team.json").read_text()) if (live / "model_team.json").exists() else None,
     }
 

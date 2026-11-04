@@ -16,7 +16,7 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 8.0,
-     "pred": 4.39,
+     "pred": 4.77,
      "start": true,
      "points": 5,
      "minutes": 90
@@ -27,29 +27,7 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 4.03,
-     "start": true,
-     "points": 6,
-     "minutes": 90
-    },
-    {
-     "id": 6,
-     "name": "Saliba",
-     "team": "ARS",
-     "pos": "DEF",
-     "price": 6.0,
-     "pred": 3.87,
-     "start": true,
-     "points": 0,
-     "minutes": 0
-    },
-    {
-     "id": 84,
-     "name": "Collins",
-     "team": "BRE",
-     "pos": "DEF",
-     "price": 5.5,
-     "pred": 3.82,
+     "pred": 4.14,
      "start": true,
      "points": 6,
      "minutes": 90
@@ -60,10 +38,32 @@
      "team": "SUN",
      "pos": "DEF",
      "price": 5.5,
-     "pred": 3.74,
+     "pred": 3.96,
      "start": true,
      "points": 0,
      "minutes": 0
+    },
+    {
+     "id": 6,
+     "name": "Saliba",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.95,
+     "start": true,
+     "points": 0,
+     "minutes": 0
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 3.9,
+     "start": true,
+     "points": 6,
+     "minutes": 90
     },
     {
      "id": 106,
@@ -71,7 +71,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 8.0,
-     "pred": 4.01,
+     "pred": 4.19,
      "start": true,
      "points": 0,
      "minutes": 82
@@ -82,7 +82,7 @@
      "team": "LEE",
      "pos": "FWD",
      "price": 6.0,
-     "pred": 2.95,
+     "pred": 3.04,
      "start": false,
      "points": 1,
      "minutes": 90
@@ -93,7 +93,7 @@
      "team": "BHA",
      "pos": "FWD",
      "price": 5.5,
-     "pred": 1.9,
+     "pred": 2.02,
      "start": false,
      "points": 5,
      "minutes": 90
@@ -104,7 +104,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.88,
+     "pred": 3.73,
      "start": true,
      "points": 7,
      "minutes": 90
@@ -115,7 +115,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 5.0,
-     "pred": 3.58,
+     "pred": 3.52,
      "start": false,
      "points": 1,
      "minutes": 90
@@ -126,7 +126,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 12.0,
-     "pred": 5.22,
+     "pred": 5.79,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -137,7 +137,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.5,
-     "pred": 3.99,
+     "pred": 3.85,
      "start": true,
      "points": 3,
      "minutes": 67
@@ -148,7 +148,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 8.0,
-     "pred": 3.69,
+     "pred": 3.7,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -159,7 +159,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 3.4,
+     "pred": 3.26,
      "start": true,
      "points": 1,
      "minutes": 11
@@ -170,7 +170,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.5,
-     "pred": 3.08,
+     "pred": 3.05,
      "start": false,
      "points": 9,
      "minutes": 90
@@ -203,25 +203,25 @@
    "captain": 426,
    "squad": [
     {
-     "id": 84,
-     "name": "Collins",
-     "team": "BRE",
-     "pos": "DEF",
-     "price": 5.5,
-     "pred": 4.89,
-     "start": true,
-     "points": 3,
-     "minutes": 90
-    },
-    {
      "id": 4,
      "name": "Gabriel",
      "team": "ARS",
      "pos": "DEF",
      "price": 8.0,
-     "pred": 4.72,
+     "pred": 5.45,
      "start": true,
      "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 84,
+     "name": "Collins",
+     "team": "BRE",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 4.69,
+     "start": true,
+     "points": 3,
      "minutes": 90
     },
     {
@@ -230,9 +230,20 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 4.09,
+     "pred": 4.19,
      "start": true,
      "points": 12,
+     "minutes": 90
+    },
+    {
+     "id": 533,
+     "name": "Mukiele",
+     "team": "SUN",
+     "pos": "DEF",
+     "price": 5.5,
+     "pred": 0.48,
+     "start": false,
+     "points": 9,
      "minutes": 90
     },
     {
@@ -241,21 +252,10 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 0.48,
+     "pred": 0.36,
      "start": false,
      "points": 0,
      "minutes": 0
-    },
-    {
-     "id": 533,
-     "name": "Mukiele",
-     "team": "SUN",
-     "pos": "DEF",
-     "price": 5.5,
-     "pred": 0.35,
-     "start": false,
-     "points": 9,
-     "minutes": 90
     },
     {
      "id": 464,
@@ -263,7 +263,7 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.0,
-     "pred": 5.52,
+     "pred": 5.49,
      "start": true,
      "points": 8,
      "minutes": 81
@@ -274,7 +274,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 8.0,
-     "pred": 4.42,
+     "pred": 4.64,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -285,21 +285,10 @@
      "team": "BHA",
      "pos": "FWD",
      "price": 5.5,
-     "pred": 2.98,
+     "pred": 2.83,
      "start": true,
      "points": 0,
      "minutes": 0
-    },
-    {
-     "id": 226,
-     "name": "Pickford",
-     "team": "EVE",
-     "pos": "GK",
-     "price": 5.5,
-     "pred": 3.44,
-     "start": true,
-     "points": 3,
-     "minutes": 90
     },
     {
      "id": 529,
@@ -307,9 +296,20 @@
      "team": "SUN",
      "pos": "GK",
      "price": 5.0,
-     "pred": 2.89,
+     "pred": 3.26,
      "start": false,
      "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.22,
+     "start": true,
+     "points": 3,
      "minutes": 90
     },
     {
@@ -318,7 +318,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 12.0,
-     "pred": 6.01,
+     "pred": 6.42,
      "start": true,
      "points": 23,
      "minutes": 90
@@ -329,7 +329,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.5,
-     "pred": 4.21,
+     "pred": 4.38,
      "start": true,
      "points": 5,
      "minutes": 84
@@ -340,7 +340,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 8.0,
-     "pred": 4.14,
+     "pred": 4.15,
      "start": true,
      "points": 13,
      "minutes": 90
@@ -351,7 +351,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.5,
-     "pred": 3.58,
+     "pred": 3.55,
      "start": true,
      "points": 6,
      "minutes": 90
@@ -362,7 +362,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 2.06,
+     "pred": 2.17,
      "start": false,
      "points": 1,
      "minutes": 61
@@ -396,7 +396,7 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 4.76,
+     "pred": 5.24,
      "start": true,
      "points": 8,
      "minutes": 90
@@ -407,7 +407,7 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 8.0,
-     "pred": 3.9,
+     "pred": 4.86,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -418,7 +418,7 @@
      "team": "BRE",
      "pos": "DEF",
      "price": 5.5,
-     "pred": 3.44,
+     "pred": 3.53,
      "start": true,
      "points": 1,
      "minutes": 16
@@ -429,7 +429,7 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 2.33,
+     "pred": 3.08,
      "start": false,
      "points": 3,
      "minutes": 90
@@ -440,7 +440,7 @@
      "team": "SUN",
      "pos": "DEF",
      "price": 5.5,
-     "pred": 2.31,
+     "pred": 2.27,
      "start": false,
      "points": 4,
      "minutes": 90
@@ -451,7 +451,7 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.1,
-     "pred": 5.16,
+     "pred": 5.06,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -462,7 +462,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 8.0,
-     "pred": 4.35,
+     "pred": 4.23,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -473,21 +473,10 @@
      "team": "BHA",
      "pos": "FWD",
      "price": 5.5,
-     "pred": 2.46,
+     "pred": 1.88,
      "start": true,
      "points": 0,
      "minutes": 0
-    },
-    {
-     "id": 529,
-     "name": "Roefs",
-     "team": "SUN",
-     "pos": "GK",
-     "price": 5.0,
-     "pred": 3.1,
-     "start": true,
-     "points": 2,
-     "minutes": 90
     },
     {
      "id": 226,
@@ -495,9 +484,20 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 2.88,
+     "pred": 2.99,
      "start": false,
      "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 5.0,
+     "pred": 2.98,
+     "start": true,
+     "points": 2,
      "minutes": 90
     },
     {
@@ -506,7 +506,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 12.0,
-     "pred": 6.88,
+     "pred": 6.33,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -517,7 +517,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 7.9,
-     "pred": 4.5,
+     "pred": 4.95,
      "start": true,
      "points": 3,
      "minutes": 90
@@ -539,7 +539,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.5,
-     "pred": 3.43,
+     "pred": 3.86,
      "start": true,
      "points": 5,
      "minutes": 90
@@ -550,7 +550,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 1.77,
+     "pred": 1.86,
      "start": false,
      "points": 2,
      "minutes": 76
@@ -579,26 +579,26 @@
    "captain": 426,
    "squad": [
     {
-     "id": 204,
-     "name": "Mitchell",
-     "team": "CRY",
-     "pos": "DEF",
-     "price": 4.5,
-     "pred": 4.64,
-     "start": true,
-     "points": 1,
-     "minutes": 76
-    },
-    {
      "id": 4,
      "name": "Gabriel",
      "team": "ARS",
      "pos": "DEF",
      "price": 8.0,
-     "pred": 4.41,
+     "pred": 4.95,
      "start": true,
      "points": 9,
      "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 4.9,
+     "start": true,
+     "points": 1,
+     "minutes": 76
     },
     {
      "id": 229,
@@ -606,9 +606,20 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 3.62,
+     "pred": 3.84,
      "start": true,
      "points": 8,
+     "minutes": 90
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 6.0,
+     "pred": 3.19,
+     "start": false,
+     "points": 6,
      "minutes": 90
     },
     {
@@ -617,21 +628,10 @@
      "team": "BRE",
      "pos": "DEF",
      "price": 5.5,
-     "pred": 2.78,
+     "pred": 2.69,
      "start": true,
      "points": 0,
      "minutes": 0
-    },
-    {
-     "id": 388,
-     "name": "Gu\u00e9hi",
-     "team": "MCI",
-     "pos": "DEF",
-     "price": 6.0,
-     "pred": 2.56,
-     "start": false,
-     "points": 6,
-     "minutes": 90
     },
     {
      "id": 106,
@@ -639,7 +639,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 7.9,
-     "pred": 4.45,
+     "pred": 4.96,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -650,7 +650,7 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.2,
-     "pred": 3.83,
+     "pred": 3.4,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -661,7 +661,7 @@
      "team": "BHA",
      "pos": "FWD",
      "price": 5.4,
-     "pred": 1.73,
+     "pred": 1.67,
      "start": false,
      "points": 0,
      "minutes": 0
@@ -672,7 +672,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.57,
+     "pred": 3.68,
      "start": true,
      "points": 6,
      "minutes": 90
@@ -683,7 +683,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 5.0,
-     "pred": 2.62,
+     "pred": 2.67,
      "start": false,
      "points": 2,
      "minutes": 90
@@ -694,9 +694,20 @@
      "team": "MUN",
      "pos": "MID",
      "price": 12.0,
-     "pred": 6.59,
+     "pred": 6.62,
      "start": true,
      "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 480,
+     "name": "Gibbs-White",
+     "team": "NFO",
+     "pos": "MID",
+     "price": 7.9,
+     "pred": 4.39,
+     "start": true,
+     "points": 8,
      "minutes": 90
     },
     {
@@ -705,21 +716,10 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.4,
-     "pred": 4.58,
+     "pred": 4.26,
      "start": true,
      "points": 6,
      "minutes": 80
-    },
-    {
-     "id": 480,
-     "name": "Gibbs-White",
-     "team": "NFO",
-     "pos": "MID",
-     "price": 7.9,
-     "pred": 4.18,
-     "start": true,
-     "points": 8,
-     "minutes": 90
     },
     {
      "id": 544,
@@ -727,7 +727,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.5,
-     "pred": 3.01,
+     "pred": 2.77,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -738,7 +738,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 2.03,
+     "pred": 2.01,
      "start": false,
      "points": 4,
      "minutes": 90
@@ -772,20 +772,9 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.1,
-     "pred": 4.34,
+     "pred": 4.18,
      "start": true,
      "points": 14,
-     "minutes": 90
-    },
-    {
-     "id": 4,
-     "name": "Gabriel",
-     "team": "ARS",
-     "pos": "DEF",
-     "price": 8.0,
-     "pred": 3.77,
-     "start": true,
-     "points": 1,
      "minutes": 90
     },
     {
@@ -794,9 +783,20 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 3.58,
+     "pred": 3.94,
      "start": true,
      "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.0,
+     "pred": 3.88,
+     "start": true,
+     "points": 1,
      "minutes": 90
     },
     {
@@ -805,7 +805,7 @@
      "team": "CRY",
      "pos": "DEF",
      "price": 4.5,
-     "pred": 3.22,
+     "pred": 3.28,
      "start": true,
      "points": 7,
      "minutes": 90
@@ -816,7 +816,7 @@
      "team": "BRE",
      "pos": "DEF",
      "price": 5.4,
-     "pred": 1.67,
+     "pred": 1.76,
      "start": false,
      "points": 0,
      "minutes": 0
@@ -827,20 +827,9 @@
      "team": "LEE",
      "pos": "FWD",
      "price": 6.0,
-     "pred": 5.05,
+     "pred": 5.13,
      "start": true,
      "points": 2,
-     "minutes": 90
-    },
-    {
-     "id": 464,
-     "name": "Wissa",
-     "team": "NEW",
-     "pos": "FWD",
-     "price": 6.2,
-     "pred": 4.42,
-     "start": true,
-     "points": 0,
      "minutes": 90
     },
     {
@@ -849,9 +838,20 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 7.8,
-     "pred": 4.41,
+     "pred": 4.15,
      "start": true,
      "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 6.2,
+     "pred": 3.98,
+     "start": true,
+     "points": 0,
      "minutes": 90
     },
     {
@@ -860,7 +860,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.92,
+     "pred": 4.03,
      "start": true,
      "points": 8,
      "minutes": 90
@@ -871,7 +871,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 4.9,
-     "pred": 2.2,
+     "pred": 2.21,
      "start": false,
      "points": 0,
      "minutes": 90
@@ -882,7 +882,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 12.0,
-     "pred": 7.63,
+     "pred": 6.85,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -893,7 +893,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 8.0,
-     "pred": 5.61,
+     "pred": 6.14,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -904,9 +904,20 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.4,
-     "pred": 4.14,
+     "pred": 4.15,
      "start": true,
      "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 544,
+     "name": "Xhaka",
+     "team": "SUN",
+     "pos": "MID",
+     "price": 5.5,
+     "pred": 2.79,
+     "start": false,
+     "points": 2,
      "minutes": 90
     },
     {
@@ -918,17 +929,6 @@
      "pred": 2.77,
      "start": false,
      "points": 3,
-     "minutes": 90
-    },
-    {
-     "id": 544,
-     "name": "Xhaka",
-     "team": "SUN",
-     "pos": "MID",
-     "price": 5.5,
-     "pred": 2.7,
-     "start": false,
-     "points": 2,
      "minutes": 90
     }
    ],
@@ -950,14 +950,14 @@
    "captain": 426,
    "squad": [
     {
-     "id": 305,
-     "name": "Davis",
-     "team": "IPS",
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
      "pos": "DEF",
-     "price": 4.0,
-     "pred": 4.28,
+     "price": 6.2,
+     "pred": 4.8,
      "start": true,
-     "points": 1,
+     "points": 3,
      "minutes": 90
     },
     {
@@ -966,31 +966,20 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 8.0,
-     "pred": 4.27,
+     "pred": 4.77,
      "start": true,
      "points": 2,
      "minutes": 90
     },
     {
-     "id": 229,
-     "name": "Tarkowski",
-     "team": "EVE",
+     "id": 305,
+     "name": "Davis",
+     "team": "IPS",
      "pos": "DEF",
-     "price": 6.2,
-     "pred": 3.98,
+     "price": 4.0,
+     "pred": 4.38,
      "start": true,
-     "points": 3,
-     "minutes": 90
-    },
-    {
-     "id": 204,
-     "name": "Mitchell",
-     "team": "CRY",
-     "pos": "DEF",
-     "price": 4.5,
-     "pred": 3.08,
-     "start": false,
-     "points": 4,
+     "points": 1,
      "minutes": 90
     },
     {
@@ -999,9 +988,20 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 3.01,
+     "pred": 3.43,
      "start": false,
      "points": 6,
+     "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.5,
+     "pred": 3.25,
+     "start": false,
+     "points": 4,
      "minutes": 90
     },
     {
@@ -1010,7 +1010,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 7.8,
-     "pred": 4.13,
+     "pred": 4.71,
      "start": true,
      "points": 4,
      "minutes": 90
@@ -1021,7 +1021,7 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.2,
-     "pred": 4.02,
+     "pred": 3.62,
      "start": true,
      "points": 2,
      "minutes": 77
@@ -1032,7 +1032,7 @@
      "team": "LEE",
      "pos": "FWD",
      "price": 6.0,
-     "pred": 3.22,
+     "pred": 3.62,
      "start": false,
      "points": 2,
      "minutes": 90
@@ -1043,7 +1043,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.82,
+     "pred": 3.76,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -1054,7 +1054,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 4.9,
-     "pred": 2.89,
+     "pred": 3.06,
      "start": false,
      "points": 1,
      "minutes": 90
@@ -1065,7 +1065,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 11.9,
-     "pred": 7.11,
+     "pred": 6.42,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -1076,7 +1076,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 8.0,
-     "pred": 4.59,
+     "pred": 4.51,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -1087,7 +1087,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.4,
-     "pred": 4.29,
+     "pred": 4.5,
      "start": true,
      "points": 7,
      "minutes": 90
@@ -1098,7 +1098,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 3.42,
+     "pred": 3.58,
      "start": true,
      "points": 4,
      "minutes": 90
@@ -1109,7 +1109,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.5,
-     "pred": 3.32,
+     "pred": 3.06,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -1138,7 +1138,7 @@
      "team": "BHA",
      "pos": "DEF",
      "price": 5.2,
-     "pred": 4.8,
+     "pred": 5.27,
      "start": true,
      "points": 6,
      "minutes": 90
@@ -1149,7 +1149,7 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 4.08,
+     "pred": 4.27,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -1160,7 +1160,7 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 7.9,
-     "pred": 3.74,
+     "pred": 3.88,
      "start": true,
      "points": 8,
      "minutes": 90
@@ -1171,7 +1171,7 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.2,
-     "pred": 3.37,
+     "pred": 3.3,
      "start": true,
      "points": 0,
      "minutes": 90
@@ -1182,20 +1182,9 @@
      "team": "CRY",
      "pos": "DEF",
      "price": 4.5,
-     "pred": 1.92,
+     "pred": 1.83,
      "start": false,
      "points": 0,
-     "minutes": 90
-    },
-    {
-     "id": 346,
-     "name": "Calvert-Lewin",
-     "team": "LEE",
-     "pos": "FWD",
-     "price": 6.0,
-     "pred": 4.19,
-     "start": true,
-     "points": 9,
      "minutes": 90
     },
     {
@@ -1204,9 +1193,20 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 7.8,
-     "pred": 4.06,
+     "pred": 4.14,
      "start": true,
      "points": 4,
+     "minutes": 90
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 4.08,
+     "start": true,
+     "points": 9,
      "minutes": 90
     },
     {
@@ -1215,7 +1215,7 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.2,
-     "pred": 4.05,
+     "pred": 3.64,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -1226,7 +1226,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.19,
+     "pred": 3.61,
      "start": true,
      "points": 2,
      "minutes": 90
@@ -1237,7 +1237,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 4.9,
-     "pred": 2.92,
+     "pred": 3.2,
      "start": false,
      "points": 2,
      "minutes": 90
@@ -1248,7 +1248,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 11.8,
-     "pred": 5.27,
+     "pred": 4.82,
      "start": true,
      "points": 1,
      "minutes": 90
@@ -1259,7 +1259,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.3,
-     "pred": 4.32,
+     "pred": 4.59,
      "start": true,
      "points": 9,
      "minutes": 90
@@ -1270,7 +1270,7 @@
      "team": "NFO",
      "pos": "MID",
      "price": 8.0,
-     "pred": 3.74,
+     "pred": 3.94,
      "start": true,
      "points": 0,
      "minutes": 0
@@ -1281,7 +1281,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.4,
-     "pred": 3.26,
+     "pred": 3.81,
      "start": false,
      "points": 2,
      "minutes": 90
@@ -1292,7 +1292,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 3.19,
+     "pred": 3.37,
      "start": false,
      "points": 2,
      "minutes": 90
@@ -1326,7 +1326,7 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 7.9,
-     "pred": 4.46,
+     "pred": 5.07,
      "start": true,
      "points": null,
      "minutes": null
@@ -1337,7 +1337,7 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 6.0,
-     "pred": 3.72,
+     "pred": 3.97,
      "start": true,
      "points": null,
      "minutes": null
@@ -1348,7 +1348,7 @@
      "team": "CRY",
      "pos": "DEF",
      "price": 4.5,
-     "pred": 3.18,
+     "pred": 3.47,
      "start": true,
      "points": null,
      "minutes": null
@@ -1359,7 +1359,7 @@
      "team": "BHA",
      "pos": "DEF",
      "price": 5.3,
-     "pred": 2.52,
+     "pred": 2.35,
      "start": false,
      "points": null,
      "minutes": null
@@ -1370,7 +1370,7 @@
      "team": "EVE",
      "pos": "DEF",
      "price": 6.2,
-     "pred": 2.3,
+     "pred": 2.16,
      "start": false,
      "points": null,
      "minutes": null
@@ -1381,18 +1381,7 @@
      "team": "BRE",
      "pos": "FWD",
      "price": 7.8,
-     "pred": 5.09,
-     "start": true,
-     "points": null,
-     "minutes": null
-    },
-    {
-     "id": 346,
-     "name": "Calvert-Lewin",
-     "team": "LEE",
-     "pos": "FWD",
-     "price": 6.1,
-     "pred": 4.04,
+     "pred": 4.82,
      "start": true,
      "points": null,
      "minutes": null
@@ -1403,7 +1392,18 @@
      "team": "NEW",
      "pos": "FWD",
      "price": 6.1,
-     "pred": 3.91,
+     "pred": 4.28,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.1,
+     "pred": 3.92,
      "start": true,
      "points": null,
      "minutes": null
@@ -1414,7 +1414,7 @@
      "team": "SUN",
      "pos": "GK",
      "price": 4.9,
-     "pred": 2.86,
+     "pred": 2.97,
      "start": true,
      "points": null,
      "minutes": null
@@ -1425,7 +1425,7 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 2.71,
+     "pred": 2.63,
      "start": false,
      "points": null,
      "minutes": null
@@ -1436,7 +1436,7 @@
      "team": "MUN",
      "pos": "MID",
      "price": 11.7,
-     "pred": 5.73,
+     "pred": 5.81,
      "start": true,
      "points": null,
      "minutes": null
@@ -1447,7 +1447,7 @@
      "team": "CHE",
      "pos": "MID",
      "price": 8.0,
-     "pred": 5.72,
+     "pred": 5.47,
      "start": true,
      "points": null,
      "minutes": null
@@ -1458,7 +1458,7 @@
      "team": "ARS",
      "pos": "MID",
      "price": 7.4,
-     "pred": 4.49,
+     "pred": 4.76,
      "start": true,
      "points": null,
      "minutes": null
@@ -1469,7 +1469,7 @@
      "team": "SUN",
      "pos": "MID",
      "price": 5.4,
-     "pred": 3.48,
+     "pred": 3.64,
      "start": true,
      "points": null,
      "minutes": null
@@ -1480,7 +1480,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 2.68,
+     "pred": 2.76,
      "start": false,
      "points": null,
      "minutes": null

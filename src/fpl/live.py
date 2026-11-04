@@ -12,8 +12,8 @@ import sqlite3
 import numpy as np
 import pandas as pd
 
-from fpl.config import DATA_DIR, DB_PATH, FINISHED_SEASONS, LIVE_SEASON, RAW_DIR, REPORTS_DIR
-from fpl.model import (FEATURES, POSITION_CODES, TARGET, baselines, evaluate, load_features,
+from fpl.config import DATA_DIR, DB_PATH, FINISHED_SEASONS, LIVE_SEASON, RAW_DIR, REPORTS_DIR, RULE_SEASONS
+from fpl.model import (LIVE_FEATURES as FEATURES, POSITION_CODES, TARGET, baselines, evaluate, load_features,
                        make_model, paired_bootstrap, per_gameweek)
 
 
@@ -87,6 +87,7 @@ def predict_next_gameweek(model) -> pd.DataFrame:
         return up
     up = apply_news(up)
     up["position_code"] = up["position"].map(POSITION_CODES)
+    up["defcon_rule"] = int(LIVE_SEASON in RULE_SEASONS)
     up["predicted_raw"] = model.predict(up[FEATURES])
     # The model has never seen injury news. FPL publishes a chance of playing (0-100) for
     # flagged players; scale the prediction by it. No flag means no known concern.
@@ -115,6 +116,7 @@ def predict_horizon(model) -> pd.DataFrame:
         return h
     h = apply_news(h)
     h["position_code"] = h["position"].map(POSITION_CODES)
+    h["defcon_rule"] = int(LIVE_SEASON in RULE_SEASONS)
     h["raw"] = model.predict(h[FEATURES])
     # Injury flags matter most right now. Assume a flagged player gets back to full
     # availability linearly over three gameweeks; an unflagged player stays at 100%.

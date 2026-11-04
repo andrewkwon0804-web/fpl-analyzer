@@ -14,7 +14,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-from fpl.config import DB_PATH, REPORTS_DIR, TEST_SEASON, TRAIN_SEASONS, VALID_SEASON
+from fpl.config import DB_PATH, REPORTS_DIR, RULE_SEASONS, TEST_SEASON, TRAIN_SEASONS, VALID_SEASON
 from fpl.picks import best_xi
 
 FEATURES = [
@@ -26,6 +26,10 @@ FEATURES = [
     "points_std", "minutes_std", "xgi_total_std", "gws_so_far",
     "prev_ppg", "prev_minutes",
 ]
+# The live model (live.py) adds one input: whether the season pays defensive-contribution
+# points. Without it, defenders are under-predicted (experiments/rule_era.py). The held-out
+# 2025-26 test keeps the original 27, since its training seasons all predate the rule.
+LIVE_FEATURES = FEATURES + ["defcon_rule"]
 POSITION_CODES = {"GK": 0, "DEF": 1, "MID": 2, "FWD": 3}
 TARGET = "target_points"
 
@@ -41,10 +45,11 @@ def load_features() -> pd.DataFrame:
     with sqlite3.connect(DB_PATH) as con:
         df = pd.read_sql("SELECT * FROM player_features WHERE position <> 'AM'", con)
     df["position_code"] = df["position"].map(POSITION_CODES)
+    df["defcon_rule"] = df["season"].isin(RULE_SEASONS).astype(int)
     return df
 
 
-def make_model(**params) -> HistGradientBoostingRegressor:
+def make_model(**params) -> HistGradientBoostingRegressor:  # position_code is first in both feature lists
     return HistGradientBoostingRegressor(
         loss="squared_error", max_iter=600, early_stopping=True,
         validation_fraction=0.1, n_iter_no_change=30,

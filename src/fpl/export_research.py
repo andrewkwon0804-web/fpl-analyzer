@@ -164,7 +164,9 @@ def lite_db() -> None:
                 df[c] = df[c].round(3)
             df.to_sql(table, dst, index=False)
         dst.execute("VACUUM")
-    with tmp.open("rb") as f, gzip.open(OUT / "fpl-lite.db.gz", "wb", compresslevel=9) as g:
+    # mtime=0 keeps the file byte-identical when the data hasn't changed
+    with tmp.open("rb") as f, open(OUT / "fpl-lite.db.gz", "wb") as raw, \
+            gzip.GzipFile(fileobj=raw, mode="wb", compresslevel=9, mtime=0) as g:
         shutil.copyfileobj(f, g)
     print(f"[research] wrote fpl-lite.db.gz ({(OUT / 'fpl-lite.db.gz').stat().st_size // 1024} KB, {tmp.stat().st_size // 1024} KB unpacked)")
     tmp.unlink()

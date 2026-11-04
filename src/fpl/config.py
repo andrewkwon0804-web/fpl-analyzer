@@ -21,6 +21,10 @@ SEASONS = ["2022-23", "2023-24", "2024-25", "2025-26", "2026-27"]
 LIVE_SEASON = "2026-27"
 FINISHED_SEASONS = [s for s in SEASONS if s != LIVE_SEASON]
 
+# Seasons scored under the defensive-contribution rule (2 points for enough tackles,
+# clearances, blocks and interceptions). Earlier seasons never paid those points.
+RULE_SEASONS = {"2025-26", "2026-27", "2027-28"}
+
 # Time-based split: never train on the future.
 TRAIN_SEASONS = ["2022-23", "2023-24"]
 VALID_SEASON = "2024-25"

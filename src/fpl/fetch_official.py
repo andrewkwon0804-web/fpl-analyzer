@@ -99,7 +99,7 @@ def main() -> dict:
     write_csv(out / "fixtures.csv", fixtures, FIXTURE_COLS)
     write_csv(out / "merged_gw.csv", gw_rows, GW_COLS)
     # Gameweek summaries: FPL's average and highest manager score, used for context on the site.
-    write_csv(out / "events.csv", boot["events"], ["id", "finished", "average_entry_score", "highest_score"])
+    write_csv(out / "events.csv", boot["events"], ["id", "finished", "deadline_time", "average_entry_score", "highest_score"])
     stamp = {"source": "official FPL API", "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
              "last_finished_gw": max(finished_gws, default=None)}
     (out / SOURCE_FILE).write_text(json.dumps(stamp))
