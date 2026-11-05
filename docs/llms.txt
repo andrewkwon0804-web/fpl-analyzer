@@ -4,7 +4,7 @@
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
 Season 2026-27, predictions for gameweek 10 (using games through gameweek 9).
-Data source: official FPL API. Last refreshed: 2026-11-04.
+Data source: official FPL API. Last refreshed: 2026-11-05.
 
 ## Pages
 
