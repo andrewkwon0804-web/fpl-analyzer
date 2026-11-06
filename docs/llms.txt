@@ -4,7 +4,7 @@
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
 Season 2026-27, predictions for gameweek 10 (using games through gameweek 9).
-Data source: official FPL API. Last refreshed: 2026-11-05.
+Data source: official FPL API. Last refreshed: 2026-11-06.
 
 ## Pages
 
@@ -16,7 +16,7 @@ Data source: official FPL API. Last refreshed: 2026-11-05.
 
 ## This week's best XI
 
-Haaland, Gabriel, Rayan, Rice, Rogers, Konsa, B.Fernandes, Virgil, De Cuyper, Palmer, Raya. Captain: Haaland.
+Haaland, Gabriel, Rayan, Rice, Rogers, B.Fernandes, Virgil, De Cuyper, Palmer, Raya, Thiago. Captain: Haaland.
 
 ## Top 15 predicted players, gameweek 10
 
@@ -25,7 +25,6 @@ Haaland, Gabriel, Rayan, Rice, Rogers, Konsa, B.Fernandes, Virgil, De Cuyper, Pa
 - Rayan (Bournemouth, MID, £6.3m): 5.3 predicted points
 - Rice (Arsenal, MID, £7.4m): 5.2 predicted points
 - Rogers (Chelsea, MID, £8.2m): 5.1 predicted points
-- Konsa (Arsenal, DEF, £4.8m): 4.9 predicted points
 - B.Fernandes (Man Utd, MID, £11.7m): 4.8 predicted points
 - Virgil (Liverpool, DEF, £6.4m): 4.8 predicted points
 - De Cuyper (Brighton, DEF, £5.4m): 4.8 predicted points
@@ -35,6 +34,7 @@ Haaland, Gabriel, Rayan, Rice, Rogers, Konsa, B.Fernandes, Virgil, De Cuyper, Pa
 - Isak (Liverpool, FWD, £9.2m): 4.5 predicted points
 - Dewsbury-Hall (Everton, MID, £6.6m): 4.5 predicted points
 - Barry (Everton, FWD, £5.6m): 4.5 predicted points
+- Rúben (Man City, DEF, £5.5m): 4.5 predicted points
 
 ## Method in short
 
