@@ -1687,7 +1687,7 @@
      "in": 67
     }
    ],
-   "bank": 1.5,
+   "bank": 1.4,
    "free_transfers": 1,
    "captain": 4,
    "squad": [
@@ -1696,8 +1696,8 @@
      "name": "Gabriel",
      "team": "ARS",
      "pos": "DEF",
-     "price": 8.0,
-     "pred": 6.4,
+     "price": 8.1,
+     "pred": 6.34,
      "start": true,
      "points": null,
      "minutes": null
@@ -1762,8 +1762,8 @@
      "name": "Calvert-Lewin",
      "team": "LEE",
      "pos": "FWD",
-     "price": 6.1,
-     "pred": 2.66,
+     "price": 6.0,
+     "pred": 3.55,
      "start": true,
      "points": null,
      "minutes": null
@@ -1773,8 +1773,8 @@
      "name": "Wissa",
      "team": "NEW",
      "pos": "FWD",
-     "price": 6.0,
-     "pred": 2.52,
+     "price": 5.9,
+     "pred": 2.47,
      "start": false,
      "points": null,
      "minutes": null
@@ -1802,23 +1802,23 @@
      "minutes": null
     },
     {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 5.71,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
      "id": 67,
      "name": "Rayan",
      "team": "BOU",
      "pos": "MID",
      "price": 6.3,
      "pred": 5.31,
-     "start": true,
-     "points": null,
-     "minutes": null
-    },
-    {
-     "id": 13,
-     "name": "Rice",
-     "team": "ARS",
-     "pos": "MID",
-     "price": 7.4,
-     "pred": 5.23,
      "start": true,
      "points": null,
      "minutes": null
