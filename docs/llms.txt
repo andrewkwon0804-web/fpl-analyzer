@@ -4,7 +4,7 @@
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
 Season 2026-27, predictions for gameweek 10 (using games through gameweek 9).
-Data source: official FPL API. Last refreshed: 2026-11-07.
+Data source: official FPL API. Last refreshed: 2026-11-08.
 
 ## Pages
 
@@ -26,7 +26,7 @@ Haaland, Gabriel, Rice, Rayan, Rogers, Konsa, B.Fernandes, Virgil, De Cuyper, Pa
 - Rayan (Bournemouth, MID, £6.3m): 5.3 predicted points
 - Rogers (Chelsea, MID, £8.2m): 5.1 predicted points
 - Konsa (Arsenal, DEF, £4.8m): 4.9 predicted points
-- B.Fernandes (Man Utd, MID, £11.7m): 4.8 predicted points
+- B.Fernandes (Man Utd, MID, £11.6m): 4.8 predicted points
 - Virgil (Liverpool, DEF, £6.4m): 4.8 predicted points
 - De Cuyper (Brighton, DEF, £5.4m): 4.8 predicted points
 - Palmer (Chelsea, MID, £9.8m): 4.7 predicted points
