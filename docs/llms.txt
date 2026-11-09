@@ -3,7 +3,7 @@
 > Predicted Fantasy Premier League points for every player, from a gradient boosting model trained on
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
-Season 2026-27, predictions for gameweek 10 (using games through gameweek 9).
+Season 2026-27, predictions for gameweek 11 (using games through gameweek 10).
 Data source: official FPL API. Last refreshed: 2026-11-09.
 
 ## Pages
@@ -16,25 +16,25 @@ Data source: official FPL API. Last refreshed: 2026-11-09.
 
 ## This week's best XI
 
-Haaland, Gabriel, Rice, Rayan, Rogers, Konsa, B.Fernandes, Virgil, Palmer, Raya, Isak. Captain: Haaland.
+N.Jackson, Haaland, Isak, Groß, Gabriel, Palmer, De Cuyper, Rogers, Van Hecke, Rayan, Raya. Captain: N.Jackson.
 
-## Top 15 predicted players, gameweek 10
+## Top 15 predicted players, gameweek 11
 
-- Haaland (Man City, FWD, £15.8m): 7.7 predicted points
-- Gabriel (Arsenal, DEF, £8.1m): 6.3 predicted points
-- Rice (Arsenal, MID, £7.5m): 5.7 predicted points
-- Rayan (Bournemouth, MID, £6.3m): 5.3 predicted points
-- Rogers (Chelsea, MID, £8.2m): 5.1 predicted points
-- Konsa (Arsenal, DEF, £4.8m): 4.9 predicted points
-- B.Fernandes (Man Utd, MID, £11.6m): 4.8 predicted points
-- Virgil (Liverpool, DEF, £6.4m): 4.8 predicted points
-- Palmer (Chelsea, MID, £9.8m): 4.7 predicted points
-- Raya (Arsenal, GK, £6.2m): 4.6 predicted points
-- Isak (Liverpool, FWD, £9.3m): 4.5 predicted points
-- Dewsbury-Hall (Everton, MID, £6.6m): 4.5 predicted points
-- Groß (Brighton, MID, £6.3m): 4.5 predicted points
-- Barry (Everton, FWD, £5.7m): 4.5 predicted points
-- Rúben (Man City, DEF, £5.5m): 4.5 predicted points
+- N.Jackson (Aston Villa, FWD, £7.1m): 6.8 predicted points
+- Haaland (Man City, FWD, £15.8m): 6.3 predicted points
+- Isak (Liverpool, FWD, £9.3m): 5.5 predicted points
+- Groß (Brighton, MID, £6.3m): 5.3 predicted points
+- Gabriel (Arsenal, DEF, £8.1m): 5.2 predicted points
+- Palmer (Chelsea, MID, £9.8m): 5.2 predicted points
+- De Cuyper (Brighton, DEF, £5.5m): 5.0 predicted points
+- Rogers (Chelsea, MID, £8.2m): 4.8 predicted points
+- Van Hecke (Spurs, DEF, £5.1m): 4.7 predicted points
+- Rayan (Bournemouth, MID, £6.3m): 4.7 predicted points
+- Anderson (Man City, MID, £6.3m): 4.7 predicted points
+- Evanilson (Bournemouth, FWD, £6.5m): 4.6 predicted points
+- Raya (Arsenal, GK, £6.2m): 4.5 predicted points
+- Rúben (Man City, DEF, £5.5m): 4.4 predicted points
+- Vuskovic (Brighton, DEF, £5.3m): 4.4 predicted points
 
 ## Method in short
 
