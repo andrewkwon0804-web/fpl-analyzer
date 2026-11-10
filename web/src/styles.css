@@ -112,25 +112,4 @@ html.lenis, html.lenis body { height: auto; }
 /* text that rises into place when it changes (market steps) */
 @keyframes rise { from { opacity: 0; transform: translateY(14px); filter: blur(4px); } }
 
-@property --mx { syntax: "<percentage>"; inherits: true; initial-value: 50%; }
-@property --my { syntax: "<percentage>"; inherits: true; initial-value: 50%; }
-/* foil trading cards (captain section): a rainbow foil in diagonal bands that follows the
-   pointer, and a soft glare. --mx/--my/--hue/--o are set from the pointer position. */
-.holo { box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8), 0 0 0 1px rgb(255 255 255 / .04) inset; }
-.holo-foil {
-  opacity: calc(var(--o, 0) * .32); transition: opacity .4s;
-  background:
-    repeating-linear-gradient(115deg, transparent 0 6px, rgb(255 255 255 / .07) 6px 7px),
-    conic-gradient(from var(--hue, 0deg) at var(--mx, 50%) var(--my, 50%), #ff7a8a, #f5c451, #38e1a8, #6f95ff, #b26be0, #ff7a8a);
-  mix-blend-mode: color-dodge;
-  mask-image: radial-gradient(45% 38% at var(--mx, 50%) var(--my, 50%), #000, transparent 85%);
-}
-.holo-glare {
-  opacity: var(--o, 0); transition: opacity .4s;
-  background: radial-gradient(40% 35% at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / .22), transparent 70%);
-  mix-blend-mode: overlay;
-}
-@media (hover: none) {
-  .holo-foil { opacity: .3; animation: foil 6s ease-in-out infinite alternate; }
-  @keyframes foil { from { --mx: 20%; --my: 20%; } to { --mx: 80%; --my: 80%; } }
-}
+

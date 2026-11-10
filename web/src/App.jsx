@@ -4,14 +4,11 @@ import GlyphField from "./components/GlyphField.jsx";
 // three.js is large, so the stack loads after the first screen is up
 const PipelineStack = lazy(() => import("./components/PipelineStack.jsx"));
 const PlayerMarket = lazy(() => import("./components/PlayerMarket.jsx"));
-const FixtureSkyline = lazy(() => import("./components/FixtureSkyline.jsx"));
 import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
 import Hero from "./sections/Hero.jsx";
 import Ledger from "./sections/Ledger.jsx";
-import CaptainCards from "./components/CaptainCards.jsx";
-import CaptainPlinko from "./components/CaptainPlinko.jsx";
 import { LastGameweek, TrackRecord, Findings, TopPicks, FAQ, Closing, Footer } from "./sections/Rest.jsx";
 
 // Shown while site.json loads: the same layout in grey blocks, so nothing jumps when data arrives.
@@ -45,13 +42,10 @@ function Page({ data }) {
         <Hero data={data} />
         <Suspense fallback={<section id="how" className="h-[420vh]" />}><PipelineStack data={data} /></Suspense>
         <Suspense fallback={<section id="market" className="h-[330vh]" />}><PlayerMarket data={data} /></Suspense>
-        <CaptainCards data={data} />
-        <CaptainPlinko data={data} />
         {data.last_gw && <LastGameweek data={data} />}
         <TrackRecord data={data} />
         <Ledger data={data} />
         <Findings data={data} />
-        <Suspense fallback={<section id="fixtures" className="h-[900px]" />}><FixtureSkyline data={data} /></Suspense>
         <TopPicks data={data} />
         <FAQ data={data} />
         <Closing data={data} />

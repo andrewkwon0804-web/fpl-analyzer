@@ -3,7 +3,7 @@
 // as you scroll, and the findings slide past sideways.
 import { useCallback, useMemo, useRef, useState } from "react";
 import { animated, useSpring } from "@react-spring/web";
-import PointsFlow from "../components/PointsFlow.jsx";
+import { PixelTeam } from "./Story.jsx";
 import { Bars, HBars, cumulative } from "../components/charts.jsx";
 import { usePop } from "../components/Popover.jsx";
 import { useInView, usePinProgress, reduced } from "../lib/motion.js";
@@ -55,7 +55,7 @@ export function LastGameweek({ data }) {
           </Fade>
         ))}
       </div>
-      <div className="mt-14"><PointsFlow L={L} /></div>
+      <Fade className="mt-14"><PixelTeam team={L.team} /></Fade>
     </section>
   );
 }

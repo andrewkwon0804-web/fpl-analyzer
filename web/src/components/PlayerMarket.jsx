@@ -32,6 +32,8 @@ export default function PlayerMarket({ data }) {
   const wrap = useRef(null), mount = useRef(null), anchor = useRef(null), labels = useRef({});
   const [step, setStep] = useState(0);
   const [tip, setTip] = useState(null);
+  const [focus, setFocus] = useState("All");
+  const focusRef = useRef("All"); focusRef.current = focus;
   const { open: openPop } = usePop();
 
   const model = useMemo(() => {
@@ -69,6 +71,11 @@ export default function PlayerMarket({ data }) {
       dots.setColorAt(i, col);
     });
     world.add(dots, hit);
+    // guides from the hovered player down to the floor and across to the points axis
+    const guideMat = new THREE.LineDashedMaterial({ color: 0xffffff, transparent: true, opacity: 0.55, dashSize: 0.08, gapSize: 0.06 });
+    const guide = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]), guideMat);
+    guide.visible = false; world.add(guide);
+    let shownFocus = null;
 
     // the value lines, one per position, drawn as steps along their lane
     const lineMats = {}, lineObjs = {};
@@ -140,16 +147,22 @@ export default function PlayerMarket({ data }) {
       if (!drag) { yaw += vel; vel *= 0.93; yaw *= turn > 0.5 ? 1 : 0.9; }
       world.rotation.y = yaw * turn;
 
+      const fo = focusRef.current;
+      if (fo !== shownFocus) {
+        shownFocus = fo;
+        ps.forEach((pl, i) => { col.set(HEX[pl.pos]).multiplyScalar(fo !== "All" && pl.pos !== fo ? 0.16 : pickSet.has(pl.id) ? 1.6 : 0.9); dots.setColorAt(i, col); });
+        dots.instanceColor.needsUpdate = true;
+      }
       ps.forEach((pl, i) => {
         const k = clamp(rise * 1.6 - rankOf[i] * 0.6);
-        const big = pickSet.has(pl.id) ? 1 + draw * 1.4 : 1;
+        const big = (pickSet.has(pl.id) ? 1 + draw * 1.4 : 1) * (fo !== "All" && pl.pos !== fo ? 0.6 : 1);
         v.set(X(pl.price), Y(pl.pred) * k, LANE[pl.pos] * sep);
         s.setScalar((0.35 + 0.65 * k) * big * (hovered === pl ? 2.2 : 1));
         m4.compose(v, q, s); dots.setMatrixAt(i, m4);
         s.setScalar(1); m4.compose(v, q, s); hit.setMatrixAt(i, m4);
       });
       dots.instanceMatrix.needsUpdate = true; hit.instanceMatrix.needsUpdate = true;
-      POS.forEach((pos) => { lineObjs[pos].position.z = LANE[pos] * sep; lineMats[pos].opacity = draw; lineObjs[pos].geometry.setDrawRange(0, Math.ceil(draw * lineObjs[pos].geometry.attributes.position.count)); });
+      POS.forEach((pos) => { lineObjs[pos].position.z = LANE[pos] * sep; lineMats[pos].opacity = draw * (focusRef.current === "All" || focusRef.current === pos ? 1 : 0.12); lineObjs[pos].geometry.setDrawRange(0, Math.ceil(draw * lineObjs[pos].geometry.attributes.position.count)); });
       gridMat.opacity = 0.35 + 0.55 * rise;
       world.updateMatrixWorld(true);
 
@@ -157,9 +170,16 @@ export default function PlayerMarket({ data }) {
       [6, 8, 10, 12, 14].forEach((m) => m <= maxPrice && place(`x${m}`, X(m), -0.35, 3.6 * turn, rise));
       [2, 4, 6].forEach((n) => n <= maxPred && place(`y${n}`, -5.5, Y(n), -3.6, rise));
       POS.forEach((pos) => place(`l${pos}`, 5.5, 0.15, LANE[pos] * sep, sep));
-      picks.forEach((pl) => place(`p${pl.id}`, X(pl.price), Y(pl.pred) + 0.32, LANE[pl.pos] * sep, draw));
+      picks.forEach((pl) => place(`p${pl.id}`, X(pl.price), Y(pl.pred) + 0.32, LANE[pl.pos] * sep, draw * (fo === "All" || fo === pl.pos ? 1 : 0)));
 
       hovered = mouse && !drag && rise > 0.9 ? pickAt(mouse[0], mouse[1]) : null;
+      if (hovered && fo !== "All" && hovered.pos !== fo) hovered = null;
+      guide.visible = !!hovered;
+      if (hovered) {
+        const gx = X(hovered.price), gy = Y(hovered.pred), gz = LANE[hovered.pos] * sep, a = guide.geometry.attributes.position;
+        a.setXYZ(0, gx, gy, gz); a.setXYZ(1, gx, 0, gz); a.setXYZ(2, gx, gy, gz); a.setXYZ(3, -5.2, gy, gz);
+        a.needsUpdate = true; guide.computeLineDistances();
+      }
       el.style.cursor = hovered ? "pointer" : drag ? "grabbing" : turn > 0.5 ? "grab" : "default";
       setTip((t) => (hovered ? (t && t.p === hovered ? t : { p: hovered, x: mouse[0], y: mouse[1] }) : t ? null : t));
       const st = p < 0.32 ? 0 : p < 0.68 ? 1 : 2;
@@ -212,7 +232,17 @@ export default function PlayerMarket({ data }) {
             {tip.p.name} <span className="text-text3">{tip.p.short}, £{tip.p.price.toFixed(1)}m</span> <span style={{ color: HEX[tip.p.pos] }}>{tip.p.pred.toFixed(1)} pts</span>
           </div>
         )}
-        <div className="absolute inset-x-0 bottom-7 px-4 text-center text-[12px] text-text3">{step ? "Drag to turn. Hover a dot for the player, click for details." : "Keep scrolling"}</div>
+        <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-3 px-4">
+          <div className={`flex flex-wrap justify-center gap-1.5 transition-opacity duration-500 ${step ? "opacity-100" : "pointer-events-none opacity-0"}`} role="radiogroup" aria-label="Show position">
+            {["All", ...POS].map((pos) => (
+              <button key={pos} role="radio" aria-checked={focus === pos} onClick={() => setFocus(pos)}
+                className={`flex h-8 items-center gap-2 rounded-full border px-3.5 text-[12.5px] transition-colors ${focus === pos ? "border-text bg-text text-bg" : "border-line2 bg-bg/70 text-text2 backdrop-blur hover:text-text"}`}>
+                {pos !== "All" && <i className="h-2 w-2 rounded-full" style={{ background: HEX[pos] }} />}{pos === "All" ? "Everyone" : NAME[pos]}
+              </button>
+            ))}
+          </div>
+          <div className="text-center text-[12px] text-text3">{step ? "Drag to turn. Hover a dot for the player, click for details." : "Keep scrolling"}</div>
+        </div>
       </div>
     </section>
   );
