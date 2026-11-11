@@ -265,7 +265,6 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 459,L.Miley,NEW,MID,5.5,1.55,1.6,100.0,35.4,False,False,False,False
 515,Maddison,TOT,MID,6.2,1.547,1.4,100.0,26.8,False,False,False,False
 43,Tielemans,MUN,MID,5.6,1.528,3.1,100.0,50.2,False,False,False,False
-222,Strand Larsen,CRY,FWD,5.9,1.521,2.3,100.0,42.6,False,False,False,False
 271,Muniz,FUL,FWD,5.3,1.489,1.3,,11.6,False,False,False,False
 562,Maeda,IPS,MID,5.3,1.444,2.1,,50.2,False,False,False,False
 164,Quenda,CHE,MID,5.2,1.441,0.8,100.0,16.8,False,False,False,False
@@ -302,6 +301,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 320,Akpom,IPS,FWD,5.0,1.166,1.2,,8.2,False,False,False,False
 473,Aina,NFO,DEF,4.2,1.154,0.9,,25.4,False,False,False,False
 613,Ahoka,SUN,MID,4.4,1.151,0.556,,22.2,False,False,False,False
+222,Strand Larsen,CRY,FWD,5.9,1.141,1.725,75.0,42.6,False,False,False,False
 19,Zubimendi,ARS,MID,5.2,1.134,0.7,100.0,2.2,False,False,False,False
 628,Allan,MCI,MID,6.0,1.084,0.25,,4.2,False,False,False,False
 113,F.Kadıoğlu,BHA,DEF,4.3,1.066,2.9,100.0,37.0,False,False,False,False
