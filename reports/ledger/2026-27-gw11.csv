@@ -250,13 +250,13 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 347,Nmecha,LEE,FWD,5.3,1.637,1.3,,26.6,False,False,False,False
 313,Clarke,IPS,MID,5.2,1.636,2.6,,23.0,False,False,False,False
 369,Ngumoha,LIV,MID,5.7,1.636,0.9,,20.6,False,False,False,False
-462,Steur,NEW,MID,4.8,1.631,1.3,,20.8,False,False,False,False
 519,Gallagher,TOT,MID,5.3,1.625,1.5,,36.4,False,False,False,False
 647,Osorio,CRY,MID,5.4,1.622,0.875,,14.0,False,False,False,False
 489,Yates,NFO,MID,4.4,1.601,0.3,100.0,24.6,False,False,False,False
 583,Chavarria,CHE,DEF,4.9,1.599,1.3,100.0,36.8,False,False,False,False
 553,Isidor,SUN,FWD,5.4,1.598,1.9,100.0,29.2,False,False,False,False
 184,Grimes,COV,MID,4.8,1.594,1.9,,54.6,False,False,False,False
+462,Steur,NEW,MID,4.7,1.589,1.3,,20.8,False,False,False,False
 10,White,ARS,DEF,5.4,1.588,4.2,100.0,43.4,False,False,False,False
 136,Welbeck,CHE,FWD,5.8,1.572,0.9,100.0,8.2,False,False,False,False
 96,Damsgaard,BRE,MID,5.3,1.569,1.9,100.0,13.8,False,False,False,False
