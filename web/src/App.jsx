@@ -8,8 +8,8 @@ import Nav from "./components/Nav.jsx";
 import Command from "./components/Command.jsx";
 import { PopProvider, usePop } from "./components/Popover.jsx";
 import Hero from "./sections/Hero.jsx";
-import Ledger from "./sections/Ledger.jsx";
-import { LastGameweek, TrackRecord, Findings, TopPicks, FAQ, Closing, Footer } from "./sections/Rest.jsx";
+import Record from "./sections/Record.jsx";
+import { Findings, TopPicks, FAQ, Closing, Footer } from "./sections/Rest.jsx";
 
 // Shown while site.json loads: the same layout in grey blocks, so nothing jumps when data arrives.
 function Skeleton() {
@@ -42,9 +42,7 @@ function Page({ data }) {
         <Hero data={data} />
         <Suspense fallback={<section id="how" className="h-[420vh]" />}><PipelineStack data={data} /></Suspense>
         <Suspense fallback={<section id="market" className="h-[330vh]" />}><PlayerMarket data={data} /></Suspense>
-        {data.last_gw && <LastGameweek data={data} />}
-        <TrackRecord data={data} />
-        <Ledger data={data} />
+        <Record data={data} />
         <Findings data={data} />
         <TopPicks data={data} />
         <FAQ data={data} />
