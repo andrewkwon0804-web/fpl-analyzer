@@ -75,7 +75,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 455,Tonali,TOT,MID,5.3,3.339,3.4,100.0,90.0,False,False,False,False
 401,Marmoush,TOT,FWD,7.0,3.337,2.4,100.0,62.8,False,False,False,False
 129,Ayari,BHA,MID,5.5,3.324,4.6,100.0,81.6,False,False,False,False
-529,Roefs,SUN,GK,4.9,3.322,3.3,,90.0,False,False,False,False
+529,Roefs,SUN,GK,4.8,3.321,3.3,,90.0,False,False,False,False
 656,Mfuni,COV,DEF,4.0,3.319,2.714,,43.4,False,False,False,False
 295,McBurnie,HUL,FWD,5.5,3.295,3.8,,89.0,False,False,False,False
 358,Kerkez,LIV,DEF,5.3,3.287,2.5,,87.4,False,False,False,False
