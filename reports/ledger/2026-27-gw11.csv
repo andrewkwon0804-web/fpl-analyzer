@@ -220,8 +220,8 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 431,Amad,MUN,MID,5.7,1.823,0.9,100.0,73.2,False,False,False,False
 580,Charles,FUL,MID,5.0,1.792,2.5,,86.0,False,False,False,False
 194,Thomas-Asante,COV,FWD,5.0,1.789,2.3,,53.6,False,False,False,False
+71,Cook,BOU,MID,4.9,1.789,1.9,,39.4,False,False,False,False
 375,Nyoni,LIV,MID,4.8,1.782,0.8,,37.0,False,False,False,False
-71,Cook,BOU,MID,5.0,1.773,1.9,,39.4,False,False,False,False
 258,Castagne,FUL,DEF,4.5,1.768,4.4,,68.4,False,False,False,False
 282,Giles,HUL,DEF,4.0,1.759,3.1,,50.8,False,False,False,False
 152,Palestra,CHE,DEF,5.3,1.759,1.0,100.0,35.6,False,False,False,False
@@ -267,7 +267,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 639,Andrés,BHA,MID,5.5,1.465,1.875,75.0,68.2,False,False,False,False
 562,Maeda,IPS,MID,5.3,1.444,2.1,,50.2,False,False,False,False
 164,Quenda,CHE,MID,5.2,1.441,0.8,100.0,16.8,False,False,False,False
-207,Mingueza,CRY,DEF,4.3,1.439,0.3,,29.0,False,False,False,False
+207,Mingueza,CRY,DEF,4.2,1.439,0.3,,29.0,False,False,False,False
 585,Herrington,HUL,DEF,3.9,1.436,1.0,,31.2,False,False,False,False
 445,Thiaw,NEW,DEF,4.9,1.429,1.8,,53.0,False,False,False,False
 337,Aaronson,LEE,MID,5.2,1.425,1.2,,17.8,False,False,False,False
@@ -442,7 +442,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 169,Mheuka,CHE,FWD,4.5,0.053,0.0,,0.0,False,False,False,False
 58,Forster,BOU,GK,4.0,0.053,0.0,,0.0,False,False,False,False
 325,Darlow,MUN,GK,4.5,0.052,0.0,100.0,0.0,False,False,False,False
-434,J.Fletcher,MUN,MID,4.9,0.052,0.0,,0.0,False,False,False,False
+434,J.Fletcher,MUN,MID,4.8,0.052,0.0,,0.0,False,False,False,False
 92,Ji-soo,BRE,DEF,4.4,0.052,0.0,,0.0,False,False,False,False
 667,Wright,AVL,GK,4.0,0.051,0.0,,0.0,False,False,False,False
 438,Fletcher,MUN,MID,4.4,0.051,0.0,,0.0,False,False,False,False
