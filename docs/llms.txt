@@ -4,7 +4,7 @@
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
 Season 2026-27, predictions for gameweek 11 (using games through gameweek 10).
-Data source: official FPL API. Last refreshed: 2026-11-19.
+Data source: official FPL API. Last refreshed: 2026-11-20.
 
 ## Pages
 
@@ -20,7 +20,7 @@ N.Jackson, Haaland, Isak, Groß, Gabriel, Palmer, De Cuyper, Rogers, Van Hecke, 
 
 ## Top 15 predicted players, gameweek 11
 
-- N.Jackson (Aston Villa, FWD, £7.1m): 6.8 predicted points
+- N.Jackson (Aston Villa, FWD, £7.2m): 6.8 predicted points
 - Haaland (Man City, FWD, £15.8m): 6.3 predicted points
 - Isak (Liverpool, FWD, £9.3m): 5.5 predicted points
 - Groß (Brighton, MID, £6.3m): 5.3 predicted points
