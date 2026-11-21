@@ -11,8 +11,8 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 67,Rayan,BOU,MID,6.3,4.687,3.0,,88.0,True,False,False,False
 481,Anderson,MCI,MID,6.2,4.67,2.9,100.0,74.6,False,False,False,False
 79,Evanilson,BOU,FWD,6.5,4.624,6.1,,82.6,False,False,True,False
+1,Raya,ARS,GK,6.3,4.609,6.0,,90.0,True,False,True,False
 356,Virgil,LIV,DEF,6.4,4.526,4.3,100.0,90.0,False,False,False,False
-1,Raya,ARS,GK,6.2,4.509,6.0,,90.0,True,False,True,False
 390,Rúben,MCI,DEF,5.5,4.444,2.8,,90.0,False,False,False,False
 504,Vuskovic,BHA,DEF,5.3,4.37,7.0,,90.0,False,False,True,False
 453,Barnes,NEW,MID,6.0,4.361,4.4,,87.2,False,False,False,False
@@ -29,8 +29,8 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 400,Doku,MCI,MID,7.5,3.966,2.5,100.0,76.0,False,False,False,False
 362,Jacquet,LIV,DEF,5.1,3.954,4.4,100.0,89.4,False,False,False,False
 183,Rudoni,COV,MID,4.9,3.95,3.9,100.0,86.6,False,False,False,False
-366,Wirtz,LIV,MID,7.2,3.947,4.6,100.0,77.8,False,False,False,False
 525,Fernandes,TOT,MID,5.6,3.936,2.4,,52.8,False,False,False,False
+366,Wirtz,LIV,MID,7.3,3.933,4.6,100.0,77.8,False,False,False,False
 15,Ødegaard,ARS,MID,6.7,3.907,5.0,,89.2,False,False,False,False
 372,Mac Allister,LIV,MID,5.4,3.906,2.7,,90.0,False,False,False,False
 138,Kostoulas,BHA,FWD,5.8,3.905,4.7,,74.2,False,False,False,False
@@ -84,7 +84,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 16,Madueke,ARS,MID,6.2,3.287,2.2,100.0,81.0,False,False,False,False
 346,Calvert-Lewin,LEE,FWD,6.0,3.283,3.9,100.0,88.8,False,False,False,False
 153,Disasi,CRY,DEF,4.4,3.267,1.0,100.0,54.0,False,False,False,False
-427,Mbeumo,MUN,MID,7.9,3.254,4.6,,88.4,False,False,False,False
+427,Mbeumo,MUN,MID,7.8,3.254,4.6,,88.4,False,False,False,False
 73,Adams,BOU,MID,5.0,3.219,2.6,100.0,89.6,False,False,False,False
 211,Yeremy,CRY,MID,5.5,3.205,2.8,,75.4,False,False,False,False
 176,Dasilva,COV,DEF,4.0,3.155,3.0,,90.0,False,False,False,False
@@ -138,11 +138,11 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 398,Foden,MCI,MID,6.8,2.562,2.1,100.0,28.8,False,False,False,False
 545,Sadiki,SUN,MID,4.8,2.559,2.5,,86.8,False,False,False,False
 85,Van den Berg,BRE,DEF,4.9,2.548,1.4,100.0,63.6,False,False,False,False
+268,King,FUL,MID,5.4,2.539,3.9,100.0,76.2,False,False,False,False
 304,O'Shea,IPS,DEF,4.0,2.533,2.8,,90.0,False,False,False,False
 567,Horníček,NEW,GK,5.0,2.533,3.0,,90.0,False,False,False,False
 593,Dedić,NEW,DEF,4.4,2.53,2.9,100.0,59.4,False,False,False,False
 592,Ouattara,IPS,DEF,4.0,2.52,2.9,,90.0,False,False,False,False
-268,King,FUL,MID,5.5,2.517,3.9,100.0,76.2,False,False,False,False
 259,Diop,IPS,DEF,3.9,2.487,2.1,,90.0,False,False,False,False
 5,J.Timber,ARS,DEF,6.5,2.471,1.4,100.0,46.2,False,False,False,False
 316,Emersonn,IPS,FWD,5.4,2.47,3.4,100.0,67.0,False,False,False,False
@@ -239,10 +239,10 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 213,Lerma,CRY,MID,4.8,1.703,1.4,,40.0,False,False,False,False
 130,Wieffer,BHA,DEF,4.8,1.671,0.8,100.0,14.2,False,False,False,False
 265,Berge,FUL,MID,4.8,1.671,2.5,,77.4,False,False,False,False
+46,Barkley,AVL,MID,4.9,1.664,1.5,100.0,15.2,False,False,False,False
 280,Coyle,HUL,DEF,4.0,1.662,2.5,100.0,76.0,False,False,False,False
 548,Rigg,SUN,MID,4.8,1.652,0.8,,42.4,False,False,False,False
 551,N.Angulo,SUN,MID,5.0,1.648,2.2,,41.6,False,False,False,False
-46,Barkley,AVL,MID,5.0,1.643,1.5,100.0,15.2,False,False,False,False
 347,Nmecha,LEE,FWD,5.3,1.637,1.3,,26.6,False,False,False,False
 313,Clarke,IPS,MID,5.2,1.636,2.6,,23.0,False,False,False,False
 369,Ngumoha,LIV,MID,5.7,1.636,0.9,,20.6,False,False,False,False
@@ -256,7 +256,6 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 10,White,ARS,DEF,5.4,1.588,4.2,100.0,43.4,False,False,False,False
 136,Welbeck,CHE,FWD,5.8,1.572,0.9,100.0,8.2,False,False,False,False
 96,Damsgaard,BRE,MID,5.3,1.569,1.9,100.0,13.8,False,False,False,False
-388,Guéhi,MCI,DEF,6.0,1.553,2.775,75.0,54.0,False,False,False,False
 125,Georginio,BHA,FWD,5.2,1.553,1.4,100.0,10.0,False,False,False,False
 459,L.Miley,NEW,MID,5.5,1.55,1.6,100.0,35.4,False,False,False,False
 515,Maddison,TOT,MID,6.2,1.547,1.4,100.0,26.8,False,False,False,False
@@ -271,6 +270,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 337,Aaronson,LEE,MID,5.2,1.425,1.2,,17.8,False,False,False,False
 162,Andrey Santos,MUN,MID,4.7,1.425,1.0,,49.0,False,False,False,False
 599,Cherif,COV,FWD,5.0,1.424,1.8,,44.6,False,False,False,False
+388,Guéhi,MCI,DEF,5.9,1.409,2.775,75.0,54.0,False,False,False,False
 570,Palacios,FUL,MID,5.2,1.383,1.9,,10.0,False,False,False,False
 245,Dibling,EVE,MID,5.3,1.357,0.5,,18.8,False,False,False,False
 371,Gravenberch,LIV,MID,5.8,1.342,0.825,75.0,30.2,False,False,False,False
@@ -359,10 +359,10 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 637,Vaz,HUL,FWD,5.0,0.459,0.625,100.0,6.0,False,False,False,False
 243,Alcaraz,EVE,MID,4.8,0.449,0.4,,1.8,False,False,False,False
 611,Wan-Bissaka,AVL,DEF,4.5,0.448,1.444,100.0,24.2,False,False,False,False
-195,Simms,COV,FWD,4.9,0.436,1.0,,2.4,False,False,False,False
 601,Williams-Barnett,TOT,MID,4.4,0.426,0.2,,1.8,False,False,False,False
 648,Bahoya,LEE,MID,4.8,0.425,0.375,100.0,2.0,False,False,False,False
 649,Maitland-Niles,EVE,DEF,4.5,0.423,3.25,,26.2,False,False,False,False
+195,Simms,COV,FWD,4.8,0.421,1.0,,2.4,False,False,False,False
 581,Diomande,NFO,DEF,5.3,0.406,1.0,,36.0,False,False,False,False
 170,Emegha,CHE,FWD,4.9,0.389,0.1,100.0,0.6,False,False,False,False
 643,Chilwell,CRY,DEF,4.4,0.383,1.0,100.0,0.0,False,False,False,False
@@ -378,6 +378,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 263,Kevin,FUL,MID,5.2,0.239,0.5,,2.8,False,False,False,False
 74,Brooks,BOU,MID,4.9,0.236,0.4,100.0,9.0,False,False,False,False
 306,Greaves,IPS,DEF,3.9,0.215,0.4,,18.0,False,False,False,False
+497,Dubravka,TOT,GK,3.9,0.204,0.0,,0.0,False,False,False,False
 253,Andersen,FUL,DEF,5.0,0.192,0.3,100.0,0.0,False,False,False,False
 321,Walle Egeli,IPS,FWD,4.4,0.19,0.2,,1.8,False,False,False,False
 564,Scherpen,IPS,GK,4.4,0.185,0.7,,0.0,False,False,False,False
@@ -391,7 +392,6 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 56,Abraham,AVL,FWD,5.5,0.135,0.4,100.0,0.0,False,False,False,False
 442,Pope,NEW,GK,4.8,0.132,0.0,,0.0,False,False,False,False
 370,Chiesa,LIV,MID,5.3,0.121,0.1,100.0,0.4,False,False,False,False
-497,Dubravka,TOT,GK,4.0,0.105,0.0,,0.0,False,False,False,False
 636,Ángel,FUL,MID,5.0,0.104,0.0,,3.8,False,False,False,False
 623,Bentley,COV,GK,4.0,0.1,0.0,,0.0,False,False,False,False
 587,Rulli,MCI,GK,4.9,0.097,0.0,,0.0,False,False,False,False
@@ -428,7 +428,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 495,Austin,TOT,GK,4.0,0.064,0.0,,0.0,False,False,False,False
 189,Shepherd,COV,MID,4.4,0.062,0.0,,0.0,False,False,False,False
 292,Ömür,HUL,MID,4.8,0.062,0.0,,0.0,False,False,False,False
-574,Hjertø-Dahl,HUL,MID,4.8,0.062,0.1,,0.0,False,False,False,False
+574,Hjertø-Dahl,HUL,MID,4.7,0.062,0.1,,0.0,False,False,False,False
 555,Matthews,CRY,GK,4.0,0.06,0.0,,0.0,False,False,False,False
 288,Dowell,HUL,MID,4.3,0.058,0.0,,0.0,False,False,False,False
 272,Kusi-Asare,FUL,FWD,4.3,0.056,0.0,,0.0,False,False,False,False
@@ -441,7 +441,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 434,J.Fletcher,MUN,MID,4.8,0.052,0.0,,0.0,False,False,False,False
 92,Ji-soo,BRE,DEF,4.4,0.052,0.0,,0.0,False,False,False,False
 667,Wright,AVL,GK,4.0,0.051,0.0,,0.0,False,False,False,False
-438,Fletcher,MUN,MID,4.4,0.051,0.0,,0.0,False,False,False,False
+438,Fletcher,MUN,MID,4.3,0.051,0.0,,0.0,False,False,False,False
 531,Ellborg,SUN,GK,4.4,0.05,0.0,,0.0,False,False,False,False
 382,Danns,LIV,FWD,4.5,0.049,0.0,100.0,0.0,False,False,False,False
 378,McConnell,LIV,MID,4.3,0.048,0.0,,0.0,False,False,False,False
@@ -541,7 +541,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 30,Digne,AVL,DEF,4.5,0.0,0.0,0.0,0.0,False,False,False,False
 23,Fábio Vieira,ARS,MID,5.5,0.0,0.0,0.0,0.0,False,False,False,False
 19,Zubimendi,ARS,MID,5.2,0.0,0.0,0.0,2.2,False,False,False,False
-20,Dowman,ARS,MID,5.3,0.0,0.0,0.0,2.0,False,False,False,False
+20,Dowman,ARS,MID,5.2,0.0,0.0,0.0,2.0,False,False,False,False
 22,Nwaneri,ARS,MID,5.4,0.0,0.0,0.0,0.0,False,False,False,False
 485,Bakwa,NFO,MID,5.5,0.0,0.0,0.0,0.0,False,False,False,False
 484,Hutchinson,NFO,MID,5.4,0.0,0.0,0.0,0.0,False,False,False,False
