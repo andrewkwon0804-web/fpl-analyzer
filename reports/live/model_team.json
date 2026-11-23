@@ -1870,7 +1870,7 @@
      "in": 166
     }
    ],
-   "bank": 2.1,
+   "bank": 2.0,
    "free_transfers": 1,
    "captain": 166,
    "squad": [
@@ -1934,7 +1934,7 @@
      "name": "N.Jackson",
      "team": "AVL",
      "pos": "FWD",
-     "price": 7.2,
+     "price": 7.3,
      "pred": 6.83,
      "start": true,
      "points": null,
