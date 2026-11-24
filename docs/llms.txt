@@ -3,7 +3,7 @@
 > Predicted Fantasy Premier League points for every player, from a gradient boosting model trained on
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
-Season 2026-27, predictions for gameweek 11 (using games through gameweek 10).
+Season 2026-27, predictions for gameweek 12 (using games through gameweek 10).
 Data source: official FPL API. Last refreshed: 2026-11-24.
 
 ## Pages
@@ -16,25 +16,25 @@ Data source: official FPL API. Last refreshed: 2026-11-24.
 
 ## This week's best XI
 
-N.Jackson, Haaland, Isak, Groß, Gabriel, Palmer, De Cuyper, Rogers, Rayan, Van Hecke, Verbruggen. Captain: N.Jackson.
+Palmer, N.Jackson, Groß, Rogers, Bogle, De Cuyper, Haaland, Rice, Enciso, Justin, Trafford. Captain: Palmer.
 
-## Top 15 predicted players, gameweek 11
+## Top 15 predicted players, gameweek 12
 
-- N.Jackson (Aston Villa, FWD, £7.3m): 6.8 predicted points
-- Haaland (Man City, FWD, £15.8m): 6.3 predicted points
-- Isak (Liverpool, FWD, £9.3m): 5.5 predicted points
-- Groß (Brighton, MID, £6.3m): 5.3 predicted points
-- Gabriel (Arsenal, DEF, £8.1m): 5.2 predicted points
-- Palmer (Chelsea, MID, £9.8m): 5.2 predicted points
-- De Cuyper (Brighton, DEF, £5.5m): 5.0 predicted points
-- Rogers (Chelsea, MID, £8.3m): 4.8 predicted points
-- Evanilson (Bournemouth, FWD, £6.6m): 4.7 predicted points
-- Rayan (Bournemouth, MID, £6.3m): 4.7 predicted points
-- Anderson (Man City, MID, £6.2m): 4.7 predicted points
-- Van Hecke (Spurs, DEF, £5.2m): 4.7 predicted points
-- Virgil (Liverpool, DEF, £6.4m): 4.5 predicted points
-- Rúben (Man City, DEF, £5.5m): 4.4 predicted points
-- Vuskovic (Brighton, DEF, £5.3m): 4.4 predicted points
+- Palmer (Chelsea, MID, £9.8m): 5.8 predicted points
+- N.Jackson (Aston Villa, FWD, £7.3m): 5.6 predicted points
+- Groß (Brighton, MID, £6.3m): 5.1 predicted points
+- Rogers (Chelsea, MID, £8.3m): 5.1 predicted points
+- Bogle (Leeds, DEF, £4.8m): 4.8 predicted points
+- De Cuyper (Brighton, DEF, £5.5m): 4.8 predicted points
+- Haaland (Man City, FWD, £15.8m): 4.6 predicted points
+- Rice (Arsenal, MID, £7.5m): 4.6 predicted points
+- Enciso (Ipswich Town, MID, £5.5m): 4.5 predicted points
+- Justin (Leeds, DEF, £4.5m): 4.5 predicted points
+- Gabriel (Arsenal, DEF, £8.1m): 4.5 predicted points
+- Rayan (Bournemouth, MID, £6.3m): 4.4 predicted points
+- Muharemović (Leeds, DEF, £5.1m): 4.4 predicted points
+- Gibbs-White (Nott'm Forest, MID, £7.8m): 4.3 predicted points
+- Evanilson (Bournemouth, FWD, £6.6m): 4.2 predicted points
 
 ## Method in short
 
