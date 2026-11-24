@@ -1860,9 +1860,9 @@
    "subs": []
   },
   {
-   "gw": 12,
-   "finished": false,
-   "points": null,
+   "gw": 11,
+   "finished": true,
+   "points": 36,
    "hits": 0,
    "transfers": [
     {
@@ -1870,17 +1870,195 @@
      "in": 166
     }
    ],
-   "bank": 2.0,
+   "bank": 2.1,
    "free_transfers": 1,
-   "captain": 154,
+   "captain": 166,
    "squad": [
+    {
+     "id": 4,
+     "name": "Gabriel",
+     "team": "ARS",
+     "pos": "DEF",
+     "price": 8.1,
+     "pred": 5.22,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
     {
      "id": 115,
      "name": "De Cuyper",
      "team": "BHA",
      "pos": "DEF",
      "price": 5.5,
-     "pred": 4.82,
+     "pred": 5.0,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.4,
+     "pred": 4.31,
+     "start": true,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.2,
+     "pred": 3.47,
+     "start": true,
+     "points": -4,
+     "minutes": 39
+    },
+    {
+     "id": 388,
+     "name": "Gu\u00e9hi",
+     "team": "MCI",
+     "pos": "DEF",
+     "price": 5.9,
+     "pred": 1.88,
+     "start": false,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 166,
+     "name": "N.Jackson",
+     "team": "AVL",
+     "pos": "FWD",
+     "price": 7.2,
+     "pred": 6.83,
+     "start": true,
+     "points": 2,
+     "minutes": 72
+    },
+    {
+     "id": 346,
+     "name": "Calvert-Lewin",
+     "team": "LEE",
+     "pos": "FWD",
+     "price": 6.0,
+     "pred": 3.28,
+     "start": true,
+     "points": 9,
+     "minutes": 90
+    },
+    {
+     "id": 464,
+     "name": "Wissa",
+     "team": "NEW",
+     "pos": "FWD",
+     "price": 5.9,
+     "pred": 2.1,
+     "start": false,
+     "points": 1,
+     "minutes": 7
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.8,
+     "pred": 3.32,
+     "start": true,
+     "points": 11,
+     "minutes": 90
+    },
+    {
+     "id": 226,
+     "name": "Pickford",
+     "team": "EVE",
+     "pos": "GK",
+     "price": 5.5,
+     "pred": 3.08,
+     "start": false,
+     "points": 1,
+     "minutes": 90
+    },
+    {
+     "id": 154,
+     "name": "Palmer",
+     "team": "CHE",
+     "pos": "MID",
+     "price": 9.8,
+     "pred": 5.2,
+     "start": true,
+     "points": 2,
+     "minutes": 90
+    },
+    {
+     "id": 40,
+     "name": "Rogers",
+     "team": "CHE",
+     "pos": "MID",
+     "price": 8.2,
+     "pred": 4.78,
+     "start": true,
+     "points": 5,
+     "minutes": 90
+    },
+    {
+     "id": 67,
+     "name": "Rayan",
+     "team": "BOU",
+     "pos": "MID",
+     "price": 6.3,
+     "pred": 4.69,
+     "start": true,
+     "points": 3,
+     "minutes": 89
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 4.16,
+     "start": true,
+     "points": 3,
+     "minutes": 90
+    },
+    {
+     "id": 239,
+     "name": "Garner",
+     "team": "EVE",
+     "pos": "MID",
+     "price": 6.0,
+     "pred": 2.9,
+     "start": false,
+     "points": 4,
+     "minutes": 84
+    }
+   ],
+   "subs": []
+  },
+  {
+   "gw": 12,
+   "finished": false,
+   "points": null,
+   "hits": 0,
+   "transfers": [],
+   "bank": 2.1,
+   "free_transfers": 1,
+   "captain": 154,
+   "squad": [
+    {
+     "id": 204,
+     "name": "Mitchell",
+     "team": "CRY",
+     "pos": "DEF",
+     "price": 4.4,
+     "pred": 4.6,
      "start": true,
      "points": null,
      "minutes": null
@@ -1891,18 +2069,18 @@
      "team": "ARS",
      "pos": "DEF",
      "price": 8.1,
-     "pred": 4.46,
+     "pred": 4.17,
      "start": true,
      "points": null,
      "minutes": null
     },
     {
-     "id": 204,
-     "name": "Mitchell",
-     "team": "CRY",
+     "id": 115,
+     "name": "De Cuyper",
+     "team": "BHA",
      "pos": "DEF",
-     "price": 4.4,
-     "pred": 4.22,
+     "price": 5.5,
+     "pred": 4.13,
      "start": true,
      "points": null,
      "minutes": null
@@ -1913,7 +2091,7 @@
      "team": "MCI",
      "pos": "DEF",
      "price": 5.9,
-     "pred": 1.27,
+     "pred": 1.91,
      "start": false,
      "points": null,
      "minutes": null
@@ -1930,17 +2108,6 @@
      "minutes": null
     },
     {
-     "id": 166,
-     "name": "N.Jackson",
-     "team": "AVL",
-     "pos": "FWD",
-     "price": 7.3,
-     "pred": 5.59,
-     "start": true,
-     "points": null,
-     "minutes": null
-    },
-    {
      "id": 346,
      "name": "Calvert-Lewin",
      "team": "LEE",
@@ -1952,12 +2119,34 @@
      "minutes": null
     },
     {
+     "id": 166,
+     "name": "N.Jackson",
+     "team": "AVL",
+     "pos": "FWD",
+     "price": 7.3,
+     "pred": 3.55,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
      "id": 464,
      "name": "Wissa",
      "team": "NEW",
      "pos": "FWD",
      "price": 5.9,
-     "pred": 2.1,
+     "pred": 2.53,
+     "start": false,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 529,
+     "name": "Roefs",
+     "team": "SUN",
+     "pos": "GK",
+     "price": 4.8,
+     "pred": 3.53,
      "start": false,
      "points": null,
      "minutes": null
@@ -1968,19 +2157,8 @@
      "team": "EVE",
      "pos": "GK",
      "price": 5.5,
-     "pred": 3.3,
+     "pred": 3.1,
      "start": true,
-     "points": null,
-     "minutes": null
-    },
-    {
-     "id": 529,
-     "name": "Roefs",
-     "team": "SUN",
-     "pos": "GK",
-     "price": 4.8,
-     "pred": 3.21,
-     "start": false,
      "points": null,
      "minutes": null
     },
@@ -1990,7 +2168,7 @@
      "team": "CHE",
      "pos": "MID",
      "price": 9.8,
-     "pred": 5.82,
+     "pred": 5.86,
      "start": true,
      "points": null,
      "minutes": null
@@ -2007,23 +2185,23 @@
      "minutes": null
     },
     {
-     "id": 13,
-     "name": "Rice",
-     "team": "ARS",
-     "pos": "MID",
-     "price": 7.5,
-     "pred": 4.57,
-     "start": true,
-     "points": null,
-     "minutes": null
-    },
-    {
      "id": 67,
      "name": "Rayan",
      "team": "BOU",
      "pos": "MID",
      "price": 6.3,
-     "pred": 4.41,
+     "pred": 4.71,
+     "start": true,
+     "points": null,
+     "minutes": null
+    },
+    {
+     "id": 13,
+     "name": "Rice",
+     "team": "ARS",
+     "pos": "MID",
+     "price": 7.5,
+     "pred": 4.64,
      "start": true,
      "points": null,
      "minutes": null
@@ -2034,7 +2212,7 @@
      "team": "EVE",
      "pos": "MID",
      "price": 6.0,
-     "pred": 3.15,
+     "pred": 3.14,
      "start": true,
      "points": null,
      "minutes": null
@@ -2083,6 +2261,10 @@
   "10": {
    "average": 55,
    "highest": 139
+  },
+  "11": {
+   "average": 35,
+   "highest": 106
   }
  }
 }
