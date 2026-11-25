@@ -34,7 +34,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 129,Ayari,BHA,MID,5.5,3.774,4.455,100.0,77.4,False,False,False,False
 496,Kinsky,TOT,GK,4.4,3.727,4.273,,90.0,False,False,False,False
 586,Mendy,HUL,DEF,4.1,3.702,3.545,100.0,54.0,False,False,False,False
-60,Hill,BOU,DEF,5.6,3.689,5.091,,90.0,False,False,False,False
+60,Hill,BOU,DEF,5.7,3.678,5.091,,90.0,False,False,False,False
 566,Silva,BOU,DEF,5.1,3.673,4.364,,90.0,False,False,False,False
 472,Murillo,NFO,DEF,5.5,3.641,3.182,100.0,90.0,False,False,False,False
 350,A.Becker,LIV,GK,5.5,3.634,4.455,,90.0,False,False,False,False
@@ -156,6 +156,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 336,Okafor,LEE,MID,5.7,2.406,3.909,100.0,36.6,False,False,False,False
 258,Castagne,FUL,DEF,4.5,2.405,4.0,,68.4,False,False,False,False
 282,Giles,HUL,DEF,4.0,2.38,2.909,,42.8,False,False,False,False
+558,Schlager,NFO,MID,4.9,2.377,2.909,100.0,72.0,False,False,False,False
 618,Goretzka,AVL,MID,5.9,2.374,1.3,100.0,48.0,False,False,False,False
 417,Dalot,MUN,DEF,4.7,2.37,1.455,,85.0,False,False,False,False
 569,Gonzalo,FUL,FWD,5.8,2.357,2.273,,64.2,False,False,False,False
@@ -164,7 +165,6 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 244,Armstrong,EVE,MID,5.0,2.339,2.727,100.0,85.2,False,False,False,False
 588,Khalaili,CRY,DEF,5.0,2.337,2.182,100.0,57.0,False,False,False,False
 369,Ngumoha,LIV,MID,5.7,2.332,2.0,,33.0,False,False,False,False
-558,Schlager,NFO,MID,5.0,2.33,2.909,100.0,72.0,False,False,False,False
 592,Ouattara,IPS,DEF,4.0,2.32,2.636,,83.0,False,False,False,False
 280,Coyle,HUL,DEF,4.0,2.303,2.818,100.0,74.6,False,False,False,False
 335,Stach,LEE,MID,6.0,2.296,3.091,100.0,28.6,False,False,False,False
@@ -275,7 +275,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 599,Cherif,COV,FWD,5.0,1.471,1.727,,38.2,False,False,False,False
 71,Cook,BOU,MID,4.9,1.469,1.818,,40.2,False,False,False,False
 440,Zirkzee,MUN,FWD,5.3,1.451,0.909,,16.6,False,False,False,False
-17,Merino,ARS,MID,5.7,1.448,1.091,,24.2,False,False,False,False
+17,Merino,ARS,MID,5.6,1.448,1.091,,24.2,False,False,False,False
 570,Palacios,FUL,MID,5.2,1.446,1.818,,11.4,False,False,False,False
 405,N.Gonzalez,NEW,MID,5.5,1.419,2.182,100.0,60.6,False,False,False,False
 611,Wan-Bissaka,AVL,DEF,4.5,1.417,2.1,100.0,33.2,False,False,False,False
@@ -305,20 +305,20 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 77,Adli,BOU,MID,4.8,1.123,1.0,100.0,4.2,False,False,False,False
 32,Cash,AVL,DEF,4.3,1.109,1.227,75.0,54.0,False,False,False,False
 207,Mingueza,CRY,DEF,4.2,1.108,0.205,75.0,29.0,False,False,False,False
-184,Grimes,COV,MID,4.8,1.077,1.818,,52.2,False,False,False,False
 343,James,LEE,MID,4.9,1.067,0.455,100.0,12.8,False,False,False,False
 403,Sávio,TOT,MID,6.4,1.056,0.75,75.0,5.0,False,False,False,False
 381,Koumas,LIV,MID,5.0,1.036,0.909,,7.8,False,False,False,False
+184,Grimes,COV,MID,4.7,1.035,1.818,,52.2,False,False,False,False
 245,Dibling,EVE,MID,5.3,1.033,0.455,,18.0,False,False,False,False
 113,F.Kadıoğlu,BHA,DEF,4.3,1.032,2.636,100.0,21.0,False,False,False,False
 634,Fernandez-Pardo,NEW,FWD,5.8,1.029,0.889,100.0,14.2,False,False,False,False
 456,J.Ramsey,NEW,MID,4.8,1.01,0.636,100.0,14.6,False,False,False,False
 310,Matusiwa,IPS,MID,4.9,1.001,0.545,100.0,8.8,False,False,False,False
 62,Diakité,BOU,DEF,4.9,0.962,0.455,,4.0,False,False,False,False
-162,Andrey Santos,MUN,MID,4.7,0.951,1.0,,49.6,False,False,False,False
 9,Hincapie,ARS,DEF,5.2,0.951,0.455,100.0,5.4,False,False,False,False
 308,Furlong,IPS,DEF,3.9,0.941,0.182,,18.0,False,False,False,False
 329,Rodon,LEE,DEF,4.2,0.919,0.818,100.0,1.0,False,False,False,False
+162,Andrey Santos,MUN,MID,4.6,0.906,1.0,,49.6,False,False,False,False
 488,I.Sangaré,NFO,MID,4.7,0.902,0.636,100.0,5.4,False,False,False,False
 635,Larsson,FUL,MID,5.0,0.883,1.0,100.0,17.0,False,False,False,False
 641,Bard,LEE,DEF,4.5,0.857,0.333,,9.2,False,False,False,False
@@ -569,7 +569,7 @@ player_id,web_name,team_short,position,price,predicted_points,pred_season_avg,ch
 527,Richarlison,TOT,FWD,5.9,0.0,0.0,0.0,0.0,False,False,False,False
 528,Scarlett,TOT,FWD,4.5,0.0,0.0,0.0,0.0,False,False,False,False
 84,Collins,BRE,DEF,5.4,0.0,0.0,0.0,9.0,False,False,False,False
-89,Henry,BRE,DEF,4.4,0.0,0.0,0.0,0.0,False,False,False,False
+89,Henry,BRE,DEF,4.3,0.0,0.0,0.0,0.0,False,False,False,False
 90,Hickey,BRE,DEF,4.5,0.0,0.0,0.0,30.6,False,False,False,False
 530,Patterson,SUN,GK,4.0,0.0,0.0,0.0,0.0,False,False,False,False
 532,Ballard,SUN,DEF,4.7,0.0,0.0,0.0,0.0,False,False,False,False
