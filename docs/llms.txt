@@ -29,12 +29,12 @@ Palmer, Rogers, Groß, Gibbs-White, Rayan, Haaland, Mitchell, Truffert, Richards
 - Rice (Arsenal, MID, £7.5m): 4.6 predicted points
 - Mitchell (Crystal Palace, DEF, £4.4m): 4.6 predicted points
 - Wirtz (Liverpool, MID, £7.5m): 4.5 predicted points
-- B.Fernandes (Man Utd, MID, £11.6m): 4.5 predicted points
 - Truffert (Bournemouth, DEF, £5.4m): 4.3 predicted points
 - Richards (Crystal Palace, DEF, £4.9m): 4.3 predicted points
 - Calvert-Lewin (Leeds, FWD, £6.0m): 4.2 predicted points
 - Van Hecke (Spurs, DEF, £5.2m): 4.2 predicted points
 - Gabriel (Arsenal, DEF, £8.1m): 4.2 predicted points
+- Muharemović (Leeds, DEF, £5.2m): 4.2 predicted points
 
 ## Method in short
 

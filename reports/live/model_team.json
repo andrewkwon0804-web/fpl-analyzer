@@ -2086,23 +2086,23 @@
      "minutes": null
     },
     {
+     "id": 229,
+     "name": "Tarkowski",
+     "team": "EVE",
+     "pos": "DEF",
+     "price": 6.2,
+     "pred": 2.5,
+     "start": false,
+     "points": null,
+     "minutes": null
+    },
+    {
      "id": 388,
      "name": "Gu\u00e9hi",
      "team": "MCI",
      "pos": "DEF",
      "price": 5.9,
      "pred": 1.91,
-     "start": false,
-     "points": null,
-     "minutes": null
-    },
-    {
-     "id": 229,
-     "name": "Tarkowski",
-     "team": "EVE",
-     "pos": "DEF",
-     "price": 6.2,
-     "pred": 0.0,
      "start": false,
      "points": null,
      "minutes": null
