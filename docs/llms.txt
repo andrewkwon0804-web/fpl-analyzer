@@ -4,7 +4,7 @@
 > four seasons of Premier League match data. Retrained and republished after each gameweek.
 
 Season 2026-27, predictions for gameweek 12 (using games through gameweek 11).
-Data source: official FPL API. Last refreshed: 2026-11-27.
+Data source: official FPL API. Last refreshed: 2026-11-28.
 
 ## Pages
 
@@ -20,18 +20,18 @@ Palmer, Rogers, Groß, Gibbs-White, Rayan, Haaland, Mitchell, Truffert, Richards
 
 ## Top 15 predicted players, gameweek 12
 
-- Palmer (Chelsea, MID, £9.8m): 5.9 predicted points
+- Palmer (Chelsea, MID, £9.7m): 5.9 predicted points
 - Rogers (Chelsea, MID, £8.3m): 5.1 predicted points
-- Groß (Brighton, MID, £6.3m): 4.9 predicted points
+- Groß (Brighton, MID, £6.4m): 5.0 predicted points
 - Gibbs-White (Nott'm Forest, MID, £7.8m): 4.8 predicted points
 - Rayan (Bournemouth, MID, £6.3m): 4.7 predicted points
 - Haaland (Man City, FWD, £15.7m): 4.7 predicted points
 - Rice (Arsenal, MID, £7.5m): 4.6 predicted points
 - Mitchell (Crystal Palace, DEF, £4.4m): 4.6 predicted points
-- Wirtz (Liverpool, MID, £7.5m): 4.5 predicted points
+- Wirtz (Liverpool, MID, £7.6m): 4.5 predicted points
 - Truffert (Bournemouth, DEF, £5.4m): 4.3 predicted points
 - Richards (Crystal Palace, DEF, £4.9m): 4.3 predicted points
-- Calvert-Lewin (Leeds, FWD, £6.0m): 4.2 predicted points
+- Calvert-Lewin (Leeds, FWD, £6.1m): 4.2 predicted points
 - Van Hecke (Spurs, DEF, £5.2m): 4.2 predicted points
 - Gabriel (Arsenal, DEF, £8.1m): 4.2 predicted points
 - Muharemović (Leeds, DEF, £5.2m): 4.2 predicted points
